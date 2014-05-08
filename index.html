@@ -53,7 +53,7 @@
         <img src="https://s3.amazonaws.com/gloebit/gloebit-overview.png"/>
 
         <a name="examples"></a>
-        <p>Code examples:</p>
+        <h3>Code examples:</h3>
 
         <ul>
           <li><a href="https://github.com/gloebit/python-django-gloebit">Python</a>
@@ -61,6 +61,109 @@
           <li><a href="https://github.com/gloebit/unity-gloebit">Unity Webplayer</a>
           <li><a href="https://github.com/gloebit/haxe-gloebit">HAXE</a>
         </ul>
+
+        <h3>HTTP Interface:</h3>
+
+
+
+
+
+<p>Your application or website can interact with Gloebit user-accounts
+by using Gloebit&rsquo;s API.</p>
+
+<p>To interact with a user&rsquo;s Gloebit account, the user must grant
+permission.  Your application sends the user&rsquo;s browser to Gloebit&rsquo;s
+website where the user is presented with a permission dialog.  If the
+user agrees, a token is sent back to your application.  Your
+application includes the token with API requests to prove that the
+user has allowed access to their account.</p>
+
+<p>The API allows various operations, such as querying the user&rsquo;s balance
+or initiating transactions between the user and your application.</p>
+
+<p>Either OAuth 1.0a or OAuth 2.0 is used for authentication.
+Any data delivered to or received from API requests will have a
+Content-Type of <strong>application/json</strong>.  All requests go over https.</p>
+
+<h2 id="oauth-1.0a">OAuth 1.0a</h2>
+
+<p>There are many <a href="http://oauth.net/code/">client libraries</a>
+for <a href="http://oauth.net/core/1.0a/">OAuth 1.0a</a>.</p>
+
+<p>The request-token url can be modified with an optional &ldquo;user&rdquo;
+query-arg.  If provided, it should be the username of the account on
+the consumer side (the username as your application knows it).  It
+will be recorded in the token and used for display purposes, only.</p>
+
+<table><thead>
+<tr>
+<th>operation</th>
+<th>endpoint</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Request Token</td>
+<td>https://www.gloebit.com/oauth/request-token</td>
+</tr>
+<tr>
+<td>Authorize</td>
+<td>https://www.gloebit.com/oauth/authorize</td>
+</tr>
+<tr>
+<td>Access Token</td>
+<td>https://www.gloebit.com/oauth/access-token</td>
+</tr>
+</tbody></table>
+
+<p><img src="images/oauth1-seq.png" height="812"></p>
+
+<p>The application first gets a <em>Request Token</em> from Gloebit.  This
+token isn&rsquo;t associated with a particular user or domain.  Next,
+the application sends the user to Gloebit&rsquo;s authorization page.  If
+the user agrees to grant access, the <em>Request Token</em> is authorized
+and a specific user and domain are associated with it.  Next, the
+application exchanges the authorized <em>Request Token</em> for an <em>Access Token</em>.
+The <em>Access Token</em> is used during API requests.</p>
+
+<h2 id="oauth-2.0">OAuth 2.0</h2>
+
+<p>Gloebit supports three-legged <a href="http://oauth.net/2/">OAuth 2.0</a>.</p>
+
+<p>The authorize url should be modified with some query args:</p>
+
+<table><thead>
+<tr>
+<th>query argument</th>
+<th>value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>client_id</td>
+<td>the consumer (application / 3rd party) key</td>
+</tr>
+<tr>
+<td>response_type</td>
+<td>Gloebit only uses &ldquo;code&rdquo; response type.</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>Where to send the user after the permission dialog.</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>a space separated list of what permissions are being requested.</td>
+</tr>
+<tr>
+<td>user</td>
+<td>an optional argument.  If provided, it should be the username of the account on the consumer side.  It will be recorded in the token and used for display purposes, only.</td>
+</tr>
+</tbody></table>
+
+<p>Once the user grants permission, they will be redirected back to the
+<em>redirect_uri</em> with a <em>code</em> query-arg.</p>
+
+
+
 
       </section>
       <footer>
