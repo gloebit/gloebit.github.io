@@ -20,6 +20,7 @@
         <p></p>
 
         <p class="view"><a href="#oauth-api">OAuth API</a></p>
+        <p class="view"><a href="#sandbox">Sandbox</a></p>
         <p class="view"><a href="#domain/scope">Domain/Scope</a></p>
         <p class="view"><a href="#account-endpoints">Account Endpoints</a></p>
         <p class="view"><a href="#inventory-endpoints">Inventory Endpoints</a></p>
@@ -149,13 +150,22 @@ The <em>Access Token</em> is used during API requests.</p>
 </tbody></table>
 
 <p>Overview of OAuth 2.0 Flow:<br>
-<img src="https://www.gloebit.com/static-1/docs/api/images/oauth2-seq.png" height="506">
+<img src="https://www.gloebit.com/static-1/docs/api/images/oauth2-seq.png" height="506"></p>
 
 <p>The application sends the user to Gloebit&rsquo;s authorization page.  Once
 the user has agreed, a token id (the <em>code</em> query arguement) is included
 and the user is sent to the <em>redirect_uri</em>.  The application then
 validates the token. The token is used as the value of the
 <strong>Authorization</strong> HTTP header during any API requests.</p>
+
+<h1 id="sandbox">Sandbox</h1>
+
+<p>Gloebit provides a &ldquo;sandbox&rdquo; server.  This server is just like the main
+server, except that interactions with payment providers are in test or
+sandbox mode.  Generally, substitute sandbox.gloebit.com for www.gloebit.com
+in order to use the sandbox server.  The sandbox server has its own accounts
+and balances &ndash; anything done on the sandbox server will need to be
+repeated on the main server, once testing is complete.</p>
 
 <h1 id="domain/scope">Domain/Scope</h1>
 
@@ -364,8 +374,10 @@ costs 40 gloebits, the posted json dictiony might look like:</p>
 merchant&rsquo;s application.  &ldquo;request-created&rdquo; should be similar to what
 the unix command date &lsquo;+%s&rsquo; produces.  &ldquo;product&rdquo; should be a product-name
 as defined in the
-<a href="https://www.gloebit.com/merchant-products">Merchant Products</a> page.
-&ldquo;consumer-key&rdquo; is the Key field from the
+<a href="https://www.gloebit.com/merchant-products">Merchant Products</a> page
+(or the <a href="https://sandbox.gloebit.com/merchant-products">sandbox version</a>).</p>
+
+<p>&ldquo;consumer-key&rdquo; is the Key field from the
 <a href="https://sandbox.gloebit.com/merchant-tools/">Merchant Settings</a> page.
 &ldquo;merchant-user-id&rdquo; should be the application specific name for the
 user, and is only used for logging and transaction history display.</p>
@@ -655,7 +667,7 @@ found, a new one will be created.</p>
 
 <p>Products are predefined inventory items.  A merchant can define products
 by visiting the <a href="https://www.gloebit.com/merchant-products">Merchant Products</a>
-page.</p>
+page (or the <a href="https://sandbox.gloebit.com/merchant-products">sandbox version</a>).</p>
 
 <p>Products must have a unique name (within a given merchant&rsquo;s account).  The
 price is indicated in gloebits.  Per-user-limit limits how many of each
@@ -714,7 +726,7 @@ give a user more of a product.</p>
 </tr>
 </tbody></table>
 
-<p>Decrease by *count* the number of a product owned by the user.</p>
+<p>Decrease by <em>count</em> the number of a product owned by the user.</p>
 
 <p>The response will be a json dictionary:</p>
 
