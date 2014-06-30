@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Gloebit</title>
+    <title>Getting Started Accepting Gloebits</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -16,31 +16,40 @@
     <a name="top"></a>
     <div class="wrapper">
       <header>
-        <h1>Gloebit</h1>
+        <h1>Gloebit Sandbox Walkthrough</h1>
         <p></p>
 
-        <p class="view"><a href="#top">Top</a></p>
-        <p class="view"><a href="#http">HTTP Interface</a></p>
-        <p class="view"><a href="#examples">Examples</a></p>
-
+        <p class="view"><a href="#sandbox">The Gloebit Sandbox</a></p>
+        <p class="view"><a href="#steps">Steps</a></p>
       </header>
+
       <section>
         <h3>
-          <a name="gloebit" class="anchor" href="#gloebit">
+          <a name="sandbox" class="anchor" href="#sandbox">
             <span class="octicon octicon-link"></span>
           </a>
-          Gloebit
+          The Gloebit Sandbox
         </h3>
 
-        <p>Gloebit is a service that makes microtransactions easy.  Gloebit can also
-        help with:</p>
+        <p>Gloebit provides a sandbox server that helps you start integrating Gloebit services quickly.  It also provides all Gloebit functionality so you can fully test your design before switching over to the production Gloebit server.</p>
 
-        <ul>
-          <li> managing user accounts
-          <li> collecting payments
-          <li> keeping track of users' entitlements
-        </ul>
+        <p>This sandbox walk-through and guide takes you through the steps to get your design up and and going in the Gloebit sandbox.  Let's get started.</p>
 
+        <h3>
+          <a name="prereqs" class="anchor" href="#prereqs">
+            <span class="octicon octicon-link"></span>
+          </a>
+          Gloebit Merchant Prequisites
+        </h3>
+
+        <p>Whether on the production or sandbox server, a Gloebit merchant needs the following to use Gloebits:</p>
+
+        <ol>
+          <li>A merchant Gloebit account (on the server)</li>
+          <li>An integrated Gloebit API</li>
+        </ol>
+
+        <p>This guide walks you through both requirements in that order.  However, if you would rather immediately start integrating an API, you can skip this step and intstead <a href="#test-merchant">use the test merchant account</a>.</p>
 
         <p>Users and merchants create accounts on Gloebit's website.  An
         application associated with a merchant account uses OAuth2 to get a
@@ -51,7 +60,7 @@
         has a balance of gloebits, an application can exchange entitlements or
         digital inventory for the user's gloebits.</p>
 
-        <img src="https://s3.amazonaws.com/gloebit/gloebit-overview.png"/>
+        <!-- <img src="https://s3.amazonaws.com/gloebit/gloebit-overview.png"/> -->
 
         <a name="http"></a>
         <h3>HTTP Interface:</h3>
