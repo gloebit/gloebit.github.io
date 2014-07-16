@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Gloebit</title>
+    <title>Gloebit Developer Overview</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -113,6 +113,7 @@
           <li>Available cross-platform compatible RESTful APIs.</li>
           <li>Any API or functionality missing, we'll add it!</li>
         </ul>
+        Get <a href="transbenefits.html">more details on benefits specific to the Digital Currency & Transaction Service.</a>
       </section>
 
       <section>
@@ -129,7 +130,7 @@
           <li>Use our example code and APIs to quickly integrate and test in our sandbox.</li>
           <li>Go live when you are ready to launch.</li>
         </ol>
-        <p>See our Getting Started Guide for step-by-step instructions.</p>
+        See our <a href="merchant-steps.html">Getting Started Guide</a> for step-by-step instructions.
       </section>
 
       <section>
@@ -140,24 +141,27 @@
           Customer Flow
         </h2>
         <p>When you are ready to use Gloebit services with one of your customers, you will send your customer to Gloebit to authorize your application's interactions with the customer's account.  If your customer is not yet logged into Gloebit, we will present the Gloebit login screen.  After logging in to Gloebit, we ask your customer to authorize your application:</p>
+
         <img src="images/authdialog.png" alt="Gloebit Authorization Dialog">
+
         <p>Users are comfortable with this authorization style from social networks such as Facebook.  They understand that after they grant authorization your application or server will be able to directly use Gloebit services on their behalf with no further interactions.</p>
+        
+        <p>See an <a href="authflow.html">example authorization flow</a>.</p>
 
         <h3>Monetizing with gloebits</h3>
 
         <h4>gloebits</h4>
-        <p>Gloebits are a digital currency designed for in-app purchases, especially micro-transactions.  Users can spend gloebits in any application intregrating Gloebit's Digital Currency & Transaction Service.  Gloebit manages all accounts and transactions.</p>
+        <p>Gloebits are a digital currency designed for in-app purchases, especially micro-transactions.  Users can spend gloebits in any application intregrating <a href="services.html#transact">Gloebit's Digital Currency & Transaction Service</a>.  Gloebit manages all accounts and transactions for you. <a href="monetizing.html">Learn more</a>.</p>
 
         <h4>Customer Experience</h4>
         <p>Gloebit accounts are universal.  The gloebit balance in an account is available to all Gloebit-integrated applications.</p>
         <img src="images/accountheader.png" alt="Gloebit Account Ribbon">
-        <p>After granting Gloebit authorization for your application, your customers can spend their gloebits with one click from within your application without leaving it.  It's smooth and fast, and it keeps the user engaged in your application.</p>
-        <p><a href="monetizing#experience">Learn more about the customer experience</a></p>
+        <p>After granting Gloebit authorization for your application, your customers can spend their gloebits with one click from within your application without leaving it.  It's smooth and fast, and it keeps the user engaged in your application. For a clearer picture, see the <a href="monetizing.html#customer">consumer experience flow details</a>.</p>
 
         <h4>Merchant Experience</h4>
         <p>As a merchant using the Gloebit services, you price and sell your products in gloebits.</p>
         <img src="images/pricesell.png" alt="Tic-tac-toe Purchase Screen">
-        <p>When you sell products to your customers via the Gloebit transaction service, you receive gloebit proceeds in your merchant account.  You can spend these gloebits with other merchants or sell them and withdraw the proceeds.  Gloebit keeps records of all transactions and provides an exportable transaction history for your account.</p>
+        <p>When you sell products to your customers via the Gloebit transaction service, you receive gloebit proceeds in your merchant account.  You can spend these gloebits with other merchants or sell them and withdraw the proceeds.  Gloebit keeps records of all transactions and provides an exportable transaction history for your account. See our <a href="monetizing.html#merchant">merchant experience flow details</a> for more information.</p>
 
         <h4>User-to-User Transactions</h4>
         <p>If you would like to allow user-to-user transactions within your application, gloebits are the best way to do so.  The Gloebit services enable small, trusted transactions, and using gloebits provides you with a new revenue stream from user-to-user transaction fees.  Please <a href="https://www.gloebit.com/contact-us/">contact us</a> to discuss making this offering available to you.
@@ -188,10 +192,10 @@
           <li>Create a Gloebit merchant account on our sandbox server.</li>
           <li>Configure the Gloebit API settings for your application.</li>
         </ol>
-        <p>See our <a href="integration-guide.html">Getting Started Guide</a> for step-by-step instructions.</p>
+        <p>See our <a href="merchant-stpes.html">Getting Started Guide</a> for step-by-step instructions.</p>
 
         <h3>Gloebit Service API Details</h3>
-        <p>Read our <a href="api-details.html">Gloebit Service API Details</a> document to understand how to use our srevices and what functionality is available to you.</p>
+        <p>Read our <a href="interfaces.html">Gloebit Service API Details</a> document to understand how to use our srevices and what functionality is available to you.</p>
 
         <h3>Plugins and Code Examples</h3>
         <p>All Gloebit services are accessed via RESTful calls.  For easier integration we created (and are creating) APIs for various languages, frameworks, and platforms to hide the HTTP details.  Use the links below to learn about a particular API and get started with it.  If you don't see the API you need, <a href="https://www.gloebit.com/contact-us/">contact us</a> so we can work with you on creating a suitable API.</p>
