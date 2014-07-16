@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gloebit</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <a name="top"></a>
+    <div class="wrapper">
+      <header>
+        <h1>Gloebit Services Overviews</h1>
+        <p class="view"><a href="#auth">Authorization</a></p>
+        <p class="view"><a href="#identity">Identity</a></p>
+        <p class="view"><a href="#character">Character</a></p>
+        <p class="view"><a href="#inventory">Inventory</a></p>
+        <p class="view"><a href="#transact">Digital Currenty & Transaction</a></p>
+      </header>
+
+      <section>
+        <p>This page provides a brief summary of the Gloebit Services. For additional details, please see the main <a href="http://dev.gloebit.com/">Gloebit Developer Site</a> or the <a href="interfaces.html">Gloebit Service Interface Details</a> page.</p>
+
+        <p>Gloebit provides a set of backend services delivered as web services (often referred to as SaaS or BaaS) intended to simplify game and other application development. Our goal is to make it easier and less expensive for developers so that they can focus on their games and applications while we focus on services such as payments and inventory.</p>
+
+        <p>Our services require that the application and the end-consumer each have a Gloebit account. Creating an account is simple. Some of the users of your application will already have a Gloebit account. For them, the pipeline to monetization and other features will be shorter and smoother than developing a solution yourself or using any competitor. Other users of your application may not have a Gloebit account. For them, we provide a very simple flow to quickly get them signed up with Gloebit. With every future game or application you release, all of your returning users will already have a Gloebit account, as will any user who has tried any application from our other partner developers.</p>
+
+        <p>Our Authorization Service is always the first service an application must utilize with a user. Through it, a Gloebit user provides permission for the application to interact with the user’s account via the other services Gloebit provides. Please see each of the sections below for an overview of each service.</p>
+      </section>
+
+      <section>
+        <a name="auth" class="anchor" href="#auth">
+          <span class="octicon octicon-link"></span>
+        </a>
+        <h2>Authorization Service Overview</h2>
+        <p>As stated above, this service is always the first service that an application must utilize with a user. Through authorization, the user grants the application permission to use the other Gloebit services with that user’s Gloebit account.</p>
+
+        <p>The user is presented with a permission dialog and asked to approve providing access to the application. Users are very comfortable with this form of approval, as it is the same process they use to provide applications access to their social networks. In our case, instead of a friends list, the user is granting access to his/her Gloebit identity, inventory, and digital currency. When an application sends a user for authorization who does not yet have a Gloebit account, that user will perform this authorization immediately after signing up. For a clear picture of the consumer authorization experience, please see our Gloebit Authorization Consumer Flow document.</p>
+
+        <p>For more details, see the Authorization section of the Gloebit Service Interface Details Document.</p>
+      </section>
+
+      <section>
+        <a name="identity" class="anchor" href="#identity">
+          <span class="octicon octicon-link"></span>
+        </a>
+        <h2>Identity Service Overview</h2>
+        <p>If you’d prefer not to handle your own user authentication and you want your customers to have the freedom to login using the major 3rd party ID provider of their choice, then this is the service for you. We’ve done the work so you don’t have to. Through the Identity Service, Gloebit can manage your user authentication and accounts.</p>
+
+        <p>Your application send an unknown user to Gloebit for authentication via a variant of our Authorization Service. If the user is not already logged into Gloebit, they can authenticate with an email & password, Facebook, LinkedIn, Twitter, or Google+. Once the user is logged in, the application can use the Identity Service to get a consistent unique identifier for that user.</p>
+
+        <p>If the application will handle it’s own account information, then the Identity service simply authenticates the user and provides the unique identifier to load the proper account. If you would prefer to handle even less account management, then consider our other services below.</p>
+
+        <p>For more details, see the Identity section of the Gloebit Service Interface Details Document.</p>
+      </section>
+
+      <section>
+        <a name="character" class="anchor" href="#character">
+          <span class="octicon octicon-link"></span>
+        </a>
+        <h2>Character Service Overview</h2>
+        <p>The Character Service provides functionality to create and manage characters or personas for a user within an application. The application will need to wrap a UI around the service for any presentation to the user, but our service will store and retrieve the character specific data. It will also ensure that no two characters share the same name within any one application.</p>
+
+        <p>For more details, see the Character section of the Gloebit Service Interface Details Document.</p>
+      </section>
+
+      <section>
+        <a name="inventory" class="anchor" href="#inventory">
+          <span class="octicon octicon-link"></span>
+        </a>
+        <h2>Inventory Service Overview</h2>
+        <p>The inventory service allows an application to create and manage inventory and entitlements for a user. This information is stored securely in the cloud, accessible whenever your application needs it.</p>
+
+        <p>If the application is using Gloebit’s Digital Currency & Transaction Service, then delivery of purchases can automatically be handled in coordination with payment. The service also makes it simple to grant items, move items from one inventory to another, such as from a backpack to a chest or stored to equipped, and to consume items.</p>
+
+        <p>There is a simple Product Inventory Service designed for simple entitlements where possession and quantity are the only important data. There is also an advanced Asset Inventory Service for more complex assets such as those that evolve or wear or which users customize.</p>
+
+        <p>For more details, see the Inventory section of the Gloebit Service Interface Details Document.</p>
+      </section>
+
+      <section>
+        <a name="transact" class="anchor" href="#transact">
+          <span class="octicon octicon-link"></span>
+        </a>
+        <h2>Digital Currency and Transaction Service Overview</h2>
+        <p>This Service provides everything necessary to handle payments and in-app micro-transactions in a fraction of the time and at a fraction of the cost of competitors. With our single integration, an application gets access to all the payment providers Gloebit has integrated. Integrate in a day, not months, and pay only 2% (See Pricing page for more details).</p>
+
+        <p>Gloebit provides it’s own digital currency, gloebits, which is stable and secure. Applications utilizing this service choose to accept gloebits as payment for their goods and services. Using gloebits allows for transactions as small as 1G, or roughly $0.004. Through this service, an application can request a user’s gloebit balance for display within the application, and can request a payment of gloebits from the user to the application on the user’s behalf without the user leaving the application. In seconds, the transaction completes, and the application has received the gloebit proceeds.</p>
+
+        <p>Purchase of gloebits by users is handled by Gloebit. Gloebit offers four payment methods (credit card, Paypal, Amazon, and Bitcoin) and will continue to add more. Developers can sell gloebit proceeds for either USD or BTC and then request a withdrawal via Paypal or Coinbase. For a clear picture of this experience for both consumers and merchants, please see our Monetizing with gloebits flow document.</p>
+
+        <p>User-to-user transactions are not yet part of the off-the-shelf offering, but gloebits are perfect for communities which exchange payment for goods/services back and forth with each other. If you would like to enable user-to-user transactions, please <a href="https://www.gloebit.com/contact-us/">contact us</a>. Gloebit can enable small, trusted transactions between your users to provide you with a new revenue stream from the fees on those user-to-user transactions.</p>
+
+        <p>For more details, see the Digital Currency and Transaction section of the Gloebit Service Interface Details Document.</p>
+      </section>
+
+      <footer>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
