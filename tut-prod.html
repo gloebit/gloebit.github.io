@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Getting Started with Gloebit's Production Environment</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <a name="top"></a>
+    <div class="wrapper">
+      <header>
+        <h1>Gloebit Production Walk-through</h1>
+        <p></p>
+
+        <p class="view"><a href="#production">The Gloebit Production Environment</a></p>
+        <p class="view"><a href="#prereqs">Gloebit Merchant Prerequisites</a></p>
+        <p class="view"><a href="#account">Creating Your Merchant Account</a></p>
+        <p class="view"><a href="#migrate">Migrating Your Application to Production</a></p>
+      </header>
+
+      <section>
+        <h2>
+          <a name="production" class="anchor" href="#production">
+            <span class="octicon octicon-link"></span>
+          </a>
+          The Gloebit Production Environment
+        </h2>
+
+        <p>The Gloebit production environment is for fully tested applications which are launching to the public.  If you are testing out Gloebit or doing your initial integration, please see the <a href="http://dev.gloebit.com/merchant-steps.html">integration guide</a> and the <a href="http://dev.gloebit.com/tut.html">sandbox walkthrough</a> which will instruct you on how to get set up in our sandbox environment for testing.</p>
+        <p>The production environment allows your application to tie into production accounts of Gloebit users.  Once authorized, your production application will be able to utilize our services with those production user accounts.  Your production application will be able to transact in Gloebits which can then be sold and your proceeds withdrawn.</p>
+        <p>The production environment resides at the domain <a href="https://www.gloebit.com/">https://www.gloebit.com/</a>.</p>
+        <p>This production walk-through and guide takes you through the steps to get your application migrated from the Gloebit sandbox to production.  Let's get started.</p>
+
+        <h2>
+          <a name="prereqs" class="anchor" href="#prereqs">
+            <span class="octicon octicon-link"></span>
+          </a>
+          Gloebit Merchant Prequisites
+        </h2>
+
+        <p>On the production server, you will need the following to be a Gloebit merchant:</p>
+
+        <ol>
+          <li>A merchant Gloebit account on the server</li>
+          <li>An integrated Gloebit API in an application associated with that Gloebit account</li>
+        </ol>
+
+        <h2>
+          <a name="account" class="anchor" href="#account">
+            <span class="octicon octicon-link"></span>
+          </a>
+          Creating Your Production Merchant Account
+        </h2>
+
+        <h3>Signup for a Gloebit Production Account</h3>
+
+        <ol>
+          <li><b>Visit the <a href="https://www.gloebit.com/signup/">Gloebit production signup page</a>.</b>
+            <p>You can either create your account using an email and password you provide specifically for the Gloebit production environment, or you can authenticate via one of our third-party ID providers (Google+, LinkedIn, Twitter, Facebook) to create your production account.  Your production and sandbox accounts do not need to authenticate the same way.</p>
+            <p>The account you create here allows you to buy and spend Gloebits.  The next steps upgrade your account to use the Gloebit merchant services.</p>
+            <p>After creating your account or authenticating via a third party, Gloebit will present its user terms of service.  You will see this only when creating your production account or when you log in after we have updated the user terms of service.</p>
+          </li>
+          <li><b>Read through the user terms of service and click on "Agree".</b>
+            <p>After clicking, you will see the Account Settings page for your sandbox account.  Now let's turn it into a production merchant account.</p>
+          </li>
+          <li><b>Visit the <a href="https://www.gloebit.com/merchant-signup/">Gloebit production merchant signup page</a>.</b>
+            <p>You will see a form here asking for a variety of information for your merchant account.  On the production server, this information is required.  Please fill in the form and click on the "Save" button.</p>
+            <p>While you will immediately receive access to our merchant tools, we must review and verify the information you have submitted before your application can utilize any gloebit transaction services or you can sell gloebits or withdraw proceeds.  Please create your production account and submit your merchant upgrade request in advance of launching your product so there are no delays while we review your submission.  In some cases, we may need to ask for additional information.</p>
+            <p>After clicking on "Save" to submit your merchant request, you will return to your Account Settings page.  Notice that the alert icon (bell, top-right of page) has a red 1, indicating a new message.</p>
+          </li>
+          <li><b>Click on the alert icon to see the message.</b>
+            <p>The new message should be an alert that your merchant signup request has been submitted.  Merchant approval on production requires a review of the information you've submitted before you gain full access to all merchant features.</p>
+          </li>
+          <li><b>Click the left side of the header bar (on your account name/email, on the head icon to its left, or on the blue sliver at the left end of the header.)</b>
+            <p>Now that you have a merchant account, there is a new item in the menu:</p>
+            <ul>
+              <li>Merchant Tools</li>
+            </ul>
+            <p>The Merchant Tools page is where you will manage all of your merchant functionality and application details.  Most important for integration, it is where you create OAuth keys and secrets for your applications.</p>
+          </li>
+          <li><b>Click on Merchant Tools.</b>
+            <p>Because this is the first time you are accessing a merchant page, Gloebit will present its merchant terms of service.  You will see this only when first accessing one of the merchant pages or when you first access one after we have updated the merchant terms of service.</p>
+          </li>
+          <li><b>Read through the merchant terms of service and click on "Agree".</b>
+            <p>After clicking, you will see your Merchant Tools page.</p>
+          </li>
+          <li><b>Scroll down the Merchant Tools page and find the Gloebit Authorization Information section.</b>
+            <p>Gloebit uses OAuth for authenticating you and your users.  Your application will need the OAuth Key and OAuth Secret from this page when you send your users to Gloebit to grant access to your application.</p>
+          </li>
+        </ol>
+
+        <p>And with that, you are ready to <a href="#migrate">migrate your application from sandbox to production</a>.
+
+        <h2>
+          <a name="migrate" class="anchor" href="#migrate">
+            <span class="octicon octicon-link"></span>
+          </a>
+          Migrating your application from sandbox to production
+        </h2>
+        
+        <p>If you have not yet integrated your application with Gloebit, please see the <a href="http://dev.gloebit.com/merchant-steps.html">integration guide</a> and the <a href="http://dev.gloebit.com/tut.html">sandbox walkthrough</a> which will instruct you on how to set up sandbox merchant account and integrate.</p>
+
+
+        <a name="http"></a>
+        <h3>HTTP Interface:</h3>
+
+        <p>See the
+        <a href="oauth-api.html">
+          OAuth API documentation
+        </a> for information about connecting to Gloebit over HTTP.</p>
+
+        <a name="examples"></a>
+        <h3>Code examples:</h3>
+
+        <ul>
+          <li><a href="https://github.com/gloebit/python-django-gloebit">Python</a>
+          <li><a href="https://github.com/gloebit/PHP-gloebit">PHP</a>
+          <li><a href="https://github.com/gloebit/unity-gloebit">Unity Webplayer</a>
+          <li><a href="https://github.com/gloebit/haxe-gloebit">HAXE</a>
+        </ul>
+
+      </section>
+      <footer>
+        <!--
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        -->
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+  </body>
+</html>
