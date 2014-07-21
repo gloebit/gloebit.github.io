@@ -17,26 +17,66 @@
     <div class="wrapper">
       <header>
         <h1>Gloebit Plugins, APIs, and Code Examples</h1>
-        <p class="view"><a href="#plugins">Gloebit Plugins</a></p>
-        <p class="view"><a href="#apis">Gloebit APIs</a></p>
+        <p class="view"><a href="#plugins">Gloebit Plugins and APIs</a></p>
         <p class="view"><a href="#examples">Examples in Other Languages and Toolkits</a></p>
       </header>
 
       <section>
-      </section>
-
-      <section>
-        <a name="plugins" class="anchor" href="#plugins">
-          <span class="octicon octicon-link"></span>
-        </a>
-        <h2>Gloebit Plugins</h2>
+        <p>
+          All of the Gloebit services are accessible via HTTP requests.  You can make requests directly to the endpoints using the information from our <a href="interfaces.html">Gloebit Service Interface Details</a> page.  To make integration easier, we have created plugins and APIs wrapping the HTTP accesses and hiding those pesky details.  They are listed below.  In some cases, we have code examples instead, which are also listed below.  If there is a framework, toolkit, or language that you would like us to create a plugin, API, or examples for, <a href="https://www.gloebit.com/contact-us/">contact us</a> and we will get to work on it for you.
+        </p>
       </section>
 
       <section>
         <a name="apis" class="anchor" href="#apis">
           <span class="octicon octicon-link"></span>
         </a>
-        <h2>Gloebit APIs</h2>
+        <h2>Gloebit Plugins and APIs</h2>
+        <p>
+          HTTP requests are pesky.  We have the means for avoiding them in your code.  Please give them a go or <a href="https://www.gloebit.com/contact-us/">contact us</a> if we are missing what you need.
+        </p>
+
+        <p>
+          If we have what you need, go ahead and download it from our repo.  Each is designed to work with our sandbox server by default.  When you are ready to go live on our production server, you will change a configuration setting switching from sandbox to production.  See our <a href="sandbox-walkthru.html">Sandbox Tutorial</a> for example steps for hooking up a Gloebit API.
+        </p>
+
+        <h3>Unity Web Player</h3>
+        <p>
+          If you’re using the Unity Web Player, we have a free asset in the asset store which enables Authorization, Identity, Character & Inventory Services.  You can just drop it in.  It’s a great resource for any Unity developer.  If you’d like to use our digital currency with Unity, start with the asset from above and then grab our transaction code for Unity here.  Gloebit is completely permitted by Unity, but due to asset store policies, we cannot deliver the digital currency component through the asset store yet.
+        </p>
+
+        <p>
+          For now, please see the following Github repository for the Gloebit Unity Webplayer asset:
+        </p>
+
+        <p>
+          <a href="https://github.com/gloebit/unity-gloebit">Unity Gloebit asset</a>
+        </p>
+
+        <h3>HAXE Toolkit</h3>
+        <p>
+          We have a HAXE Toolkit Gloebit class that supports the Authorization, Identity, and Inventory services and the Item Transaction service.  (<a href="https://www.gloebit.com/contact-us/">Contact us</a> if you need other services and support added to the class.)  It is available via GitHub.  The repo includes example code to exercise the class.
+        </p>
+
+        <p>
+          <a href="https://github.com/gloebit/haxe-gloebit">Gloebit HAXE class repo</a>
+        </p>
+
+        <h3>Python</h3>
+        <p>
+          We have a Python Gloebit module that supports all of the Gloebit services (Authorization, Identity, Character, Inventory, and Digital Currency & Transaction).  It and example applications for the Django and Flask frameworks using it are available on GitHub.
+        </p>
+
+        <p>
+          <a href="https://github.com/gloebit/python-django-gloebit/blob/master/Lib/gloebit.py">gloebit.py</a> (currently part of Django application repo)
+        </p>
+
+        Examples using gloebit.py:
+        <ul>
+          <li><a href="https://github.com/gloebit/python-django-gloebit">Django application</a></li>
+          <li><a href="https://github.com/gloebit/python-flask-gloebit">Flask application</a></li>
+        </ul>
+
       </section>
 
       <section>
@@ -44,6 +84,16 @@
           <span class="octicon octicon-link"></span>
         </a>
         <h2>Examples in Other Languages and Toolkits</h2>
+
+        <h3>PHP</h3>
+        <p>
+          We have a PHP code example on GitHub that accesses the Gloebit Authorization service to obtain an access token via an Authorization Code Grant request.  (We are currently working on a PHP Gloebit library.)
+        </p>
+
+        <p>
+          <a href="https://github.com/gloebit/PHP-gloebit">PHP Gloebit authorization example</a>
+        </p>
+
       </section>
 
       <footer>
