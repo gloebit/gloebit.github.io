@@ -1,0 +1,56 @@
+
+.social-links {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.social-tile {
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+.social-tile:first-child {
+    margin-left: 1rem;
+}
+
+.social-tile a {
+    background-color: #4096d3;
+/*
+    background-color: #696969;
+*/
+    border-radius: 3px;
+    color: #fff;
+    display: block;
+/*
+    font-size: 2rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    width: 3.5rem;
+*/
+    font-size: 1.2rem;
+    height: 2.0rem;
+    line-height: 2.0rem;
+    width: 2.0rem;
+    text-align: center;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
+
+.social-tile a:hover {
+    background-color: #70b2e0;
+/*
+    background-color: #7f7f7f;
+*/
+
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
