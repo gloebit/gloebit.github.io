@@ -13,21 +13,33 @@ header, footer {
     z-index: 99;
 }
 
-header.floating {
-    position: fixed;
-    top: 0;
-    visibility: hidden;
+footer {
+    float: none;
+    position: static;
+}
+
+footer ul {
+    margin: 0;
 }
 
 header p, footer li {
     display: inline-block;
-    padding: 0.5rem;
-    margin: 0.5rem 0 0;
+    margin: 0.5rem 0.05rem;
 }
 
-header a:hover {
+header a, footer a {
+    padding: 0.5rem;
+}
+
+header a:hover, footer a:hover {
     color: #fcfcfc;
     background-color: #39c;
+}
+
+header.floating {
+    position: fixed;
+    top: 0;
+    visibility: hidden;
 }
 
 a.anchor:before {
@@ -44,15 +56,6 @@ section {
 
 #pricing img {
     float: right;
-}
-
-footer {
-    float: none;
-    position: static;
-}
-
-footer ul {
-    margin: 0;
 }
 
 .social-links {
@@ -93,6 +96,7 @@ footer ul {
     -webkit-transition: all 0.15s ease;
     -moz-transition: all 0.15s ease;
     transition: all 0.15s ease;
+    padding: inherit;
 }
 
 .social-tile a:hover {
