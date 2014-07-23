@@ -1,0 +1,21 @@
+
+#pricing img {
+    float: right;
+}
+
+#services div, #integration div div {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(133,192,0,0.5);
+    margin: 10px 8px;
+}
+
+#services div {
+    width: 45.000%;
+}
+
+#integration div div {
+    width: 20.000%;
+}

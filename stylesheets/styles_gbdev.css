@@ -13,27 +13,27 @@ header, footer {
     z-index: 99;
 }
 
-footer {
-    float: none;
-    position: static;
-}
-
 footer ul {
+    list-style: none;
+    padding-left: 0;
     margin: 0;
 }
 
 header p, footer li {
     display: inline-block;
+    font-size: inherit;
     margin: 0.5rem 0.05rem;
 }
 
 header a, footer a {
-    padding: 0.5rem;
+    color: #85c000;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
 }
 
 header a:hover, footer a:hover {
     color: #fcfcfc;
-    background-color: #39c;
+    background-color: #85c000;
 }
 
 header.floating {
@@ -44,8 +44,9 @@ header.floating {
 
 a.anchor:before {
     display: block;
+    width: 0;
     content: "";
-    height: 50px;
+    padding: 50px 0 0;
     margin: -50px 0 0;
 }
 
@@ -54,8 +55,8 @@ section {
     position: static;
 }
 
-#pricing img {
-    float: right;
+p, li {
+    font-size: 1.0rem;
 }
 
 .social-links {
@@ -110,11 +111,6 @@ section {
     transition: all 0.15s ease;
 }
 
-footer ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.hidden {
+.for-validation-only {
     display: none;
 }
