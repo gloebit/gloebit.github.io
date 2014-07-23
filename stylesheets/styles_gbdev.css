@@ -1,4 +1,56 @@
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    float: none;
+    position: static;
+    background-color: #fcfcfc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.16);
+    z-index: 99;
+}
+
+header.floating {
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+}
+
+header p {
+    display: inline-block;
+    padding: 0.5rem;
+    margin: 0.5rem 0 0;
+}
+
+header a:hover {
+    color: #fcfcfc;
+    background-color: #39c;
+}
+
+a.anchor:before {
+    display: block;
+    content: "";
+    height: 50px;
+    margin: -50px 0 0;
+}
+
+section {
+    float: none;
+    position: static;
+}
+
+#pricing img {
+    float: right;
+}
+
+footer {
+    float: none;
+    position: static;
+}
+
 .social-links {
     display: inline-block;
     list-style: none;
