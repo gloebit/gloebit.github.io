@@ -15,7 +15,17 @@ $(function(){
             $('header.floating').css({'visibility':'hidden'});
         }
     });
+
+    /* Set anchor padding/margin to offset under fixed header bar. */
+    /* These are added to stylesheet[0] to allow @media overrides. */
     var headerHeight = $('header.floating').height()+5;
-    document.styleSheets[0].addRule('.anchor::before','padding: '+headerHeight+'px 0 0');
-    document.styleSheets[0].addRule('.anchor::before','margin: -'+headerHeight+'px 0 0');
+    try {
+        document.styleSheets[0].addRule('.anchor::before','padding: '+headerHeight+'px 0 0');
+        document.styleSheets[0].addRule('.anchor::before','margin: -'+headerHeight+'px 0 0');
+    }
+    catch(err) {
+        /* Firefox */
+        document.styleSheets[0].insertRule('.anchor:before {padding: '+headerHeight+'px 0 0}', document.styleSheets[0].cssRules.length);
+        document.styleSheets[0].insertRule('.anchor:before {margin: -'+headerHeight+'px 0 0}', document.styleSheets[0].cssRules.length);
+    }
 });
