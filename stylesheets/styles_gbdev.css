@@ -13,6 +13,10 @@ header, footer {
     z-index: 99;
 }
 
+img {
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+}
+
 footer ul {
     list-style: none;
     padding-left: 0;
