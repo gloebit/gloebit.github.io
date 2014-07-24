@@ -12,6 +12,10 @@
     margin: 10px 8px;
 }
 
+#services div h2, #integration div div h3 {
+    text-align: center;
+}
+
 #services div {
     width: 45.000%;
 }

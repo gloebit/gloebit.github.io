@@ -1,255 +1,266 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Gloebit Merchant Integratin Guide</title>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="shortcut icon" href="https://www.gloebit.com/favicon.ico?v=3" />
+
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/styles_gbdev.css">
+
+    <link rel="stylesheet" href="https://gloebit-static-prod-0.s3.amazonaws.com/static-1/css/icons.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
   </head>
   <body>
-    <a name="top"></a>
-    <div class="wrapper">
-      <header>
+    <header>
+      <nav class="wrapper">
         <h1>Gloebit Merchant Integration Guide</h1>
         <p class="view"><a href="#obtain">Obtain Your Application Credentials</a></p>
         <p class="view"><a href="#integrate">Integrate with Gloebit Sandbox Environment</a></p>
         <p class="view"><a href="#test">Test Your Application in Our Sandbox</a></p>
         <p class="view"><a href="#golive">Go Live in Our Production Environment</a></p>
         <p class="view"><a href="#help">Integration Help</a></p>
-      </header>
+      </nav>
+    </header>
 
-      <section>
-        <p>
-          Welcome to the Gloebit Integration Guide for merchants and developers.  This document will guide you through the simple steps from getting started and testing Gloebit’s services, to going live on production when launching your application or game.
-        </p>
-      </section>
+    <section class="wrapper">
+      <p>
+        Welcome to the Gloebit Integration Guide for merchants and developers.  This document will guide you through the simple steps from getting started and testing Gloebit’s services, to going live on production when launching your application or game.
+      </p>
+    </section>
 
-      <section>
-        <a name="obtain" class="anchor" href="#obtain">
-          <span class="octicon octicon-link"></span>
-        </a>
-        <h2>Obtain your application credentials</h2>
-        <p>
-          In order to integrate Gloebit’s services, you need an OAuth key and secret for your application.  These application credentials are what securely authenticate your application when it is making request to the Gloebit services, and are required for integration.  There are two ways to obtain application credentials and get started.
-        </p>
+    <section class="wrapper anchor" id="obtain">
+      <h1>Obtain your application credentials</h1>
+      <p>
+        In order to integrate Gloebit’s services, you need an OAuth key and secret for your application.  These application credentials are what securely authenticate your application when it is making request to the Gloebit services, and are required for integration.  There are two ways to obtain application credentials and get started.
+      </p>
 
-        <h3>Set up an application in our Sandbox</h3>
-        <p>
-          This is the ideal way to get started and it will only take a few minutes to do the following:
-          <ol>
-            <li>Sign up for a sandbox merchant account.</li>
-            <li>Create a new application within your sandbox merchant account.</li>
-            <li>Copy your application OAuth key and secret from your application api settings for use when integrating.</li>
-          </ol>
-          Please see our <a href="sandbox-walkthru.html">Sandbox Tutorial</a> for easy to follow instructions for the above steps.
-        </p>
+      <h2>Set up an application in our Sandbox</h2>
+      <p>
+        This is the ideal way to get started and it will only take a few minutes to do the following:
+        <ol>
+          <li>Sign up for a sandbox merchant account.</li>
+          <li>Create a new application within your sandbox merchant account.</li>
+          <li>Copy your application OAuth key and secret from your application api settings for use when integrating.</li>
+        </ol>
+        Please see our <a href="sandbox-walkthru.html">Sandbox Tutorial</a> for easy to follow instructions for the above steps.
+      </p>
 
-        <p>
-          Once finished, you will be ready to integrate and test using our sandbox.
-        </p>
+      <p>
+        Once finished, you will be ready to integrate and test using our sandbox.
+      </p>
 
-        <h4>Adding applications to an existing Gloebit account</h4>
-        <p>
-          Already have a Gloebit sandbox merchant account with an application you’ve tested?  Great, we’re excited that you’ve chosen to return to use Gloebit again.
-        </p>
+      <h3>Adding applications to an existing Gloebit account</h3>
+      <p>
+        Already have a Gloebit sandbox merchant account with an application you’ve tested?  Great, we’re excited that you’ve chosen to return to use Gloebit again.
+      </p>
 
-        <p>
-          There’s no need to create a new Gloebit sandbox merchant account.  From the <a href="https://sandbox.gloebit.com/merchant-tools">Merchant Tools</a> page on your existing Gloebit account, simply click the “add application” button to create a new application within your existing account.  Each application has its own OAuth key and secret and can be configured separately.  You can add as many applications as you need within your Gloebit merchant account.
-        </p>
+      <p>
+        There’s no need to create a new Gloebit sandbox merchant account.  From the <a href="https://sandbox.gloebit.com/merchant-tools">Merchant Tools</a> page on your existing Gloebit account, simply click the “add application” button to create a new application within your existing account.  Each application has its own OAuth key and secret and can be configured separately.  You can add as many applications as you need within your Gloebit merchant account.
+      </p>
 
-        <p>
-          When you are ready to go live, you have the same functionality from your merchant account on our production system so that you can manage all of your applications from one account.
-        </p>
+      <p>
+        When you are ready to go live, you have the same functionality from your merchant account on our production system so that you can manage all of your applications from one account.
+      </p>
 
-        <h3>Use our Sandbox Test-Application credentials</h3>
-        <p>
-          We recommend that you follow the steps above to set up your own application; however, if you are so excited that you just can’t wait even one more minute to integrate and test Gloebit’s APIs, we have created a shortcut for you.  Our sandbox system has a test application you can start using immediately.  Thus, if you would like to skip right to testing integration, you may use the following credentials for the test application:
-        </p>
+      <h2>Use our Sandbox Test-Application credentials</h2>
+      <p>
+        We recommend that you follow the steps above to set up your own application; however, if you are so excited that you just can’t wait even one more minute to integrate and test Gloebit’s APIs, we have created a shortcut for you.  Our sandbox system has a test application you can start using immediately.  Thus, if you would like to skip right to testing integration, you may use the following credentials for the test application:
+      </p>
 
-        <p>
-          <u>Test Application Credentials</u>
-          <ul>
-            <li>Application OAuth Key: test-application</li>
-            <li>Application OAuth Secret: s3cr3t</li>
-          </ul>
-        </p>
+      <p>
+        <u>Test Application Credentials</u>
+        <ul>
+          <li>Application OAuth Key: test-application</li>
+          <li>Application OAuth Secret: s3cr3t</li>
+        </ul>
+      </p>
 
-        <p>
-          Using the test application's credentials, you will be able to test most api calls and the user experience for your customers.  You will not be able to adjust the api settings for the Test Application, nor will you be able to test any api calls which require any information beyond the key and secret from the Test Application api settings, such as are required by our Product Inventory Service.
-        </p>
+      <p>
+        Using the test application's credentials, you will be able to test most api calls and the user experience for your customers.  You will not be able to adjust the api settings for the Test Application, nor will you be able to test any api calls which require any information beyond the key and secret from the Test Application api settings, such as are required by our Product Inventory Service.
+      </p>
 
-        <p>
-          When you decide to move forward with Gloebit, you will still need to follow the steps for setting up your own application in our sandbox and replace the Test Application credentials with those for your own application
-        </p>
+      <p>
+        When you decide to move forward with Gloebit, you will still need to follow the steps for setting up your own application in our sandbox and replace the Test Application credentials with those for your own application
+      </p>
 
-      </section>
+    </section>
 
-      <section>
-        <a name="integrate" class="anchor" href="#integrate">
-          <span class="octicon octicon-link"></span>
-        </a>
-        <h2>Integrate with Gloebit sandbox environment</h2>
-        <p>
-          Once you have obtained sandbox credentials for your application, you are ready to integrate with our sandbox environment.  When integrating with the sandbox environment, make sure to use the sandbox URL endpoints and application credentials from an application created in the sandbox environment, not from our production environment.
-        </p>
+    <section class="wrapper anchor" id="integrate">
+      <h1>Integrate with Gloebit sandbox environment</h1>
+      <p>
+        Once you have obtained sandbox credentials for your application, you are ready to integrate with our sandbox environment.  When integrating with the sandbox environment, make sure to use the sandbox URL endpoints and application credentials from an application created in the sandbox environment, not from our production environment.
+      </p>
 
-        <p>
-          Sandbox URL endpoints: https://sandbox.gloebit.com/&lt;endpoint&gt;
-        </p>
+      <p>
+        Sandbox URL endpoints: https://sandbox.gloebit.com/&lt;endpoint&gt;
+      </p>
 
-        <h3>Authorization Integration</h3>
-        <p>
-          All of the Gloebit Service api calls require an access token which identifies your application and stores the authorization provided from a Gloebit user to your application to interact with the user’s account via each service.  Begin by integrating Authorization and obtaining access tokens to use with Gloebit services.  Learn more about <a href="http://dev.gloebit.com/services.html#auth">Gloebit Authorization</a>.
-        </p>
+      <h2>Authorization Integration</h2>
+      <p>
+        All of the Gloebit Service api calls require an access token which identifies your application and stores the authorization provided from a Gloebit user to your application to interact with the user’s account via each service.  Begin by integrating Authorization and obtaining access tokens to use with Gloebit services.  Learn more about <a href="http://dev.gloebit.com/services.html#auth">Gloebit Authorization</a>.
+      </p>
 
-        <p>
-          Use the application OAuth key and secret you obtained from creating an application in our sandbox environment (or the Test Application credentials) when integrating Authorization.
-        </p>
+      <p>
+        Use the application OAuth key and secret you obtained from creating an application in our sandbox environment (or the Test Application credentials) when integrating Authorization.
+      </p>
 
-        <h3>Service Integration</h3>
-        <p>
-          Once you have integrated Authorization, you can integrate any or all of the other services which Gloebit provides.  See each for more details:
-          <ul>
-            <li><a href="http://dev.gloebit.com/services.html#identity">Identity Service</a></li>
-            <li><a href="http://dev.gloebit.com/services.html#character">Character Service</a></li>
-            <li><a href="http://dev.gloebit.com/services.html#inventory">Inventory Service</a></li>
-            <li><a href="http://dev.gloebit.com/services.html#transact">Digital Currency & Transaction Service</a></li>
-          </ul>
-        </p>
+      <h2>Service Integration</h2>
+      <p>
+        Once you have integrated Authorization, you can integrate any or all of the other services which Gloebit provides.  See each for more details:
+        <ul>
+          <li><a href="http://dev.gloebit.com/services.html#identity">Identity Service</a></li>
+          <li><a href="http://dev.gloebit.com/services.html#character">Character Service</a></li>
+          <li><a href="http://dev.gloebit.com/services.html#inventory">Inventory Service</a></li>
+          <li><a href="http://dev.gloebit.com/services.html#transact">Digital Currency & Transaction Service</a></li>
+        </ul>
+      </p>
 
-        <h3>Integration Resources</h3>
-        <p>
-          Please see the following resources to aid in your integration of our services:
-          <ul>
-            <li><a href="services.html">Services Overview</a> - High level description of services.</li>
-            <li><a href="interfaces.html">Service API Details</a> - Low level api details for integrating specific endpoints.</li>
-            <li><a href="code.html">Plugins & code examples</a> - We built plugins for some of the most popular development environments, such as Unity, and we wrapped our RESTful API in some popular languages such as PHP and Python.  See if there is a plugin you can drop in or a code example you can copy from to simplify integration.  All of our plugins and code examples use our Test Application credentials, so they are ready to use and you only need to replace the Test Application credentials with those from your application to properly integrate.</li>
-          </ul>
-        </p>
+      <h2>Integration Resources</h2>
+      <p>
+        Please see the following resources to aid in your integration of our services:
+        <ul>
+          <li><a href="services.html">Services Overview</a> - High level description of services.</li>
+          <li><a href="interfaces.html">Service API Details</a> - Low level api details for integrating specific endpoints.</li>
+          <li><a href="code.html">Plugins & code examples</a> - We built plugins for some of the most popular development environments, such as Unity, and we wrapped our RESTful API in some popular languages such as PHP and Python.  See if there is a plugin you can drop in or a code example you can copy from to simplify integration.  All of our plugins and code examples use our Test Application credentials, so they are ready to use and you only need to replace the Test Application credentials with those from your application to properly integrate.</li>
+        </ul>
+      </p>
 
-        <h4>Community Resources</h4>
-        <p>
-          We are a big fan of open source tools. If, in your development, you create a tool which would be useful for our community of developers such as wrapping our calls in a new language, or designing a great front end to tie into our character system, and you are willing to make it available, <a href="https://www.gloebit.com/contact-us/">please let us know</a>. We will be happy to review it and provide it for general use.
-        </p>
+      <h3>Community Resources</h3>
+      <p>
+        We are a big fan of open source tools. If, in your development, you create a tool which would be useful for our community of developers such as wrapping our calls in a new language, or designing a great front end to tie into our character system, and you are willing to make it available, <a href="https://www.gloebit.com/contact-us/">please let us know</a>. We will be happy to review it and provide it for general use.
+      </p>
 
-      </section>
+    </section>
 
-      <section>
-        <a name="test" class="anchor" href="#test">
-          <span class="octicon octicon-link"></span>
-        </a>
-        <h2>Test your application in our sandbox</h2>
-        <p>
-          Once you have obtained application sandbox credentials and integrated with sandbox API endpoints, you can fully test your application and all Gloebit merchant functionality.  We recommend you fully configure and test your application in our sandbox before going live.  After you go live, you are welcome to keep a sandbox version of your application tied to our sandbox environment for continued development and testing of new features.  Our sandbox can become a useful component of your QA and release pipeline.
-        </p>
+    <section class="wrapper anchor" id="test">
+      <h1>Test your application in our sandbox</h1>
+      <p>
+        Once you have obtained application sandbox credentials and integrated with sandbox API endpoints, you can fully test your application and all Gloebit merchant functionality.  We recommend you fully configure and test your application in our sandbox before going live.  After you go live, you are welcome to keep a sandbox version of your application tied to our sandbox environment for continued development and testing of new features.  Our sandbox can become a useful component of your QA and release pipeline.
+      </p>
 
-        <h3>Create consumer sandbox accounts for testing</h3>
-        <p>
-          In order to test the sandbox api endpoints, you will not only need an application in the sandbox environment, but also consumer accounts created in the sandbox environment.  This is done th exact same way as production accounts, except within our sandbox environment.
-          <ul>
-            <li>Create accounts ahead of time from our sandbox environment signup.</li>
-            <li>Create sandbox accounts when requesting authorization from your sandbox application.  The test consumer will be directed to our sandbox login page.  Click on the signup link and create an account.  You will be asked to authorize your application and then returned to your application.</li>
-          </ul>
-        </p>
+      <h2>Create consumer sandbox accounts for testing</h2>
+      <p>
+        In order to test the sandbox api endpoints, you will not only need an application in the sandbox environment, but also consumer accounts created in the sandbox environment.  This is done th exact same way as production accounts, except within our sandbox environment.
+        <ul>
+          <li>Create accounts ahead of time from our sandbox environment signup.</li>
+          <li>Create sandbox accounts when requesting authorization from your sandbox application.  The test consumer will be directed to our sandbox login page.  Click on the signup link and create an account.  You will be asked to authorize your application and then returned to your application.</li>
+        </ul>
+      </p>
 
-        <h3>Test your integration and your application configuration</h3>
-        <p>
-          You should be able to test every aspect of your integration with our sandbox environment.
-        </p>
+      <h2>Test your integration and your application configuration</h2>
+      <p>
+        You should be able to test every aspect of your integration with our sandbox environment.
+      </p>
 
-        <p>
-          Our payment methods are sandboxed so you can perform extensive testing without being charged.  Bitcoin does not have a sandbox environment, so we have disabled bitcoin in sandbox.  Gloebits purchased in sandbox are not usable in production.  They are just for testing.
-        </p>
+      <p>
+        Our payment methods are sandboxed so you can perform extensive testing without being charged.  Bitcoin does not have a sandbox environment, so we have disabled bitcoin in sandbox.  Gloebits purchased in sandbox are not usable in production.  They are just for testing.
+      </p>
 
-        <p>
-          Your sandbox application will earn gloebits from any transactions you test.  You will be able to see these accrue in your balance and records from them in your transaction history.  You will even be able to sell these gloebits from your Merchant Tools page.  You will not be able withdraw profits from the sandbox as these are test gloebits, but you will be able to see the sales occur and accrue a USD balance.
-        </p>
+      <p>
+        Your sandbox application will earn gloebits from any transactions you test.  You will be able to see these accrue in your balance and records from them in your transaction history.  You will even be able to sell these gloebits from your Merchant Tools page.  You will not be able withdraw profits from the sandbox as these are test gloebits, but you will be able to see the sales occur and accrue a USD balance.
+      </p>
 
-        <p>
-          All of the api settings for your application in our sandbox work identically to our production environment.  Configure your application to get every reference and link  to your application on our Gloebit site to look exactly how you would like.  When you go live, we provide a mechanism to move all of these settings right to the production environment.
-        </p>
+      <p>
+        All of the api settings for your application in our sandbox work identically to our production environment.  Configure your application to get every reference and link  to your application on our Gloebit site to look exactly how you would like.  When you go live, we provide a mechanism to move all of these settings right to the production environment.
+      </p>
 
-      </section>
+    </section>
 
-      <section>
-        <a name="golive" class="anchor" href="#golive">
-          <span class="octicon octicon-link"></span>
-        </a>
-        <h2>Go Live in our production environment</h2>
-        <p>
-          When you are approaching launch of your application, you will want to move your application from sandbox to production, or create a production version of your application tied to the Gloebit production environment.  It is best to start this process before your launch date as there are a couple of reviews which must occur.
-        </p>
+    <section class="wrapper anchor" id="golive">
+      <h1>Go Live in our production environment</h1>
+      <p>
+        When you are approaching launch of your application, you will want to move your application from sandbox to production, or create a production version of your application tied to the Gloebit production environment.  It is best to start this process before your launch date as there are a couple of reviews which must occur.
+      </p>
 
-        <h3>Set up your production Gloebit account</h3>
-        <p>
-          This is very similar to setting up your sandbox merchant account, but it is done on our production environment.
-          <ul>
-            <li>Sign up for a production merchant account if you do not already have one.</li>
-            <li>Create a new application within your production merchant account.</li>
-            <li>Transfer your application api settings from your sandbox application to your production application.</li>
-          </ul>
-          Please see our <a href="production-walkthru.html">Production Tutorial</a> for easy to follow instructions for the above steps.
-        </p>
+      <h2>Set up your production Gloebit account</h2>
+      <p>
+        This is very similar to setting up your sandbox merchant account, but it is done on our production environment.
+        <ul>
+          <li>Sign up for a production merchant account if you do not already have one.</li>
+          <li>Create a new application within your production merchant account.</li>
+          <li>Transfer your application api settings from your sandbox application to your production application.</li>
+        </ul>
+        Please see our <a href="production-walkthru.html">Production Tutorial</a> for easy to follow instructions for the above steps.
+      </p>
 
-        <h4>Recommended pre-launch prep</h4>
-        <p>
-          Submit the merchant upgrade request for your production account early.  When you signed up for a Sandbox account, you did not need to provide us any information in the signup form.  When you sign up on production, you are required to fill out all of the information.  We will need to review this and in some cases, may require some additional information to verify the data you have submitted.  We recommend you do this well before the launch of your first application in case there are any delays.  Until you have been approved, your applications may not be able to use balance and transact api functions and you will not be able to sell gloebits or cash out.
-        </p>
+      <h3>Recommended pre-launch prep</h3>
+      <p>
+        Submit the merchant upgrade request for your production account early.  When you signed up for a Sandbox account, you did not need to provide us any information in the signup form.  When you sign up on production, you are required to fill out all of the information.  We will need to review this and in some cases, may require some additional information to verify the data you have submitted.  We recommend you do this well before the launch of your first application in case there are any delays.  Until you have been approved, your applications may not be able to use balance and transact api functions and you will not be able to sell gloebits or cash out.
+      </p>
 
-        <p>
-          Set your OAuth Key Alias on production.  If you are using an alias in your sandbox implementation to set your “r=&lt;application&gt;” url query argument when sending a user to us to purchase gloebits, then you should make sure the same alias is available on production.  These aliases are unique across an environment, and grabbing one in sandbox does not necessarily mean it will be available on production.  If it is not, find something available on both.  Sorry for any inconvenience.
-        </p>
+      <p>
+        Set your OAuth Key Alias on production.  If you are using an alias in your sandbox implementation to set your “r=&lt;application&gt;” url query argument when sending a user to us to purchase gloebits, then you should make sure the same alias is available on production.  These aliases are unique across an environment, and grabbing one in sandbox does not necessarily mean it will be available on production.  If it is not, find something available on both.  Sorry for any inconvenience.
+      </p>
 
-        <p>
-          Test out transferring your application api settings.  We provide you functionality to download and upload settings.  Try downloading the settings from your sandbox application and uploading them to your production application.  Make sure you have no problems.  Restoring from a downloaded file will overwrite everything except the Gloebit Authorization Information section.
-        </p>
+      <p>
+        Test out transferring your application api settings.  We provide you functionality to download and upload settings.  Try downloading the settings from your sandbox application and uploading them to your production application.  Make sure you have no problems.  Restoring from a downloaded file will overwrite everything except the Gloebit Authorization Information section.
+      </p>
 
-        <h3>Switch your integration from Sandbox to Production</h3>
-        <p>
-          In the production version of your application, you must tie into the production endpoints with your production key and secret for you application
-        </p>
+      <h2>Switch your integration from Sandbox to Production</h2>
+      <p>
+        In the production version of your application, you must tie into the production endpoints with your production key and secret for you application
+      </p>
 
-        <p>
-          Switch all endpoints from https://sandbox.gloebit.com/&lt;endpoint&gt; to https://www.gloebit.com/&lt;endpoint&gt;.  If you are using one of our APIs, then you need only tell the API to stop using the sandbox server, usually by clearing a SANDBOX constant in the module.
-        </p>
+      <p>
+        Switch all endpoints from https://sandbox.gloebit.com/&lt;endpoint&gt; to https://www.gloebit.com/&lt;endpoint&gt;.  If you are using one of our APIs, then you need only tell the API to stop using the sandbox server, usually by clearing a SANDBOX constant in the module.
+      </p>
 
-        <p>
-          Find your application key and secret in the api settings for your production application and use those to replace the sandbox key and secret you used when you integrated.
-        </p>
+      <p>
+        Find your application key and secret in the api settings for your production application and use those to replace the sandbox key and secret you used when you integrated.
+      </p>
 
-        <p>
-          If you set any permitted callback URI prefixes, you may want to verify that they are the same for production and sandbox.  If so, copy them over manually.  If not, enter the proper callback URI prefixes for the production version of your application.
-        </p>
+      <p>
+        If you set any permitted callback URI prefixes, you may want to verify that they are the same for production and sandbox.  If so, copy them over manually.  If not, enter the proper callback URI prefixes for the production version of your application.
+      </p>
 
-        <h3>Publish your Application</h3>
-        <p>
-          If you have not already done so, in the api settings for your production application, toggle the “make application findable” option on in your application information.  This will make it discoverable from our partner apps page so that we can drive some traffic to your application.  There may be a delay before your application appears if there have been any recent changes to your application information in your api settings which we have not yet reviewed.  Please contact us if your application does not appear, or if a delay might affect your launch.
-        </p>
+      <h2>Publish your Application</h2>
+      <p>
+        If you have not already done so, in the api settings for your production application, toggle the “make application findable” option on in your application information.  This will make it discoverable from our partner apps page so that we can drive some traffic to your application.  There may be a delay before your application appears if there have been any recent changes to your application information in your api settings which we have not yet reviewed.  Please contact us if your application does not appear, or if a delay might affect your launch.
+      </p>
 
-      </section>
+    </section>
 
-      <section>
-        <a name="help" class="anchor" href="#help">
-          <span class="octicon octicon-link"></span>
-        </a>
-        <h2>Integration Help</h2>
-        <p>
-          If you have a question while integrating, please contact us and we will do our best to help.  If you believe you have found a bug or a mistake in any of our documentation, then please alert us and we will fix and clarify the issue.  If there is a feature you would like from our service, please let us know.  We will let you know if there is a way to accomplish your goal within the current feature set, and we will factor requests into our roadmap for future development.
-        </p>
+    <section class="wrapper anchor" id="help">
+      <h1>Integration Help</h1>
+      <p>
+        If you have a question while integrating, please contact us and we will do our best to help.  If you believe you have found a bug or a mistake in any of our documentation, then please alert us and we will fix and clarify the issue.  If there is a feature you would like from our service, please let us know.  We will let you know if there is a way to accomplish your goal within the current feature set, and we will factor requests into our roadmap for future development.
+      </p>
 
+      <p>
         If you have a question while integrating, please contact us and we will do our best to help.  If you believe you have found a bug or a mistake in any of our documentation, then please alert us and we will fix and clarify the issue.  If there is a feature you would like from our service, please let us know.  We will let you know if there is a way to accomplish your goal within the current feature set, and well factor requests into our roadmap for future development.
-      </section>
+      </p>
+    </section>
 
-      <footer>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <footer>
+      <div class="wrapper">
+        <ul>
+          <li><a href="https://www.gloebit.com/display-tos-merchant/">Merchant Terms of Service</a></li>
+          <li><a href="https://www.gloebit.com/partner-faq/">Merchant FAQ</a></li>
+          <li><a href="https://www.gloebit.com/apps/">Partner Applications</a></li>
+          <li><a href="https://www.gloebit.com/contact-us/">Contact Us</a></li>
+          <li>Follow us on:
+            <ul class="social-links">
+              <li class="social-tile"><a href="https://www.facebook.com/Gloebit" class="icon facebook" title="Facebook">&#xf107;</a></li>
+              <li class="social-tile"><a href="http://www.twitter.com/gloebit" class="icon twitter" title="Twitter">&#xf116;</a></li>
+              <li class="social-tile"><a href="http://www.linkedin.com/company/gloebit" class="icon linkedin" title="LinkedIn">&#xf110;</a></li>
+              <li class="social-tile"><a href="https://plus.google.com/+Gloebit" class="icon googleplus" title="Google+">&#xf10c;</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="javascripts/scale.fix.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/gbdev.js"></script>
     
   </body>
 </html>

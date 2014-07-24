@@ -42,12 +42,14 @@ header.floating {
     visibility: hidden;
 }
 
-a.anchor:before {
+.anchor:before {
     display: block;
     width: 0;
     content: "";
+/*  These are set via javascript in gbdev.js.
     padding: 50px 0 0;
     margin: -50px 0 0;
+*/
 }
 
 section {
