@@ -1,6 +1,7 @@
 
 #pricing img {
     float: right;
+    box-shadow: none;
 }
 
 #services div, #integration div div {
