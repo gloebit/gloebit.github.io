@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/styles_gbdev.css">
-    <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="stylesheet" href="stylesheets/walkthru.css">
 
     <link rel="stylesheet" href="https://gloebit-static-prod-0.s3.amazonaws.com/static-1/css/icons.css">
 
@@ -24,24 +24,32 @@
     <header>
       <nav class="wrapper">
         <h1>Gloebit Sandbox Walk-Through</h1>
+        <!--
         <p class="view"><a href="#sandbox">The Gloebit Sandbox</a></p>
         <p class="view"><a href="#prereqs">Gloebit Merchant Prerequisites</a></p>
         <p class="view"><a href="#account">Creating Your Merchant Account</a></p>
         <p class="view"><a href="#test-merchant">Using the Test Merchant Account</a></p>
         <p class="view"><a href="#api">Connecting a Gloebit API</a></p>
+        -->
       </nav>
     </header>
+
+    <section class="wrapper" id="intro">
+      <p>
+        <b>Welcome to the Gloebit Sandbox Walk-Through.</b>  This page's purpose is to guide you through the all of the steps for getting your application up and running in our sandbox environment.  It starts out with some background information and an overview.  If you want to skip that and get right to work, click the button below.  Otherwise, enjoy the introductory information.  The walk-through starts immediately afterward.
+      </p>
+
+      <a href="#account">Skip introduction, go to the walk-through »</a>
+
+    </section>
 
     <section class="wrapper anchor" id="sandbox">
       <h1>The Gloebit Sandbox</h1>
 
       <p>
-        Gloebit provides a sandbox server that lets you quickly start integrating Gloebit services.  It provides access to all Gloebit merchant functionality so you can fully test your design before switching over to the production Gloebit server.
+        Gloebit provides a sandbox server that lets you quickly start integrating Gloebit services.  It provides access to all Gloebit merchant functionality so you can fully test your design before switching over to the production Gloebit server.  Also, it immediately grants full merchant accounts privileges when you sign up.  On the production server, some merchant privileges are granted immediatley and some are granted after Gloebit reviews.  Thus, the sandbox server gets you into full testing as soon as you are ready.
       </p>
 
-      <p>
-        This sandbox walk-through and guide takes you through the steps to get your design up and and going in the Gloebit sandbox.  Let's get started.
-      </p>
     </section>
 
     <section class="wrapper anchor" id="prereqs">
@@ -50,8 +58,9 @@
       <p>
         On the sandbox server (as well as on the production server), you will need the following to be a Gloebit merchant:
         <ol>
-          <li>A merchant Gloebit account on the server</li>
-          <li>An integrated Gloebit API in your application</li>
+          <li>A merchant Gloebit account on the server.</li>
+          <li>An integrated Gloebit API in your application.</li>
+          <li>A separate Gloebit account on the server for testing your application.</li>
         </ol>
       </p>
 
@@ -60,42 +69,54 @@
       </p>
 
       <p>
-        For testing purposes, you will also want a user directory.
+        For testing purposes, you will need a Gloebit account separate from your merchant account, especially if you want to test your purchasing.  Gloebit transactions move gloebits from one account to another.
       </p>
     </section>
 
     <section class="wrapper anchor" id="account">
-      <h1>Creating Your Merchant Account</h1>
+      <h1>Create Your Primary Sandbox Account</h1>
 
       <p>
-        This guides starts by having you set up your sandbox merchant account.  If you would rather immediately start integrating an API, you can skip this step and instead <a href="#test-merchant">use the test merchant account</a> for now.  When ready to use your own account, you can come back to this step.
+        Your company needs an account on the sandbox server.  This account will have the same privileges as any user's account (to start).  You can purhcase gloebits for the account and spend them.  Later, when you sign up this account for merchant privileges, you will register your application(s) in it.  But that comes later.
       </p>
 
-      <h2>Signup for a Gloebit Sandbox Account</h2>
+      <h2>Account Signup</h2>
 
       <ol>
         <li><b>Visit the <a href="https://sandbox.gloebit.com/signup/">Gloebit sandbox signup page</a>.</b>
+          <aside>
+            The steps in this section are what your customers will experience when signing up for a Gloebit account.
+          </aside>
           <p>
-            You can either create your account using an email and password you provide specifically for the Gloebit sandbox or you can authenticate via one of our third-party ID providers (Google+, LinkedIn, Twitter, Facebook) to create your sandbox account.
+            All Gloebit accounts are associated with email addresses.  We offer the options of providing an email address and password or using one of four social identity providers (Google+, LinkedIn, Twitter, and Facebook).  For your primary account on our sandbox server, you will probably want to use a sandbox-specific email address from your company's domain.
           </p>
           <p>
-            The account you create here allows you to buy and spend Gloebits.  The next steps upgrade your account to use the Gloebit merchant services.
-          </p>
-          <p>
-            After creating your account or authenticating via a third party, Gloebit will present its user terms of service.  You will see this only when creating your sandbox account or when you log into the sandbox after we have updated the user terms of service.
+            After creating your account or authenticating via one of the social identity providers, Gloebit will present its user terms of service.  You will see this only when creating your sandbox account or when you log into the sandbox after we have updated the user terms of service.
           </p>
         </li>
         <li><b>Read through the user terms of service and click on "Agree".</b>
+          <aside>
+            A user you send to Gloebit for authorization will not go to the Dashboard page after accepting the terms of service.  Instead, Gloebit redirects your user to an authorization page for your application and then back to your application.
+          </aside>
           <p>
-            After clicking, you will see the Account Settings page for your sandbox account.  Now let's turn it into a sandbox merchant account.
+            After accepting the terms, Gloebit will take you to the Dashboard page for your account.  Let's take a look at the header bar on the top-right of this page.
           </p>
+          <p>
+            You will see that header bar on all Gloebit pages when you are logged in.  It gives you access to your account's pages, lists Gloebit messages to your account, and shows your Gloebit balance.  Clicking on it anywhere left of the bell icon activates a drop-down menu for you account pages.  Clicking on the bell icon opens a drop-down list of Gloebit messages for your account.  The number in the red circle indicates how many there are.  Clicking on messages in the list will mark (or unmark) them for deletion.  Lastly, the Buy button on the right end of the header is what your customers will use to buy gloebits.
+          </p>
+          <p>
+            You don't need to buy any gloebits because this account is intended to be one that will receive them.  So let's turn it into an account that can receive gloebits, that is, a merchant account.
         </li>
+      </ol>
+
+      <h2>Merchant Request</h2>
+      <ol>
         <li><b>Visit the <a href="https://sandbox.gloebit.com/merchant-signup/">Gloebit sandbox merchant signup page</a>.</b>
           <p>
-            You will see a form here asking for a variety of information for your merchant account.  On the sandbox server, none of it is required.  Go ahead and scroll down to the bottom of the form and click on the "Save" button.
+            You will see a form here asking for a variety of information Gloebit needs for your merchant account.  On the sandbox server, none of it is required.  Go ahead and scroll down to the bottom of the form and click on the "SAVE" button.
           </p>
           <p>
-            After clicking on "Save" to submit your merchant request, you will return to your Account Settings page.  Notice that the alert icon (bell, top-right of page) has a red 1, indicating a new message.
+            After clicking on "SAVE" to submit your merchant request, you will return to your Account Settings page.  Notice that the alert icon (bell, top-right of page) has a red 1, indicating a new message.
           </p>
         </li>
         <li><b>Click on the alert icon to see the message.</b>
@@ -109,16 +130,15 @@
             The red number on the alert icon indicates how many alert messages you have queued up.  The number changes only when you visit another page or reload the current page.  It decreases only if you click on messages to have them deleted.
           </p>
         </li>
-        <li><b>Click the left side of the header bar (on your account name/email, on the head icon to its left, or on the blue sliver at the left end of the header.)</b>
+        <li><b>Click on the header bar to display your account pages menu (anywhere left of the bell icon).</b>
           <p>
-            Now that you have a merchant account, there are two new items in the menu:
+            Now that you have a merchant account, there is a new page in the menu:
+            <ul>
+              <li>Merchant Tools</li>
+            </ul>
           </p>
-          <ul>
-            <li>Merchant Tools</li>
-            <li>Merchant Products</li>
-          </ul>
           <p>
-            The Merchant Tools page is important in general.  For this walk-through specifically, it has your OAuth key and secret.
+            The Merchant Tools page is where you can add applications to your account, place sell orders for your gloebits, and request withrdrawals.
           </p>
         </li>
         <li><b>Click on Merchant Tools.</b>
@@ -128,18 +148,68 @@
         </li>
         <li><b>Read through the merchant terms of service and click on "Agree".</b>
           <p>
-            After clicking, you will see your Merchant Tools page.
+            After clicking, you will see your Merchant Tools page.  At the top left is your list of Applications connected to your account.  It is empty.  Let's add an application that you can use in integration and testing.
           </p>
         </li>
-        <li><b>Scroll down the Merchant Tools page and find the OAuth section.</b>
+      </ol>
+    </section>
+
+    <section class="wrapper anchor" id="application">
+      <h1>Add Your Application to the Sandbox Server</h1>
+      <p>
+        You have a merchant account in the sandbox.  Now you need to add your application to your account.  Applications are unique entities in the Gloebit services, each associated with the merchant account used to create it.  The Gloebit services work with application IDs rather than merchant account IDs.  This allows merchant accounts to have multiple applications associated with them.
+      </p>
+
+      <p>
+        You should already be on your Merchant Tools page, showing your empty list of applications.  If not, go to the page menu on the header bar and select "Merchant Tools".
+      </p>
+
+      <ol>
+        <li><b>Click on the "Add an Application" button.</b>
           <p>
-            Gloebit uses OAuth for authenticating you and your users.  Your application will need the Key and Secret from this page when you send your users to Gloebit to grant access to your application.  Remember where these fields are (or save them somewhere).
+            The page that comes up is the Gloebit application information page.  For new applications, most of the fields are empty and awaiting your information.  However, before filling out the empty fields, let's talk about the already-populated fields.
           </p>
+        <li><b>Scroll down to Gloebit Authorization Information.</b>
+          <aside>
+            For more information on Gloebit authorization, visit the <a href="http://dev.gloebit.com/interfaces.html#auth">Authorization section of the Gloebit Service Interface Details page</a>.
+          </aside>
+          <p>
+            The OAuth Key is what identifies your application to the Gloebit services.  You will need the value in this field because your application will send it to the Gloebit authorization service (the first step in using all of the Gloebit services).  It is a read-only field.
+          </p>
+          <p>
+            Your application will also need an OAuth Secret if it is using the (recommended) "authorization code grant" flow for OAuth2.  You can edit this secret if you would like.  Most importantly, do not share this secret with anyone or store it someplace where it can be discovered.  It is an important component in the authorization protocol to prevent cross-site forgeries and protect your customers.
+          </p>
+          <p>
+            Another important security aspect of the OAuth2 protocol is validating callback URIs.  The Gloebit Authorization service compares provided callback URIs against any Callback URI Prefixes for your application.  Any you enter will be listed here.  We will enter a prefix later in this walk-through.
+          </p>
+          <p>
+            Let's get back to the empty fields.
+          </p>
+        </li>
+        <li><b>Fill out application's general information.</b>
+          <aside>
+            For descriptions of all the application information fields on this page, visit our <a href="http://dev.gloebit.com/app-config.html">Application Configuration Instructions page</a>.
+          </aside>
+          <p>
+            Scroll back up to the top set of fields and fill them out.  Filling in your application's name is the only required step here.  (If you application's name happens to be "Unknown" it's already done for you!)
+          </p>
+          <p>
+            Filling in the other fields is useful if you want to experience what Gloebit does with the information or if you want to test functionality.  For example, if you have a logo for your application, you can upload it so you can see where Gloebit will display it; or if you want to see that Gloebit's trackback links will go to the proper webpage, enter a default Return-To URI and try out some of the links (on various account pages accessible from the header page menu).
+          </p>
+        </li>
+        <li><b>Add a callback URI prefix for your application.</b>
+        </li>
+        <li><b>Click on "SAVE" near the bottom of the page.</b>
+          We will skip the products and characters sections of the application page for now.  (Feel free to read up on them and experiment if you want though.)  Scroll down the page and click on "SAVE" to save your application's information and return you to your Merchant Tools page.
         </li>
       </ol>
 
       <p>
         And with that, you are ready to <a href="#api">integrate a Gloebit API</a>.
+      </p>
+
+      <p>
+        Unfortunately, this walk-through is still being developed and there is not much more below.  We are continuing to work on this page and will be regularly checking in new information.  Keep checking back.  If what you need is missing, <a href="https://www.gloebit.com/contact-us/">contact us</a> and let us know what you urgently need added or what questions you have.  We will gladly work with you to get you going that way too.
       </p>
     </section>
 
