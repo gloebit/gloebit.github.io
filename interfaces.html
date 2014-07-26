@@ -30,7 +30,8 @@
       </nav>
     </header>
 
-    <section class="wrapper">
+    <section class="wrapper anchor" id="intro">
+      <h1 class="for-validation-only"> </h1>
       <p>
         On this page you will find details about the Gloebit services.  Gloebit offers four backend services (Identity, Character, Inventory, and Digital Currency & Transaction).  All four services require an access token.  Your application must first use the Gloebit Authorization service to get access approval from your customer and to receive the necessary access token.  The service details on this page include lists of all available endpoints for each service and the parameters for each endpoint's requests.
       </p>
@@ -326,11 +327,12 @@
       Arguments: access token, name<br>
       Returns: uuid
       <ul>
-        <li>Verify that name is unique across all characters for this application.  If not, fail.</li>
-        <ul>
-          <li>Will respond with an error that name is not unique.</li>
-          <li>Eventually would like to return with other name suggestions.</li>
-        </ul>
+        <li>Verify that name is unique across all characters for this application.  If not, fail.
+          <ul>
+            <li>Will respond with an error that name is not unique.</li>
+            <li>Eventually would like to return with other name suggestions.</li>
+          </ul>
+        </li>
         <li>Create a new character with name provided.</li>
         <li>Return uuid for character.</li>
       </ul>
