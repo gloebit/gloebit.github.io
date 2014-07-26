@@ -1,781 +1,835 @@
 <!doctype html>
 <html>
   <head>
+    <title>Gloebit OAuth API</title>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Gloebit</title>
+
+    <link rel="shortcut icon" href="https://www.gloebit.com/favicon.ico?v=3" />
 
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/styles_gbdev.css">
+
+    <link rel="stylesheet" href="https://gloebit-static-prod-0.s3.amazonaws.com/static-1/css/icons.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body>
-    <a name="top"></a>
-    <div class="wrapper">
-      <header>
-        <h1><a href="http://docs.gloebit.com/">Gloebit</a></h1>
-        <p></p>
+    <header>
+      <nav class="wrapper">
+        <h1><a href="http://www.gloebit.com/">Gloebit</a></h1>
 
         <p class="view"><a href="#oauth-api">OAuth API</a></p>
         <p class="view"><a href="#sandbox">Sandbox</a></p>
-        <p class="view"><a href="#domain/scope">Domain/Scope</a></p>
+        <p class="view"><a href="#domain-scope">Domain/Scope</a></p>
         <p class="view"><a href="#account-endpoints">Account Endpoints</a></p>
         <p class="view"><a href="#inventory-endpoints">Inventory Endpoints</a></p>
         <p class="view"><a href="#product-endpoints">Product Endpoints</a></p>
         <p class="view"><a href="#errors">Errors</a></p>
-
-
-      </header>
-      <section>
-        <h3>
-          <a name="gloebit" class="anchor" href="#gloebit">
-            <span class="octicon octicon-link"></span>
-          </a>
-          Gloebit
-        </h3>
-
-        <h1 id="oauth-api">OAuth API</h1>
-
-<p>Your application or website can interact with Gloebit user-accounts
-by using Gloebit&rsquo;s API.</p>
-
-<p>To interact with a user&rsquo;s Gloebit account, the user must grant
-permission.  Your application sends the user&rsquo;s browser to Gloebit&rsquo;s
-website where the user is presented with a permission dialog.  If the
-user agrees, a token is sent back to your application.  Your
-application includes the token with API requests to prove that the
-user has allowed access to their account.</p>
-
-<p>The API allows various operations, such as querying the user&rsquo;s balance
-or initiating transactions between the user and your application.</p>
-
-<p>Either OAuth 1.0a or OAuth 2.0 is used for authentication.
-Any data delivered to or received from API requests will have a
-Content-Type of <strong>application/json</strong>.  All requests go over https.</p>
-
-<h2 id="oauth-1.0a">OAuth 1.0a</h2>
-
-<p>There are many <a href="http://oauth.net/code/">client libraries</a>
-for <a href="http://oauth.net/core/1.0a/">OAuth 1.0a</a>.</p>
-
-<p>The request-token url can be modified with an optional &ldquo;user&rdquo;
-query-arg.  If provided, it should be the username of the account on
-the consumer side (the username as your application knows it).  It
-will be recorded in the token and used for display purposes, only.</p>
-
-<table><thead>
-<tr>
-<th>operation</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Request Token</td>
-<td>https://www.gloebit.com/oauth/request-token</td>
-</tr>
-<tr>
-<td>Authorize</td>
-<td>https://www.gloebit.com/oauth/authorize</td>
-</tr>
-<tr>
-<td>Access Token</td>
-<td>https://www.gloebit.com/oauth/access-token</td>
-</tr>
-</tbody></table>
-
-<p><img src="https://www.gloebit.com/static-1/docs/api/images/oauth1-seq.png" height="812"></p>
-
-<p>The application first gets a <em>Request Token</em> from Gloebit.  This
-token isn&rsquo;t associated with a particular user or domain.  Next,
-the application sends the user to Gloebit&rsquo;s authorization page.  If
-the user agrees to grant access, the <em>Request Token</em> is authorized
-and a specific user and domain are associated with it.  Next, the
-application exchanges the authorized <em>Request Token</em> for an <em>Access Token</em>.
-The <em>Access Token</em> is used during API requests.</p>
-
-<h2 id="oauth-2.0">OAuth 2.0</h2>
-
-<p>Gloebit supports three-legged <a href="http://oauth.net/2/">OAuth 2.0</a>.</p>
-
-<p>The authorize url should be modified with some query args:</p>
-
-<table><thead>
-<tr>
-<th>query argument</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>client_id</td>
-<td>the consumer (application / 3rd party) key</td>
-</tr>
-<tr>
-<td>response_type</td>
-<td>Gloebit only uses &ldquo;code&rdquo; response type.</td>
-</tr>
-<tr>
-<td>redirect_uri</td>
-<td>Where to send the user after the permission dialog.</td>
-</tr>
-<tr>
-<td>scope</td>
-<td>a space separated list of what permissions are being requested.</td>
-</tr>
-<tr>
-<td>user</td>
-<td>an optional argument.  If provided, it should be the username of the account on the consumer side.  It will be recorded in the token and used for display purposes, only.</td>
-</tr>
-</tbody></table>
-
-<p>Once the user grants permission, they will be redirected back to the
-<em>redirect_uri</em> with a <em>code</em> query-arg.</p>
-
-<table><thead>
-<tr>
-<th>operation</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Access-Token</td>
-<td>https://www.gloebit.com/oauth2/access-token</td>
-</tr>
-<tr>
-<td>Authorize</td>
-<td>https://www.gloebit.com/oauth2/authorize</td>
-</tr>
-</tbody></table>
-
-<p>Overview of OAuth 2.0 Flow:<br>
-<img src="https://www.gloebit.com/static-1/docs/api/images/oauth2-seq.png" height="506"></p>
-
-<p>The application sends the user to Gloebit&rsquo;s authorization page.  Once
-the user has agreed, a token id (the <em>code</em> query arguement) is included
-and the user is sent to the <em>redirect_uri</em>.  The application then
-validates the token. The token is used as the value of the
-<strong>Authorization</strong> HTTP header during any API requests.</p>
-
-<h1 id="sandbox">Sandbox</h1>
-
-<p>Gloebit provides a &ldquo;sandbox&rdquo; server.  This server is just like the main
-server, except that interactions with payment providers are in test or
-sandbox mode.  Generally, substitute sandbox.gloebit.com for www.gloebit.com
-in order to use the sandbox server.  The sandbox server has its own accounts
-and balances &ndash; anything done on the sandbox server will need to be
-repeated on the main server, once testing is complete.</p>
-
-<h1 id="domain/scope">Domain/Scope</h1>
-
-<p>When retrieving OAuth tokens, use these strings for the domain (for
-OAuth 1.0a) or scope (for OAuth 2.0).  The value should be one string
-containing space separated parts.</p>
-
-<table><thead>
-<tr>
-<th>domain name</th>
-<th>endpoints</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>The authorization dialog will be Gloebit&rsquo;s character creation/selection dialog rather than the access request dialog.</td>
-</tr>
-<tr>
-<td>balance</td>
-<td>Allows use of the <em>Balance</em> endpoint.</td>
-</tr>
-<tr>
-<td>transact</td>
-<td>Allows use of the <em>Transact</em> endpoint.</td>
-</tr>
-<tr>
-<td>inventory</td>
-<td>Allows use of the <em>Inventory</em> endpoints.</td>
-</tr>
-</tbody></table>
-
-<h1 id="account-endpoints">Account Endpoints</h1>
-
-<p>These API endpoints require a valid access-token.  The domain/scope of
-the access-token must be appropriate for whichever request is being made.</p>
-
-<h2 id="identity">Identity</h2>
-
-<table><thead>
-<tr>
-<th>domain</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>https://www.gloebit.com/id</td>
-</tr>
-</tbody></table>
-
-<p>When the domain/scope includes <strong>id</strong>, a character creation/selection
-dialog is used during the authorization step of the OAuth flow.  The
-selected character will determine the values in the response to this
-request.</p>
-
-<h3 id="response">response</h3>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>UUID for whichever character the user selected.</td>
-</tr>
-<tr>
-<td>name</td>
-<td>Name of the selected character.</td>
-</tr>
-<tr>
-<td>params</td>
-<td>dictionary of parameters associated with the selected character.</td>
-</tr>
-</tbody></table>
-
-<h2 id="balance">Balance</h2>
-
-<table><thead>
-<tr>
-<th>domain</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>balance</td>
-<td>https://www.gloebit.com/balance</td>
-</tr>
-</tbody></table>
-
-<h3 id="response">Response</h3>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>success</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>reason</td>
-<td>explanation of (lack of) success</td>
-</tr>
-<tr>
-<td>balance</td>
-<td>user&rsquo;s G$ balance</td>
-</tr>
-</tbody></table>
-
-<h2 id="transact">Transact</h2>
-
-<table><thead>
-<tr>
-<th>domain</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>transact</td>
-<td>https://www.gloebit.com/transact</td>
-</tr>
-</tbody></table>
-
-<p>Check validity of a merchant&rsquo;s transaction request and then put it
-into the inbound queue.</p>
-
-<p>The post body should be a json dictionary with these keys:</p>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>version</td>
-<td>integer, 1</td>
-</tr>
-<tr>
-<td>id</td>
-<td>string, transaction id, generated by client</td>
-</tr>
-<tr>
-<td>request-created</td>
-<td>integer, seconds since 1970</td>
-</tr>
-<tr>
-<td>asset-code</td>
-<td>string, optional</td>
-</tr>
-<tr>
-<td>asset-quantity</td>
-<td>integer, optional</td>
-</tr>
-<tr>
-<td>asset-enact-hold-url</td>
-<td>string, optional</td>
-</tr>
-<tr>
-<td>asset-consume-hold-url</td>
-<td>string, optional</td>
-</tr>
-<tr>
-<td>asset-cancel-hold-url</td>
-<td>string, optional</td>
-</tr>
-<tr>
-<td>gloebit-balance-change</td>
-<td>number of G$ to charge the user, defaults to 0</td>
-</tr>
-<tr>
-<td>product</td>
-<td>string, optional &ndash; name of product to grant user</td>
-</tr>
-<tr>
-<td>product-quantity</td>
-<td>positive integer, many of product to grant user, defaults to 1</td>
-</tr>
-<tr>
-<td>consumer-key</td>
-<td>string</td>
-</tr>
-<tr>
-<td>merchant-user-id</td>
-<td>string, merchant&rsquo;s local id for this user</td>
-</tr>
-</tbody></table>
-
-<p>For example, if the merchant has defined a product called &ldquo;green-hat&rdquo; which
-costs 40 gloebits, the posted json dictiony might look like:</p>
-
-<pre>
-    {"version": 1,
-     "id": "ec8d8f47-2648-4378-8734-bba45852a60f",
-     "request-created": 1399828892,
-     "product": "green-hat",
-     "gloebit-balance-change": 40,
-     "consumer-key": "7f6bebb4-6ac9-4eb3-b7ad-ea847f2dc54d",
-     "merchant-user-id": "whatever my game knows this user as."
-    }
-</pre>
-
-<p>&ldquo;version&rdquo; should be 1.  &ldquo;id&rdquo; should be a new uuid, generated by the
-merchant&rsquo;s application.  &ldquo;request-created&rdquo; should be similar to what
-the unix command date &lsquo;+%s&rsquo; produces.  &ldquo;product&rdquo; should be a product-name
-as defined in the
-<a href="https://www.gloebit.com/merchant-products">Merchant Products</a> page
-(or the <a href="https://sandbox.gloebit.com/merchant-products">sandbox version</a>).</p>
-
-<p>&ldquo;consumer-key&rdquo; is the Key field from the
-<a href="https://sandbox.gloebit.com/merchant-tools/">Merchant Settings</a> page.
-&ldquo;merchant-user-id&rdquo; should be the application specific name for the
-user, and is only used for logging and transaction history display.</p>
-
-<p>The response will also be a json dictionary:</p>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>string, same as request</td>
-</tr>
-<tr>
-<td>status</td>
-<td>string, one of &ldquo;queued&rdquo;, &ldquo;queuing-failed&rdquo;, &ldquo;in-progress&rdquo;</td>
-</tr>
-<tr>
-<td>success</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>reason</td>
-<td>string, human readable explaination of status</td>
-</tr>
-</tbody></table>
-
-<h1 id="inventory-endpoints">Inventory Endpoints</h1>
-
-<p>A user&rsquo;s Inventory is a json dictionary with inventory-item-names as keys
-and inventory-items as values.  Each inventory-item is also a
-json dictionary (called params, below).
-The contents of the inventory-item is up to the developer.  A folder-id
-and type-id are also associated with each inventory item.</p>
-
-<p>Inventory operations are per gloebit user, not per character.  If
-per-character inventory is desired, use the character-id as a top-level
-folder.</p>
-
-<h2 id="new-inventory-item">New Inventory Item</h2>
-
-<table><thead>
-<tr>
-<th>domain</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>inventory</td>
-<td>https://www.gloebit.com/new-inventory-item</td>
-</tr>
-</tbody></table>
-
-<p>Create a new inventory item.  Folder-id is optional and will
-default to a null (all zeros) uuid.</p>
-
-<p>The request body should be a json dictionary:</p>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>folder-id</td>
-<td>string</td>
-</tr>
-<tr>
-<td>type-id</td>
-<td>string</td>
-</tr>
-<tr>
-<td>params</td>
-<td>a dictionary</td>
-</tr>
-</tbody></table>
-
-<p>The response will be a json dictionary:</p>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>success</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>reason</td>
-<td>string</td>
-</tr>
-<tr>
-<td>item-id</td>
-<td>string (uuid)</td>
-</tr>
-</tbody></table>
-
-<h2 id="list-inventory-items">List Inventory Items</h2>
-
-<table><thead>
-<tr>
-<th>domain</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>inventory</td>
-<td>https://www.gloebit.com/get-inventory-item-ids</td>
-</tr>
-<tr>
-<td>inventory</td>
-<td>https://www.gloebit.com/get-inventory-item-ids/*folder-id*</td>
-</tr>
-</tbody></table>
-
-<p>Retrieve a list of inventory item IDs for a user.</p>
-
-<p>The response will be a json dictionary.</p>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>success</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>reason</td>
-<td>string</td>
-</tr>
-<tr>
-<td>item-ids</td>
-<td>json array &ndash; Each element is a tuple of strings: (item-type-id, item-id, folder-id).</td>
-</tr>
-</tbody></table>
-
-<p>If folder-id isn&rsquo;t specified, the entire inventory for the authorized
-user is returned.  If a folder-id is given, only inventory items from
-that folder are returned.  The root folder for a user is identified
-with a null UUID: &ldquo;00000000-0000-0000-0000-000000000000&rdquo;.</p>
-
-<h2 id="get-inventory-item">Get Inventory Item</h2>
-
-<table><thead>
-<tr>
-<th>domain</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>inventory</td>
-<td>https://www.gloebit.com/get-inventory-item/*item-id*</td>
-</tr>
-</tbody></table>
-
-<p>Retrieve details about a user&rsquo;s inventory item.</p>
-
-<p>The response will be a json dictionary:</p>
-
-<p>The request body should be a json dictionary:</p>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>success</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>reason</td>
-<td>string</td>
-</tr>
-<tr>
-<td>item</td>
-<td>details about inventory item (params)</td>
-</tr>
-</tbody></table>
-
-<h2 id="update-inventory-item-parameters">Update Inventory Item Parameters</h2>
-
-<table><thead>
-<tr>
-<th>domain</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>inventory</td>
-<td>https://www.gloebit.com/update-inventory-item-params</td>
-</tr>
-</tbody></table>
-
-<p>Change details about a user&rsquo;s inventory item.  If the item isn&rsquo;t
-found, a new one will be created.</p>
-
-<p>The request body should be a json dictionary:</p>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>string</td>
-</tr>
-<tr>
-<td>folder-id</td>
-<td>string</td>
-</tr>
-<tr>
-<td>type-id</td>
-<td>string</td>
-</tr>
-<tr>
-<td>params</td>
-<td>a dictionary</td>
-</tr>
-</tbody></table>
-
-<p>The response will be a json dictionary:</p>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>success</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>reason</td>
-<td>string</td>
-</tr>
-</tbody></table>
-
-<h2 id="delete-inventory-item">Delete Inventory Item</h2>
-
-<table><thead>
-<tr>
-<th>domain</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>inventory</td>
-<td>https://www.gloebit.com/delete-inventory-item/*item-id*</td>
-</tr>
-</tbody></table>
-
-<p>Delete a user&rsquo;s inventory item.</p>
-
-<p>The response will be a json dictionary:</p>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>success</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>reason</td>
-<td>string</td>
-</tr>
-</tbody></table>
-
-<h1 id="product-endpoints">Product Endpoints</h1>
-
-<p>Products are predefined inventory items.  A merchant can define products
-by visiting the <a href="https://www.gloebit.com/merchant-products">Merchant Products</a>
-page (or the <a href="https://sandbox.gloebit.com/merchant-products">sandbox version</a>).</p>
-
-<p>Products must have a unique name (within a given merchant&rsquo;s account).  The
-price is indicated in gloebits.  Per-user-limit limits how many of each
-product one user can own.  See <a href="#transact">Transact</a> for how to
-give a user more of a product.</p>
-
-<h2 id="get-user-products">Get User Products</h2>
-
-<table><thead>
-<tr>
-<th>domain</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>inventory</td>
-<td>https://www.gloebit.com/get-user-products/</td>
-</tr>
-</tbody></table>
-
-<p>Retrieve a list of products/entitlements owned by the user.</p>
-
-<p>The response will be a json dictionary:</p>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>success</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>reason</td>
-<td>string</td>
-</tr>
-<tr>
-<td>products</td>
-<td>json dictionary with product names as keys and counts as values.</td>
-</tr>
-</tbody></table>
-
-<h2 id="consume-user-product">Consume User Product</h2>
-
-<table><thead>
-<tr>
-<th>domain</th>
-<th>endpoint</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>inventory</td>
-<td>https://www.gloebit.com/consume-user-product/*product-name*/*count*/</td>
-</tr>
-</tbody></table>
-
-<p>Decrease by <em>count</em> the number of a product owned by the user.</p>
-
-<p>The response will be a json dictionary:</p>
-
-<table><thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>success</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>reason</td>
-<td>string</td>
-</tr>
-<tr>
-<td>count</td>
-<td>integer &ndash; how many of <em>product-name</em> user has after this operation.</td>
-</tr>
-</tbody></table>
-
-<h1 id="errors">Errors</h1>
-
-<p>Any access-token protected API call returns a json dictionary.  One of
-the entries will be &lsquo;success&rsquo; which will be True or False.  If
-&lsquo;success&rsquo; is False, there will be an entry called &lsquo;reason&rsquo;, which will
-be set to one of:</p>
-
-<ul>
-<li>missing domain</li>
-<li>unknown consumer</li>
-<li>unknown user</li>
-<li>unknown token</li>
-<li>token has expired</li>
-</ul>
-
-
-      </section>
-      <footer>
-        <!--
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-        -->
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
+      </nav>
+    </header>
+
+    <section class="wrapper anchor" id="oauth-api">
+      <h1>OAuth API</h1>
+
+      <p>
+        Your application or website can interact with Gloebit user-accounts by using Gloebit&rsquo;s API.
+      </p>
+
+      <p>
+        To interact with a user&rsquo;s Gloebit account, the user must grant permission.  Your application sends the user&rsquo;s browser to Gloebit&rsquo;s website where the user is presented with a permission dialog.  If the user agrees, a token is sent back to your application.  Your application includes the token with API requests to prove that the user has allowed access to their account.
+      </p>
+
+      <p>
+        The API allows various operations, such as querying the user&rsquo;s balance or initiating transactions between the user and your application.
+      </p>
+
+      <p>
+        Either OAuth 1.0a or OAuth 2.0 is used for authentication.  Any data delivered to or received from API requests will have a Content-Type of <strong>application/json</strong>.  All requests go over https.
+      </p>
+
+      <h2 id="oauth-1.0a">OAuth 1.0a</h2>
+
+      <p>
+        There are many <a href="http://oauth.net/code/">client libraries</a> for <a href="http://oauth.net/core/1.0a/">OAuth 1.0a</a>.
+      </p>
+
+      <p>
+        The request-token url can be modified with an optional &ldquo;user&rdquo; query-arg.  If provided, it should be the username of the account on the consumer side (the username as your application knows it).  It will be recorded in the token and used for display purposes, only.
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>operation</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>Request Token</td>
+            <td>https://www.gloebit.com/oauth/request-token</td>
+          </tr>
+          <tr>
+            <td>Authorize</td>
+            <td>https://www.gloebit.com/oauth/authorize</td>
+          </tr>
+          <tr>
+            <td>Access Token</td>
+            <td>https://www.gloebit.com/oauth/access-token</td>
+          </tr>
+      </tbody></table>
+
+      <img src="https://www.gloebit.com/static-1/docs/api/images/oauth1-seq.png" height="812" alt="OAuth Sequence">
+
+      <p>
+        The application first gets a <em>Request Token</em> from Gloebit.  This token isn&rsquo;t associated with a particular user or domain.  Next, the application sends the user to Gloebit&rsquo;s authorization page.  If the user agrees to grant access, the <em>Request Token</em> is authorized and a specific user and domain are associated with it.  Next, the application exchanges the authorized <em>Request Token</em> for an <em>Access Token</em>.  The <em>Access Token</em> is used during API requests.
+      </p>
+
+      <h2 id="oauth-2.0">OAuth 2.0</h2>
+
+      <p>
+        Gloebit supports three-legged <a href="http://oauth.net/2/">OAuth 2.0</a>.
+      </p>
+
+      <p>
+        The authorize url should be modified with some query args:
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>query argument</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>client_id</td>
+            <td>the consumer (application / 3rd party) key</td>
+          </tr>
+          <tr>
+            <td>response_type</td>
+            <td>Gloebit only uses &ldquo;code&rdquo; response type.</td>
+          </tr>
+          <tr>
+            <td>redirect_uri</td>
+            <td>Where to send the user after the permission dialog.</td>
+          </tr>
+          <tr>
+            <td>scope</td>
+            <td>a space separated list of what permissions are being requested.</td>
+          </tr>
+          <tr>
+            <td>user</td>
+            <td>an optional argument.  If provided, it should be the username of the account on the consumer side.  It will be recorded in the token and used for display purposes, only.</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        Once the user grants permission, they will be redirected back to the <em>redirect_uri</em> with a <em>code</em> query-arg.
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>operation</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>Access-Token</td>
+            <td>https://www.gloebit.com/oauth2/access-token</td>
+          </tr>
+          <tr>
+            <td>Authorize</td>
+            <td>https://www.gloebit.com/oauth2/authorize</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        Overview of OAuth 2.0 Flow:
+        <img src="https://www.gloebit.com/static-1/docs/api/images/oauth2-seq.png" height="506" alt="OAuth2 Sequence">
+      </p>
+
+      <p>
+        The application sends the user to Gloebit&rsquo;s authorization page.  Once the user has agreed, a token id (the <em>code</em> query arguement) is included and the user is sent to the <em>redirect_uri</em>.  The application then validates the token. The token is used as the value of the <strong>Authorization</strong> HTTP header during any API requests.
+      </p>
+    </section>
+
+    <section class="wrapper anchor" id="sandbox">
+      <h1>Sandbox</h1>
+
+      <p>
+        Gloebit provides a &ldquo;sandbox&rdquo; server.  This server is just like the main server, except that interactions with payment providers are in test or sandbox mode.  Generally, substitute sandbox.gloebit.com for www.gloebit.com in order to use the sandbox server.  The sandbox server has its own accounts and balances &ndash; anything done on the sandbox server will need to be repeated on the main server, once testing is complete.
+      </p>
+    </section>
+
+    <section class="wrapper anchor" id="domain-scope">
+      <h1>Domain/Scope</h1>
+
+      <p>
+        When retrieving OAuth tokens, use these strings for the domain (for OAuth 1.0a) or scope (for OAuth 2.0).  The value should be one string containing space separated parts.
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>domain name</th>
+            <th>endpoints</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>id</td>
+            <td>The authorization dialog will be Gloebit&rsquo;s character creation/selection dialog rather than the access request dialog.</td>
+          </tr>
+          <tr>
+            <td>balance</td>
+            <td>Allows use of the <em>Balance</em> endpoint.</td>
+          </tr>
+          <tr>
+            <td>transact</td>
+            <td>Allows use of the <em>Transact</em> endpoint.</td>
+          </tr>
+          <tr>
+            <td>inventory</td>
+            <td>Allows use of the <em>Inventory</em> endpoints.</td>
+          </tr>
+      </tbody></table>
+    </section>
+
+    <section class="wrapper anchor" id="account-endpoints">
+
+      <h1>Account Endpoints</h1>
+
+      <p>
+        These API endpoints require a valid access-token.  The domain/scope of the access-token must be appropriate for whichever request is being made.
+      </p>
+
+      <h2 id="identity">Identity</h2>
+
+      <table><thead>
+          <tr>
+            <th>domain</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>id</td>
+            <td>https://www.gloebit.com/id</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        When the domain/scope includes <strong>id</strong>, a character creation/selection dialog is used during the authorization step of the OAuth flow.  The selected character will determine the values in the response to this request.
+      </p>
+
+      <h3 id="response">response</h3>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>id</td>
+            <td>UUID for whichever character the user selected.</td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>Name of the selected character.</td>
+          </tr>
+          <tr>
+            <td>params</td>
+            <td>dictionary of parameters associated with the selected character.</td>
+          </tr>
+      </tbody></table>
+
+      <h2 id="balance">Balance</h2>
+
+      <table><thead>
+          <tr>
+            <th>domain</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>balance</td>
+            <td>https://www.gloebit.com/balance</td>
+          </tr>
+      </tbody></table>
+
+      <h3 id="response">Response</h3>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>success</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>reason</td>
+            <td>explanation of (lack of) success</td>
+          </tr>
+          <tr>
+            <td>balance</td>
+            <td>user&rsquo;s G$ balance</td>
+          </tr>
+      </tbody></table>
+
+      <h2 id="transact">Transact</h2>
+
+      <table><thead>
+          <tr>
+            <th>domain</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>transact</td>
+            <td>https://www.gloebit.com/transact</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        Check validity of a merchant&rsquo;s transaction request and then put it into the inbound queue.
+      </p>
+
+      <p>
+        The post body should be a json dictionary with these keys:
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>version</td>
+            <td>integer, 1</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            <td>string, transaction id, generated by client</td>
+          </tr>
+          <tr>
+            <td>request-created</td>
+            <td>integer, seconds since 1970</td>
+          </tr>
+          <tr>
+            <td>asset-code</td>
+            <td>string, optional</td>
+          </tr>
+          <tr>
+            <td>asset-quantity</td>
+            <td>integer, optional</td>
+          </tr>
+          <tr>
+            <td>asset-enact-hold-url</td>
+            <td>string, optional</td>
+          </tr>
+          <tr>
+            <td>asset-consume-hold-url</td>
+            <td>string, optional</td>
+          </tr>
+          <tr>
+            <td>asset-cancel-hold-url</td>
+            <td>string, optional</td>
+          </tr>
+          <tr>
+            <td>gloebit-balance-change</td>
+            <td>number of G$ to charge the user, defaults to 0</td>
+          </tr>
+          <tr>
+            <td>product</td>
+            <td>string, optional &ndash; name of product to grant user</td>
+          </tr>
+          <tr>
+            <td>product-quantity</td>
+            <td>positive integer, many of product to grant user, defaults to 1</td>
+          </tr>
+          <tr>
+            <td>consumer-key</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>merchant-user-id</td>
+            <td>string, merchant&rsquo;s local id for this user</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        For example, if the merchant has defined a product called &ldquo;green-hat&rdquo; which costs 40 gloebits, the posted json dictiony might look like:
+      </p>
+
+      <pre>
+        {"version": 1,
+        "id": "ec8d8f47-2648-4378-8734-bba45852a60f",
+        "request-created": 1399828892,
+        "product": "green-hat",
+        "gloebit-balance-change": 40,
+        "consumer-key": "7f6bebb4-6ac9-4eb3-b7ad-ea847f2dc54d",
+        "merchant-user-id": "whatever my game knows this user as."
+        }
+      </pre>
+
+      <p>
+        &ldquo;version&rdquo; should be 1.  &ldquo;id&rdquo; should be a new uuid, generated by the merchant&rsquo;s application.  &ldquo;request-created&rdquo; should be similar to what the unix command date &lsquo;+%s&rsquo; produces.  &ldquo;product&rdquo; should be a product-name as defined in the <a href="https://www.gloebit.com/merchant-products">Merchant Products</a> page (or the <a href="https://sandbox.gloebit.com/merchant-products">sandbox version</a>).
+      </p>
+
+      <p>
+        &ldquo;consumer-key&rdquo; is the Key field from the <a href="https://sandbox.gloebit.com/merchant-tools/">Merchant Settings</a> page. &ldquo;merchant-user-id&rdquo; should be the application specific name for the user, and is only used for logging and transaction history display.
+      </p>
+
+      <p>
+        The response will also be a json dictionary:
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>id</td>
+            <td>string, same as request</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>string, one of &ldquo;queued&rdquo;, &ldquo;queuing-failed&rdquo;, &ldquo;in-progress&rdquo;</td>
+          </tr>
+          <tr>
+            <td>success</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>reason</td>
+            <td>string, human readable explaination of status</td>
+          </tr>
+      </tbody></table>
+    </section>
+
+    <section class="wrapper anchor" id="inventory-endpoints">
+      <h1>Inventory Endpoints</h1>
+
+      <p>
+        A user&rsquo;s Inventory is a json dictionary with inventory-item-names as keys and inventory-items as values.  Each inventory-item is also a json dictionary (called params, below).  The contents of the inventory-item is up to the developer.  A folder-id and type-id are also associated with each inventory item.
+      </p>
+
+      <p>
+        Inventory operations are per gloebit user, not per character.  If per-character inventory is desired, use the character-id as a top-level folder.
+      </p>
+
+      <h2 id="new-inventory-item">New Inventory Item</h2>
+
+      <table><thead>
+          <tr>
+            <th>domain</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>inventory</td>
+            <td>https://www.gloebit.com/new-inventory-item</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        Create a new inventory item.  Folder-id is optional and will default to a null (all zeros) uuid.
+      </p>
+
+      <p>
+        The request body should be a json dictionary:
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>folder-id</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>type-id</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>params</td>
+            <td>a dictionary</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        The response will be a json dictionary:
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>success</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>reason</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>item-id</td>
+            <td>string (uuid)</td>
+          </tr>
+      </tbody></table>
+
+      <h2 id="list-inventory-items">List Inventory Items</h2>
+
+      <table><thead>
+          <tr>
+            <th>domain</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>inventory</td>
+            <td>https://www.gloebit.com/get-inventory-item-ids</td>
+          </tr>
+          <tr>
+            <td>inventory</td>
+            <td>https://www.gloebit.com/get-inventory-item-ids/*folder-id*</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        Retrieve a list of inventory item IDs for a user.
+      </p>
+
+      <p>
+        The response will be a json dictionary.
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>success</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>reason</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>item-ids</td>
+            <td>json array &ndash; Each element is a tuple of strings: (item-type-id, item-id, folder-id).</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        If folder-id isn&rsquo;t specified, the entire inventory for the authorized user is returned.  If a folder-id is given, only inventory items from that folder are returned.  The root folder for a user is identified with a null UUID: &ldquo;00000000-0000-0000-0000-000000000000&rdquo;.
+      </p>
+
+      <h2 id="get-inventory-item">Get Inventory Item</h2>
+
+      <table><thead>
+          <tr>
+            <th>domain</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>inventory</td>
+            <td>https://www.gloebit.com/get-inventory-item/*item-id*</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        Retrieve details about a user&rsquo;s inventory item.
+      </p>
+
+      <p>
+        The response will be a json dictionary:
+      </p>
+
+      <p>
+        The request body should be a json dictionary:
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>success</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>reason</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>item</td>
+            <td>details about inventory item (params)</td>
+          </tr>
+      </tbody></table>
+
+      <h2 id="update-inventory-item-parameters">Update Inventory Item Parameters</h2>
+
+      <table><thead>
+          <tr>
+            <th>domain</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>inventory</td>
+            <td>https://www.gloebit.com/update-inventory-item-params</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        Change details about a user&rsquo;s inventory item.  If the item isn&rsquo;t found, a new one will be created.
+      </p>
+
+      <p>
+        The request body should be a json dictionary:
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>id</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>folder-id</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>type-id</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>params</td>
+            <td>a dictionary</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        The response will be a json dictionary:
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>success</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>reason</td>
+            <td>string</td>
+          </tr>
+      </tbody></table>
+
+      <h2 id="delete-inventory-item">Delete Inventory Item</h2>
+
+      <table><thead>
+          <tr>
+            <th>domain</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>inventory</td>
+            <td>https://www.gloebit.com/delete-inventory-item/*item-id*</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        Delete a user&rsquo;s inventory item.
+      </p>
+
+      <p>
+        The response will be a json dictionary:
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>success</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>reason</td>
+            <td>string</td>
+          </tr>
+      </tbody></table>
+    </section>
+
+    <section class="wrapper anchor" id="product-endpoints">
+      <h1>Product Endpoints</h1>
+
+      <p>
+        Products are predefined inventory items.  A merchant can define products by visiting the <a href="https://www.gloebit.com/merchant-products">Merchant Products</a> page (or the <a href="https://sandbox.gloebit.com/merchant-products">sandbox version</a>).
+      </p>
+
+      <p>
+        Products must have a unique name (within a given merchant&rsquo;s account).  The price is indicated in gloebits.  Per-user-limit limits how many of each product one user can own.  See <a href="#transact">Transact</a> for how to give a user more of a product.
+      </p>
+
+      <h2 id="get-user-products">Get User Products</h2>
+
+      <table><thead>
+          <tr>
+            <th>domain</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>inventory</td>
+            <td>https://www.gloebit.com/get-user-products/</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        Retrieve a list of products/entitlements owned by the user.
+      </p>
+
+      <p>
+        The response will be a json dictionary:
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>success</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>reason</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>products</td>
+            <td>json dictionary with product names as keys and counts as values.</td>
+          </tr>
+      </tbody></table>
+
+      <h2 id="consume-user-product">Consume User Product</h2>
+
+      <table><thead>
+          <tr>
+            <th>domain</th>
+            <th>endpoint</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>inventory</td>
+            <td>https://www.gloebit.com/consume-user-product/*product-name*/*count*/</td>
+          </tr>
+      </tbody></table>
+
+      <p>
+        Decrease by <em>count</em> the number of a product owned by the user.
+      </p>
+
+      <p>
+        The response will be a json dictionary:
+      </p>
+
+      <table><thead>
+          <tr>
+            <th>key</th>
+            <th>value</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>success</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>reason</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>count</td>
+            <td>integer &ndash; how many of <em>product-name</em> user has after this operation.</td>
+          </tr>
+      </tbody></table>
+    </section>
+
+    <section class="wrapper anchor" id="errors">
+      <h1>Errors</h1>
+
+      <p>
+        Any access-token protected API call returns a json dictionary.  One of the entries will be &lsquo;success&rsquo; which will be True or False.  If &lsquo;success&rsquo; is False, there will be an entry called &lsquo;reason&rsquo;, which will be set to one of:
+      </p>
+
+      <ul>
+        <li>missing domain</li>
+        <li>unknown consumer</li>
+        <li>unknown user</li>
+        <li>unknown token</li>
+        <li>token has expired</li>
+      </ul>
+    </section>
+    
+    <!--
+      <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    -->
+
+    <footer>
+      <div class="wrapper">
+        <ul>
+          <li><a href="https://www.gloebit.com/display-tos-merchant/">Merchant Terms of Service</a></li>
+          <li><a href="https://www.gloebit.com/partner-faq/">Merchant FAQ</a></li>
+          <li><a href="https://www.gloebit.com/apps/">Partner Applications</a></li>
+          <li><a href="https://www.gloebit.com/contact-us/">Contact Us</a></li>
+          <li>Follow us on:
+            <ul class="social-links">
+              <li class="social-tile"><a href="https://www.facebook.com/Gloebit" class="icon facebook" title="Facebook">&#xf107;</a></li>
+              <li class="social-tile"><a href="http://www.twitter.com/gloebit" class="icon twitter" title="Twitter">&#xf116;</a></li>
+              <li class="social-tile"><a href="http://www.linkedin.com/company/gloebit" class="icon linkedin" title="LinkedIn">&#xf110;</a></li>
+              <li class="social-tile"><a href="https://plus.google.com/+Gloebit" class="icon googleplus" title="Google+">&#xf10c;</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="javascripts/scale.fix.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/gbdev.js"></script>
     
   </body>
 </html>
