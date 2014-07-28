@@ -28,10 +28,15 @@ header p, footer li {
     margin: 0.5rem 0.05rem;
 }
 
-header a, footer a {
+header p a, footer a {
     color: #85c000;
     padding: 0.25rem 0.5rem;
     border-radius: 5px;
+}
+
+header a img {
+    height: 90px;
+    margin-bottom: -65px;
 }
 
 footer ul {
@@ -40,7 +45,7 @@ footer ul {
     margin: 0;
 }
 
-header a:hover, footer a:hover {
+header p a:hover, footer a:hover {
     color: #fcfcfc;
     background-color: #85c000;
 }
