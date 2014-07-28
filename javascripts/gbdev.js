@@ -18,7 +18,7 @@ $(function(){
 
     /* Set anchor padding/margin to offset under fixed header bar. */
     /* These are added to stylesheet[0] to allow @media overrides. */
-    var headerHeight = $('header.floating').height()+70;
+    var headerHeight = $('header.floating').height()+8;
     try {
         document.styleSheets[0].addRule('.anchor::before','padding: '+headerHeight+'px 0 0');
         document.styleSheets[0].addRule('.anchor::before','margin: -'+headerHeight+'px 0 0');
