@@ -1,7 +1,6 @@
 
-#pricing img {
-    float: right;
-    box-shadow: none;
+header + div {
+    height: 60px;
 }
 
 #services div, #integration div div {
@@ -13,14 +12,60 @@
     margin: 10px 8px;
 }
 
-#services div h2, #integration div div h3 {
-    text-align: center;
-}
-
 #services div {
     width: 45.000%;
 }
 
+#services div h2, #integration div div h3 {
+    text-align: center;
+}
+
+#services div p {
+    margin-bottom: 2px;
+}
+
+#pricing img {
+    float: right;
+    box-shadow: none;
+}
+
 #integration div div {
+    /* Also look in '#services div' above. */
     width: 20.000%;
+}
+
+@media print, screen and (max-width: 960px) {
+    header + div {
+        height: 39px;
+    }
+    header + div + section {
+        border-top: none;
+    }
+}
+
+@media print, screen and (min-width: 721px) and (max-width: 960px) {
+    #services div, #integration div div {
+        padding: 8px;
+        margin: 8px 6px;
+    }
+    #services div {
+        width: 45.500%;
+    }
+}
+
+@media print, screen and (max-width: 720px) {
+    #services div {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+    }
+
+    #integration div div {
+        width: 40%;
+    }
+
+    #pricing img {
+        width: 250px;
+    }
 }

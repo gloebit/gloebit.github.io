@@ -4,17 +4,24 @@ body {
     margin: 0;
 }
 
+#vertical-logo img {
+    float: left;
+    position: relative;
+    width: 100px;          /* set width same as header img width */
+    margin-bottom: -92px;  /* negative of resulting image height */
+    z-index: 199;
+}
+
 header, footer {
     width: 100%;
     float: none;
     position: static;
     background-color: #fcfcfc;
     box-shadow: 0 0 10px rgba(0,0,0,0.16);
-    z-index: 99;
 }
 
 header {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
 header h1 {
@@ -34,25 +41,12 @@ header p a, footer a {
     border-radius: 5px;
 }
 
-header a img {
+header img {
+    float: left;
     width: 100px;
-    margin-top: -2px;
-    margin-bottom: -10px;
+    margin-top: 0.2rem;
     box-shadow: initial;
     background-color: #86c200;
-}
-
-#vertical-logo {
-    height: 0px;
-    margin-top: -14px;
-    margin-bottom: 14px;
-}
-
-#vertical-logo img {
-    position: relative;
-    width: 100px;
-    margin-bottom: -90px;
-    z-index: 199;
 }
 
 footer ul {
@@ -150,4 +144,22 @@ img {
 
 .for-validation-only {
     display: none;
+}
+
+
+@media print, screen and (max-width: 960px) {
+    header {
+        padding-right: 0;
+    }
+
+    section {
+        padding: 20px;
+        margin: 0 0 20px;
+    }
+}
+
+@media print, screen and (max-width: 480px) {
+    #vertical-logo, header.floating {
+        display: none;
+    }
 }
