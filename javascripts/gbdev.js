@@ -1,24 +1,50 @@
 $(function(){
+    $('nav ul').detach()
+               .appendTo('header #section-nav')
+               .addClass('drop-down-menu');
+
     var clonedHeader;
     $('header').each(function(){
+        $(this).addClass('visible');
         clonedHeader = $(this);
         clonedHeader
             .before(clonedHeader.clone())
             .css({'width':'100%'})
-            .addClass('floating');
+            .addClass('invisible')
+            .removeClass('visible');
     });
 
     $(window).scroll(function(){
         if ($(this).scrollTop() > 0) {
-            $('header.floating').css({'visibility':'visible'});
+            $('header.visible').css({'position':'fixed'});
+            $('header.invisible').show();
         } else {
-            $('header.floating').css({'visibility':'hidden'});
+            $('header.visible').css({'position':'static'});
+            $('header.invisible').hide();
         }
+    });
+
+    /* Must come after header cloning (if any)! */
+    $('.drop-down').on('click', function(ev) {
+        $(this).children('p').toggleClass('active');
+        $(this).children('.drop-down-menu').toggle();
+        if (!$(ev.target).closest('.drop-down-menu').length) {
+            ev.preventDefault();
+        }
+    });
+    $(document).on('click', function(ev) {
+        var target = $(ev.target).closest('.drop-down')[0];
+        $('.drop-down').each(function() {
+            if (this !== target) {
+                $(this).children('p').removeClass('active');
+                $(this).children('.drop-down-menu').hide();
+            };
+        });
     });
 
     /* Set anchor padding/margin to offset under fixed header bar. */
     /* These are added to stylesheet[0] to allow @media overrides. */
-    var headerHeight = $('header.floating').height()+8;
+    var headerHeight = $('header.visible').height()+10;
     try {
         document.styleSheets[0].addRule('.anchor::before','padding: '+headerHeight+'px 0 0');
         document.styleSheets[0].addRule('.anchor::before','margin: -'+headerHeight+'px 0 0');

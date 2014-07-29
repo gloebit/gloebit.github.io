@@ -17,36 +17,102 @@ header, footer {
     float: none;
     position: static;
     background-color: #fcfcfc;
-    box-shadow: 0 0 10px rgba(0,0,0,0.16);
+    box-shadow: 0 0 12px rgba(0,0,0,0.25);
 }
 
 header {
     margin-bottom: 1rem;
 }
 
-header h1 {
-    padding: 5px 0;
-    margin: 0;
-}
-
-header p, footer li {
-    display: inline-block;
-    font-size: inherit;
-    margin: 0.5rem 0.05rem;
-}
-
-header p a, footer a {
-    color: #85c000;
-    padding: 0.25rem 0.5rem;
-    border-radius: 5px;
-}
-
 header img {
     float: left;
-    width: 100px;
-    margin-top: 0.2rem;
+    height: 50px;
     box-shadow: initial;
     background-color: #86c200;
+    margin-right: 12px;
+}
+
+header h1 {
+    display: inline-block;
+    padding: 5px 0;
+    margin: 5px 0px;
+}
+
+header p {
+    display: inline-block;
+    font-size: initial;
+    border-radius: 5px;
+    margin: 0.5rem 0.5rem;
+    border: 1px solid transparent;
+}
+
+header p a {
+    display: block;
+    color: #85c000;
+    padding: 0.25rem 0.5rem;
+}
+
+header p:hover {
+    background-color: #ececec;
+}
+
+header p.active {
+    background-color: #fff;
+    border: 1px solid #85c000;
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+header #section-nav {
+    float: right;
+    position: relative
+}
+
+.drop-down {
+    display: inline-block;
+}
+
+.caret {   /* Nice little down-arrow trick borrowed from haxe.org */
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: center;
+    border-top: 4px solid #85c000;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    content: "";
+}
+
+.drop-down-menu {
+    display: none;
+    position: absolute;
+    list-style: none;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #85c000;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    box-shadow: 2.5px 2.5px 5px rgba(0,0,0,0.10);
+    margin: -0.5rem 0.5rem 0.5rem;
+}
+
+.drop-down-menu li:hover {
+    color: #85c000;
+    background-color: #ececec;
+}
+
+#section-nav .drop-down-menu {
+    right: 0px;
+    white-space: nowrap;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 0;
+}
+
+header.invisible {
+    display: none;
+    position: static;
+    visibility: hidden;
 }
 
 footer ul {
@@ -55,16 +121,21 @@ footer ul {
     margin: 0;
 }
 
-header p a:hover, footer a:hover {
-    color: #fcfcfc;
-    background-color: #85c000;
+footer li {
+    display: inline-block;
+    font-size: initial;
+    margin: 0.5rem 0.05rem;
 }
 
-header.floating {
-    position: fixed;
-    top: 0;
-    visibility: hidden;
-    z-index: 99;
+footer a {
+    color: #85c000;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+}
+
+footer a:hover {
+    color: #fcfcfc;
+    background-color: #85c000;
 }
 
 .anchor:before {
