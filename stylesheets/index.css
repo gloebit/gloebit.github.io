@@ -56,9 +56,9 @@ header + div {
 @media print, screen and (max-width: 720px) {
     #services div {
         display: block;
+        width: 75%;
         margin-left: auto;
         margin-right: auto;
-        width: 75%;
     }
 
     #integration div div {
@@ -67,5 +67,23 @@ header + div {
 
     #pricing img {
         width: 250px;
+    }
+}
+
+@media print, screen and (max-width: 480px) {
+    #services div {
+        width: 85%;
+    }
+
+    #integration div div {
+        display: block;
+        width: 66.667%;
+        min-width: 200px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    #pricing img {
+        width: 200px;
     }
 }
