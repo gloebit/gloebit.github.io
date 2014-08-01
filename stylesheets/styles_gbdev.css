@@ -69,6 +69,10 @@ header #section-nav {
     position: relative
 }
 
+header #section-nav p {
+    margin-right: 0;
+}
+
 .drop-down {
     display: inline-block;
 }
@@ -103,10 +107,11 @@ header #section-nav {
 }
 
 #section-nav .drop-down-menu {
-    right: 0px;
+    right: 0;
     white-space: nowrap;
     border-top-left-radius: 10px;
     border-top-right-radius: 0;
+    margin-right: 0;
 }
 
 header.invisible {
