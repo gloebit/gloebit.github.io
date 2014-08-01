@@ -1,0 +1,239 @@
+
+header + div {
+    height: 60px;
+}
+
+section.wrapper {
+    margin-top: 35px;
+}
+
+#services {
+    text-align: center;
+}
+
+#services div {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(133,192,0,0.5);
+    margin: 10px 8px;
+}
+
+#services div {
+    width: 45.000%;
+}
+
+#services div h2 {
+    text-align: center;
+}
+
+#services div p {
+    margin-bottom: 2px;
+}
+
+#services div p + p {
+    border-top: 1px solid rgba(134,194,0,0.5);
+}
+
+#services div a {
+    color: white;
+    background-color: #86c200;
+    padding: 0 15px 2px;
+    border-radius: 100px;
+}
+
+#benefits {
+    text-align: center;
+}
+
+#benefits h2 {
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+
+#benefits div {
+    display: inline-block;
+    padding: 5px 30px;
+}
+
+#benefits div ul {
+    list-style: none;
+    padding: 0;
+}
+
+#benefits li a {
+    padding: 0 5px 2px;
+    border-radius: 5px;
+}
+
+#benefits li a:hover {
+    background-color: rgba(134,194,0,0.20);
+    box-shadow: 0 0 6px rgba(0,0,0,0.08) inset;
+}
+
+#benefits p a {
+    color: white;
+    background-color: #86c200;
+    padding: 0 15px 2px;
+    border-radius: 100px;
+}
+
+#started h1 {
+    text-align: center;
+}
+
+#started div {
+    width: 660px;
+    margin: 0 auto;
+}
+
+#started div h3 {
+    padding-top: 2px;
+    margin-left: 55px;
+}
+
+#started div h2 {
+    display: inline-block;
+    color: rgba(134,194,0,1);
+    margin-top: 6px;
+    margin-left: 20px;
+}
+
+#started div ol {
+    float: right;
+}
+
+#started div:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+#started div+p {
+    text-align: center;
+}
+
+#started div+p a {
+    color: white;
+    background-color: #86c200;
+    padding: 0 15px 2px;
+    border-radius: 100px;
+}
+
+#consumer h1+p {
+    float: left;
+    width: 60%;
+    margin-right: -10px;
+}
+
+#consumer img {
+    float: right;
+    box-sizing: border-box;
+    max-width: 40%;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#consumer p:last-of-type {
+    display: block;
+    text-align: center;
+}
+
+#consumer p a {
+    color: white;
+    background-color: #86c200;
+    padding: 0 15px 2px;
+    border-radius: 100px;
+}
+
+#pricing img {
+    float: right;
+    box-shadow: none;
+}
+
+#integration .container {
+    display: table;
+    width: 720px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 auto;
+}
+
+#integration .container div {
+    display: table-row;
+    border: 1px solid rgba(134,194,0,0.5);
+}
+
+#integration .container div div {
+    display: table-cell;
+    vertical-align: middle;
+    height: 60px;
+    border: 0;
+}
+
+#integration .container img {
+    display: block;
+    vertical-align: middle;
+    max-width: 150px;
+    box-shadow: initial;
+    margin: 0 auto;
+}
+
+#oss {
+    text-align: center;
+}
+
+@media print, screen and (max-width: 960px) {
+    header + div {
+        height: 39px;
+    }
+    header + div + section {
+        border-top: none;
+    }
+}
+
+@media print, screen and (min-width: 721px) and (max-width: 960px) {
+    #services div, #integration div div {
+        padding: 8px;
+        margin: 8px 6px;
+    }
+    #services div {
+        width: 45.500%;
+    }
+}
+
+@media print, screen and (max-width: 720px) {
+    #services div {
+        display: block;
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #integration div div {
+        width: 40%;
+    }
+
+    #pricing img {
+        width: 250px;
+    }
+}
+
+@media print, screen and (max-width: 480px) {
+    #services div {
+        width: 85%;
+    }
+
+    #integration div div {
+        display: block;
+        width: 66.667%;
+        min-width: 200px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    #pricing img {
+        width: 200px;
+    }
+}
