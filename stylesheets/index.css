@@ -3,7 +3,22 @@ header + div {
     height: 60px;
 }
 
-#services div, #integration div div {
+section.wrapper {
+    margin-top: 35px;
+}
+
+section h1 {
+    /* background-color: rgba(134,194,0,0.05); */
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(134,194,0,0.4);
+    /* box-shadow: 0 2px 2px 0 rgba(134,194,0,0.25); */
+}
+
+#services {
+    text-align: center;
+}
+
+#services div {
     display: inline-block;
     vertical-align: top;
     padding: 10px;
@@ -16,7 +31,7 @@ header + div {
     width: 45.000%;
 }
 
-#services div h2, #integration div div h3 {
+#services div h2 {
     text-align: center;
 }
 
@@ -24,14 +39,224 @@ header + div {
     margin-bottom: 2px;
 }
 
-#pricing img {
+#services div p + p {
+    border-top: 1px solid rgba(134,194,0,0.5);
+}
+
+#services div a {
+    color: white;
+    background-color: #86c200;
+    padding: 0 15px 2px;
+    border-radius: 100px;
+}
+
+#benefits {
+    text-align: center;
+}
+
+#benefits div {
+    display: inline-block;
+    padding: 5px 30px;
+}
+
+#benefits h2 {
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+
+#benefits ul {
+    list-style: none;
+    padding: 0;
+}
+
+#benefits li a {
+    padding: 0 5px 2px;
+    border-radius: 5px;
+}
+
+#benefits li a:hover {
+    background-color: rgba(134,194,0,0.20);
+    box-shadow: 0 0 6px rgba(0,0,0,0.08) inset;
+}
+
+#benefits p a {
+    color: white;
+    background-color: #86c200;
+    padding: 0 15px 2px;
+    border-radius: 100px;
+}
+
+#started h1 {
+    text-align: center;
+}
+
+#started div {
+    width: 660px;
+    margin: 0 auto;
+}
+
+#started div h3 {
+    padding-top: 2px;
+    margin-left: 55px;
+}
+
+#started div h2 {
+    display: inline-block;
+    color: rgba(134,194,0,1);
+    margin-top: 6px;
+    margin-left: 20px;
+}
+
+#started div ol {
     float: right;
+}
+
+#started div:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+#started div+p {
+    text-align: center;
+}
+
+#started div+p a {
+    color: white;
+    background-color: #86c200;
+    padding: 0 15px 2px;
+    border-radius: 100px;
+}
+
+#consumer h1+p {
+    float: left;
+    width: 60%;
+    margin-right: -10px;
+}
+
+#consumer img {
+    float: right;
+    box-sizing: border-box;
+    max-width: 40%;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#consumer p:last-of-type {
+    display: block;
+    text-align: center;
+}
+
+#consumer p a {
+    color: white;
+    background-color: #86c200;
+    padding: 0 15px 2px;
+    border-radius: 100px;
+}
+
+#monetizing h1 {
+    text-align: center;
+}
+
+#monetizing h2 {
+    display: inline-block;
+    vertical-align: top;
+    width: 32%;
+    padding-right: 3%;
+    margin-left: 4.5%;
+}
+
+#monetizing div {
+    display: inline-block;
+    width: 55%;
+    margin-right: 4.5%;
+}
+
+#monetize-consumer img {
+    margin: -10px 0 12px 12px;
+}
+
+#monetize-merchant p:first-of-type {
+    float: left;
+    max-width: 65%;
+}
+
+#monetize-merchant img {
+    float: right;
+    max-width: 35%;
+    padding: 5px;
+}
+
+#monetizing>p:last-of-type {
+    text-align: center;
+}
+
+#monetizing>p:last-of-type a {
+    color: white;
+    background-color: #86c200;
+    padding: 0 15px 2px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+}
+
+#pricing {
+    text-align: center;
+}
+
+#pricing h1+h2 {
+    margin-bottom: 10px;
+}
+
+#pricing img {
+    width: 300px;
     box-shadow: none;
 }
 
-#integration div div {
-    /* Also look in '#services div' above. */
-    width: 20.000%;
+#pricing a+h2 {
+    color: rgba(134,194,0,1);
+    text-shadow: 1px 1px rgba(0,0,0,0.35);
+    margin-top: 12px;
+    margin-bottom: 2px;
+}
+
+#pricing p a {
+    color: white;
+    background-color: #86c200;
+    padding: 0 15px 2px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+}
+
+#integration .container {
+    display: table;
+    width: 720px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 auto;
+}
+
+#integration .container div {
+    display: table-row;
+    border: 1px solid rgba(134,194,0,0.5);
+}
+
+#integration .container div div {
+    display: table-cell;
+    vertical-align: middle;
+    height: 60px;
+    border: 0;
+}
+
+#integration .container img {
+    display: block;
+    vertical-align: middle;
+    max-width: 150px;
+    box-shadow: initial;
+    margin: 0 auto;
+}
+
+#oss {
+    text-align: center;
 }
 
 @media print, screen and (max-width: 960px) {

@@ -99,112 +99,193 @@
       <div>
         <h2>Identity</h2>
         <p>
-          Manage user accounts and authenticate via:<br>
-          Email + Password, Facebook, Google+, LinkedIn, Twitter<br>
-          <a href="services.html#identity">Learn more</a>.
+          Gloebit manages your users' accounts.
+        </p>
+        <p>
+          Users log in via Gloebit site using<br>
+          Email address + Gloebit password<br>
+          <i>or</i> Facebook, Google+, LinkedIn, Twitter<br>
+          <a href="services.html#identity">Learn more</a>
         </p>
       </div>
 
       <div>
         <h2>Characters</h2>
         <p>
-          Character creation, selection, and editing.<br>
-          Define and store multiple personas for a single user.<br>
-          <a href="services.html#character">Learn more</a>.
+          Gloebit handles your users' characters.
+        </p>
+        <p>
+          Support for creation, selection, and editing.<br>
+          Gloebit allows multiple personas per user.<br>
+          Fully compatible with Inventory service.<br>
+          <a href="services.html#character">Learn more</a>
         </p>
       </div>
 
       <div>
         <h2>Inventory</h2>
         <p>
-          Store player inventory, define new products, and automate purchases.<br>
-          From binary entitlements to complex products, we cater to your needs.<br>
-          <a href="services.html#inventory">Learn more</a>.
+          Gloebit stores user and character inventories.
+        </p>
+        <p>
+          Define your products on Gloebit and use them,<br>
+          or define new items on the fly from your app.<br>
+          Stow entitlements, awards, saved games...<br>
+          <a href="services.html#inventory">Learn more</a>
         </p>
       </div>
 
       <div>
         <h2>Digital Currency & Transactions</h2>
         <p>
-          Handles payments and in-app micro-transactions with gloebit digital currency.<br>
-          Consumers can purchase gloebits with Credit Card, PayPal, Amazon, and Bitcoin.<br>
-          <a href="services.html#transact">Learn more</a>.
+          Gloebit handles your in-app (micro)transactions.
+        </p>
+        <p>
+          Use gloebits as your digital currency.<br>
+          Your users buy gloebits on the Gloebit site.<br>
+          We securely exchange gloebits for your products.<br>
+          <a href="services.html#transact">Learn more</a>
         </p>
       </div>
     </section>
 
     <section class="wrapper anchor" id="benefits">
-      <h1>Benefits</h1>
+      <h1>Benefits of Using Gloebit Services</h1>
 
-      <ul>
-        <li>Fast, simple integration</li>
-        <li>Cross-platform compatible RESTful API</li>
-        <li>Secure</li>
-        <li>Inexpensive</li>
-        <li>Great consumer experience</li>
-      </ul>
+      <div>
+        <h2>For Your Developers</h2>
+        <ul>
+          <li><a href="interfaces.html">Well-defined RESTful APIs.</a></li>
+          <li><a href="code.html">Cross-platform compatibility.</a></li>
+          <li><a href="interfaces.html#auth">Security designed into flows.</a></li>
+          <li><a href="authflow.html">User experience built-in.</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>For Your Company</h2>
+        <ul>
+          <li><a href="monetizing.html">Ideal for micro-transactions.</a></li>
+          <li>Generate new revenue streams.</li>
+          <li><a href="interfaces.html#auth">OAuth2 security requirements.</a></li>
+          <li><a href="pricing.html"><i>Ridiculoulsy</i> inexpensive.</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>For Your Users</h2>
+        <ul>
+          <li>Easy-to-use digital currency.</li>
+          <li><a href="monetizing.html#consumer">Single, centralized account.</a></li>
+          <li><a href="authflow.html">Explicit, secure authorization.</a></li>
+          <li>Payment flexibility.</li>
+        </ul>
+      </div>
+
       <p>
-        Get <a href="benefits.html">more details on benefits specific to the Digital Currency & Transaction Service</a>.
+        More benefits information:<br>
+        <a href="benefits.html">Digital Curreny & Transaction Service benefits</a>
       </p>
     </section>
 
     <section class="wrapper anchor" id="started">
-      <h1>Getting Started</h1>
+      <h1>Get Started Using Gloebit Services</h1>
 
-      <p>Get started now!  It's fast and free.</p>
-      <ol>
-        <li>Create a Gloebit merchant sandbox account.</li>
-        <li>Configure the Gloebit API settings for your application.</li>
-        <li>Use our example code and APIs to quickly integrate and test in our sandbox.</li>
-        <li>Go live when you are ready to launch.</li>
-      </ol>
+      <div>
+        <ol>
+          <li>Create a Gloebit merchant sandbox account.</li>
+          <li>Configure the Gloebit API settings for your application.</li>
+          <li>Grab our API and example code for your language/toolkit.</li>
+          <li>Quickly integrate and test in our sandbox.</li>
+          <li>Go live when you are ready to launch.</li>
+        </ol>
+        <h3>Get started now:</h3>
+        <h2>It's fast and free!</h2>
+      </div>
       <p>
-        See our <a href="merchant-steps.html">Getting Started Guide</a> for step-by-step instructions.
+        Want more details behind those steps?<br/>
+        <a href="merchant-steps.html">Check out our Getting Started Guide</a>
       </p>
     </section>
 
     <section class="wrapper anchor" id="consumer">
-      <h1>Customer Flow</h1>
+      <h1>Customer Authorization Experience</h1>
 
-      <p>When you are ready to use Gloebit services with one of your customers, you will send your customer to Gloebit to authorize your application's interactions with the customer's account.  If your customer is not yet logged into Gloebit, we will present the Gloebit login screen.  After logging in to Gloebit, we ask your customer to authorize your application:</p>
-
+      <p>
+        When you are ready to use Gloebit services with one of your customers, you will send your customer to Gloebit to authorize your application's interactions with the customer's account.  If your customer is not yet logged into Gloebit, we will present the Gloebit login screen.  After logging in to Gloebit, we ask your customer to authorize your application:
+      </p>
       <img src="images/authdialog.png" alt="Gloebit Authorization Dialog">
 
-      <p>Users are comfortable with this authorization style from social networks such as Facebook.  They understand that after they grant authorization your application or server will be able to directly use Gloebit services on their behalf with no further interactions.</p>
-        
-      <p>See an <a href="authflow.html">example authorization flow</a>.</p>
+
+      <p>
+        Users are comfortable with this authorization style from social networks such as Facebook.  They understand that after they grant authorization your application or server will be able to directly use Gloebit services on their behalf with no further interactions.
+      </p>
+
+      <p>
+        <a href="authflow.html">Take a look at an Example Authorization Flow</a>
+      </p>
     </section>
 
     <section class="wrapper anchor" id="monetizing">
       <h1>Monetizing with gloebits</h1>
 
-      <h2>gloebits</h2>
-      <p>Gloebits are a digital currency designed for in-app purchases, especially micro-transactions.  Users can spend gloebits in any application intregrating <a href="services.html#transact">Gloebit's Digital Currency & Transaction Service</a>.  Gloebit manages all accounts and transactions for you. <a href="monetizing.html">Learn more</a>.</p>
+      <h2>What are gloebits?</h2>
+      <div>
+        <p>
+            Gloebits are a digital currency designed for in-app purchases, especially micro-transactions.  Users can spend gloebits in any application intregrating <a href="services.html#transact">Gloebit's Digital Currency & Transaction Service</a>.  Gloebit manages all accounts and transactions for you.
+        </p>
+      </div>
 
-      <h2>Customer Experience</h2>
-      <p>Gloebit accounts are universal.  The gloebit balance in an account is available to all Gloebit-integrated applications.</p>
-      <img src="images/accountheader.png" alt="Gloebit Account Ribbon">
-      <p>After granting Gloebit authorization for your application, your customers can spend their gloebits with one click from within your application without leaving it.  It's smooth and fast, and it keeps the user engaged in your application. For a clearer picture, see the <a href="monetizing.html#customer">consumer experience flow details</a>.</p>
+      <h2>What will your users experience using gloebits?</h2>
+      <div id="monetize-consumer">
+        <p>
+          Gloebit accounts are universal.  The gloebit balance in an account is available to all Gloebit-integrated applications.
+        </p>
+        <img src="images/accountheader.png" alt="Gloebit Account Ribbon">
+        <p>
+            After granting Gloebit authorization for your application, your customers can spend their gloebits with one click from within your application without leaving it.  It's smooth and fast, and it keeps the user engaged in your application.
+        </p>
+      </div>
 
-      <h2>Merchant Experience</h2>
-      <p>As a merchant using the Gloebit services, you price and sell your products in gloebits.</p>
-      <img src="images/pricesell.png" alt="Tic-tac-toe Purchase Screen">
-      <p>When you sell products to your customers via the Gloebit transaction service, you receive gloebit proceeds in your merchant account.  You can spend these gloebits with other merchants or sell them and withdraw the proceeds.  Gloebit keeps records of all transactions and provides an exportable transaction history for your account. See our <a href="monetizing.html#merchant">merchant experience flow details</a> for more information.</p>
+      <h2>What will you experience using gloebits?</h2>
+      <div id="monetize-merchant">
+        <p>
+          As a merchant using the Gloebit services, you price and sell your products in gloebits.
+        </p>
+        <img src="images/pricesell.png" alt="Tic-tac-toe Purchase Screen">
+        <p>
+          When you sell products to your customers via the Gloebit transaction service, you receive gloebit proceeds in your merchant account.  You can spend these gloebits with other merchants or sell them and withdraw the proceeds.  Gloebit keeps records of all transactions and provides an exportable transaction history for your account.
+        </p>
+      </div>
 
-      <h2>User-to-User Transactions</h2>
-      <p>If you would like to allow user-to-user transactions within your application, gloebits are the best way to do so.  The Gloebit services enable small, trusted transactions, and using gloebits provides you with a new revenue stream from user-to-user transaction fees.  Please <a href="https://www.gloebit.com/contact-us/">contact us</a> to discuss making this offering available to you.
+      <h2>What about gloebits for user-to-user transactions?</h2>
+      <div>
+        <p>
+          If you would like to allow user-to-user transactions within your application, gloebits are the best way to do so.  The Gloebit services enable small, trusted transactions, and using gloebits provides you with a new revenue stream from user-to-user transaction fees.  Please <a href="https://www.gloebit.com/contact-us/">contact us</a> to discuss making this offering available to you.
+        </p>
+      </div>
+
+      <p>
+        <a href="monetizing.html#merchant">Visit our Monetizing page for more gloebits details</a>
+      </p>
     </section>
 
     <section class="wrapper anchor" id="pricing">
-      <img src="images/twopercent.png" alt="2% fees instead of 30%">
-      <h1>Pricing</h1>
+      <h1>Prices for Gloebit Services</h1>
 
-      <p>Gloebit charges 2% on all gloebit transactions.<br>All other Gloebit services are free of charge.<br>No monthly fees.  No credit card fees.  No chargeback fees.</p>
-      <p>Check out our <a href="pricing.html">Pricing</a> page for additional details.</p>
+      <h2>Gloebit charges 2% on all gloebit transactions.</h2>
+      <a href="pricing.html"><img src="images/twopercent.png" alt="2% fees instead of 30%"></a>
+      <h2>All other Gloebit services are free of charge!</h2>
+      <p>
+        No monthly fees.  No credit card fees.  No chargeback fees.
+      </p>
+      <p>
+        <a href="pricing.html">Read the regular-sized-print on all our Pricing Details</a>
+      </p>
     </section>
 
     <section class="wrapper anchor" id="integration">
-      <h1>Integration</h1>
+      <h1>Integrating Gloebit Services</h1>
 
       <h2>Getting Started</h2>
       <ol>
@@ -223,28 +304,53 @@
 
       <div class="container">
         <div>
-          <h3>Unity Web Player</h3>
-          <p><a href="https://github.com/gloebit/unity-gloebit">Plugin available</a>!</p>
+          <div>
+            <!-- <h3>Unity Web Player</h3> -->
+            <img src="images/vendor/Unity_Pri.png" alt="Unity 3D Logo">
+          </div>
+          <div>
+            <a href="https://github.com/gloebit/unity-gloebit">Plugin available</a>!
+          </div>
+          <div></div>
         </div>
 
         <div>
-          <h3>HAXE Toolkit</h3>
-          <p><a href="https://github.com/gloebit/haxe-gloebit">Class (API) available</a>!</p>
+          <div>
+            <!-- <h3>HAXE Toolkit</h3> -->
+            <img src="images/vendor/haxe-logo-horizontal.png" alt="HAXE Toolkit Logo">
+          </div>
+          <div>
+            <a href="https://github.com/gloebit/haxe-gloebit">Class (API) available</a>!
+          </div>
+          <div></div>
         </div>
 
         <div>
-          <h3>Python</h3>
-          <p>Module (API) available!</p>
-          Working examples available:
-          <ul>
-            <li><a href="https://github.com/gloebit/python-django-gloebit">Django app</a></li>
-            <li><a href="https://github.com/gloebit/python-flask-gloebit">Flask app</a></li>
-          </ul>
+          <div>
+            <!-- <h3>Python</h3> -->
+            <img src="images/vendor/python-logo-master-v3-TM.png" alt="Python Logo">
+          </div>
+          <div>
+            Module (API) available!
+          </div>
+          <div>
+            Working examples available:
+            <ul>
+              <li><a href="https://github.com/gloebit/python-django-gloebit">Django app</a></li>
+              <li><a href="https://github.com/gloebit/python-flask-gloebit">Flask app</a></li>
+            </ul>
+          </div>
         </div>
 
         <div>
-          <h3>PHP</h3>
-          <p><a href="https://github.com/gloebit/PHP-gloebit">Code example available</a>.</p>
+          <div>
+            <!-- <h3>PHP</h3> -->
+            <img src="images/vendor/php-med-trans.png" alt="PHP Logo">
+          </div>
+          <div>
+            <a href="https://github.com/gloebit/PHP-gloebit">Code example available</a>.
+          </div>
+          <div></div>
         </div>
       </div>
     </section>
