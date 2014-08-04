@@ -8,6 +8,7 @@ section.wrapper {
 }
 
 section h1 {
+    text-align: center;
     /* background-color: rgba(134,194,0,0.05); */
     padding-bottom: 2px;
     border-bottom: 1px solid rgba(134,194,0,0.4);
@@ -21,14 +22,11 @@ section h1 {
 #services div {
     display: inline-block;
     vertical-align: top;
+    width: 45.000%;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(133,192,0,0.5);
     margin: 10px 8px;
-}
-
-#services div {
-    width: 45.000%;
 }
 
 #services div h2 {
@@ -60,7 +58,9 @@ section h1 {
 }
 
 #benefits h2 {
+    padding-bottom: 1px;
     border-bottom: 1px solid rgba(0,0,0,0.5);
+    margin-bottom: 12px;
 }
 
 #benefits ul {
@@ -83,10 +83,6 @@ section h1 {
     background-color: #86c200;
     padding: 0 15px 2px;
     border-radius: 100px;
-}
-
-#started h1 {
-    text-align: center;
 }
 
 #started div {
@@ -129,17 +125,14 @@ section h1 {
 
 #consumer h1+p {
     float: left;
-    width: 60%;
-    margin-right: -10px;
+    max-width: 60%;
 }
 
 #consumer img {
     float: right;
     box-sizing: border-box;
-    max-width: 40%;
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-left: 10px;
+    max-width: 36%;
+    margin: 10px 2%;
 }
 
 #consumer p:last-of-type {
@@ -152,10 +145,6 @@ section h1 {
     background-color: #86c200;
     padding: 0 15px 2px;
     border-radius: 100px;
-}
-
-#monetizing h1 {
-    text-align: center;
 }
 
 #monetizing h2 {
@@ -227,12 +216,53 @@ section h1 {
     margin-bottom: 20px;
 }
 
+#integration {
+    text-align: center;
+}
+
+#integration > div {
+    display: inline-block;
+    float: left;
+    width: 40%;
+    padding: 0 5%;
+}
+
+#integration div h2 {
+    padding-bottom: 1px;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    margin-bottom: 12px;
+}
+
+#integration p {
+    margin: 0;
+}
+
+#integration p+p {
+    margin-top: 12px;
+}
+
+#integration > div:first-of-type p:last-of-type a,
+#integration > div:first-of-type+div a,
+#integration > p a {
+    color: white;
+    background-color: #86c200;
+    padding: 0 15px 2px;
+    border-radius: 100px;
+}
+
+#integration div+div+div {
+    width: 90%;
+    float: none;
+    margin: 30px auto 0;
+}
+
 #integration .container {
     display: table;
-    width: 720px;
+    float: none;
+    width: 84%;
     border-collapse: collapse;
     border-spacing: 0;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 #integration .container div {
@@ -243,6 +273,7 @@ section h1 {
 #integration .container div div {
     display: table-cell;
     vertical-align: middle;
+    width: 28%;
     height: 60px;
     border: 0;
 }
@@ -253,6 +284,12 @@ section h1 {
     max-width: 150px;
     box-shadow: initial;
     margin: 0 auto;
+}
+
+#integration ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 #oss {
