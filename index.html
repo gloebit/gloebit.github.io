@@ -1,82 +1,14 @@
 ---
 title: Gloebit Developer Overview
 page_css: stylesheets/index.css
+hide_title_heading: true
 ---
 
 <!doctype html>
 <html>
-  <head>
-    <title>{{ page.title }}</title>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="shortcut icon" href="https://www.gloebit.com/favicon.ico?v=3" />
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="{{ page.page_css }}">
-
-    <link rel="stylesheet" href="https://gloebit-static-prod-0.s3.amazonaws.com/static-1/css/icons.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
+  {% include head.html %}
   <body>
-    <!--
-    <div class="wrapper" id="vertical-logo">
-      <a href="https://www.gloebit.com/"><img src="images/logo-color-vertical-right-cropped.png" alt="Gloebit Logo"></a>
-    </div>
-    -->
-    <header>
-      <div class="wrapper">
-        <span>
-          <a href="https://www.gloebit.com/">&nbsp;<img src="images/Horizontal_White.png" alt="Gloebit Logo"></a>
-        </span>
-        <div class="drop-down">
-          <p>
-            <a href="merchants/">
-              For Merchants
-              <b class="caret"></b>
-            </a>
-          </p>
-          <ul class="drop-down-menu">
-            <li><a href="/services/">Services Available</a></li>
-            <li><a href="/benefits/">Benefits of Using Gloebit</a></li>
-            <li><a href="/user-auth/">Customer Authorization Flow</a></li>
-            <li><a href="/monetize/">Gloebit Transactions</a></li>
-            <li><a href="/pricing/">Pricing Details</a></li>
-          </ul>
-        </div>
-        <div class="drop-down">
-          <p>
-            <a href="developers/">
-              For Developers
-              <b class="caret"></b>
-            </a>
-          </p>
-          <ul class="drop-down-menu">
-            <li><a href="/services/">Services Overview</a></li>
-            <li><a href="/endpoints/">Services Interfaces</a></li>
-            <li><a href="/merchant-steps/">Integration Overview</a></li>
-            <li><a href="/apis/">Plugins, APIs, and Examples</a></li>
-            <li><a href="/sandbox-walkthru/">Sandbox Walk-Through</a></li>
-            <li><a href="/go-live-walkthru/">Production Walk-Through</a></li>
-            <li><a href="/app-config/">Application Configuration</a></li>
-          </ul>
-        </div>
-        <div class="drop-down" id="section-nav">
-          <p>
-            <a href="/">
-              <b class="caret"></b>
-              Sections
-            </a>
-          </p>
-        </div>
-      </div>
-    </header>
+    {% include header.html %}
 
     <nav>
       <ul>

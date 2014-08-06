@@ -1,8 +1,49 @@
 
 <!-- Common Developer Page Header -->
+
+    <!--  A square floating logo if we ever want it.
+    <div class="wrapper" id="vertical-logo">
+      <a href="https://www.gloebit.com/"><img src="images/logo-color-vertical-right-cropped.png" alt="Gloebit Logo"></a>
+    </div>
+    -->
+
     <header>
       <div class="wrapper">
-        <h1>{{ page.title }}</h1>
+        <span>
+          <a href="https://www.gloebit.com/">&nbsp;<img src="/images/Horizontal_White.png" alt="Gloebit Logo"></a>
+        </span>
+        <div class="drop-down">
+          <p>
+            <a href="merchants/">
+              For Merchants
+              <b class="caret"></b>
+            </a>
+          </p>
+          <ul class="drop-down-menu">
+            <li><a href="/services/">Services Available</a></li>
+            <li><a href="/benefits/">Benefits of Using Gloebit</a></li>
+            <li><a href="/user-auth/">Customer Authorization Flow</a></li>
+            <li><a href="/monetize/">Gloebit Transactions</a></li>
+            <li><a href="/pricing/">Pricing Details</a></li>
+          </ul>
+        </div>
+        <div class="drop-down">
+          <p>
+            <a href="developers/">
+              For Developers
+              <b class="caret"></b>
+            </a>
+          </p>
+          <ul class="drop-down-menu">
+            <li><a href="/services/">Services Overview</a></li>
+            <li><a href="/endpoints/">Services Interfaces</a></li>
+            <li><a href="/merchant-steps/">Integration Overview</a></li>
+            <li><a href="/apis/">Plugins, APIs, and Examples</a></li>
+            <li><a href="/sandbox-walkthru/">Sandbox Walk-Through</a></li>
+            <li><a href="/go-live-walkthru/">Production Walk-Through</a></li>
+            <li><a href="/app-config/">Application Configuration</a></li>
+          </ul>
+        </div>
         <div class="drop-down" id="section-nav">
           <p>
             <a href="/">
@@ -13,3 +54,11 @@
         </div>
       </div>
     </header>
+
+    {% unless page.hide_title_heading %}
+
+    <div class="wrapper">
+      <h1>{{ page.title }}</h1>
+    </div>
+
+    {% endunless %}
