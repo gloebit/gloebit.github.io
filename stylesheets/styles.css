@@ -1,10 +1,20 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+/* Comment out whichever one we don't use. */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,400,600);
+@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+
+html {
+    /*
+      Note: We set the root font-size to 14px here so 'rem' will be based on
+      14px.  However, we set font-size to 1.17rem (16px) for the body.  Yes,
+      it is a bit cockeyed...
+    */
+    font: 14px/1.5 "Open Sans", sans-serif;
+    font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 body {
     color: #777;
-    font: 16px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font: 14px/1.5 "Open Sans", sans-serif;
+    font-size: 1.17rem;
     font-weight: 300;
     padding: 0;
     margin: 0;
@@ -17,10 +27,15 @@ h1 {
 
 h2 {
     color: #393939;
+    font-size: 1.6rem;
 }
 
 h3, h4, h5, h6 {
     color: #494949;
+}
+
+h3 {
+    font-size: 1.3rem;
 }
 
 h1, h2, h3 {
@@ -28,15 +43,11 @@ h1, h2, h3 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 1rem;
+    margin: 0 0 16px;
 }
 
 p, ul, ol {
-    margin: 0 0 1rem;
-}
-
-p, li {
-    font-size: 16px;
+    margin: 0 0 16px;
 }
 
 a {
@@ -61,13 +72,12 @@ header, footer {
     width: 100%;
     float: none;
     position: static;
-    font-size: 16px;
     background-color: #fcfcfc;
     box-shadow: 0 0 12px rgba(0,0,0,0.25);
 }
 
 header {
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
 }
 
 header img {
@@ -84,76 +94,81 @@ header h1 {
     margin: 5px 0px;
 }
 
-header p {
+header .drop-down {
     display: inline-block;
+    position: relative;    /* So drop-down can position absolute on it. */
+    margin: 0 10px;
+}
+
+header .drop-down#section-nav {
+    float: right;
+    position: relative;
+}
+
+header .drop-down p {
+    display: inline-block;
+    position: relative;
     border-radius: 5px;
-    margin: 0.5rem 0.5rem;
     border: 1px solid transparent;
+    margin: 8px 0 0;
+    z-index: 99;   /* Keep hover grey behind active drop-down-menu... */
 }
 
-header p a {
+header .drop-down p a {
     display: block;
-    color: #85c000;
-    padding: 0.25rem 0.5rem;
+    color: rgba(134,194,0,1.0);
+    padding: 4px 8px;
 }
 
-header p:hover {
+header .drop-down p:hover {
     background-color: #ececec;
 }
 
-header p.active {
+header .drop-down p.active {
     background-color: #fff;
-    border: 1px solid #85c000;
+    border: 1px solid rgba(134,194,0,1.0);
     border-bottom: none;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-header #section-nav {
-    float: right;
-    position: relative
-}
-
-header #section-nav p {
+header .drop-down#section-nav p {
     margin-right: 0;
 }
 
-.drop-down {
-    display: inline-block;
-}
-
-.caret {   /* Nice little down-arrow trick borrowed from haxe.org */
+.caret {   /* CSS Arrow trick */
     display: inline-block;
     width: 0;
     height: 0;
     vertical-align: center;
-    border-top: 4px solid #85c000;
+    border-top: 4px solid rgba(134,194,0,1.0);
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
     content: "";
 }
 
-.drop-down-menu {
+header .drop-down-menu {
     display: none;
     position: absolute;
+    top: 100%;
     list-style: none;
+    white-space: nowrap;
     background-color: #fff;
     padding: 10px;
-    border: 1px solid #85c000;
+    border: 1px solid rgba(134,194,0,1.0);
     border-radius: 10px;
     border-top-left-radius: 0;
     box-shadow: 2.5px 2.5px 5px rgba(0,0,0,0.10);
-    margin: -0.5rem 0.5rem 0.5rem;
+    z-index: 100;
 }
 
-.drop-down-menu li:hover {
-    color: #85c000;
+header .drop-down-menu li:hover {
+    color: rgba(134,194,0,1.0);
     background-color: #ececec;
 }
 
-#section-nav .drop-down-menu {
+header .drop-down#section-nav .drop-down-menu {
     right: 0;
-    white-space: nowrap;
     border-top-left-radius: 10px;
     border-top-right-radius: 0;
     margin-right: 0;
@@ -178,18 +193,69 @@ footer ul {
 
 footer li {
     display: inline-block;
-    margin: 0.5rem 0.05rem;
+    margin: 8px 1px;
 }
 
 footer a {
-    color: #85c000;
-    padding: 0.25rem 0.5rem;
+    color: rgba(134,194,0,1.0);
+    padding: 4px 8px;
     border-radius: 5px;
 }
 
 footer a:hover {
     color: #fcfcfc;
-    background-color: #85c000;
+    background-color: rgba(134,194,0,1.0);
+}
+
+footer .social-links {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer .social-tile {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 0;
+}
+
+footer .social-tile:first-child {
+    margin-left: 16px;
+}
+
+footer .social-tile a {
+    display: block;
+    width: 27px;
+    height: 27px;
+    text-align: center;
+    line-height: 27px;
+    color: #fff;
+    background-color: #4096d3;
+/*
+    background-color: #696969;
+*/
+    border-radius: 3px;
+    padding: 0;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
+
+footer .social-tile a:hover {
+    background-color: #70b2e0;
+/*
+    background-color: #7f7f7f;
+*/
+
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    transition: all 0.15s ease;
 }
 
 .anchor:before {
@@ -206,57 +272,6 @@ footer a:hover {
 
 img {
     box-shadow: 0 0 6px rgba(0,0,0,0.25);
-}
-
-.social-links {
-    display: inline-block;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.social-tile {
-    display: inline-block;
-    margin-left: 0.25rem;
-    padding: 0;
-}
-
-.social-tile:first-child {
-    margin-left: 1rem;
-}
-
-.social-tile a {
-    background-color: #4096d3;
-/*
-    background-color: #696969;
-*/
-    border-radius: 3px;
-    color: #fff;
-    display: block;
-    height: 1.67rem;
-    line-height: 167%;
-    width: 1.67rem;
-    text-align: center;
-
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-
-    -webkit-transition: all 0.15s ease;
-    -moz-transition: all 0.15s ease;
-    transition: all 0.15s ease;
-    padding: inherit;
-}
-
-.social-tile a:hover {
-    background-color: #70b2e0;
-/*
-    background-color: #7f7f7f;
-*/
-
-    -webkit-transition: all 0.15s ease;
-    -moz-transition: all 0.15s ease;
-    transition: all 0.15s ease;
 }
 
 .for-validation-only {
