@@ -1,0 +1,298 @@
+---
+title: Gloebit Application Configuration Instructions
+page_css:
+---
+
+<!doctype html>
+<html>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+
+    <nav>
+      <ul>
+        <li><a href="#app-info">Application Information</a></li>
+        <li><a href="#auth-info">Gloebit Authorization Information</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#characters">Characters</a></li>
+        <li><a href="#buttons">DELETE CANCEL SAVE</a></li>
+        <li><a href="#backup">Backups</a></li>
+      </ul>
+    </nav>
+
+    <section class="wrapper anchor" id="intro">
+      <h1 class="for-validation-only"> </h1>
+      <p>
+        The Application Configuration page is where you provide Gloebit the information we need for your application.  You access your applications' configuration pages from your Gloebit Merchant Tools page, in its Applications box on the top-left.  You also add new applications here.
+      </p>
+      <p>
+        If you are adding your first application, click on the Add an Application button.  You will be taken to the application configuration page for your first app.
+      </p>
+      <p>
+        To edit the information for one of your existing applications (or to delete the application), click on the Configure button next to the name of the application you want to configure.
+      </p>
+    </section>
+
+    <section class="wrapper anchor" id="app-info">
+      <h1>Application Information Fields</h1>
+      <p>
+        This section contains general settings for how your application is represented on the Gloebit site.
+      </p>
+
+      <h2>Name</h2>
+      <p>
+        The name you want Gloebit to use for your application.  Gloebit will display it in the following locations on the Gloebit website:
+      </p>
+      <ul>
+        <li>The discovery page for Partner Applications.</li>
+        <li>Users' Approved Application pages after authorizing your application.</li>
+        <li>Users' Dashboard pages and other user pages that display approved or partner applications.</li>
+        <li>Users' Transaction History pages (in each entry for a transaction with your application.)</li>
+        <li>Any Gloebit page displayed when your application sends a user to Gloebit, such as the Login, Authorization, and Purchase pages.</li>
+      </ul>
+
+      <h2>Description</h2>
+      <p>
+        A short description of your application.  Gloebit will display it in the following locations on the Gloebit website:
+      </p>
+      <ul>
+        <li>The discovery page for Partner Applications.</li>
+        <li>Users' Approved Application pages after authorizing your application.</li>
+        <li>Users' Dashboard pages and other user pages that display approved or partner applications.</li>
+      </ul>
+
+      <h2>Publisher</h2>
+      <p>
+        The name of your application's publisher or a parent company with many applications.  This field is useful for associating many applications with either a single publisher or a parent company.  Gloebit will display it in the following locations on the Gloebit website:
+      </p>
+      <ul>
+        <li>The discovery page for Partner Applications.</li>
+        <li>Users' Approved Application pages after authorizing your application.</li>
+      </ul>
+
+      <h2>Logo</h2>
+      <p>
+        A logo image for your application.  Gloebit will display it in the following locations on the Gloebit website:
+      </p>
+      <ul>
+        <li>The discovery page for Partner Applications.</li>
+        <li>Users' Approved Application pages after authorizing your application.</li>
+        <li>Users' Dashboard pages and other user pages that display approved or partner applications.</li>
+        <li>Any Gloebit page displayed when your application sends a user to Gloebit, such as the Login, Authorization, and Purchase pages.</li>
+      </ul>
+
+      <h3>Image Requirements</h3>
+      <ul>
+        <li>Resolution: 169px wide by 108px high (suggested).</li>
+        <li>Must be in PNG format.</li>
+      </ul>
+
+      <h2>Return-to Text</h2>
+      <p>
+        Special text for a trackback link back to your application's webpages (or homepage).  If left blank, Gloebit will use "Return to" with the name of your application for the link.  (Adding a return-to query arg in the request or having a default URI in the next field is necessary to display trackback links.)  Gloebit will display it in the following locations on the Gloebit website:
+      </p>
+      <ul>
+        <li>Any Gloebit page displayed when your application sends a user to Gloebit, such as the Login, Dashboard, and Purchase pages.</li>
+      </ul>
+
+      <h2>Default Return-to URI</h2>
+      <p>
+        The URI to redirect users to when they choose to return to your application's webpages (or homepage).  This URI is used for trackback links unless your application's HTTP requests include a URI in the return-to query arg, which will override this URI.  (If this field is left blank and your requests do not include return-to URIs, then Gloebit will omit the trackback links.)  Gloebit will use this URI for links to your application webpages in the following locations on the Gloebit website:
+      </p>
+      <ul>
+        <li>The discovery page for Partner Applications.</li>
+        <li>Users' Approved Application pages after authorizing your application.</li>
+        <li>Users' Dashboard pages and other user pages that display approved or partner applications.</li>
+        <li>Any Gloebit page displayed when your application sends a user to Gloebit, such as the Login, Authorization, and Purchase pages.</li>
+      </ul>
+
+      <h2>Make Application Findable</h2>
+      <p>
+        Controls whether your application is discoverable via the Partner Applications page on the Gloebit website.  Checking this will make your application visible on the Partner Applications page.
+      </p>
+
+      <h3>Processing Delay</h3>
+      <p>
+        On the production server, there may be a delay after making changes to this checkbox while we review any updates.  On the sandbox server, changes are immediate and checking it on sandbox will make your application visible there.
+      </p>
+
+    </section>
+
+    <section class="wrapper anchor" id="auth-info">
+      <h1>Gloebit Authorization Information Fields</h1>
+      <p>
+        This section contains settings used by your application and Gloebit to authorize your application's access to customer accounts.
+      </p>
+
+      <h2>OAuth Key</h2>
+      <p>
+        The Gloebit-assigned uuid for your application.  Your application uses this key to identify itself during authorization.  Note that this key is included in certain URLs and thus visible to users.  Nevertheless, you should not share this key with anyone.  This field is read-only.
+      </p>
+
+      <h2>OAuth Secret</h2>
+      <p>
+        A secret string to confirming your application's key.  Your application uses this key to verify its identity during the second step of two-step authorization.  Gloebit initially populates it with a uuid.  You may change the string to one of your choosing if you prefer.
+      </p>
+      <p>
+        <b>Keeping this string a secret is of utmost importance</b>.  Never share it with anyone and do not hard code it into an application where it could be discovered by a user.
+      </p>
+
+      <h2>OAuth Key Aliases</h2>
+      <p>
+        Alias strings for your application's OAuth Key.  You can define a aliases to use in URLs instead of the OAuth Key.  Friendly, readable aliases can result in tidier URLs in the user's URL bars.  Your application can use an alias in place of the key in the 'r' query argument for requests to Gloebit.
+      </p>
+      <p>
+        Aliases are unique across all of Gloebit.  If you get an error when trying to create one, try another.  We recommend something specific to your application name to reduce conflict chances.
+      </p>
+      <p>
+        We recommend using only alphanumeric characters, hyphens, and underscores in aliases.  You can use other characters, such as spaces; however they will be encoded and less readable when placed into URLs.
+      </p>
+      <p>
+        To add an alias, enter it in the "Add Another" text field and then press enter or click the SAVE button at the bottom of the page.
+      </p>
+
+      <h2>Callback URI Prefixes</h2>
+      <p>
+        Validation strings to match against URIs for your application.  These are optional, but recommended, security measure to guarantee that your users are returned to your application's webpages and helps prevent cross-site forgeries.  For any URI associated with your Gloebit key (via HTTP request or from within the system via this configuration), Gloebit will check it against these prefixes before using it.  A mismatching URI in an HTTP request will result in Gloebit responding with an invalid request.  Also, Gloebit will not use your Default Return-To URI if it does not match a prefix.
+      </p>
+      <p>
+        We recommend you provide URI prefixes for your application.  Here are further suggestions:
+      </p>
+      <ul>
+        <li>Provide as much of a prefix as possible.</li>
+        <li>Use a trailing slash on the prefix if applicable.  The slash is especially important if you are including only the hostname.  Otherwise, your hostname could match a sub-domain, such as http://host.game.com as a prefix matching http://host.game.com.cz in a supplied URI.</li>
+        <li>If you are using implicit OAuth2 authorization, we very strongly recommend you provide a prefix to match against your token callback URI.</li>
+      </ul>
+
+      <h2>Allow Implicit OAuth2</h2>
+      <p>
+        Controls whether to allow implicit OAuth2 authorization for your application.  Implicit authorization is a single-step authorization flow that is less secure but can be sufficient for trusted, server-less applications.  The setting is disabled by default but you can enable it if your application will use the OAuth2 implicit authorization flow.
+      </p>
+
+    </section>
+
+    <section class="wrapper anchor" id="products">
+      <h1>Product Descriptions</h1>
+      <p>
+        This section lets you define products for use with the Product Inventory Service and Product Parameters of the Transaction Service, if you choose to use them.
+      </p>
+
+      <h2>Name</h2>
+      <p>
+        The name of the product or entitlement.  Gloebit uses this name to identify the product when using the Product Inventory Service and Product Parameters of the Transaction Service.  The following are important considerations for product names:
+      </p>
+      <ul>
+        <li>You may change the name at anytime.  However, Gloebit does not automatically update the name across inventories for any user who currently has the product.</li>
+        <li>The name must be unique for the application.</li>
+      </ul>
+
+      <h2>Available</h2>
+      <p>
+        Indicates if product is avilable for purchase.  Clearing the check makes the product unavailable for purchase but keeps the product in your application's database in case you wish to make it available later.
+      </p>
+
+      <p>
+        Note that copies of the product already in user's and character's inventories are not affected by making a product unavailable.  The inventories will retain the products until you consume or remove them.
+      </p>
+
+      <h2>Price</h2>
+      <p>
+        The price in gloebits for the product.  Gloebit charges the user this price per product when using the Product Parameters of the Transaction Service.
+      </p>
+
+      <h2>No Inventory Limit</h2>
+      <p>
+        Indicates whether to have a limit on number of products in an inventory.  By default, there is no inventory limit for a product.  Clearing this will allow you to enter a per-inventory limit for the product.
+      </p>
+
+      <h2>Per-Inventory Limit</h2>
+      <p>
+        The upper limit for product quantity in a user or character inventory when purchasing or granting the product.  If the inventory is at (or above) this limit, the grant or purchase transaction will fail.  Further details:
+      </p>
+      <ul>
+        <li>This field is not visible unless No Inventory Limit is cleared.</li>
+        <li>The limit should always be positive.  Setting it to 0 will effectively set No Inventory Limit.</li>
+        <li>If you reduce the limit and an inventory currently has more of than product than the limit, the inventory will not be reduced.</li>
+        <li>It is a per-inventory limit and not a per-character or per-user limit.  If your application allows for purchases of the product at user and character levels, those are distinct inventories and each can purchase up to the limit.</li>
+      </ul>
+
+      <h2>Can be Granted/Set</h2>
+      <p>
+        Indicates whether your application would like to grant the product or set product inventories outside of the Transaction Service.  By default this is off.  Turning it on enables additional functionality in the Product Inventory Service (i.e. non-transaction endpoints).
+      </p>
+
+      <p>
+        <b>Important:</b> If your application is using implicit OAuth2 authorization, enabling this feature may allow a user to mimic your application and grant or set products.
+      </p>
+
+      <h2>Add Product</h2>
+      <p>
+        To add a product, fill in the fields under Add Product, and then press enter or click SAVE at the bottom of the form.
+      </p>
+
+    </section>
+
+    <section class="wrapper anchor" id="characters">
+      <h1>Characters Settings</h1>
+      <p>
+        If your application is using Gloebit's Character Service, this section provides a couple means for controlling the service.
+      </p>
+
+      <h2>Allow Editing Characters</h2>
+      <p>
+        Indicates whether your application is allowed to edit character details after creation.  If this checkbox is cleared, Gloebit will not allow editing any character details.  By default it is cleared.
+      </p>
+      <p>
+        If your character parameters do not change (such as race=elf; sex=f; etc), then this is a good way to ensure your application doesn't accidentally make a change.
+      </p>
+      <p>
+        If you are storing more complex details such as experience and level, you may want to allow editing, or you may prefer to keep the character non-editable and storing those details as character inventory parameters.
+      </p>
+
+      <h2>Allow Editing Character Names</h2>
+      <p>
+        Indicates whether your application is allowed to edit character names after creation.  If this checkbox is cleared, Gloebit will not allow editing character names.  By default it is cleared.
+      </p>
+
+    </section>
+
+    <section class="wrapper anchor" id="buttons">
+      <h1>DELETE, CANCEL, and SAVE Buttons</h1>
+      <p>
+        These big, blue buttons submit the configuration form and update Gloebit.  Clicking on any will return you to your Merchant Tools page.
+      </p>
+
+      <h2>DELETE</h2>
+      <p>
+        Clicking on DELETE will permanently remove this application from Gloebit.
+      </p>
+
+      <h2>CANCEL</h2>
+      <p>
+        Clicking on CANCEL will discard any configuration changes.
+      </p>
+
+      <h2>SAVE</h2>
+      <p>
+        Clicking on SAVE will commit your configuration changes (including adding new aliases, prefixes, and products) to Gloebit.
+      </p>
+
+    </section>
+
+    <section class="wrapper anchor" id="backup">
+      <h1>Backups Buttons</h1>
+      <p>
+        These buttons allow you to save a copy of all settings on your local drive and restore them from a JSON file.
+      </p>
+      <ul>
+        <li>We recommend saving api-settings frequently in case you accidentally make changes you didn't intend.  You can always restore from the last download you saved.</li>
+        <li>If you are making temporary changes, such as for a weekend sale on product prices, save prior to your changes and then simply restore at the end of the weekend.</li>
+        <li>When you are ready to go live after testing your application in sandbox, the simplest way to copy your api-settings to production is to Download Settings from the sandbox api-settings; then create the application on production and Restore Settings on production from the JSON file you saved from sandbox.</li>
+      </ul>
+      
+    </section>
+
+    {% include footer_scripts.html %}
+
+  </body>
+</html>
