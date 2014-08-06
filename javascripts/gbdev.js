@@ -5,24 +5,24 @@ $(function(){
 
     var clonedHeader;
     $('header').each(function(){
-        $(this).addClass('visible');
+        $(this).addClass('original');
         clonedHeader = $(this);
         clonedHeader
             .before(clonedHeader.clone())
             .css({'width':'100%'})
-            .addClass('invisible')
-            .removeClass('visible');
+            .addClass('clone')
+            .removeClass('original');
     });
 
-    $(window).scroll(function(){
-        if ($(this).scrollTop() > 0) {
-            $('header.visible').css({'position':'fixed'});
-            $('header.invisible').show();
-        } else {
-            $('header.visible').css({'position':'static'});
-            $('header.invisible').hide();
-        }
-    });
+    /* 
+      $(window).scroll(function(){
+          if ($(this).scrollTop() > 0) {
+              $('header.clone').show();
+          } else {
+              $('header.clone').hide();
+          }
+      });
+    */
 
     /* Must come after header cloning (if any)! */
     $('.drop-down').on('click', function(ev) {
@@ -45,7 +45,7 @@ $(function(){
     /* Set anchor padding/margin to offset under fixed header bar. */
     /* These are added to stylesheet[0] to allow @media overrides. */
     var PADDING_FROM_HEADER = 25;
-    var headerHeight = $('header.visible').height()+PADDING_FROM_HEADER;
+    var headerHeight = $('header.original').height()+PADDING_FROM_HEADER;
     try {
         document.styleSheets[0].addRule('.anchor::before','padding: '+headerHeight+'px 0 0');
         document.styleSheets[0].addRule('.anchor::before','margin: -'+headerHeight+'px 0 0');

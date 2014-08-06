@@ -4,7 +4,7 @@ header + div {
 }
 
 section.wrapper {
-    margin-top: 35px;
+    margin-bottom: 35px;
 }
 
 section h1 {
@@ -13,6 +13,28 @@ section h1 {
     padding-bottom: 2px;
     border-bottom: 1px solid rgba(134,194,0,0.4);
     /* box-shadow: 0 2px 2px 0 rgba(134,194,0,0.25); */
+    margin-bottom: 1.25rem;
+}
+
+/* White-on-green oval link buttons */
+#services div a,
+#benefits p a,
+#started div+p a,
+#consumer p a,
+#monetizing > p:last-of-type a,
+#pricing p a,
+#integration > div:first-of-type p:last-of-type a,
+#integration > div:first-of-type+div a,
+#integration > p a {
+    color: white;
+    background-color: #86c200;
+    padding: 1px 15px 2px;
+    border-radius: 100px;
+}
+
+/* Temporary space until we add hero slides. */
+#services {
+    margin-top: 35px;
 }
 
 #services {
@@ -29,23 +51,23 @@ section h1 {
     margin: 10px 8px;
 }
 
-#services div h2 {
-    text-align: center;
+/* Restore bottom margin (1rem) of last div, add a bit for the box-shadow. */
+#services div:last-of-type {
+    margin-bottom: 1.5rem;
 }
 
 #services div p {
-    margin-bottom: 2px;
+    margin-bottom: 0.125rem;
 }
 
-#services div p + p {
+#services div p+p {
     border-top: 1px solid rgba(134,194,0,0.5);
+    margin-bottom: 0.5rem;  /* Adjust for a's relative offset below. */
 }
 
 #services div a {
-    color: white;
-    background-color: #86c200;
-    padding: 0 15px 2px;
-    border-radius: 100px;
+    position: relative;
+    top: 0.375rem;   /* If changing, adjust div p+p's margin-bottom above. */
 }
 
 #benefits {
@@ -78,28 +100,21 @@ section h1 {
     box-shadow: 0 0 6px rgba(0,0,0,0.08) inset;
 }
 
-#benefits p a {
-    color: white;
-    background-color: #86c200;
-    padding: 0 15px 2px;
-    border-radius: 100px;
-}
-
 #started div {
-    width: 660px;
+    width: 77%;
     margin: 0 auto;
 }
 
 #started div h3 {
-    padding-top: 2px;
+    padding-top: 3px;
     margin-left: 55px;
 }
 
 #started div h2 {
     display: inline-block;
     color: rgba(134,194,0,1);
-    margin-top: 6px;
-    margin-left: 20px;
+    margin-top: 12px;
+    margin-left: 12px;
 }
 
 #started div ol {
@@ -116,35 +131,21 @@ section h1 {
     text-align: center;
 }
 
-#started div+p a {
-    color: white;
-    background-color: #86c200;
-    padding: 0 15px 2px;
-    border-radius: 100px;
-}
-
 #consumer h1+p {
     float: left;
-    max-width: 60%;
+    max-width: 56%;
 }
 
 #consumer img {
     float: right;
     box-sizing: border-box;
-    max-width: 36%;
+    max-width: 40%;
     margin: 10px 2%;
 }
 
 #consumer p:last-of-type {
     display: block;
     text-align: center;
-}
-
-#consumer p a {
-    color: white;
-    background-color: #86c200;
-    padding: 0 15px 2px;
-    border-radius: 100px;
 }
 
 #monetizing h2 {
@@ -181,10 +182,6 @@ section h1 {
 }
 
 #monetizing>p:last-of-type a {
-    color: white;
-    background-color: #86c200;
-    padding: 0 15px 2px;
-    border-radius: 100px;
     margin-bottom: 20px;
 }
 
@@ -209,15 +206,15 @@ section h1 {
 }
 
 #pricing p a {
-    color: white;
-    background-color: #86c200;
-    padding: 0 15px 2px;
-    border-radius: 100px;
     margin-bottom: 20px;
 }
 
 #integration {
     text-align: center;
+}
+
+#integration h1 {
+    margin-bottom: 30px;
 }
 
 #integration > div {
@@ -228,8 +225,11 @@ section h1 {
 }
 
 #integration div h2 {
-    padding-bottom: 1px;
-    border-bottom: 1px solid rgba(0,0,0,0.5);
+    text-decoration: underline;
+    /*
+      padding-bottom: 1px;
+      border-bottom: 1px solid rgba(0,0,0,0.5);
+    */
     margin-bottom: 12px;
 }
 
@@ -241,19 +241,10 @@ section h1 {
     margin-top: 12px;
 }
 
-#integration > div:first-of-type p:last-of-type a,
-#integration > div:first-of-type+div a,
-#integration > p a {
-    color: white;
-    background-color: #86c200;
-    padding: 0 15px 2px;
-    border-radius: 100px;
-}
-
 #integration div+div+div {
-    width: 90%;
+    width: 80%;
     float: none;
-    margin: 30px auto 0;
+    margin: 40px auto 0;
 }
 
 #integration .container {
@@ -262,7 +253,7 @@ section h1 {
     width: 84%;
     border-collapse: collapse;
     border-spacing: 0;
-    margin: 20px auto;
+    margin: 30px auto;
 }
 
 #integration .container div {
