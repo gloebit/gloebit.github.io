@@ -1,11 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,400,600);
 
 body {
     color: #777;
-    /*
-      font: 14px/1.5 "Proxima Nova", "Open Sans", sans-serif;
-    */
-    font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 16px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 14px/1.5 "Open Sans", sans-serif;
     font-weight: 300;
     padding: 0;
     margin: 0;
@@ -13,7 +12,7 @@ body {
 
 h1 {
     color: #222;
-    font-size: 28px;
+    font-size: 2.0rem;
 }
 
 h2 {
@@ -36,9 +35,12 @@ p, ul, ol {
     margin: 0 0 1rem;
 }
 
+p, li {
+    font-size: 16px;
+}
+
 a {
     color: #3f96d3;
-    font-weight: 400;
     text-decoration: none;
 }
 
@@ -59,6 +61,7 @@ header, footer {
     width: 100%;
     float: none;
     position: static;
+    font-size: 16px;
     background-color: #fcfcfc;
     box-shadow: 0 0 12px rgba(0,0,0,0.25);
 }
@@ -83,7 +86,6 @@ header h1 {
 
 header p {
     display: inline-block;
-    font-size: initial;
     border-radius: 5px;
     margin: 0.5rem 0.5rem;
     border: 1px solid transparent;
@@ -176,7 +178,6 @@ footer ul {
 
 footer li {
     display: inline-block;
-    font-size: initial;
     margin: 0.5rem 0.05rem;
 }
 
@@ -201,10 +202,6 @@ footer a:hover {
     padding: 50px 0 0;
     margin: -50px 0 0;
 */
-}
-
-p, li {
-    font-size: 1.0rem;
 }
 
 img {
@@ -236,9 +233,8 @@ img {
     border-radius: 3px;
     color: #fff;
     display: block;
-    font-size: 1rem;
     height: 1.67rem;
-    line-height: 1.67rem;
+    line-height: 167%;
     width: 1.67rem;
     text-align: center;
 

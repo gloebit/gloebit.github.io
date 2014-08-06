@@ -273,7 +273,7 @@ section h1 {
     display: block;
     vertical-align: middle;
     max-width: 150px;
-    box-shadow: initial;
+    box-shadow: none;
     margin: 0 auto;
 }
 
