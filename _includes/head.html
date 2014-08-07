@@ -4,18 +4,20 @@
     <title>{{ page.title }}</title>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    -->
+    <meta name="viewport" content="initial-scale=1">
 
     <link rel="shortcut icon" href="https://www.gloebit.com/favicon.ico?v=3" />
 
-    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
     {% if page.page_css %}
     <link rel="stylesheet" href="{{ page.page_css }}">
     {% endif %}
 
     <link rel="stylesheet" href="https://gloebit-static-prod-0.s3.amazonaws.com/static-1/css/icons.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
