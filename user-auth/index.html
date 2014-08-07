@@ -21,22 +21,22 @@ page_css:
       <p>
         First, the application informs the user that it uses Gloebit services and that the user must authorize access to the user's Gloebit account:
       </p>
-      <img src="../images/tttinform.png" alt="Tic-Tac-Toe Inform Dialog">
+      <img src="/images/tttinform.png" alt="Tic-Tac-Toe Inform Dialog">
 
       <p>
         In the Tic-Tac-Toe application, when the user clicks on the "CREATE/LINK GLOEBIT ACCOUNT" button, the application redirects the user to the Gloebit authorization service endpoint.  The service first checks if the user is already logged in to Gloebit.  If not, the authorization services redirects the user to the User Login page with trackback imagery for the Tic-Tac-Toe application:
       </p>
-      <img src="../images/tttuserlogin.png" alt="Gloebit User Login Page for Tic-Tac-Toe">
+      <img src="/images/tttuserlogin.png" alt="Gloebit User Login Page for Tic-Tac-Toe">
 
       <p>
         After the user logs in, or if the user was already logged in, the Gloebit authorization service redirects the user to the Authorize page with trackback imagery for Tic-Tac-Toe.  This page asks the user to allow Tic-Tac-Toe access to the user's Gloebit account:
       </p>
-      <img src="../images/tttuserauth.png" alt="Gloebit Authorize Page for Tic-Tac-Toe">
+      <img src="/images/tttuserauth.png" alt="Gloebit Authorize Page for Tic-Tac-Toe">
 
       <p>
         After the user clicks Allow, the Gloebit authorization service grants an access token to the Tic-Tac-Toe application and redirects the user back to the application.  At this point, the user has successfully authorized the Tic-Tac-Toe application, and the application can use the Gloebit services.  The application uses the token to access the Gloebit Identity and Gloebit Digital Currency services and gather user account information, and then it presents its purchase page to the user:
       </p>
-      <img src="../images/tttpurchase.png" alt="Tic-Tac-Toe Purchase Dialog">
+      <img src="/images/tttpurchase.png" alt="Tic-Tac-Toe Purchase Dialog">
 
       <p>
         For more details about authorization, please see the <a href="/services/#auth">Authorization section of the Gloebit Services Overview</a> page and the <a href="/endpoints/#auth">Authorize section of the Gloebit Services API Details</a> page.
