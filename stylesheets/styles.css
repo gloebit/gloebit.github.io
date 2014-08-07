@@ -55,14 +55,6 @@ a {
     text-decoration: none;
 }
 
-img {
-    max-width: 100%;
-}
-
-section {
-    padding-bottom: 50px;
-}
-
 .wrapper {
     width: 860px;
     margin: 0 auto;
@@ -214,6 +206,10 @@ header button span+span {
     margin-top: 4px;
 }
 
+section {
+    padding-bottom: 50px;
+}
+
 footer ul {
     list-style: none;
     padding-left: 0;
@@ -287,6 +283,14 @@ footer .social-tile a:hover {
     transition: all 0.15s ease;
 }
 
+img {
+    max-width: 100%;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+}
+
+/* Offset the targets for links to page fragments to account for the fixed */
+/* header.  Don't put borders or padding-top on the anchor element or they */
+/* will interfere with the psuedo-element's padding.                       */
 .anchor:before {
     display: block;
     position: relative;
@@ -299,15 +303,16 @@ footer .social-tile a:hover {
 */
 }
 
-img {
-    box-shadow: 0 0 6px rgba(0,0,0,0.25);
-}
-
 .for-validation-only {
     display: none;
 }
 
 @media print, screen and (max-width: 960px) {
+
+    .wrapper {
+        width: 92%;
+    }
+
     header {
         padding-right: 0;
     }
@@ -383,10 +388,24 @@ img {
     }
         
     section {
-        padding: 0 20px 20px;
+        padding: 0 10px 20px;
         margin: 0 0 20px;
     }
+
+    .anchor:before {
+        padding: 0;
+        margin: 0;
+    }
 }
+
+@media print, screen and (max-width: 720px) {
+    section {
+        padding: 0 0 20px;
+    }
+
+    .wrapper {
+        width: 100%;
+    }
 
 @media print, screen and (max-width: 480px) {
     #vertical-logo, header.floating {
