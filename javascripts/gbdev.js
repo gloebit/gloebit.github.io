@@ -41,6 +41,10 @@ $(function(){
             };
         });
     });
+    $('header button').on('click', function(ev) {
+        $(this).siblings('.drop-down').toggleClass('collapsed');
+    });
+    $('header .drop-down').addClass('collapsed');
 
     /* Set anchor padding/margin to offset under fixed header bar. */
     /* These are added to stylesheet[0] to allow @media overrides. */

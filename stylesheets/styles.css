@@ -114,12 +114,6 @@ header .drop-down p {
     z-index: 99;   /* Keep hover grey behind active drop-down-menu... */
 }
 
-header .drop-down p a {
-    display: block;
-    color: rgba(134,194,0,1.0);
-    padding: 4px 8px;
-}
-
 header .drop-down p:hover {
     background-color: #ececec;
 }
@@ -132,22 +126,35 @@ header .drop-down p.active {
     border-bottom-right-radius: 0;
 }
 
-header .drop-down#section-nav p {
-    margin-right: 0;
+header .drop-down p a {
+    display: block;
+    color: rgba(134,194,0,1.0);
+    padding: 4px 16px 4px 8px;
+}
+
+header .drop-down#section-nav p a {
+    padding: 4px 8px 4px 16px;
 }
 
 .caret {   /* CSS Arrow trick */
     display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 4px;
     width: 0;
     height: 0;
-    vertical-align: center;
     border-top: 4px solid rgba(134,194,0,1.0);
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
     content: "";
 }
 
-header .drop-down-menu {
+header .drop-down#section-nav .caret {
+    right: initial;
+    left: 4px;
+}
+
+header .drop-down .drop-down-menu {
     display: none;
     position: absolute;
     top: 100%;
@@ -159,12 +166,8 @@ header .drop-down-menu {
     border-radius: 10px;
     border-top-left-radius: 0;
     box-shadow: 2.5px 2.5px 5px rgba(0,0,0,0.10);
+    margin: 0;
     z-index: 100;
-}
-
-header .drop-down-menu li:hover {
-    color: rgba(134,194,0,1.0);
-    background-color: #ececec;
 }
 
 header .drop-down#section-nav .drop-down-menu {
@@ -172,6 +175,11 @@ header .drop-down#section-nav .drop-down-menu {
     border-top-left-radius: 10px;
     border-top-right-radius: 0;
     margin-right: 0;
+}
+
+header .drop-down-menu li:hover {
+    color: rgba(134,194,0,1.0);
+    background-color: #ececec;
 }
 
 header.original {
@@ -183,6 +191,27 @@ header.original {
 header.clone {
     position: static;
     visibility: hidden;
+}
+
+header button {
+    display: none;
+    background-color: rgba(134,194,0,1);
+    padding: 6px 6px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+header button span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.25);
+}
+
+header button span+span {
+    margin-top: 4px;
 }
 
 footer ul {
@@ -278,12 +307,81 @@ img {
     display: none;
 }
 
-
 @media print, screen and (max-width: 960px) {
     header {
         padding-right: 0;
     }
 
+    header>div>span {
+        display: inline-block;
+    }
+
+    header.original {
+        position: static;
+    }
+
+    header.clone {
+        display: none;
+    }
+
+    header .drop-down {
+        display: inline-block;
+        width: 100%;
+    }
+
+    header .drop-down.collapsed {
+        display: none;
+    }
+
+    header .drop-down:first-of-type {
+        margin-top: 8px;
+    }
+
+    header .drop-down:last-of-type {
+        margin-bottom: 8px;
+    }
+
+    header .drop-down#section-nav {
+        float: none;
+    }
+
+    header .drop-down p {
+        margin: 0;
+    }
+
+    header .drop-down p.active {
+        border: none;
+    }
+
+    header .drop-down#section-nav p a {
+        padding: 4px 16px 4px 8px;
+    }
+
+    header .drop-down#section-nav .caret {
+        right: 4px;
+        left: initial;
+    }
+
+    header .drop-down .drop-down-menu {
+        position: relative;
+        border: none;
+        box-shadow: none;
+    }
+
+    header .drop-down .drop-down-menu {
+        padding: 0;
+        padding-left: 10px;
+    }
+
+    header .drop-down .drop-down-menu li {
+        padding: 3px 10px;
+    }
+
+    header button {
+        display: block;
+        float: right;
+    }
+        
     section {
         padding: 0 20px 20px;
         margin: 0 0 20px;
