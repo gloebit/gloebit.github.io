@@ -16,16 +16,10 @@ section h1 {
     margin-bottom: 1.25rem;
 }
 
-/* White-on-green oval link buttons */
+/* White-on-green oval link buttons for all sizes.  Many are only >480px. */
 #services div a,
-#benefits p a,
-#started div+p a,
-#consumer p a,
-#monetizing > p:last-of-type a,
-#pricing p a,
 #integration > div:first-of-type p:last-of-type a,
-#integration > div:first-of-type+div a,
-#integration > p a {
+#integration > div:first-of-type+div a {
     color: white;
     background-color: #86c200;
     padding: 0 15px 2px;
@@ -48,7 +42,7 @@ section h1 {
     min-width: 347px;
     padding: 10px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(133,192,0,0.5);
+    box-shadow: 0 0 10px rgba(134,194,0,0.5);
     margin: 10px 8px;
 }
 
@@ -410,9 +404,79 @@ section h1 {
     }
 }
 
+@media print, screen and (min-width: 481px) {
+    /* White-on-green oval link buttons */
+    #benefits p a,
+    #started div+p a,
+    #consumer p a,
+    #monetizing > p:last-of-type a,
+    #pricing p a,
+    #integration > p a
+    {
+        color: white;
+        background-color: #86c200;
+        padding: 0 15px 2px;
+        border-radius: 100px;
+    }
+}
+
 @media print, screen and (max-width: 480px) {
+    #benefits p a,
+    #started div+p a,
+    #consumer p a,
+    #monetizing > p:last-of-type a,
+    #pricing p a,
+    #integration > p a
+    {
+        color: #86c200;
+        text-decoration: underline;
+    }
+
+    section h1 {
+        text-align: left;
+        padding-left: 2px;
+    }
+
     #services div {
-        width: 85%;
+        width: 100%;
+        min-width: 0;
+        max-width: 360px;
+        padding: 10px 0 0;
+        border: 0 solid rgba(64,64,64,0.25);
+        border-top-width: 1px;
+        border-radius: 0px;
+        box-shadow: none;
+        margin: 0 0 15px;
+    }
+
+    #services div h2 {
+        text-decoration: underline;
+    }
+
+    #services div p:first-of-type {
+        text-decoration: underline;
+    }
+
+    #services div p+p {
+        border: 0;
+    }
+
+    #monetizing h2 {
+        display: block;
+        width: 100%;
+        padding: 0 2px;
+        margin-left: 0;
+    }
+
+    #monetizing div {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    #monetizing p {
+        padding-right: 2px;
+        padding-left: 2px;
     }
 
     #integration div div {
@@ -425,5 +489,11 @@ section h1 {
 
     #pricing img {
         width: 200px;
+    }
+
+    #oss p {
+        text-align: left;
+        padding-left: 2px;
+        padding-right: 2px;
     }
 }
