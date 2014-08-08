@@ -461,10 +461,14 @@ section h1 {
         border: 0;
     }
 
+    #started div ol {
+        margin-left: 0;
+    }
+
     #monetizing h2 {
         display: block;
-        width: 100%;
-        padding: 0 2px;
+        width: initial;
+        padding: 0 2px 0 0;
         margin-left: 0;
     }
 
@@ -474,21 +478,33 @@ section h1 {
         margin-right: 0;
     }
 
+    #monetize-consumer img {
+        max-width: 98%;
+    }
+
     #monetizing p {
         padding-right: 2px;
         padding-left: 2px;
     }
 
-    #integration div div {
-        display: block;
-        width: 66.667%;
-        min-width: 200px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
     #pricing img {
         width: 200px;
+    }
+
+    #integration div+div+div,
+    .container + p {
+        width: initial;
+        text-align: left;
+        padding: 0 2px;
+    }
+
+    .container p,
+    .container li {
+        text-align: center;
+    }
+
+    #integration .container {
+        width: initial;
     }
 
     #oss p {
