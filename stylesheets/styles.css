@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    color: #777;
+    color: #555;
     font-size: 1.17rem;
     font-weight: 400;
     padding: 0;
@@ -342,8 +342,7 @@ img {
     }
 
     header > div > div {
-        display: inline-block;
-        width: 100%;
+        display: block;
     }
 
     header > div > div.collapsed {

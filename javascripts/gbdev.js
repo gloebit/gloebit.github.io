@@ -98,5 +98,7 @@ $(function(){
       spot.  Force the scroll here.  Optionally, we could used constants
       in the CSS instead of having JS do the work...
     */
-    $('html,body').scrollTop($(window.location.hash).offset().top);
+    if (window.location.hash) {
+        $('html,body').scrollTop($(window.location.hash).offset().top);
+    }
 });
