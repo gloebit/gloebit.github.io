@@ -59,9 +59,9 @@ $(function(){
         });
     });
     $('header button').on('click', function(ev) {
-        $(this).siblings('.drop-down').toggleClass('collapsed');
+        $(this).siblings('header > div > div').toggleClass('collapsed');
     });
-    $('header .drop-down').addClass('collapsed');
+    $('header > div > div').addClass('collapsed');
 
     /* Set anchor padding/margin to offset under fixed header. */
     /* The header is fixed only for >960px.                    */
@@ -71,10 +71,16 @@ $(function(){
       try {
     */
     /* Add the default padding and negative margin for the offsets. */
-    document.styleSheets[0].insertRule('.anchor:before {padding: '+PADDING_FROM_HEADER+'px 0 0}', document.styleSheets[0].cssRules.length);
+    document.styleSheets[0].insertRule('.anchor:before {height: '+PADDING_FROM_HEADER+'px}', document.styleSheets[0].cssRules.length);
+    /*
+      document.styleSheets[0].insertRule('.anchor:before {padding: '+PADDING_FROM_HEADER+'px 0 0}', document.styleSheets[0].cssRules.length);
+    */
     document.styleSheets[0].insertRule('.anchor:before {margin: -'+PADDING_FROM_HEADER+'px 0 0}', document.styleSheets[0].cssRules.length);
     /* Add the >960px padding and negative margin for the offsets. */
-    document.styleSheets[0].insertRule('@media screen and (min-width:961px) { .anchor:before {padding: '+headerHeight+'px 0 0} }', document.styleSheets[0].cssRules.length);
+    document.styleSheets[0].insertRule('@media screen and (min-width:961px) { .anchor:before {height: '+headerHeight+'px} }', document.styleSheets[0].cssRules.length);
+    /*
+      document.styleSheets[0].insertRule('@media screen and (min-width:961px) { .anchor:before {padding: '+headerHeight+'px 0 0} }', document.styleSheets[0].cssRules.length);
+    */
     document.styleSheets[0].insertRule('@media screen and (min-width:961px) { .anchor:before {margin: -'+headerHeight+'px 0 0} }', document.styleSheets[0].cssRules.length);
     /*
       }
@@ -83,4 +89,14 @@ $(function(){
           document.styleSheets[0].addRule('.anchor::before','margin: -'+headerHeight+'px 0 0');
       }
     */
+
+    /*
+      Firefox fix.  When visiting a URL with a fragment that requires a
+      new page load, Firefox sets the scroll position before page-ready
+      javascript is called.  Becase we (currently) calculate the offset
+      for the fixed header at page-ready, Firefox scrolls to the wrong
+      spot.  Force the scroll here.  Optionally, we could used constants
+      in the CSS instead of having JS do the work...
+    */
+    $('html,body').scrollTop($(window.location.hash).offset().top);
 });

@@ -15,7 +15,7 @@ html {
 body {
     color: #777;
     font-size: 1.17rem;
-    font-weight: 300;
+    font-weight: 400;
     padding: 0;
     margin: 0;
 }
@@ -55,6 +55,14 @@ a {
     text-decoration: none;
 }
 
+nav {
+    /*
+      Code in gbdev.js moves the <nav> section into the header.  In case
+      the user has javascript disabled, hide the <nav> section.
+    */
+    display: none;
+}
+
 .wrapper {
     width: 860px;
     margin: 0 auto;
@@ -86,7 +94,7 @@ header h1 {
     margin: 5px 0px;
 }
 
-header .drop-down {
+header > div > div {
     display: inline-block;
     position: relative;    /* So drop-down can position absolute on it. */
     margin: 0 10px;
@@ -97,7 +105,7 @@ header .drop-down#section-nav {
     position: relative;
 }
 
-header .drop-down p {
+header > div > div p {
     display: inline-block;
     position: relative;
     border-radius: 5px;
@@ -106,11 +114,11 @@ header .drop-down p {
     z-index: 99;   /* Keep hover grey behind active drop-down-menu... */
 }
 
-header .drop-down p:hover {
+header > div > div p:hover {
     background-color: #ececec;
 }
 
-header .drop-down p.active {
+header > div > div p.active {
     background-color: #fff;
     border: 1px solid rgba(134,194,0,1.0);
     border-bottom: none;
@@ -118,10 +126,14 @@ header .drop-down p.active {
     border-bottom-right-radius: 0;
 }
 
-header .drop-down p a {
+header > div > div p a {
     display: block;
     color: rgba(134,194,0,1.0);
-    padding: 4px 16px 4px 8px;
+    padding: 4px 8px;
+}
+
+header .drop-down p a {
+    padding-right: 17px;
 }
 
 header .drop-down#section-nav p a {
@@ -132,7 +144,7 @@ header .drop-down#section-nav p a {
     display: inline-block;
     position: absolute;
     top: 50%;
-    right: 4px;
+    right: 5px;
     width: 0;
     height: 0;
     border-top: 4px solid rgba(134,194,0,1.0);
@@ -295,7 +307,7 @@ img {
     display: block;
     position: relative;
     width: 0;
-    content: " ";
+    content: "";
     visibility: hidden;
 /*  These are set via javascript in gbdev.js.  Look for headerHeight.
     padding: 50px 0 0;
@@ -329,20 +341,20 @@ img {
         display: none;
     }
 
-    header .drop-down {
+    header > div > div {
         display: inline-block;
         width: 100%;
     }
 
-    header .drop-down.collapsed {
+    header > div > div.collapsed {
         display: none;
     }
 
-    header .drop-down:first-of-type {
+    header > div > div:first-of-type {
         margin-top: 8px;
     }
 
-    header .drop-down:last-of-type {
+    header > div > div:last-of-type {
         margin-bottom: 8px;
     }
 
@@ -350,11 +362,11 @@ img {
         float: none;
     }
 
-    header .drop-down p {
+    header > div > div p {
         margin: 0;
     }
 
-    header .drop-down p.active {
+    header > div > div p.active {
         border: none;
     }
 
