@@ -49,14 +49,17 @@
         </div>
         <div>
           <p>
-            <a href="https://sandbox.gloebit.com/">Sandbox</a>
+            <a href="https://sandbox.gloebit.com/" target="_blank">Sandbox</a>
           </p>
         </div>
         <div>
           <p>
-            <a href="https://www.gloebit.com/">Main Site</a>
+            <a href="https://www.gloebit.com/" target="_blank">Main Site</a>
           </p>
         </div>
+
+        {% unless page.no_sections %}
+
         <div class="drop-down" id="section-nav">
           <p>
             <a href=".">Sections
@@ -64,6 +67,9 @@
             </a>
           </p>
         </div>
+
+        {% endunless %}
+
       </div>
     </header>
 

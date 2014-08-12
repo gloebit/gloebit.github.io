@@ -1,6 +1,6 @@
 /* Comment out whichever one we don't use. */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,400,600);
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,500,600,700,300italic,700italic);
 
 html {
     /*
@@ -131,6 +131,8 @@ header > div > div p.active {
 header > div > div p a {
     display: block;
     color: rgba(134,194,0,1.0);
+    font-size: 1.22rem;
+    text-shadow: 1px 1px 1px rgba(100,128,0,0.25);
     padding: 4px 8px;
 }
 

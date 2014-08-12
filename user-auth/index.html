@@ -1,15 +1,16 @@
 ---
 title: Gloebit Authorization Consumer Flow
 page_css:
+no_sections: true
 ---
 
 <!doctype html>
 <html>
   {% include head.html %}
   <body>
-    <section class="wrapper">
-      <h1>{{ page.title }}</h1>
+    {% include header.html %}
 
+    <section class="wrapper">
       <p>
         At some point prior to your application accessing Gloebit services for one of your customer's account, the application must request authorization from the customer.  Your application can invoke the authorization flow anytime before first accessing a Gloebit service, for example at application startup or the first time the user's action trigger the need for a Gloebit service, such as purchasing a product.
       </p>

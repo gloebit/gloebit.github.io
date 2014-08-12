@@ -18,12 +18,21 @@ section h1 {
 
 /* White-on-green oval link buttons for all sizes.  Many are only >480px. */
 #services div a,
+#benefits p a,
+#started div+p a,
+#consumer p a,
+#monetizing > p:last-of-type a,
+#pricing p a,
 #integration > div:first-of-type p:last-of-type a,
-#integration > div:first-of-type+div a {
+#integration > div:first-of-type+div a,
+#integration > p a {
     color: white;
     background-color: #86c200;
-    padding: 0 15px 2px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+    padding: 1px 10px 3px 12px;
+    border: 1px solid rgba(100,132,0,0.5);
     border-radius: 100px;
+    box-shadow: 0 0 6px rgba(110,160,0,0.25) inset;
 }
 
 /* Temporary space until we add hero slides. */
@@ -406,12 +415,6 @@ section h1 {
 
 @media print, screen and (min-width: 1px) {
     /* White-on-green oval link buttons */
-    #benefits p a,
-    #started div+p a,
-    #consumer p a,
-    #monetizing > p:last-of-type a,
-    #pricing p a,
-    #integration > p a
     {
         color: white;
         background-color: #86c200;
