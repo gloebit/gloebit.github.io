@@ -29,7 +29,7 @@ section h1 {
     color: white;
     background-color: #86c200;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
-    padding: 1px 10px 3px 12px;
+    padding: 1px 11px 3px 12px;
     border: 1px solid rgba(100,132,0,0.5);
     border-radius: 100px;
     box-shadow: 0 0 6px rgba(110,160,0,0.25) inset;
@@ -413,17 +413,8 @@ section h1 {
     }
 }
 
-@media print, screen and (min-width: 1px) {
-    /* White-on-green oval link buttons */
-    {
-        color: white;
-        background-color: #86c200;
-        padding: 0 15px 2px;
-        border-radius: 100px;
-    }
-}
-
 @media print, screen and (max-width: 480px) {
+    /* Oval buttons that will wrap. */
     #benefits p a,
     #started div+p a,
     #consumer p a,
@@ -434,10 +425,6 @@ section h1 {
         display: inline-block;
         max-width: 80%;
         line-height: 1.36rem;
-        /*
-          color: #86c200;
-          text-decoration: underline;
-        */
     }
 
     section h1 {

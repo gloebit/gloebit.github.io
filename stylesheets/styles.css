@@ -434,11 +434,6 @@ img {
     .wrapper {
         width: 100%;
     }
-
-@media print, screen and (max-width: 480px) {
-    #vertical-logo, header.floating {
-        display: none;
-    }
 }
 
 /* Junk Drawer - styles no longer user. */
@@ -449,4 +444,10 @@ img {
     width: 100px;          /* set width same as header img width */
     margin-bottom: -92px;  /* negative of resulting image height */
     z-index: 199;
+}
+
+@media print, screen and (max-width: 480px) {
+    #vertical-logo, header.floating {
+        display: none;
+    }
 }
