@@ -404,7 +404,7 @@ section h1 {
     }
 }
 
-@media print, screen and (min-width: 481px) {
+@media print, screen and (min-width: 1px) {
     /* White-on-green oval link buttons */
     #benefits p a,
     #started div+p a,
@@ -428,8 +428,13 @@ section h1 {
     #pricing p a,
     #integration > p a
     {
-        color: #86c200;
-        text-decoration: underline;
+        display: inline-block;
+        max-width: 80%;
+        line-height: 1.36rem;
+        /*
+          color: #86c200;
+          text-decoration: underline;
+        */
     }
 
     section h1 {
@@ -437,18 +442,29 @@ section h1 {
         padding-left: 2px;
     }
 
+    #services > p {
+        text-align: left;
+        padding: 0 4px;
+    }
+
     #services div {
+        display: block;
+        width: auto;
+        max-width: 360px;
+        margin: 12px auto;
+        /*
         width: 100%;
         min-width: 0;
-        max-width: 360px;
         padding: 10px 0 0;
         border: 0 solid rgba(64,64,64,0.25);
         border-top-width: 1px;
         border-radius: 0px;
         box-shadow: none;
         margin: 0 0 15px;
+        */
     }
 
+/*
     #services div h2 {
         text-decoration: underline;
     }
@@ -460,15 +476,20 @@ section h1 {
     #services div p+p {
         border: 0;
     }
+*/
 
     #started div ol {
         margin-left: 0;
     }
 
+    #consumer p {
+        padding: 0 4px;
+    }
+
     #monetizing h2 {
         display: block;
         width: initial;
-        padding: 0 2px 0 0;
+        padding: 0 4px;
         margin-left: 0;
     }
 
@@ -483,8 +504,7 @@ section h1 {
     }
 
     #monetizing p {
-        padding-right: 2px;
-        padding-left: 2px;
+        padding: 0 4px;
     }
 
     #pricing img {
@@ -495,7 +515,7 @@ section h1 {
     .container + p {
         width: initial;
         text-align: left;
-        padding: 0 2px;
+        padding: 0 4px;
     }
 
     .container p,
@@ -507,9 +527,19 @@ section h1 {
         width: initial;
     }
 
+    #integration p:last-of-type {
+        text-align: center;
+    }
+
     #oss p {
         text-align: left;
-        padding-left: 2px;
-        padding-right: 2px;
+        padding: 0 4px;
+    }
+}
+
+@media print, screen and (max-width: 390px) {
+    #services div {
+        margin: 12px 6px;
+        min-width: 0;
     }
 }
