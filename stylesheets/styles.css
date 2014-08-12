@@ -132,7 +132,7 @@ header > div > div p a {
     display: block;
     color: rgba(134,194,0,1.0);
     font-size: 1.22rem;
-    text-shadow: 1px 1px 1px rgba(100,128,0,0.25);
+    text-shadow: 0.5px 0.5px 1px rgba(60,100,0,0.15);
     padding: 4px 8px;
 }
 
@@ -243,6 +243,7 @@ footer li {
 
 footer a {
     color: rgba(134,194,0,1.0);
+    text-shadow: 0.5px 0.5px 1px rgba(60,100,0,0.15);
     padding: 4px 8px;
     border-radius: 5px;
 }
