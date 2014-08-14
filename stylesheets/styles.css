@@ -130,10 +130,11 @@ header > div > div p.active {
 
 header > div > div p a {
     display: block;
-    color: rgba(134,194,0,1.0);
+    color: rgba(134,194,0,0.95);
     font-size: 1.22rem;
-    text-shadow: 0.5px 0.5px 1px rgba(60,100,0,0.15);
-    padding: 4px 8px;
+    font-weight: 700;
+    text-shadow: 0 0 black;
+    padding: 4px 6px;
 }
 
 header .drop-down p a {
