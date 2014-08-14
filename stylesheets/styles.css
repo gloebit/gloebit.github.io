@@ -76,8 +76,22 @@ header, footer {
     box-shadow: 0 0 12px rgba(0,0,0,0.25);
 }
 
-header {
+header,
+header+.clone {
     margin-bottom: 20px;
+}
+
+header,
+header.original {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+}
+
+header+.clone,
+header.clone {
+    position: static;
+    visibility: hidden;
 }
 
 header img {
@@ -193,17 +207,6 @@ header .drop-down-menu li:hover {
 
 header .drop-down-menu a {
     display: block;
-}
-
-header.original {
-    position: fixed;
-    top: 0;
-    z-index: 99;
-}
-
-header.clone {
-    position: static;
-    visibility: hidden;
 }
 
 header button {

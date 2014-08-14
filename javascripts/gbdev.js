@@ -5,9 +5,12 @@
 $(function(){
     /* Move the nav element's list of section links to the Sections drop- */
     /* down menu in the header.  (See header.html.)                       */
-    $('nav ul').detach()
-               .appendTo('header #section-nav')
-               .addClass('drop-down-menu');
+    if ( $('header #section-nav').length ) {
+        $('nav ul')
+            .detach()
+            .appendTo('header #section-nav')
+            .addClass('drop-down-menu');
+    }
 
     /* Clone the header so it can stay fixed to top of window and the     */
     /* cloned header can take up space at the top of the page.  We could  */
@@ -15,6 +18,7 @@ $(function(){
     /* space.  This JS is leftover from when headers were different sizes */
     /* and headers would scroll a bit before becoming fixed, and so on.   */
     /* See the commented out JS below watching the window scroll...       */
+/*
     var clonedHeader;
     $('header').each(function(){
         $(this).addClass('original');
@@ -25,6 +29,12 @@ $(function(){
             .addClass('clone')
             .removeClass('original');
     });
+*/
+    /* Instead of cloning the header, make a div clone that has the same  */
+    /* height.  It will avoid problems caused by elements in the cloned   */
+    /* header, such as the image.                                         */
+    $('header').after('<div class="clone" style="width:100%"></div>');
+    $('header+.clone').height($('header').height());
 
     /* No longer need to check scroll position to fix the header.         */
     /* 
@@ -66,7 +76,7 @@ $(function(){
     /* Set anchor padding/margin to offset under fixed header. */
     /* The header is fixed only for >960px.                    */
     var PADDING_FROM_HEADER = 20;
-    var headerHeight = $('header.original').height()+PADDING_FROM_HEADER;
+    var headerHeight = $('header').height()+PADDING_FROM_HEADER;
     /*
       try {
     */
