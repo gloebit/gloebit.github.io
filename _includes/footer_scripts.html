@@ -19,9 +19,13 @@
       </div>
     </footer>
 
-    <script type="text/javascript" src="../javascripts/scale.fix.js"></script>
+    <script type="text/javascript" src="/javascripts/scale.fix.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../javascripts/gbdev.js"></script>
+    <script type="text/javascript" src="/javascripts/gbdev.js"></script>
+
+    {% if page.page_js %}
+    <script type="text/javascript" src="{{ page.page_js }}"></script>
+    {% endif %}
 
     <!-- Google Analytics -->
     <script>
