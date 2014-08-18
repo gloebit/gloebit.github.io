@@ -313,71 +313,13 @@ no_sections: true
             <li>Requires access token with a scope that includes "character".  See Authorization section for details.</li>
           </ul>
 
-          <h2 class="anchor" id="create-character">Create Character</h2>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/create-character</li>
-            <li>Production: https://www.gloebit.com/create-character</li>
-          </ul>
-          Arguments: access token, name<br>
-          Returns: uuid
-          <ul>
-            <li>Verify that name is unique across all characters for this application.  If not, fail.
-              <ul>
-                <li>Will respond with an error that name is not unique.</li>
-                <li>Eventually would like to return with other name suggestions.</li>
-              </ul>
-            </li>
-            <li>Create a new character with name provided.</li>
-            <li>Return uuid for character.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.create_character %}
 
-          <h2 class="anchor" id="list-characters">Get List of Characters</h2>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/get-characters</li>
-            <li>Production: https://www.gloebit.com/get-characters</li>
-          </ul>
-          Arguments: access token<br>
-          Returns: JSON dictionary of {"name":"&lt;character uuid&gt;" pairs}
-          <ul>
-            <li>Provides a list of all characters for that user in that application.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.get_list_of_characters %}
 
-          <h2 class="anchor" id="update-character">Update Character</h2>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://www.gloebit.com/update-character</li>
-            <li>Production: https://www.gloebit.com/update-character</li>
-          </ul>
-          Arguments: access token, character uuid, character name, post JSON dictionary of {"key":value pairs}<br>
-          Returns: success or failure
-          <ul>
-            <li>For each key in the dictionary, if the key exists, updates the value; if the key does not exists, adds the key and value to the details for that character.</li>
-            <li>This will replace the old character.  Must include all keys that you would like to keep with the character.  If something is not included in the update which was in the original character, it will be deleted.</li>
-            <li>Name is required.  Same is not editing.  Different will set a new name</li>
-            <li>In order to use this method to edit character details or character names after the character has been created, you must enable this functionality in the Character section of the API Settings page for the application.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.update_character %}
 
-          <h2 class="anchor" id="delete-character">Delete Character</h2>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/delete-character</li>
-            <li>Production: https://www.gloebit.com/delete-character</li>
-          </ul>
-          Arguments: access token, character uuid<br>
-          Returns: success or failure
-          <ul>
-            <li>Deletes the character with the given uuid.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.delete_character %}
 
         </section>
 
