@@ -1,0 +1,28 @@
+
+id: user-id
+name: Get User ID
+service: Identity
+desc:
+  - p: >
+      An application uses this endpoint to retrieve the Gloebit user ID (uuid) for the user associated with an access token.
+method: GET
+uri_path: user
+bearer: true
+scope: user
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Response contains valid user ID and name.<br>
+          "false" - Request failed.  Values for "id" and "name", if included, are not valid.
+      - name: id
+        desc: Gloebit UUID for the user account associated with the access token.
+      - name: name
+        desc: |
+          User's display name in the Gloebit system.<br>
+          Will be an empty string if user has not entered a display name for the Gloebit account.
+      - name: reason
+        desc: Short description of why request failed.

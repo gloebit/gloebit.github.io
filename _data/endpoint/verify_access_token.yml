@@ -1,0 +1,21 @@
+
+id: verify-token
+name: Verify Access Token
+service: Authorization
+desc:
+  - p: >
+      An application may use this endpoint to check the validity of an access token.  The service provides this endpoint as a convenience and debug aid.  No Gloebit service requires using it.
+method: GET
+uri_path: no-op
+bearer: true
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Access token is valid.<br>
+          "false" - Access token is not valid.
+      - name: reason
+        desc: Short description of why access token is not valid.
