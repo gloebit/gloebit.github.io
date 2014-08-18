@@ -29,9 +29,13 @@ nav {
     font-size: 1rem;
 }
 
-nav h2 {
-    margin: 20px 0 0;
+nav h3 {
+    margin: 2px 0;
     color: #444;
+}
+
+nav ul + h3 {
+    margin-top: 12px;
 }
 
 nav ul {
