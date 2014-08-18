@@ -62,7 +62,7 @@ nav + div {
 }
 
 div.endpoint {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 div.endpoint h2 {
@@ -90,6 +90,7 @@ div.endpoint h4 {
 div.endpoint h3 {
     padding: 5px 10px;
     background-color: #888;
+    margin-top: 25px;
 }
 
 div.endpoint h3 span + span {
@@ -102,10 +103,14 @@ div.endpoint h3 span span {
 }
 
 div.endpoint h4 {
+    padding-left: 2px;
     border-bottom: 1px solid black;
+    margin-right: 4px;
+    margin-left: 4px;
 }
 
 div.endpoint hr {
+    display: none;
     color: rgba(0,0,0,0.5);
     margin: 18px 0;
 }
@@ -171,15 +176,49 @@ div.endpoint p {
     text-align: center;
 }
 
+.bearer p {
+    margin-bottom: 8px;
+}
+
+.bearer .header {
+    display: block;
+    font-size: 1.2rem;
+    padding: 0 16px;
+}
+
+.bearer .header + p {
+    margin-top: 8px;
+}
+
+.bearer .scope {
+    display: inline-block;
+    background-color: rgba(134,194,0,0.25);
+    border: 1px solid rgba(134,194,0,0.5);
+    border-radius: 5px;
+    padding: 11px 8px;
+    margin-top: 16px;
+}
+
+.bearer .scope span {
+    background-color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    padding: 4px 10px 5px;
+    border: 2px solid rgba(134,194,0,1);
+    border-radius: 1px;
+    margin-left: 8px;
+}
+
 div.endpoint table {
     border-collapse: collapse;
     width: 90%;
-    line-height: 1.4rem;
+    line-height: 1.45rem;
     margin: 0 auto 16px;
 }
 
 div.endpoint table th, .endpoint table td {
-    padding: 0 5px 1px;
+    vertical-align: top;
+    padding: 2px 5px 3px;
     border: 1px solid #444;
 }
 
