@@ -284,27 +284,7 @@ no_sections: true
 
           {% include ep_template.html ep=site.data.endpoint.exchange_for_access_token %}
 
-          <h2 class="anchor" id="verify-token">Verify Access Token</h2>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/no-op</li>
-            <li>Production: https://www.gloebit.com/no-op</li>
-          </ul>
-          Arguments: access token<br>
-          Returns: JSON dictionary {} for success or failure
-          <ul>
-            <li>{"success" : true , "reason" : "success"} --- success</li>
-            <li>{"success" : false , "reason" : "invalid access token"} --- failure due to invalid token</li>
-            <li>{"success" : false , "reason" : "&lt;failure details&gt;"} --- failure due to other reasons</li>
-          </ul>
-          Notes:
-          <ul>
-            <li>Checks to see if access token is valid.</li>
-            <li>Does not check scope of access token.</li>
-            <li>This functionality is not required, but may be useful if another api request fails to determine whether your access token has been revoked, or if you should retry your request as it was due to some other issue.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.verify_access_token %}
 
         </section>
 
@@ -318,20 +298,7 @@ no_sections: true
             <li>Requires access token with a scope that includes "user".  See Authorization section for details.</li>
           </ul>
 
-          <h2 class="anchor" id="user-id">Get User ID</h2>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/user</li>
-            <li>Production: https://www.gloebit.com/user</li>
-          </ul>
-          Arguments: access token<br>
-          Returns: JSON dictionary {} in body of response
-          <ul>
-            <li>{"id" : &lt;uuid&gt;, --- unique, consistent uuid</li>
-            <li>"name" : "&lt;display name&gt;}" --- string; blank if user has not input one in Gloebit's system.  This can change.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.get_user_id %}
 
         </section>
 
