@@ -22,55 +22,88 @@
                 {{ include.ep.uri_path }}
               </div>
             </div>
+            {% if include.ep.bearer %}
+            <hr>
+            <div class="bearer">
+              <h3>
+                <span>Access Token</span>
+                <span>{{ include.ep.name }}
+                  <span>(endpoint)</span>
+                </span>
+              </h3>
+              <p>
+                Endpoint requires an access token be sent in the HTTP header:
+              </p>
+              <code class="header">
+                Authorization: Bearer &lt;access_token&gt;
+              </code>
+              {% if include.ep.scope %}
+              <div class="scope">
+                Required <b>scope</b> for access token:
+                <span>{{ include.ep.scope }}</span>
+              </div>
+              {% else %}
+              <p>
+                Endpoint has no scope requirements for access token.
+              </p>
+              {% endif %}
+            </div>
+            {% endif %}
             <hr>
             <div class="parameters">
               <h3>
                 <span>Parameters</span>
-                <span>{{ include.ep.service }}
+                <span>{{ include.ep.name }}
                   <span>(endpoint)</span>
                 </span>
               </h3>
-              {% if include.ep.param.desc %}
-              <p>{{ include.ep.param.desc }}</p>
-              {% endif %}
-              {% if include.ep.param.query %}
-              <h4>Query Arguments</h4>
-              {% for group in include.ep.param.query %}
-              <table class="query-args">
-                <tr>
-                  <th colspan="2">{{ group.class }}</th>
-                </tr>
-                {% for param in group.param %}
-                <tr>
-                  <td>{{ param.name }}</td>
-                  <td>{{ param.desc }}</td>
-                </tr>
+              {% if include.ep.param %}
+                {% if include.ep.param.desc %}
+                <p>{{ include.ep.param.desc }}</p>
+                {% endif %}
+
+                {% if include.ep.param.query %}
+                <h4>Query Arguments</h4>
+                {% for group in include.ep.param.query %}
+                <table class="query-args">
+                  <tr>
+                    <th colspan="2">{{ group.class }}</th>
+                  </tr>
+                  {% for param in group.param %}
+                  <tr>
+                    <td>{{ param.name }}</td>
+                    <td>{{ param.desc }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
                 {% endfor %}
-              </table>
-              {% endfor %}
-              {% endif %}
-              {% if include.ep.param.form %}
-              <h4>Form (JSON) Arguments</h4>
-              {% for group in include.ep.param.form %}
-              <table class="form-args">
-                <tr>
-                  <th colspan="2">{{ group.class }}</th>
-                </tr>
-                {% for param in group.param %}
-                <tr>
-                  <td>{{ param.name }}</td>
-                  <td>{{ param.desc }}</td>
-                </tr>
+                {% endif %}
+
+                {% if include.ep.param.form %}
+                <h4>Form (JSON) Arguments</h4>
+                {% for group in include.ep.param.form %}
+                <table class="form-args">
+                  <tr>
+                    <th colspan="2">{{ group.class }}</th>
+                  </tr>
+                  {% for param in group.param %}
+                  <tr>
+                    <td>{{ param.name }}</td>
+                    <td>{{ param.desc }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
                 {% endfor %}
-              </table>
-              {% endfor %}
+                {% endif %}
+              {% else %}
+              <p>Endpoint takes no additional parameters.</p>
               {% endif %}
             </div>
             <hr>
             <div class="result">
               <h3>
                 <span>Result</span>
-                <span>{{ include.ep.service }}
+                <span>{{ include.ep.name }}
                   <span>(endpoint)</span>
                 </span>
               </h3>
@@ -93,7 +126,7 @@
             <div class="notes">
               <h3>
                 <span>Notes</span>
-                <span>{{ include.ep.service }}
+                <span>{{ include.ep.name }}
                   <span>(endpoint)</span>
                 </span>
               </h3>
