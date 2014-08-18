@@ -6,7 +6,7 @@ method: POST
 uri_path: oauth2/access-token
 desc:            # Endpoint description, as a sequence of mappings.
   - p: >
-      An application uses this endpoint to exchange an authorization code (received via the <a href="#authorize">Authorize</a> endpoint) for the access token to use with all Gloebit services.  This endpoint supports only the POST access method and all arguments must be in the body of the request.
+      An application uses this endpoint to exchange an authorization code (received via the <a href="#authorize">Authorize</a> endpoint) for the access token to use with all Gloebit services.  It is used only with the <a href="#auth-code">Authorization Code Grant</a> type of authorization request.  This endpoint supports only the POST access method and all parameters must be sent in the body of the request.
 param:
   desc: >
     All parameters are passed in the HTTP request body, either as a JSON dictionary or in "application/x-www-form-urlencoded" format.
@@ -36,7 +36,7 @@ param:
             <b>Note:</b> <i>Gloebit does not currently support "offline".</i>
 result:
   - p: >
-      Upon success, the endpoint will return a 200 code along with a JSON object:
+      Upon success, the endpoint will return an HTTP 200 code along with a JSON object:
     return:
       - name: access_token
         desc: The access token necessary for your application to access the user's resources within the requested scope(s).  You include this token as a "Bearer" token in the headers of requests to non-authorize endpoints.  Currently, Gloebit does not expire access tokens.  However, users may cancel authorizations at any time.
