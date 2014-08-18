@@ -62,7 +62,8 @@ nav + div {
 }
 
 div.endpoint {
-    margin-bottom: 50px;
+    margin-top: 50px;      /* Temporary! */
+    margin-bottom: 100px;  /* Temporary! */
 }
 
 div.endpoint h2 {
