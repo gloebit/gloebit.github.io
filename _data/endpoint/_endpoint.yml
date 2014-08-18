@@ -2,10 +2,12 @@
 id:              # Unique HTML identifer for anchor
 name:            # Name of endpoint
 service:         # Which Gloebit service the endpoint belongs to
-method:          # HTTP method for accessing the endpoint
-uri_path:        # The URI _path_ for the endpoint, not the full URI.
 desc:            # Endpoint description, as a sequence of mappings.
   - p: >         #   Currently only p keys are supported in the mappings.
+method:          # HTTP method for accessing the endpoint
+uri_path:        # The URI _path_ for the endpoint, not the full URI.
+bearer: true     # Remove (or set to false) if bearer access token not needed.
+scope:           # Required scope for access token.
 param:
   desc: >        # Optional blurb at top of parameters sections
   query:         # Query arguments mapping
@@ -21,9 +23,16 @@ param:
           desc:
         - name:
           desc:
+  form:          # JSON arguments mapping
+    - class:     # Header for table ("Required" or "Optional" or ...)
+      param:     # Sequence of {name: ..., desc: ...} mappings for parameters.
+        - name:  # ...same structure as query...
+          desc:
 result:          # Sequence of mappings.
   - p: >         # Every mapping must have a p key.
     return:      # Optional {name: ..., desc: ...} mapping of return values.
+      - name:
+        desc:
   - p: >
 notes:           # Optional sequence of to-be-bulleted list items
   - >
