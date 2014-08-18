@@ -1,0 +1,28 @@
+
+id: list-characters
+name: Get List of Characters
+service: Character
+desc: 
+  - p: >
+      An application uses this endpoint to get a list of the existing characters for the user account associated with the access token.
+method: GET
+uri_path: get-characters
+bearer: true
+scope: character
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Response contains a valid character list.<br>
+          "false" - Request failed.  Character list, if included, is not valid.
+      - name: characters
+        desc: |
+          Array of character information.  Each character's information is a dictionary:<br>
+          &nbsp;&nbsp;id: Gloebit UUID for character.
+          &nbsp;&nbsp;name: Character's name.
+          &nbsp;&nbsp;&lt;...&gt;: Additional parameters, if any.
+      - name: reason
+        desc: Short description of why request failed.

@@ -1,0 +1,46 @@
+
+id: create-character
+name: Create Character
+service: Character
+desc:
+  - p: >
+      An application uses this endpoint to create a character of the given name for the user account associated with the access token.  The character name must be unique among all character names created for the application.  The endpoint returns the Gloebit ID for the character.
+method: POST
+uri_path: create-character
+bearer: true
+scope: character
+param:
+  desc: >
+    All parameters are passed in the HTTP request body, either as a JSON dictionary or in "application/x-www-form-urlencoded" format.
+  form:
+    - class: Required
+      param:
+        - name: name
+          desc: Name of new character.  (Must be unique for application.)
+    - class: Optional
+      param:
+        - name: >
+            &lt;additional parameters&gt; (except 'id')
+          desc: Any additional parameters in the JSON dictionary are stored with created character.
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Character creation succeeded.<br>
+          "false" - Request failed.
+      - name: character
+        desc: |
+          Dictionary of new character information (if request succeeded):<br>
+          &nbsp;&nbsp;id: Gloebit UUID for new character.
+          &nbsp;&nbsp;name: Name of new character.
+          &nbsp;&nbsp;&lt;...&gt;: Additional parameters, if any.
+      - name: reason
+        desc: Short description of why request failed.
+notes:
+  - >
+    If character name is not unique among character names created for the application, the request will fail with success "false" and a reason indicating the non-uniqueness.  Eventually, we would like to return a list of alternative name suggestions in this case.
+  - >
+    This endpoint requires that the application get the character name.  We welcome suggestions for the look-and-feel of an endpoint flow that would involve Gloebit handling character name entry for your application.

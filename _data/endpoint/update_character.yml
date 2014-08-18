@@ -1,0 +1,50 @@
+
+id: update-character
+name: Update Character
+service: Character
+desc:
+  - p: >
+      An application uses this endpoint to <i>replace</i> all of the information stored for the provided character ID.  It requires configuring the application to allow editing characters on its <a href="/app-config/">Gloebit Application Configuration</a> page.  The character name, if changing, must be unique among all character names created for the application.  Changing character names requires configuring the application to allow editing character names on its <a href="/app-config/">Gloebit Application Configuration</a> page.
+method: POST
+uri_path: update_character
+bearer: true
+scope: character
+param:
+  desc: >
+    All parameters are passed in the HTTP request body, either as a JSON dictionary or in "application/x-www-form-urlencoded" format.
+  form:
+    - class: Required
+      param:
+        - name: id
+          desc: Gloebit UUID for character.
+        - name: name
+          desc: Character name.
+    - class: Optional
+      param:
+        - name: >
+            &lt;additional parameters&gt; (except 'id' and 'name')
+          desc: Any additional parameters in the JSON dictionary are stored with the updated character.
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Character update succeeded.<br>
+          "false" - Request failed.
+      - name: character
+        desc: |
+          Dictionary of character information (if request succeeded):<br>
+          &nbsp;&nbsp;id: Gloebit UUID for character.
+          &nbsp;&nbsp;name: New name of character.
+          &nbsp;&nbsp;&lt;...&gt;: Additional parameters, if any.
+      - name: reason
+        desc: Short description of why request failed.
+notes:
+  - >
+    This endpoint entirely replaces the information stored for the character.  If you want to preserve additional information stored with the character, you must include it in the JSON object.
+  - >
+    Use the <a href="list-characters">Get List of Characters</a> endpoint to retrieve all of the information stored for a character.
+  - >
+    The character ID is verified against the user and application associated with the access token.  The update request will fail if either does not match.

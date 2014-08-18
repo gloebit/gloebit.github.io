@@ -1,0 +1,33 @@
+
+id: delete-character
+name: Delete Character
+service: Character
+desc:
+  - p: >
+      An application uses this endpoint to delete the character associated with the provided character ID.
+method: POST
+uri_path: delete-character
+bearer: true
+scope: character
+param:
+  desc: >
+    All parameters are passed in the HTTP request body, either as a JSON dictionary or in "application/x-www-form-urlencoded" format.
+  form:
+    - class: Required
+      param:
+        - name: id
+          desc: Gloebit UUID for character.
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Character deletion succeeded.<br>
+          "false" - Request failed.
+      - name: reason
+        desc: Short description of why request failed.
+notes:
+  - >
+    The character ID is verified against the user and application associated with the access token.  The delete request will fail if either does not match.
