@@ -346,10 +346,12 @@ img {
         display: inline-block;
     }
 
+    header,
     header.original {
         position: static;
     }
 
+    header+.clone,
     header.clone {
         display: none;
     }
