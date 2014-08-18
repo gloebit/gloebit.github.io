@@ -1,0 +1,93 @@
+
+id: authorize
+name: Authorize
+service: Authorization
+method: Redirect (or&nbsp;GET)
+uri_path: oauth2/authorize
+desc:
+  - p: >
+      An application uses this endpoint to initiate the user authorization process.  The endpoint will acquire and return either an authorization code (for an <a href="#auth-code">Authorization Code Grant</a> request) or access token (for an <a href="#implicit">Implicit Grant</a> request).  It is returned via an HTTP 302 (redirect) response to a "redirect URI" provided by the application.
+  - p: >
+      The endpoint first verifies the provided redirect URI against the application's redirect prefixes (from the <a href="/app-config/">Gloebit Application Configuration</a> page).  Second, it prompts the user to log into Gloebit if not already logged on.  Third, it presents the user with an authorization page for the application and requested scope, and asks the user to confirm the request.  Fourth and last, it generates the requested grant and generates the redirect response.
+param:
+  desc: >
+    All <i>Authorize</i> parameters are supplied as query arguments appended to the URL.
+  query:
+    - class: Required
+      param:
+        - name: client_id
+          desc: Application's OAuth Key.
+        - name: scope
+          desc: |
+            Space-delimited string of requested access scopes.<br>
+            Scopes: user character inventory balance transact.
+        - name: redirect_uri
+          desc: Application's URI for Gloebit to deliver response to.
+        - name: response_type
+          desc: |
+            Application's requested grant type for OAuth2 authorization.<br>
+            "code" - <a href="#auth-code">Authorization Code Grant</a> type.<br>
+            "token" - <a href="#implicit">Implicit Grant</a> type.
+    - class: Optional
+      param:
+        - name: state
+          desc: Application-provided string used to maintain state between this request and the callback from Gloebit and to prevent cross-site request forgeries.
+        - name: access_type
+          desc: |
+            Possible values: "online", "offline"<br>
+            Default value: "online"<br>
+            <b>Note:</b> <i>Gloebit does not currently support "offline".</i>
+        - name: approval_prompt
+          desc: |
+            Possible values: "force", "auto"<br>
+            Default value: "force"<br>
+            "force" - Always present user with an authorization request page.<br>
+            "auto" - Conditionally request user's authorization.<br>
+            See <a href="#force-auto">Authorization "force"/"auto"</a> reference.
+        - name: user
+          desc: |
+            Application's name for user.<br>
+            Used solely for logging purposes.
+        - name: r
+          desc: |
+            Application's OAuth Key Alias.<br>
+            Obsolete - Gloebit generates trackback via client_id.
+        - name: return-to
+          desc: |
+            Application's URI for trackback links.<br>
+            Overrides URI provided in Default Return-To URI field on <a href="/app-config/">application's Gloebit configuration page</a>.
+result:
+  - p: >
+      Upon success, the authorize endpoint sends a 302 (redirect) response for the redirect URI and appends query arguments containing information for your application.
+  - p: >
+      If your authorize request used the "code" response type, the query arguments will containing the following:
+    return:
+      - name: code
+        desc: Authorization code to exchange for an access token.
+      - name: state
+        desc: &STATE_DESC If your authorize request included a "state" argument, the same value will be returned here.  If your request did not include a "state" argument, there will not be a "state" argument in the redirect response.
+  - p: >
+      If your authorize request used the "token" response type, the query arguments will contain the following:
+    return:
+      - name: token
+        desc: Access token for requested user and scope.
+      - name: token_type
+        desc: Currently not delivered.  Access token is always "bearer" type.
+      - name: state
+        desc: *STATE_DESC
+  - p: >
+      Authorization failures can result in two different outcomes.  The outcome is determined by the type of failure.
+  - p: >
+      If the user rejects authorization or Gloebit detects an invalid redirect URI in the request, the authorize endpoint will take the user to a Gloebit page with information about the request failure.  This page includes a trackback link to the requesting application.
+  - p: >
+      In all other cases, the authorize endpoint sends a 302 (redirect) response for the redirect URI and appends query arguments containing error information for your application:
+    return:
+      - name: error
+        desc: Error code string (defined in <a href="http://tools.ietf.org/html/rfc6749#section-4.1.2.1">OAuth 2.0 specification</a>).
+      - name: error_description
+        desc: A more detailed explanation of the failure reason.  May not always be included.
+      - name: state
+        desc: *STATE_DESC
+notes:
+  - >
+    Preferred HTTP method is to redirect the user's browser to the authorize URI.

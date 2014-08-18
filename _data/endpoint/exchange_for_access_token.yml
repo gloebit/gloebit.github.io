@@ -1,0 +1,44 @@
+
+id: access-token
+name: Exchange for Access Token
+service: Authorization
+method: POST
+uri_path: oauth2/access-token
+desc:            # Endpoint description, as a sequence of mappings.
+  - p: >
+      An application uses this endpoint to exchange an authorization code (received via the <a href="#authorize">Authorize</a> endpoint) for the access token to use with all Gloebit services.  This endpoint supports only the POST access method and all arguments must be in the body of the request.
+param:
+  desc: >
+    All parameters are passed in the HTTP request body, either as a JSON dictionary or in "application/x-www-form-urlencoded" format.
+  form:
+    - class: Required
+      param:
+        - name: client_id
+          desc: Application's OAuth Key.
+        - name: client_secret
+          desc: Application's OAuth Secret.
+        - name: code
+          desc: Authorization Code received via the Authorize request.
+        - name: grant_type
+          desc: |
+            Possible values: "code".<br>
+            Any other value will result in an error.
+        - name: scope
+          desc: Should match the scope provided by the application in the Authorize request.
+        - name: redirect_uri
+          desc: URI matching the one provided by the application in the Authorize request.
+    - class: Optional
+      param:
+        - name: access_type
+          desc: |
+            Possible values: "online", "offline"<br>
+            Default value: "online"<br>
+            <b>Note:</b> <i>Gloebit does not currently support "offline".</i>
+result:
+  - p: >
+      Upon success, the endpoint will return a 200 code along with a JSON object:
+    return:
+      - name: access_token
+        desc: The access token necessary for your application to access the user's resources within the requested scope(s).  You include this token as a "Bearer" token in the headers of requests to non-authorize endpoints.  Currently, Gloebit does not expire access tokens.  However, users may cancel authorizations at any time.
+      - name: refresh_token
+        desc: A token that the application can use to attempt to refresh an access token that has expired.  (Because Gloebit does not expire access tokens, currently, the refresh token is unnecessary.)  It will not refresh an access token that the user has revoked, and instead you must go through the authorization process again.

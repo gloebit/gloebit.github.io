@@ -1,6 +1,7 @@
 ---
 title: Gloebit Service Interface Details
 page_css: /stylesheets/endpoints.css
+page_js:
 hide_title_heading: true
 no_sections: true
 ---
@@ -12,907 +13,888 @@ no_sections: true
     {% include header.html %}
 
     <div class="wrapper" id="main">
-      <nav>
-        <ul>
-          <li><a href="#auth">Authorization Service</a>
-            <ul>
-              <li><a href="#auth-code">Authorization Code Grant</a>
-                <ul>
-                  <li><a href="#code-authorize">Authorize</a></li>
-                  <li><a href="#access-token">Access Token</a></li>
-                </ul>
-              </li>
-              <li><a href="#implicit">Implicit Grant</a>
-                <ul>
-                  <li><a href="#implicit-authorize">Authorize</a></li>
-                </ul>
-              </li>
-              <li><a href="#verify-token">Verify Access Token</a></li>
-            </ul>
-          </li>
-          <li><a href="#identity">Identity Service</a>
-            <ul>
-              <li><a href="#user-id">Get User ID</a></li>
-            </ul>
-          </li>
-          <li><a href="#character">Character Service</a>
-            <ul>
-              <li><a href="#create-character">Create Character</a></li>
-              <li><a href="#list-characters">Get List of Characters</a></li>
-              <li><a href="#update-character">Update Character</a></li>
-              <li><a href="#delete-character">Delete Character</a></li>
-            </ul>
-          </li>
-          <li><a href="#inventory">Inventory Service</a>
-            <ul>
-              <li><a href="#product-inventory">Product Inventory</a>
-                <ul>
-                  <li><a href="#get-user-products">Get User Products</a></li>
-                  <li><a href="#grant-user-product">Grant User Product</a></li>
-                  <li><a href="#consume-user-product">Consume User Product</a></li>
-                  <li><a href="#set-user-product-count">Set User Product Count</a></li>
-                  <li><a href="#get-character-products">Get Character Products</a></li>
-                  <li><a href="#grant-character-product">Grant Character Product</a></li>
-                  <li><a href="#consume-character-product">Consume Character Product</a></li>
-                  <li><a href="#set-character-product-count">Set Character Product Count</a></li>
-                </ul>
-              </li>
-              <li><a href="#advance-inventory">Advanced Inventory</a>
-                <ul>
-                  <li><a href="#new-item">New Item</a></li>
-                  <li><a href="#get-item-ids">Get Item IDs</a></li>
-                  <li><a href="#get-item">Get Item</a></li>
-                  <li><a href="#update-item">Update Item</a></li>
-                  <li><a href="#delete-item">Delete Item</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="#dctransaction">Digital Currency & Transaction Service</a>
-            <ul>
-              <li><a href="#balance">Balance</a></li>
-              <li><a href="#transact">Transact</a></li>
-              <li><a href="#purchase">Purchase gloebits</a></li>
-            </ul>
-          </li>
-          <li><a href="#error">Errors</a>
-        </ul>
-      </nav>
+      <!-- <div id="nav-container"> -->
+        <nav>
+          <h3>References</h3>
+          <ul>
+            <li class="section"><a href="#auth">Authorization Service</a>
+              <ul>
+                <li class="article">
+                  <a href="#oauth2">OAuth 2.0</a>
+                </li>
+                <li class="article">
+                  <a href="#auth-code">Authorization Code Grant</a>
+                </li>
+                <li class="article">
+                  <a href="#implicit">Implicit Grant</a>
+                </li>
+                <li class="article">
+                  <a href="#force-auto">Authorization: "force"/"auto"</a>
+              </ul>
+            </li>
+            <li class="section"><a href="#identity">Identity Service</a>
+              <ul>
+                <li class="article">
+                  <a href="#user-ids">User IDs</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section"><a href="#character">Character Service</a>
+              <ul>
+                <li class="article">
+                  <a href="#character-ids">Character IDs</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section"><a href="#inventory">Inventory Service</a>
+              <ul>
+                <li class="article">
+                  <a href="#product-inventory">Products</a>
+                </li>
+                <li class="article">
+                  <a href="#item-inventory">Items</a>
+                </li>
+                <li class="article">
+                  <a href="#inventory-ops">Inventory Operations</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section">
+              <a href="#dctransaction">Digital Currency & Transaction Service</a>
+              <ul>
+                <li class="article">
+                  <a href="#transaction-flow">Transaction Flow</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section"><a href="#restful">RESTful API</a>
+              <ul>
+                <li class="article">
+                  <a href="#endpoint-access">Endpoint Accesses</a>
+                </li>
+                <li class="article">
+                  <a href="#error">Endpoint Errors</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
 
-      <section class="anchor" id="intro">
-        <h1>{{ page.title }}</h1>
-        <p>
-          On this page you will find details about the Gloebit services.  Gloebit offers four backend services (Identity, Character, Inventory, and Digital Currency & Transaction).  All four services require an access token.  Your application must first use the Gloebit Authorization service to get access approval from your customer and to receive the necessary access token.  The service details on this page include lists of all available endpoints for each service and the parameters for each endpoint's requests.
-        </p>
+          <h3>Endpoints</h3>
+          <ul>
+            <li class="section"><a href="#auth">Authorization Service</a>
+              <ul>
+                <li class="endpoint">
+                  <a href="#authorize">Authorize</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#access-token">Exchange for Access Token</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#verify-token">Verify Access Token</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section"><a href="#identity">Identity Service</a>
+              <ul>
+                <li class="endpoint">
+                  <a href="#user-id">Get User ID</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section"><a href="#character">Character Service</a>
+              <ul>
+                <li class="endpoint">
+                  <a href="#create-character">Create Character</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#list-characters">Get List of Characters</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#update-character">Update Character</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#delete-character">Delete Character</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section"><a href="#inventory">Inventory Service</a>
+              <ul>
+                <li class="endpoint">
+                  <a href="#get-user-products">Get User Products</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#grant-user-product">Grant User Product</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#consume-user-product">Consume User Product</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#set-user-product-count">Set User Product Count</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#get-character-products">Get Character Products</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#grant-character-product">Grant Character Product</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#consume-character-product">Consume Character Product</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#set-character-product-count">Set Character Product Count</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#new-item">New Item</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#get-item-ids">Get Item IDs</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#get-item">Get Item</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#update-item">Update Item</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#delete-item">Delete Item</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section">
+              <a href="#dctransaction">Digital Currency & Transaction Service</a>
+              <ul>
+                <li class="endpoint">
+                  <a href="#balance">Balance</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#transact">Transact</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#purchase">Purchase gloebits</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      <!-- </div> -->
 
-        <p>
-          Additional Resources:
-        </p>
+      <div class="content">
+        <section class="anchor" id="intro">
+          <h1>{{ page.title }}</h1>
+          <p>
+            On this page you will find details about the Gloebit services.  Gloebit offers four backend services (Identity, Character, Inventory, and Digital Currency & Transaction).  All four services require an access token.  Your application must first use the Gloebit Authorization service to get access approval from your customer and to receive the necessary access token.  The service details on this page include lists of all available endpoints for each service and the parameters for each endpoint's requests.
+          </p>
 
-        <ul>
-          <li>For information regarding how to get started with your merchant account and test in our sandbox, please see the <a href="/merchant-steps/">Getting Started Guide</a>.  It's fast and free.</li>
-          <li>For information on how to configure the API Settings for your application, please see the <a href="/app-config/">Application Configuration Instructions</a>.</li>
-          <li>For code level details regarding integration, please visit our <a href="/apis/">API and Code Examples</a> page.</li>
-          <li>For instructions on moving your application from sandbox to production when you are ready to release, please visit our <a href="/go-live-walkthru/">Going Live</a> page.</li>
-          <li>Gloebit uses OAuth2 in its Authorization service.  If you are new to using OAuth2, here is a <a href="https://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified">great, simple summary</a> from Aaron Parecki.</li>
-        </ul>
-      </section>
+          <p>
+            Additional Resources:
+          </p>
 
-      <section class="anchor" id="auth">
-        <h1>Authorization Service</h1>
-        <p>
-          This service is required before any other Gloebit services can be used.  Through this service, a user grants authorization to an application to use some or all of the other Gloebit services with this user's account.
-        </p>
-        <ul>
-          <li>Through authorization, the application receives an access token from Gloebit.  This access token is used as the Authorization HTTP header during all API requests as proof of authorization.</li>
-          <li>Gloebit stores this authorization for the user in his/her Approved Apps page on the Gloebit website.  The user can later revoke this authorization by deleting it from his/her Approved Apps page.  If a user revokes authorization, the existing access token owned by the application will become invalid.  Any attempted API calls will fail due to an invalid token.  The application must re-authorize in order to obtain a new and valid access token and again be able to make Gloebit API calls on behalf of this user.</li>
-          <li>If the application is managing its own user accounts, this access token can and should be stored securely and associated with this user's account so that authorization does not need to be called when this user logs in in the future.</li>
-          <li>If the application is using Gloebit's Identity Service, authorization will need to be run every time the user logs in in order to identify which user is trying to connect.  In this case, we recommend using conditional/auto version of Authorization which will only ask the user to authorize if they have not already (first time user).  Otherwise, it will simply return the request or access token.</li>
-          <li>Scope indicates the set of Gloebit services [user character inventory balance transact] that the application is requesting permission to access.  If the application later requires a larger or different scope, it will need to request a new access token for the new scope desired.</li>
-        </ul>
+          <ul>
+            <li>For information regarding how to get started with your merchant account and test in our sandbox, please see the <a href="/merchant-steps/">Getting Started Guide</a>.  It's fast and free.</li>
+            <li>For information on how to configure the API Settings for your application, please see the <a href="/app-config/">Application Configuration Instructions</a>.</li>
+            <li>For code level details regarding integration, please visit our <a href="/apis/">API and Code Examples</a> page.</li>
+            <li>For instructions on moving your application from sandbox to production when you are ready to release, please visit our <a href="/go-live-walkthru/">Going Live</a> page.</li>
+            <li>Gloebit uses OAuth2 in its Authorization service.  If you are new to using OAuth2, here is a <a href="https://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified">great, simple summary</a> from Aaron Parecki.</li>
+          </ul>
+        </section>
 
-        <h2 class="anchor" id="auth-code">OAuth 2.0 "authorization code grant" (secure 2-step) method</h2>
-        <p>
-          This is the most secure version of authorization and is recommended if you are using a back-end server with your application.  The application must first use Authorize to get a request token.  Then, from the back-end server, the application must use Get Access Token to turn the request token into an access token.  With this two step method, the user does not see the access token and no one can mimic the application without discovering the application's key and secret.
-        </p>
-        <ul>
-          <li>When calling Authorize, you may use the standard/force version which always requires the user to authorize the application, even if a valid access token already exists; or you may use the conditional/auto version which does not require a user to re-authorize your application if a valid access token already exists.</li>
-          <li>For an added layer of security, you may supply us with acceptable Callback URI Prefixes in the API Settings page for the application.  If you do so, any redirect URIs we believe come from your application will be matched against these prefixes.</li>
-          <li>Here is a <a href="https://www.gloebit.com/static-1/docs/api/images/oauth2-seq.png">diagram of the OAuth 2.0 authorization code grant flow</a>.</li>
-        </ul>
+        <section class="article anchor" id="auth">
+          <h1>Authorization Service</h1>
+          <p>
+            This service is required before any other Gloebit services can be used.  Through this service, a user grants authorization to an application to use some or all of the other Gloebit services with this user's account.
+          </p>
+          <ul>
+            <li>Through authorization, the application receives an access token from Gloebit.  This access token is used as the Authorization HTTP header during all API requests as proof of authorization.</li>
+            <li>Gloebit stores this authorization for the user in his/her Approved Apps page on the Gloebit website.  The user can later revoke this authorization by deleting it from his/her Approved Apps page.  If a user revokes authorization, the existing access token owned by the application will become invalid.  Any attempted API calls will fail due to an invalid token.  The application must re-authorize in order to obtain a new and valid access token and again be able to make Gloebit API calls on behalf of this user.</li>
+            <li>If the application is managing its own user accounts, this access token can and should be stored securely and associated with this user's account so that authorization does not need to be called when this user logs in in the future.</li>
+            <li>If the application is using Gloebit's Identity Service, authorization will need to be run every time the user logs in in order to identify which user is trying to connect.  In this case, we recommend using conditional/auto version of Authorization which will only ask the user to authorize if they have not already (first time user).  Otherwise, it will simply return the request or access token.</li>
+            <li>Scope indicates the set of Gloebit services [user character inventory balance transact] that the application is requesting permission to access.  If the application later requires a larger or different scope, it will need to request a new access token for the new scope desired.</li>
+          </ul>
 
-        <h3 class="anchor" id="code-authorize">OAuth2 Authorize</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/oauth2/authorize</li>
-          <li>Production: https://www.gloebit.com/oauth2/authorize</li>
-        </ul>
-        Required OAuth Arguments: as query args
-        <ul>
-          <li>client_id=&lt;application OAuth Key&gt;</li>
-          <li>redirect_uri=&lt;redirect uri&gt;</li>
-          <li>scope=&lt;space delimited list of scope&gt; -- can include [user character inventory balance transact]</li>
-          <li>response_type=code  --- this defines use of this version of OAuth which returns a response token</li>
-        </ul>
-        Optional OAuth Arguments: as query args
-        <ul>
-          <li>access_type=&lt;online | offline&gt; --- defaults to "online" if not included - Gloebit does not currently support "offline"</li>
-          <li>approval_prompt=&lt;force | auto&gt; --- defaults to "force" if not included - setting to "auto" triggers auto/conditional version of Authorize below</li>
-          <li>user=&lt;username-in-app&gt; --- This is just used for logging purposes.</li>
-        </ul>
-        Optional Gloebit Specific Arguments: as query args
-        <ul>
-          <li>r=&lt;application OAuth Key Alias&gt; --- defines referrer.  Previously ensured inclusion of trackback imagery to your application.  Referrer is now also pulled form client_id, so this is unnecessary, but still an acceptable parameter.</li>
-          <li>return-to=&lt;link for "return to &lt;game&gt;" trackback link&gt; --- defaults to &lt;default return-to&gt; in API Settings for app</li>
-        </ul>
-        Returns:
-        <ul>
-          <li>code=&lt;request token&gt;</li>
-        </ul>
-        Failure Responses:
-        <ul>
-          <li>See OAuth spec.</li>
-        </ul>
-        Notes:
-        <ul>
-          <li>Application sends user to gloebit auth URL with a redirect URI.</li>
-          <li>Redirect URI is checked against permitted Callback URI Prefixes if supplied in API Settings.</li>
-          <li>If user is not logged in, user logs in.</li>
-          <li>User is asked to authorize your application for the scope requested.</li>
-          <li>If user accepts, a request token is created and the user is returned with the request token to the redirect URI.</li>
-          <li>See Authorize - force/standard &amp; Authorize - auto/conditional below for additional details dependent upon version used.</li>
-        </ul>
+          <h2 class="article anchor" id="auth-code">OAuth 2.0 "authorization code grant" (secure 2-step) method</h2>
+          <p>
+            This is the most secure version of authorization and is recommended if you are using a back-end server with your application.  The application must first use Authorize to get a request token.  Then, from the back-end server, the application must use Get Access Token to turn the request token into an access token.  With this two step method, the user does not see the access token and no one can mimic the application without discovering the application's key and secret.
+          </p>
+          <ul>
+            <li>When calling Authorize, you may use the standard/force version which always requires the user to authorize the application, even if a valid access token already exists; or you may use the conditional/auto version which does not require a user to re-authorize your application if a valid access token already exists.</li>
+            <li>For an added layer of security, you may supply us with acceptable Callback URI Prefixes in the API Settings page for the application.  If you do so, any redirect URIs we believe come from your application will be matched against these prefixes.</li>
+            <li>Here is a <a href="https://www.gloebit.com/static-1/docs/api/images/oauth2-seq.png">diagram of the OAuth 2.0 authorization code grant flow</a>.</li>
+          </ul>
 
-        <h4>OAuth2 Authorize - force/standard</h4>
-        <p>
-          This is the default version used if approval_prompt is not supplied or is supplied with the default from above.  Whether or not a valid access token exists, the user is asked to authorize.<br>
+          <h4>OAuth2 Authorize - force/standard</h4>
+          <p>
+            This is the default version used if approval_prompt is not supplied or is supplied with the default from above.  Whether or not a valid access token exists, the user is asked to authorize.<br>
+            Notes: --- Once user is logged in
+          </p>
+          <ul>
+            <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, it is deleted.</li>
+            <li>User is asked to authorize application for scope requested.</li>
+            <li>If user accepts, a request token is created and the user is returned with the request token to the redirect URI.</li>
+          </ul>
+
+          <h4>OAuth2 Authorize - auto/conditional</h4>
+          <p>
+            With approval_prompt defined for this version of Authorize, if a valid access token already exists, we do not force the user to re-authorize the application.  We recommend using this version of Authorize if you are using Gloebit's Identity service.  If your application is managing its own user accounts, then we recommend you securely store the access token so that you do not need to call Authorize every time a user logs in.<br>
+            Required OAuth Arguments: Same as default Authorize from above except for the following change:
+          </p>
+          <ul>
+            <li>approval_prompt=auto --- defaults to "force" if not included - setting to "force" triggers force/standard Authorization from above</li>
+          </ul>
           Notes: --- Once user is logged in
-        </p>
-        <ul>
-          <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, it is deleted.</li>
-          <li>User is asked to authorize application for scope requested.</li>
-          <li>If user accepts, a request token is created and the user is returned with the request token to the redirect URI.</li>
-        </ul>
+          <ul>
+            <li>If no authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, same as force/standard Authorize from above.</li>
+            <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, a request token is automatically returned without the user being asked to re-authorize.  This request token points to the existing access token.</li>
+          </ul>
 
-        <h4>OAuth2 Authorize - auto/conditional</h4>
-        <p>
-          With approval_prompt defined for this version of Authorize, if a valid access token already exists, we do not force the user to re-authorize the application.  We recommend using this version of Authorize if you are using Gloebit's Identity service.  If your application is managing its own user accounts, then we recommend you securely store the access token so that you do not need to call Authorize every time a user logs in.<br>
-          Required OAuth Arguments: Same as default Authorize from above except for the following change:
-        </p>
-        <ul>
-          <li>approval_prompt=auto --- defaults to "force" if not included - setting to "force" triggers force/standard Authorization from above</li>
-        </ul>
-        Notes: --- Once user is logged in
-        <ul>
-          <li>If no authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, same as force/standard Authorize from above.</li>
-          <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, a request token is automatically returned without the user being asked to re-authorize.  This request token points to the existing access token.</li>
-        </ul>
+          <h2 class="anchor" id="implicit">OAuth 2.0 "implicit grant" (less secure 1-step) method</h2>
+          <p>
+            This version of OAuth is less secure as a user can see the access token granted and could later use this access token to pretend to be the application.  Also, only the application OAuth Key is used to identify the application in this authorization method, and therefore, if someone else discovered the application OAuth Key, they could use this authorization method to pretend to be this application.  Any proceeds from sales would still end up in the merchant gloebit account, for this application, but imposters still are not good.  Properly set up permitted callback URIs in the api-settings for the application should also help prevent this.  If you are using a back-end server, please use the more-secure OAuth 2.0 "authorization code grant" (secure 2-step) method instead.  The "implicit grant" method is designed for games which are only a front-end, with no back-end component, such as simple games on the web.  It is delivered with the Unity Asset for the Unity web-player to enable simple web games.  If you are using this Unity Asset and create a back-end server, we recommend you switch to the more-secure "authorization code grant" method.
+          </p>
+          <ul>
+            <li>You must enable usage of the "implicit grant" version of authorization in the API Settings page for the application in order to use it.  If you are not using this version of authorization for this application, keeping this disabled prevents anyone from attempting to pretend to be this application to discover its access keys by using this version of authorize with only your application OAuth key.</li>
+            <li>We highly recommend that you create Callback URI Prefixes for additional security if you are using this authorization method.  You should supply us with acceptable URI prefixes in the api settings page for this application which will match any of your redirect URIs.  If you are using the "implicit grant" authorization method, this should keep a bad actor from pretending to be you and discovering any of your access tokens.</li>
+          </ul>
 
-        <h3 class="anchor" id="access-token">OAuth2 Get Access Token</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/oauth2/access-token</li>
-          <li>Production: https://www.gloebit.com/oauth2/access-token</li>
-        </ul>
-        Arguments: application OAuth Key, application OAuth Secret, request token<br>
-        Required OAuth Arguments:
-        <ul>
-          <li>client_id=&lt;application OAuth Key&gt;</li>
-          <li>client_secret=&lt;application OAuth Secret&gt;</li>
-          <li>redirect_uri=&lt;redirect uri&gt; --- should match that used in Authorize</li>
-          <li>code=&lt;request token&gt;</li>
-          <li>scope=&lt;space delimited list of scope&gt; -- can include [user character inventory balance transact] --- should match that used in Authorize</li>
-          <li>grant_type=code --- must be "code"</li>
-        </ul>
-        Optional OAuth Arguments:
-        <ul>
-          <li>access_type=online --- defaults to "online" if not included - Gloebit does not currently support "offline" - should match that used in Authorize.</li>
-        </ul>
-        Returns:
-        <ul>
-          <li>"access_token":"&lt;access token&gt;"</li>
-          <li>"refresh_token":"&lt;refresh token&gt;"</li>
-        </ul>
-        Notes:
-        <ul>
-          <li>Application server exchanges the single use request token for an access token.</li>
-          <li>Access token is returned along with refresh token.</li>
-          <li>Access token is required for all non-authorize service API calls.</li>
-          <li>If an access token expires, a refresh token can be used to get a new access token.  We are not currently expiring access tokens, so the refresh token is unnecessary until we do so.</li>
-        </ul>
+          <h4>OAuth2 "implicit grant" Authorize - force/standard</h4>
+          <p>
+            This is the default version used if approval_prompt is not supplied or supplied with the defaults from above.  Whether or not a valid access token exists, the user is asked to authorize.<br>
+            Notes: --- Once user is logged in
+          </p>
+          <ul>
+            <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, it is deleted.</li>
+            <li>User is asked to authorize the application for the scope requested.</li>
+            <li>If user accepts, an access token is created and the user is returned with the access token to the redirect URI.</li>
+          </ul>
 
-        <h2 class="anchor" id="implicit">OAuth 2.0 "implicit grant" (less secure 1-step) method</h2>
-        <p>
-          This version of OAuth is less secure as a user can see the access token granted and could later use this access token to pretend to be the application.  Also, only the application OAuth Key is used to identify the application in this authorization method, and therefore, if someone else discovered the application OAuth Key, they could use this authorization method to pretend to be this application.  Any proceeds from sales would still end up in the merchant gloebit account, for this application, but imposters still are not good.  Properly set up permitted callback URIs in the api-settings for the application should also help prevent this.  If you are using a back-end server, please use the more-secure OAuth 2.0 "authorization code grant" (secure 2-step) method instead.  The "implicit grant" method is designed for games which are only a front-end, with no back-end component, such as simple games on the web.  It is delivered with the Unity Asset for the Unity web-player to enable simple web games.  If you are using this Unity Asset and create a back-end server, we recommend you switch to the more-secure "authorization code grant" method.
-        </p>
-        <ul>
-          <li>You must enable usage of the "implicit grant" version of authorization in the API Settings page for the application in order to use it.  If you are not using this version of authorization for this application, keeping this disabled prevents anyone from attempting to pretend to be this application to discover its access keys by using this version of authorize with only your application OAuth key.</li>
-          <li>We highly recommend that you create Callback URI Prefixes for additional security if you are using this authorization method.  You should supply us with acceptable URI prefixes in the api settings page for this application which will match any of your redirect URIs.  If you are using the "implicit grant" authorization method, this should keep a bad actor from pretending to be you and discovering any of your access tokens.</li>
-        </ul>
-
-        <h3 class="anchor" id="implicit-authorize">OAuth2 "implicit grant" Authorize</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/oauth2/authorize</li>
-          <li>Production: https://www.gloebit.com/oauth2/authorize</li>
-        </ul>
-        Arguments:<br>
-        Required OAuth Arguments:
-        <ul>
-          <li>client_id=&lt;application OAuth Key&gt;</li>
-          <li>redirect_uri=&lt;redirect uri&gt;</li>
-          <li>scope=&lt;space delimited list of scope&gt; -- can include [user character inventory balance transact]</li>
-          <li>response_type=token  --- this defines use of this version of OAuth which returns an access token directly.</li>
-        </ul>
-        Optional OAuth Arguments:
-        <ul>
-          <li>access_type=&lt;online | offline&gt; --- defaults to "online" if not included - Gloebit does not currently support "offline"</li>
-          <li>approval_prompt=&lt;force | auto&gt; --- defaults to "force" if not included - setting to "auto" triggers Conditional Auth below</li>
-        </ul>
-        Optional Gloebit Specific Arguments:
-        <ul>
-          <li>r=&lt;application OAuth Key Alias&gt; --- defines referrer.  Previously ensured inclusion of trackback imagery to your application.  Referrer is now also pulled form client_id, so this is unnecessary, but still an acceptable parameter.</li>
-          <li>return-to=&lt;link for "return to &lt;game&gt;" trackback link&gt; --- defaults to &lt;default return-to&gt; in API Settings for app</li>
-        </ul>
-        Returns (within a fragment added to the redirect URI):
-        <ul>
-          <li>token=&lt;access token&gt;</li>
-        </ul>
-        Failure Responses:
-        <ul>
-          <li>See OAuth spec.</li>
-        </ul>
-        Notes:
-        <ul>
-          <li>Application sends user to gloebit auth URL with a redirect URI.</li>
-          <li>Redirect URI is checked against permitted Callback URI Prefixes if supplied in API Settings.</li>
-          <li>If user is not logged in, user logs in.</li>
-          <li>User is asked to authorize your application for the scope requested.</li>
-          <li>If user accepts, an access token is created and the user is returned with the access token to the redirect URI.</li>
-          <li>See Authorize - force/standard &amp; Authorize - auto/conditional below for additional details dependent upon version used.</li>
-        </ul>
-
-        <h4>OAuth2 "implicit grant" Authorize - force/standard</h4>
-        <p>
-          This is the default version used if approval_prompt is not supplied or supplied with the defaults from above.  Whether or not a valid access token exists, the user is asked to authorize.<br>
+          <h4>OAuth2 "implicit grant" Authorize - auto/conditional</h4>
+          <p>
+            With approval_prompt defined for this version of Authorize, if a valid access token already exists, we do not force the user to re-authorize the application.  We recommend using this version of Authorize if you are using Gloebit's Identity service.  If your application is managing its own user accounts, then we recommend you securely store the access token so that you do not need to call Authorize every time a user logs in.<br>
+            Arguments: Same as default Authorize from above except for the following change
+          </p>
+          <ul>
+            <li>approval_prompt=auto --- defaults to "force" if not included - setting to "force" triggers force/standard Authorization from above</li>
+          </ul>
           Notes: --- Once user is logged in
-        </p>
-        <ul>
-          <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, it is deleted.</li>
-          <li>User is asked to authorize the application for the scope requested.</li>
-          <li>If user accepts, an access token is created and the user is returned with the access token to the redirect URI.</li>
-        </ul>
+          <ul>
+            <li>If no authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, same as force/standard Authorize from above.</li>
+            <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, the existing access token is automatically returned without the user being asked to re-authorize.</li>
+          </ul>
 
-        <h4>OAuth2 "implicit grant" Authorize - auto/conditional</h4>
-        <p>
-          With approval_prompt defined for this version of Authorize, if a valid access token already exists, we do not force the user to re-authorize the application.  We recommend using this version of Authorize if you are using Gloebit's Identity service.  If your application is managing its own user accounts, then we recommend you securely store the access token so that you do not need to call Authorize every time a user logs in.<br>
-          Arguments: Same as default Authorize from above except for the following change
-        </p>
-        <ul>
-          <li>approval_prompt=auto --- defaults to "force" if not included - setting to "force" triggers force/standard Authorization from above</li>
-        </ul>
-        Notes: --- Once user is logged in
-        <ul>
-          <li>If no authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, same as force/standard Authorize from above.</li>
-          <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, the existing access token is automatically returned without the user being asked to re-authorize.</li>
-        </ul>
+          {% include ep_template.html ep=site.data.endpoint.authorize %}
 
-        <h2 class="anchor" id="verify-token">Verify Access Token</h2>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/no-op</li>
-          <li>Production: https://www.gloebit.com/no-op</li>
-        </ul>
-        Arguments: access token<br>
-        Returns: JSON dictionary {} for success or failure
-        <ul>
-          <li>{"success" : true , "reason" : "success"} --- success</li>
-          <li>{"success" : false , "reason" : "invalid access token"} --- failure due to invalid token</li>
-          <li>{"success" : false , "reason" : "&lt;failure details&gt;"} --- failure due to other reasons</li>
-        </ul>
-        Notes:
-        <ul>
-          <li>Checks to see if access token is valid.</li>
-          <li>Does not check scope of access token.</li>
-          <li>This functionality is not required, but may be useful if another api request fails to determine whether your access token has been revoked, or if you should retry your request as it was due to some other issue.</li>
-        </ul>
+          {% include ep_template.html ep=site.data.endpoint.exchange_for_access_token %}
 
-      </section>
+          <h2 class="anchor" id="verify-token">Verify Access Token</h2>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/no-op</li>
+            <li>Production: https://www.gloebit.com/no-op</li>
+          </ul>
+          Arguments: access token<br>
+          Returns: JSON dictionary {} for success or failure
+          <ul>
+            <li>{"success" : true , "reason" : "success"} --- success</li>
+            <li>{"success" : false , "reason" : "invalid access token"} --- failure due to invalid token</li>
+            <li>{"success" : false , "reason" : "&lt;failure details&gt;"} --- failure due to other reasons</li>
+          </ul>
+          Notes:
+          <ul>
+            <li>Checks to see if access token is valid.</li>
+            <li>Does not check scope of access token.</li>
+            <li>This functionality is not required, but may be useful if another api request fails to determine whether your access token has been revoked, or if you should retry your request as it was due to some other issue.</li>
+          </ul>
 
-      <section class="anchor" id="identity">
-        <h1>Identity Service</h1>
-        <p>
-          This service allows Gloebit to manage user accounts so that you do not need to build a login/authentication system for your application.  End-users would login via Gloebit to be authenticated.  In addition to providing Gloebit's own login (email + password), your end users will also be able to authenticate via Facebook, G+, Twitter and LinkedIn.  This system authenticates a user and provides the application a unique, consistent identifier for that user.
-        </p>
-        <ul>
-          <li>If an application uses our Identity Service, we recommend using the auto/conditional version of Authorization in the process to get an access token.  For a new user, this will be no different.  For a user who has already authorized the application however, this will not require that user to re-authorize that application.  If the user is already logged into gloebit and has an authorization on file, it will just bounce back with the request or access token.</li>
-          <li>Requires access token with a scope that includes "user".  See Authorization section for details.</li>
-        </ul>
+        </section>
 
-        <h2 class="anchor" id="user-id">Get User ID</h2>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/user</li>
-          <li>Production: https://www.gloebit.com/user</li>
-        </ul>
-        Arguments: access token<br>
-        Returns: JSON dictionary {} in body of response
-        <ul>
-          <li>{"id" : &lt;uuid&gt;, --- unique, consistent uuid</li>
-          <li>"name" : "&lt;display name&gt;}" --- string; blank if user has not input one in Gloebit's system.  This can change.</li>
-        </ul>
+        <section class="anchor" id="identity">
+          <h1>Identity Service</h1>
+          <p>
+            This service allows Gloebit to manage user accounts so that you do not need to build a login/authentication system for your application.  End-users would login via Gloebit to be authenticated.  In addition to providing Gloebit's own login (email + password), your end users will also be able to authenticate via Facebook, G+, Twitter and LinkedIn.  This system authenticates a user and provides the application a unique, consistent identifier for that user.
+          </p>
+          <ul>
+            <li>If an application uses our Identity Service, we recommend using the auto/conditional version of Authorization in the process to get an access token.  For a new user, this will be no different.  For a user who has already authorized the application however, this will not require that user to re-authorize that application.  If the user is already logged into gloebit and has an authorization on file, it will just bounce back with the request or access token.</li>
+            <li>Requires access token with a scope that includes "user".  See Authorization section for details.</li>
+          </ul>
 
-      </section>
+          <h2 class="anchor" id="user-id">Get User ID</h2>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/user</li>
+            <li>Production: https://www.gloebit.com/user</li>
+          </ul>
+          Arguments: access token<br>
+          Returns: JSON dictionary {} in body of response
+          <ul>
+            <li>{"id" : &lt;uuid&gt;, --- unique, consistent uuid</li>
+            <li>"name" : "&lt;display name&gt;}" --- string; blank if user has not input one in Gloebit's system.  This can change.</li>
+          </ul>
 
-      <section class="anchor" id="character">
-        <h1>Character Service</h1>
-        <p>
-          This service provides functionality to create and manage characters or personas for a user within your application.  This service allows for storing, retrieving and editing of those character specific details.
-        </p>
-        <ul>
-          <li>If you are using our product inventory service, entitlements can be auto-delivered to a single character as opposed to all characters for that gloebit user.</li>
-          <li>If you'd like to store information about a user, you could create a single character for the user and do so there.</li>
-          <li>Requires access token with a scope that includes "character".  See Authorization section for details.</li>
-        </ul>
+        </section>
 
-        <h2 class="anchor" id="create-character">Create Character</h2>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/create-character</li>
-          <li>Production: https://www.gloebit.com/create-character</li>
-        </ul>
-        Arguments: access token, name<br>
-        Returns: uuid
-        <ul>
-          <li>Verify that name is unique across all characters for this application.  If not, fail.
-            <ul>
-              <li>Will respond with an error that name is not unique.</li>
-              <li>Eventually would like to return with other name suggestions.</li>
-            </ul>
-          </li>
-          <li>Create a new character with name provided.</li>
-          <li>Return uuid for character.</li>
-        </ul>
+        <section class="anchor" id="character">
+          <h1>Character Service</h1>
+          <p>
+            This service provides functionality to create and manage characters or personas for a user within your application.  This service allows for storing, retrieving and editing of those character specific details.
+          </p>
+          <ul>
+            <li>If you are using our product inventory service, entitlements can be auto-delivered to a single character as opposed to all characters for that gloebit user.</li>
+            <li>If you'd like to store information about a user, you could create a single character for the user and do so there.</li>
+            <li>Requires access token with a scope that includes "character".  See Authorization section for details.</li>
+          </ul>
 
-        <h2 class="anchor" id="list-characters">Get List of Characters</h2>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/get-characters</li>
-          <li>Production: https://www.gloebit.com/get-characters</li>
-        </ul>
-        Arguments: access token<br>
-        Returns: JSON dictionary of {"name":"&lt;character uuid&gt;" pairs}
-        <ul>
-          <li>Provides a list of all characters for that user in that application.</li>
-        </ul>
+          <h2 class="anchor" id="create-character">Create Character</h2>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/create-character</li>
+            <li>Production: https://www.gloebit.com/create-character</li>
+          </ul>
+          Arguments: access token, name<br>
+          Returns: uuid
+          <ul>
+            <li>Verify that name is unique across all characters for this application.  If not, fail.
+              <ul>
+                <li>Will respond with an error that name is not unique.</li>
+                <li>Eventually would like to return with other name suggestions.</li>
+              </ul>
+            </li>
+            <li>Create a new character with name provided.</li>
+            <li>Return uuid for character.</li>
+          </ul>
 
-        <h2 class="anchor" id="update-character">Update Character</h2>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://www.gloebit.com/update-character</li>
-          <li>Production: https://www.gloebit.com/update-character</li>
-        </ul>
-        Arguments: access token, character uuid, character name, post JSON dictionary of {"key":value pairs}<br>
-        Returns: success or failure
-        <ul>
-          <li>For each key in the dictionary, if the key exists, updates the value; if the key does not exists, adds the key and value to the details for that character.</li>
-          <li>This will replace the old character.  Must include all keys that you would like to keep with the character.  If something is not included in the update which was in the original character, it will be deleted.</li>
-          <li>Name is required.  Same is not editing.  Different will set a new name</li>
-          <li>In order to use this method to edit character details or character names after the character has been created, you must enable this functionality in the Character section of the API Settings page for the application.</li>
-        </ul>
+          <h2 class="anchor" id="list-characters">Get List of Characters</h2>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/get-characters</li>
+            <li>Production: https://www.gloebit.com/get-characters</li>
+          </ul>
+          Arguments: access token<br>
+          Returns: JSON dictionary of {"name":"&lt;character uuid&gt;" pairs}
+          <ul>
+            <li>Provides a list of all characters for that user in that application.</li>
+          </ul>
 
-        <h2 class="anchor" id="delete-character">Delete Character</h2>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/delete-character</li>
-          <li>Production: https://www.gloebit.com/delete-character</li>
-        </ul>
-        Arguments: access token, character uuid<br>
-        Returns: success or failure
-        <ul>
-          <li>Deletes the character with the given uuid.</li>
-        </ul>
+          <h2 class="anchor" id="update-character">Update Character</h2>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://www.gloebit.com/update-character</li>
+            <li>Production: https://www.gloebit.com/update-character</li>
+          </ul>
+          Arguments: access token, character uuid, character name, post JSON dictionary of {"key":value pairs}<br>
+          Returns: success or failure
+          <ul>
+            <li>For each key in the dictionary, if the key exists, updates the value; if the key does not exists, adds the key and value to the details for that character.</li>
+            <li>This will replace the old character.  Must include all keys that you would like to keep with the character.  If something is not included in the update which was in the original character, it will be deleted.</li>
+            <li>Name is required.  Same is not editing.  Different will set a new name</li>
+            <li>In order to use this method to edit character details or character names after the character has been created, you must enable this functionality in the Character section of the API Settings page for the application.</li>
+          </ul>
 
-      </section>
+          <h2 class="anchor" id="delete-character">Delete Character</h2>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/delete-character</li>
+            <li>Production: https://www.gloebit.com/delete-character</li>
+          </ul>
+          Arguments: access token, character uuid<br>
+          Returns: success or failure
+          <ul>
+            <li>Deletes the character with the given uuid.</li>
+          </ul>
 
-      <section class="anchor" id="inventory">
-        <h1>Inventory Service</h1>
-        <p>
-          The inventory service allows an application to create and manage an inventory and entitlements for a user.  There are two flavors of this service.  The Product Inventory Service requires definition of products from the API Settings page for the application and drastically simplifies delivering these products during purchase transactions and consuming the products.  The Advanced Inventory Service allows for more freedom and detail for inventory items.  If you are just tracking whether or not a user has an item and at what quantity, the Product Inventory Service is simple and may be all you need.  This is great for basic entitlements.  If you are trying to track many combinations, variants and details about inventory items, then you may want to use our Advanced Inventory Service.
-        </p>
-        <ul>
-          <li>Requires access token with a scope that includes "inventory".  See Authorization section for details.</li>
-        </ul>
+        </section>
 
-        <h2 class="anchor" id="product-inventory">Product Inventory Service</h2>
-        <p>
-          This is a basic inventory service designed for simple products.  Think of it as an entitlements service.  It is great for saying that a user does or does not have something or what quantity a user has.  You will need to define products from the API Settings page for the application on the gloebit website.  Then you can easily grant or consume those products for a user.  If the application is using our Transaction/Digital Currency service, there is even a simple way to deliver a product during a transaction.
-        </p>
-        <ul>
-          <li>The product inventory is a JSON dictionary of {"product name":quantity pairs}.</li>
-          <li>You must define products from the API Settings page for the application.  A product definition requires a product name, and a price in gloebits.  There are a few other parameters:
-            <ul>
-              <li>Available flag (true by default) - This can be toggled off to make this product unavailable.</li>
-              <li>No inventory limit flag (true by default) - This means a user can have an unlimited number of this product in the user's inventory.  If it is toggled off, the limit can be set.</li>
-              <li>Per user limit (infinite by default) - If the no inventory limit flag is turned off, then this will determine the maximum number of this product that a user may possess in the user's inventory.</li>
-              <li>Can be granted/set flag (false by default) - This can be turned on to allow this product to be granted or have it's quantity set for a user outside of a transaction where the price in gloebits were paid.  If you are using the lower security 1-step authorization, while difficult, it is possible for a user to have discovered your access key and then grant themselves these products if you turn this on.  However, if there are items you regularly give away, or which you don't sell but track for a user, this is an easy way to do so.</li>
-            </ul>
-          </li>
-          <li>If you change the name of a product, be aware that some of your users may still have items with the old name in their inventory.  The name is the key for that product and we do not update user inventories when you change the name of a product.</li>
-          <li>In addition to managing inventory at the user level, if the application is using our Character Service, the application can use the corresponding functions below to manage inventory for individual characters within the user account.</li>
-        </ul>
+        <section class="anchor" id="inventory">
+          <h1>Inventory Service</h1>
+          <p>
+            The inventory service allows an application to create and manage an inventory and entitlements for a user.  There are two flavors of this service.  The Product Inventory Service requires definition of products from the API Settings page for the application and drastically simplifies delivering these products during purchase transactions and consuming the products.  The Advanced Inventory Service allows for more freedom and detail for inventory items.  If you are just tracking whether or not a user has an item and at what quantity, the Product Inventory Service is simple and may be all you need.  This is great for basic entitlements.  If you are trying to track many combinations, variants and details about inventory items, then you may want to use our Advanced Inventory Service.
+          </p>
+          <ul>
+            <li>Requires access token with a scope that includes "inventory".  See Authorization section for details.</li>
+          </ul>
 
-        <h3 class="anchor" id="get-user-products">Get User Products</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/get-user-products</li>
-          <li>Production: https://www.gloebit.com/get-user-products</li>
-        </ul>
-        Arguments: access token<br>
-        Returns: JSON dictionary of {"product name":quantity pairs}
-        <ul>
-          <li>Returns a list of the products a user has in his/her inventory for this application and the quantity that user has of them.</li>
-          <li>This will not return a pair for any product for which the user has never had or had but has consumed down to a quantity of zero.</li>
-        </ul>
+          <h2 class="anchor" id="product-inventory">Product Inventory Service</h2>
+          <p>
+            This is a basic inventory service designed for simple products.  Think of it as an entitlements service.  It is great for saying that a user does or does not have something or what quantity a user has.  You will need to define products from the API Settings page for the application on the gloebit website.  Then you can easily grant or consume those products for a user.  If the application is using our Transaction/Digital Currency service, there is even a simple way to deliver a product during a transaction.
+          </p>
+          <ul>
+            <li>The product inventory is a JSON dictionary of {"product name":quantity pairs}.</li>
+            <li>You must define products from the API Settings page for the application.  A product definition requires a product name, and a price in gloebits.  There are a few other parameters:
+              <ul>
+                <li>Available flag (true by default) - This can be toggled off to make this product unavailable.</li>
+                <li>No inventory limit flag (true by default) - This means a user can have an unlimited number of this product in the user's inventory.  If it is toggled off, the limit can be set.</li>
+                <li>Per user limit (infinite by default) - If the no inventory limit flag is turned off, then this will determine the maximum number of this product that a user may possess in the user's inventory.</li>
+                <li>Can be granted/set flag (false by default) - This can be turned on to allow this product to be granted or have it's quantity set for a user outside of a transaction where the price in gloebits were paid.  If you are using the lower security 1-step authorization, while difficult, it is possible for a user to have discovered your access key and then grant themselves these products if you turn this on.  However, if there are items you regularly give away, or which you don't sell but track for a user, this is an easy way to do so.</li>
+              </ul>
+            </li>
+            <li>If you change the name of a product, be aware that some of your users may still have items with the old name in their inventory.  The name is the key for that product and we do not update user inventories when you change the name of a product.</li>
+            <li>In addition to managing inventory at the user level, if the application is using our Character Service, the application can use the corresponding functions below to manage inventory for individual characters within the user account.</li>
+          </ul>
 
-        <h3 class="anchor" id="grant-user-product">Grant User Product</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/grant-user-product</li>
-          <li>Production: https://www.gloebit.com/grant-user-product</li>
-        </ul>
-        Arguments: access token, product name, quantity<br>
-        Returns: success or failure
-        <ul>
-          <li>Grants quantity of product to the user and within the application corresponding to this access token.</li>
-          <li>The Can be granted/set flag in the product definition for this product on the API Settings page for this application needs to be turned on for this product in order to allow this.</li>
-        </ul>
+          <h3 class="anchor" id="get-user-products">Get User Products</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/get-user-products</li>
+            <li>Production: https://www.gloebit.com/get-user-products</li>
+          </ul>
+          Arguments: access token<br>
+          Returns: JSON dictionary of {"product name":quantity pairs}
+          <ul>
+            <li>Returns a list of the products a user has in his/her inventory for this application and the quantity that user has of them.</li>
+            <li>This will not return a pair for any product for which the user has never had or had but has consumed down to a quantity of zero.</li>
+          </ul>
 
-        <h3 class="anchor" id="consumer-user-product">Consume User Product</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/consume-user-product</li>
-          <li>Production: https://www.gloebit.com/consume-user-product</li>
-        </ul>
-        Arguments: access token, product name, quantity<br>
-        Returns: success or failure
-        <ul>
-          <li>Reduces the quantity of this product in the user's inventory for this application by the quantity provided.</li>
-        </ul>
+          <h3 class="anchor" id="grant-user-product">Grant User Product</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/grant-user-product</li>
+            <li>Production: https://www.gloebit.com/grant-user-product</li>
+          </ul>
+          Arguments: access token, product name, quantity<br>
+          Returns: success or failure
+          <ul>
+            <li>Grants quantity of product to the user and within the application corresponding to this access token.</li>
+            <li>The Can be granted/set flag in the product definition for this product on the API Settings page for this application needs to be turned on for this product in order to allow this.</li>
+          </ul>
 
-        <h3 class="anchor" id="set-user-product-count">Set User Product Count</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/set-user-product-count</li>
-          <li>Production: https://www.gloebit.com/set-user-product-count</li>
-        </ul>
-        Arguments: access token, product name, count<br>
-        Returns: success or failure
-        <ul>
-          <li>Sets the quantity for the product in the user's inventory for this application to the count provided.</li>
-          <li>The <b>Can be granted/set</b> flag in the product definition for this product on the API Settings page for this application needs to be turned on for this product in order to allow this.</li>
-        </ul>
+          <h3 class="anchor" id="consumer-user-product">Consume User Product</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/consume-user-product</li>
+            <li>Production: https://www.gloebit.com/consume-user-product</li>
+          </ul>
+          Arguments: access token, product name, quantity<br>
+          Returns: success or failure
+          <ul>
+            <li>Reduces the quantity of this product in the user's inventory for this application by the quantity provided.</li>
+          </ul>
 
-        <h3 class="anchor" id="get-character-products">Get Character Products</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/get-character-products</li>
-          <li>Production: https://www.gloebit.com/get-character-products</li>
-        </ul>
-        Arguments: access token, character uuid<br>
-        Returns: JSON dictionary of {"&lt;product name&gt;":&lt;quantity&gt; pairs} belonging to the character
-        <ul>
-          <li>Returns a list of the products a character has in its inventory for this application and the quantity that character has of them.</li>
-          <li>This will not return a pair for any product for which the character has never had or had but has consumed down to a quantity of zero.</li>
-        </ul>
+          <h3 class="anchor" id="set-user-product-count">Set User Product Count</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/set-user-product-count</li>
+            <li>Production: https://www.gloebit.com/set-user-product-count</li>
+          </ul>
+          Arguments: access token, product name, count<br>
+          Returns: success or failure
+          <ul>
+            <li>Sets the quantity for the product in the user's inventory for this application to the count provided.</li>
+            <li>The <b>Can be granted/set</b> flag in the product definition for this product on the API Settings page for this application needs to be turned on for this product in order to allow this.</li>
+          </ul>
 
-        <h3 class="anchor" id="grant-character-product">Grant Character Product</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/grant-character-product</li>
-          <li>Production: https://www.gloebit.com/grant-character-product</li>
-        </ul>
-        Arguments: access token, character uuid, product name, quantity<br>
-        Returns: success or failure
-        <ul>
-          <li>Grants quantity of product to the character corresponding to uuid within the application associated with this access token.</li>
-          <li>The <b>Can be granted/set</b> flag in the product definition for this product on the API Settings page for this application needs to be turned on for this product in order to allow this.</li>
-        </ul>
+          <h3 class="anchor" id="get-character-products">Get Character Products</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/get-character-products</li>
+            <li>Production: https://www.gloebit.com/get-character-products</li>
+          </ul>
+          Arguments: access token, character uuid<br>
+          Returns: JSON dictionary of {"&lt;product name&gt;":&lt;quantity&gt; pairs} belonging to the character
+          <ul>
+            <li>Returns a list of the products a character has in its inventory for this application and the quantity that character has of them.</li>
+            <li>This will not return a pair for any product for which the character has never had or had but has consumed down to a quantity of zero.</li>
+          </ul>
 
-        <h3 class="anchor" id="consumer-character-product">Consume Character Product</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/consume-character-product</li>
-          <li>Production: https://www.gloebit.com/consume-character-product</li>
-        </ul>
-        Arguments: access token, character uuid, product name, quantity<br>
-        Returns: success or failure
-        <ul>
-          <li>Reduces the quantity of this product in the character's inventory for this application by the quantity provided.</li>
-        </ul>
+          <h3 class="anchor" id="grant-character-product">Grant Character Product</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/grant-character-product</li>
+            <li>Production: https://www.gloebit.com/grant-character-product</li>
+          </ul>
+          Arguments: access token, character uuid, product name, quantity<br>
+          Returns: success or failure
+          <ul>
+            <li>Grants quantity of product to the character corresponding to uuid within the application associated with this access token.</li>
+            <li>The <b>Can be granted/set</b> flag in the product definition for this product on the API Settings page for this application needs to be turned on for this product in order to allow this.</li>
+          </ul>
 
-        <h3 class="anchor" id="set-character-product-count">Set Character Product Count</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/set-character-product-count</li>
-          <li>Production: https://www.gloebit.com/set-user-product-count</li>
-        </ul>
-        Arguments: access token, character uuid, product name, count<br>
-        Returns: success or failure
-        <ul>
-          <li>Sets the quantity for the product in the character's inventory for this application to the count provided.</li>
-          <li>The <b>Can be granted/set</b> flag in the product definition for this product on the API Settings page for this application needs to be turned on for this product in order to allow this.</li>
-        </ul>
+          <h3 class="anchor" id="consumer-character-product">Consume Character Product</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/consume-character-product</li>
+            <li>Production: https://www.gloebit.com/consume-character-product</li>
+          </ul>
+          Arguments: access token, character uuid, product name, quantity<br>
+          Returns: success or failure
+          <ul>
+            <li>Reduces the quantity of this product in the character's inventory for this application by the quantity provided.</li>
+          </ul>
 
-        <h3>Transact Product</h3>
-        <p>
-          See the Product Transact Parameters section of the Transact method in the Digital Currency &amp; Transaction Service section for details on how to deliver a product to a user or character as part of a gloebit transaction.
-        </p>
+          <h3 class="anchor" id="set-character-product-count">Set Character Product Count</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/set-character-product-count</li>
+            <li>Production: https://www.gloebit.com/set-user-product-count</li>
+          </ul>
+          Arguments: access token, character uuid, product name, count<br>
+          Returns: success or failure
+          <ul>
+            <li>Sets the quantity for the product in the character's inventory for this application to the count provided.</li>
+            <li>The <b>Can be granted/set</b> flag in the product definition for this product on the API Settings page for this application needs to be turned on for this product in order to allow this.</li>
+          </ul>
 
-        <h2 class="anchor" id="advanced-inventory">Advanced Inventory Service</h2>
-        <p>
-          The Advanced Inventory Service provides a more generic interface to the inventory system.  If you would like to store more detailed inventory information for an application than just possession/entitlements, such as state of items, wear levels, customized variants of items, or general game state information in a users inventory, this is the service to use.  It will allow for an inventory item to include any information you choose as a set of key-value pairs.  It is slightly more complex to use or to deliver products as part of a transaction than the Product Inventory Service, but it is also more powerful.
-        </p>
-        <ul>
-          <li>You do not need to define any inventory items ahead of time from the API Settings page as you do for the Product Inventory Service.</li>
-          <li>The Advanced Inventory Service stores inventory using folder ids.  To simply create an inventory for the user, we suggest using the user id as the folder id.  To simply create an inventory for a character within the user account, we suggest using the character id as the folder id.</li>
-          <li>You can create generic folders within the user's account for managing different inventories for the user.</li>
-          <li>When no folder-id is supplied, the null folder-id "00000000-0000-0000-0000-000000000000" is used.</li>
-          <li>All inventory folders created are specific to this application and are not accessible by other applications.  If you would like more complex accessibility of inventory, please <a href="https://www.gloebit.com/contact-us/"><!--target="_blank"-->contact us</a> with a detailed request so we can consider this for future development.</li>
-        </ul>
+          <h3>Transact Product</h3>
+          <p>
+            See the Product Transact Parameters section of the Transact method in the Digital Currency &amp; Transaction Service section for details on how to deliver a product to a user or character as part of a gloebit transaction.
+          </p>
 
-        <h3 class="anchor" id="new-item">New Inventory Item</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/new-inventory-item</li>
-          <li>Production: https://www.gloebit.com/new-inventory-item</li>
-        </ul>
-        Arguments: access token, Post JSON dictionary {} for inventory item (includes folder id)
-        <ul>
-          <li>"folder-id" : "&lt;folder id&gt;" --- as string</li>
-          <li>"type-id" : "&lt;type id&gt;" --- as string --- this is stored and returned with item ids.  It can be used to then quickly filter what items to retrieve all details on.</li>
-          <li>"params" : {JSON dictionary} --- item details</li>
-        </ul>
-        Returns: success or failure as JSON dictionary {}
-        <ul>
-          <li>"success" : &lt;boolean&gt;</li>
-          <li>"reason" : "&lt;string&gt;"</li>
-          <li>"item-id" : "&lt;uuid&gt;" --- as string</li>
-        </ul>
+          <h2 class="anchor" id="advanced-inventory">Advanced Inventory Service</h2>
+          <p>
+            The Advanced Inventory Service provides a more generic interface to the inventory system.  If you would like to store more detailed inventory information for an application than just possession/entitlements, such as state of items, wear levels, customized variants of items, or general game state information in a users inventory, this is the service to use.  It will allow for an inventory item to include any information you choose as a set of key-value pairs.  It is slightly more complex to use or to deliver products as part of a transaction than the Product Inventory Service, but it is also more powerful.
+          </p>
+          <ul>
+            <li>You do not need to define any inventory items ahead of time from the API Settings page as you do for the Product Inventory Service.</li>
+            <li>The Advanced Inventory Service stores inventory using folder ids.  To simply create an inventory for the user, we suggest using the user id as the folder id.  To simply create an inventory for a character within the user account, we suggest using the character id as the folder id.</li>
+            <li>You can create generic folders within the user's account for managing different inventories for the user.</li>
+            <li>When no folder-id is supplied, the null folder-id "00000000-0000-0000-0000-000000000000" is used.</li>
+            <li>All inventory folders created are specific to this application and are not accessible by other applications.  If you would like more complex accessibility of inventory, please <a href="https://www.gloebit.com/contact-us/"><!--target="_blank"-->contact us</a> with a detailed request so we can consider this for future development.</li>
+          </ul>
 
-        <h3 class="anchor" id="get-items-ids">Get Inventory Item IDs</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/get-inventory-item-ids/&lt;folder-id&gt;/</li>
-          <li>Production: https://www.gloebit.com/get-inventory/item-ids/&lt;folder-id&gt;/</li>
-        </ul>
-        Arguments: access token, folder id<br>
-        Returns: JSON Dictionary {}
-        <ul>
-          <li>"success" : &lt;boolean&gt;</li>
-          <li>"reason" : "&lt;string&gt;"</li>
-          <li>"item-ids" : [&lt;json array&gt;] --- Each element is a JSON array of strings: [item-type-id, item-id, folder-id]</li>
-        </ul>
-        Notes:
-        <ul>
-          <li>folder-id is optional.  If not supplied, the null folder id of "00000000-0000-0000-0000-000000000000" will be used and all inventory item ids for this user will be returned.</li>
-        </ul>
+          <h3 class="anchor" id="new-item">New Inventory Item</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/new-inventory-item</li>
+            <li>Production: https://www.gloebit.com/new-inventory-item</li>
+          </ul>
+          Arguments: access token, Post JSON dictionary {} for inventory item (includes folder id)
+          <ul>
+            <li>"folder-id" : "&lt;folder id&gt;" --- as string</li>
+            <li>"type-id" : "&lt;type id&gt;" --- as string --- this is stored and returned with item ids.  It can be used to then quickly filter what items to retrieve all details on.</li>
+            <li>"params" : {JSON dictionary} --- item details</li>
+          </ul>
+          Returns: success or failure as JSON dictionary {}
+          <ul>
+            <li>"success" : &lt;boolean&gt;</li>
+            <li>"reason" : "&lt;string&gt;"</li>
+            <li>"item-id" : "&lt;uuid&gt;" --- as string</li>
+          </ul>
 
-        <h3 class="anchor" id="get-item">Get Inventory Item</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/get-inventory-item/&lt;item-id&gt;/</li>
-          <li>Production: https://www.gloebit.com/get-inventory-item/&lt;item-id&gt;/</li>
-        </ul>
-        Arguments: access token, item id<br>
-        Returns: JSON Dictionary defining item {}
-        <ul>
-          <li>"success" : &lt;boolean&gt;</li>
-          <li>"reason" : "&lt;string&gt;"</li>
-          <li>"item" : {&lt;JSON Dictionary&gt;}</li>
-        </ul>
-        Notes:
-        <ul>
-          <li>item-id is required.</li>
-        </ul>
+          <h3 class="anchor" id="get-items-ids">Get Inventory Item IDs</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/get-inventory-item-ids/&lt;folder-id&gt;/</li>
+            <li>Production: https://www.gloebit.com/get-inventory/item-ids/&lt;folder-id&gt;/</li>
+          </ul>
+          Arguments: access token, folder id<br>
+          Returns: JSON Dictionary {}
+          <ul>
+            <li>"success" : &lt;boolean&gt;</li>
+            <li>"reason" : "&lt;string&gt;"</li>
+            <li>"item-ids" : [&lt;json array&gt;] --- Each element is a JSON array of strings: [item-type-id, item-id, folder-id]</li>
+          </ul>
+          Notes:
+          <ul>
+            <li>folder-id is optional.  If not supplied, the null folder id of "00000000-0000-0000-0000-000000000000" will be used and all inventory item ids for this user will be returned.</li>
+          </ul>
 
-        <h3 class="anchor" id="update-item">Update Inventory Item</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/update-inventory-item</li>
-          <li>Production: https://www.gloebit.com/update-inventory-item</li>
-        </ul>
-        Arguments: access token, post JSON dictionary {} for inventory item details to be updated (includes item and folder id)
-        <ul>
-          <li>"id" : "&lt;item id&gt;" --- as string</li>
-          <li>"folder-id" : "&lt;folder id&gt;" --- as string</li>
-          <li>"type-id" : "&lt;type id&gt;" --- as string</li>
-          <li>"params" : {&lt;JSON dictionary defining item&gt;}</li>
-        </ul>
-        Returns: success or failure as JSON Dictionary {}
-        <ul>
-          <li>"success" : &lt;boolean&gt;</li>
-          <li>"reason" : "&lt;string&gt;"</li>
-        </ul>
-        Notes:
-        <ul>
-          <li>This performs a full replace of the item.  If a parameter of the original item is not included in the update, that parameter will be deleted.</li>
-          <li>This matches strictly based on the item-id.  This can be used to update the folder-id or the type-id in addition to the params.</li>
-        </ul>
+          <h3 class="anchor" id="get-item">Get Inventory Item</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/get-inventory-item/&lt;item-id&gt;/</li>
+            <li>Production: https://www.gloebit.com/get-inventory-item/&lt;item-id&gt;/</li>
+          </ul>
+          Arguments: access token, item id<br>
+          Returns: JSON Dictionary defining item {}
+          <ul>
+            <li>"success" : &lt;boolean&gt;</li>
+            <li>"reason" : "&lt;string&gt;"</li>
+            <li>"item" : {&lt;JSON Dictionary&gt;}</li>
+          </ul>
+          Notes:
+          <ul>
+            <li>item-id is required.</li>
+          </ul>
 
-        <h3 class="anchor" id="delete-item">Delete Inventory Item</h3>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/delete-inventory-item/&lt;item-id&gt;/</li>
-          <li>Production: https://www.gloebit.com/delete-inventory-item/&lt;item-id&gt;/</li>
-        </ul>
-        Arguments: access token, item id<br>
-        Returns: success or failure as JSON dictionary {}
-        <ul>
-          <li>"success" : &lt;boolean&gt;</li>
-          <li>"reason" : "&lt;string&gt;"</li>
-        </ul>
-        Notes:
-        <ul>
-          <li>item-id is required.</li>
-        </ul>
+          <h3 class="anchor" id="update-item">Update Inventory Item</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/update-inventory-item</li>
+            <li>Production: https://www.gloebit.com/update-inventory-item</li>
+          </ul>
+          Arguments: access token, post JSON dictionary {} for inventory item details to be updated (includes item and folder id)
+          <ul>
+            <li>"id" : "&lt;item id&gt;" --- as string</li>
+            <li>"folder-id" : "&lt;folder id&gt;" --- as string</li>
+            <li>"type-id" : "&lt;type id&gt;" --- as string</li>
+            <li>"params" : {&lt;JSON dictionary defining item&gt;}</li>
+          </ul>
+          Returns: success or failure as JSON Dictionary {}
+          <ul>
+            <li>"success" : &lt;boolean&gt;</li>
+            <li>"reason" : "&lt;string&gt;"</li>
+          </ul>
+          Notes:
+          <ul>
+            <li>This performs a full replace of the item.  If a parameter of the original item is not included in the update, that parameter will be deleted.</li>
+            <li>This matches strictly based on the item-id.  This can be used to update the folder-id or the type-id in addition to the params.</li>
+          </ul>
 
-        <h3>How To effect inventory as part of a transaction</h3>
-        <p>
-          If your application is using the Gloebit Digital Currency and Transaction Service, there are some advanced methods to tie into inventory.  See the Callbacks and Notifications subsection of the Digital Currency &amp; Transaction Service section for details on how to do so.
-        </p>
+          <h3 class="anchor" id="delete-item">Delete Inventory Item</h3>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/delete-inventory-item/&lt;item-id&gt;/</li>
+            <li>Production: https://www.gloebit.com/delete-inventory-item/&lt;item-id&gt;/</li>
+          </ul>
+          Arguments: access token, item id<br>
+          Returns: success or failure as JSON dictionary {}
+          <ul>
+            <li>"success" : &lt;boolean&gt;</li>
+            <li>"reason" : "&lt;string&gt;"</li>
+          </ul>
+          Notes:
+          <ul>
+            <li>item-id is required.</li>
+          </ul>
 
-      </section>
+          <h3>How To effect inventory as part of a transaction</h3>
+          <p>
+            If your application is using the Gloebit Digital Currency and Transaction Service, there are some advanced methods to tie into inventory.  See the Callbacks and Notifications subsection of the Digital Currency &amp; Transaction Service section for details on how to do so.
+          </p>
 
-      <section class="anchor" id="dctransaction">
-        <h1>Digital Curreny & Transaction Service</h1>
-        <p>
-          This Service provides everything necessary to handle payments and in-app micro-transactions in a fraction of the time and at a fraction of the cost of competitors.  This service provides access to a user's gloebit balance to display within an application.  It also provides access to request payment in gloebits from the user to the merchant/developer without leaving the application.
-        </p>
-        <ul>
-          <li>We suggest you price your products in gloebits and do not show an estimated USD cost.  In our experience, monetization decreases when a USD price is shown.</li>
-          <li>We store a full transaction history for all parties on the Gloebit website which is exportable to a csv file.</li>
-          <li>We provide dispute resolution services from the Gloebit website.  You will never have to deal with disputes for traditional payment methods as that relationship is between Gloebit and the end-user.  We do not pass chargeback fees to you, though we may occasionally need to freeze a gloebit transaction funded with a fraudulent payment method.  Any dispute you are involved in will be a gloebit transaction for a product or service you provided.</li>
-          <li>We handle the challenges of integration with traditional payment methods such as credit cards and PayPal.  We also accept Bitcoin.  You benefit as we continue to integrate new payment methods for consumers.</li>
-          <li>Merchants/developers earn gloebits into their account.  We provide an interface to sell those gloebits for USD or BTC and then to withdraw that USD or BTC from the system.  Currently, gloebit sales are pegged to G250 per $1.  We will eventually provide floating exchanges where merchants/developers can place sales at the value they desire.</li>
-          <li>If you are interested in enabling user-to-user transactions within your application, please contact us at info@gloebit.com.  This Gloebit Digital Currency & Transaction Service is perfect for communities which exchange payment for goods/services back and forth with each other.</li>
-          <li>Requires access token with a scope that includes "balance" and/or "transact".  See Authorization section for details.</li>
-        </ul>
+        </section>
 
-        <h2 class="anchor" id="balance">Balance</h2>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/balance</li>
-          <li>Production: https://www.gloebit.com/balance</li>
-        </ul>
-        Arguments: access token<br>
-        Returns: float representing gloebit balance for user
-        <ul>
-          <li>Requires access token with a scope that includes "balance".  See Authorization section for details.</li>
-        </ul>
+        <section class="anchor" id="dctransaction">
+          <h1>Digital Curreny & Transaction Service</h1>
+          <p>
+            This Service provides everything necessary to handle payments and in-app micro-transactions in a fraction of the time and at a fraction of the cost of competitors.  This service provides access to a user's gloebit balance to display within an application.  It also provides access to request payment in gloebits from the user to the merchant/developer without leaving the application.
+          </p>
+          <ul>
+            <li>We suggest you price your products in gloebits and do not show an estimated USD cost.  In our experience, monetization decreases when a USD price is shown.</li>
+            <li>We store a full transaction history for all parties on the Gloebit website which is exportable to a csv file.</li>
+            <li>We provide dispute resolution services from the Gloebit website.  You will never have to deal with disputes for traditional payment methods as that relationship is between Gloebit and the end-user.  We do not pass chargeback fees to you, though we may occasionally need to freeze a gloebit transaction funded with a fraudulent payment method.  Any dispute you are involved in will be a gloebit transaction for a product or service you provided.</li>
+            <li>We handle the challenges of integration with traditional payment methods such as credit cards and PayPal.  We also accept Bitcoin.  You benefit as we continue to integrate new payment methods for consumers.</li>
+            <li>Merchants/developers earn gloebits into their account.  We provide an interface to sell those gloebits for USD or BTC and then to withdraw that USD or BTC from the system.  Currently, gloebit sales are pegged to G250 per $1.  We will eventually provide floating exchanges where merchants/developers can place sales at the value they desire.</li>
+            <li>If you are interested in enabling user-to-user transactions within your application, please contact us at info@gloebit.com.  This Gloebit Digital Currency & Transaction Service is perfect for communities which exchange payment for goods/services back and forth with each other.</li>
+            <li>Requires access token with a scope that includes "balance" and/or "transact".  See Authorization section for details.</li>
+          </ul>
 
-        <h2 class="anchor" id="transact">Transact</h2>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/transact</li>
-          <li>Production: https://www.gloebit.com/transact</li>
-        </ul>
-        Arguments: access token, post dictionary in JSON or multipart form-data<br>
-        Returns: Success or Failure
-        <ul>
-          <li>Success
-            <ul>
-              <li>Transaction has reached a state where balance transfers have been enacted, but not yet committed.  A successful return means that the customer has enough available funds and they are on hold for this transaction, however the transaction can still be cancelled.  See Delivery &amp; Callback sections below for more details.</li>
-              <li>{"success":True, "reason":"resubmitted", "status":"in-progress"} - Resubmission of a transaction.</li>
-            </ul>
-          </li>
-          <li>Failure can happen for many reasons including:
-            <ul>
-              <li>The fields of the dictionary posted for the Transact call are non proper.</li>
-              <li>The customer's Gloebit account is not authorized to spend gloebits</li>
-              <li>The application is not authorized as a merchant to receive gloebits.</li>
-              <li>The application does not have Transact authorization from the customer.</li>
-              <li>{"success":False, "status":"failed", "reason":"transaction already created"} - Race condition possible if transaction is submitted multiple times at nearly the identical time.</li>
-              <li>{"success":False, "status":"queuing-failed"} - The attempt to queue the transaction for processing failed.</li>
-              <li>Enacting the balance adjustments failed (likely customer does not have enough available gloebits)</li>
-              <li>If using the Product Inventory System &amp; Product Transact Parameters, enacting of the product delivery failed.</li>
-              <li>If we could not enact balance transfers due to issues such as a user not having a sufficient balance not already enacted for other purchases, or your merchant/developer access token being invalid or not containing scope to cover transactions.</li>
-            </ul>
-          </li>
-        </ul>
-        Notes:
-        <ul>
-          <li>We suggest you make purchase buttons inactive after making a Transact request and until you receive a response to avoid double posting.</li>
-          <li>Requires access token with a scope that includes "transact".  See Authorization section for details.</li>
-          <li>See sections on Delivery &amp; Callbacks for suggestions on how to handle product delivery or other application side updates as part of a transaction.</li>
-        </ul>
-        Required Parameters:
-        <ul>
-          <li>"version" : 1.0</li>
-          <li>"application-key" : "&lt;uuid&gt;" --- merchant/developer consumer-key</li>
-          <li>"username-on-application" : "&lt;name of user in application&gt;" --- name of user on merchant/developer application.  Blank if application chooses not to supply.  Recommend supplying so that consumer has record in his/her transaction history (especially useful when a user attaches multiple accounts in application to one Gloebit account).  Also provides this back to merchant/developer in merchant/developer transaction history so that you can tie revenue to specific users in your system.  If user is purchasing as a character and the application is not supplying a character-id through the product version of Transact, you may consider supplying &lt;user&gt;:&lt;character&gt; or something similar to provide both.</li>
-          <li>"id" : "&lt;uuid as string up to 36 characters&gt;" --- uuid of the transaction you created in your application.  If you are storing/tracking on your own end, this allows you to tie it to the transaction in the Gloebit system (which will have a separate uuid that we created).  This is also the mechanism for idempotency so that making multiple requests will not duplicate the transaction in our system.</li>
-          <li>"request-created" : &lt;integer timestamp in seconds&gt; --- This should be the time that you created this request in your application.</li>
-        </ul>
+          <h2 class="anchor" id="balance">Balance</h2>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/balance</li>
+            <li>Production: https://www.gloebit.com/balance</li>
+          </ul>
+          Arguments: access token<br>
+          Returns: float representing gloebit balance for user
+          <ul>
+            <li>Requires access token with a scope that includes "balance".  See Authorization section for details.</li>
+          </ul>
 
-        <h3>Product Transact Parameters for use with Product Inventory Service</h3>
-        <p>
-          If you are selling a product defined on the application's API Settings page of the Gloebit website and managed by the Product Inventory Service, then your application should use these additional Product Transact Parameters.  Delivery of the product/entitlement will be handled by the transaction.  Additionally, if you are making these calls from an application which is just a web app with no server, use of these product services ensures that a user cannot adjust the price of a product as it is defined elsewhere, not in the transaction.<br>
+          <h2 class="anchor" id="transact">Transact</h2>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/transact</li>
+            <li>Production: https://www.gloebit.com/transact</li>
+          </ul>
+          Arguments: access token, post dictionary in JSON or multipart form-data<br>
+          Returns: Success or Failure
+          <ul>
+            <li>Success
+              <ul>
+                <li>Transaction has reached a state where balance transfers have been enacted, but not yet committed.  A successful return means that the customer has enough available funds and they are on hold for this transaction, however the transaction can still be cancelled.  See Delivery &amp; Callback sections below for more details.</li>
+                <li>{"success":True, "reason":"resubmitted", "status":"in-progress"} - Resubmission of a transaction.</li>
+              </ul>
+            </li>
+            <li>Failure can happen for many reasons including:
+              <ul>
+                <li>The fields of the dictionary posted for the Transact call are non proper.</li>
+                <li>The customer's Gloebit account is not authorized to spend gloebits</li>
+                <li>The application is not authorized as a merchant to receive gloebits.</li>
+                <li>The application does not have Transact authorization from the customer.</li>
+                <li>{"success":False, "status":"failed", "reason":"transaction already created"} - Race condition possible if transaction is submitted multiple times at nearly the identical time.</li>
+                <li>{"success":False, "status":"queuing-failed"} - The attempt to queue the transaction for processing failed.</li>
+                <li>Enacting the balance adjustments failed (likely customer does not have enough available gloebits)</li>
+                <li>If using the Product Inventory System &amp; Product Transact Parameters, enacting of the product delivery failed.</li>
+                <li>If we could not enact balance transfers due to issues such as a user not having a sufficient balance not already enacted for other purchases, or your merchant/developer access token being invalid or not containing scope to cover transactions.</li>
+              </ul>
+            </li>
+          </ul>
+          Notes:
+          <ul>
+            <li>We suggest you make purchase buttons inactive after making a Transact request and until you receive a response to avoid double posting.</li>
+            <li>Requires access token with a scope that includes "transact".  See Authorization section for details.</li>
+            <li>See sections on Delivery &amp; Callbacks for suggestions on how to handle product delivery or other application side updates as part of a transaction.</li>
+          </ul>
           Required Parameters:
-        </p>
-        <ul>
-          <li>"product" : "&lt;string up to 36 characters&gt;" --- This is the product name you provided in the product definition on the application's API Settings page of the Gloebit website.</li>
-        </ul>
-        Optional Parameters:
-        <ul>
-          <li>"product-quantity" : &lt;positive integer&gt; --- defaults to 1 if not supplied.  Quantity of the product being sold.</li>
-          <li>"character-id" : "&lt;uuid&gt;" - If your application is using our Character Service, this is for delivery of the product or entitlement to the character specified within the user account as opposed to the user.  This is the uuid for this character in this application which Gloebit has created and provided to the application.</li>
-        </ul>
-        Notes:
-        <ul>
-          <li>The transaction history for the user will display "sent to &lt;app name&gt; for &lt;product-quantity&gt; &lt;product-name&gt;".  Make your product name descriptive enough that a user will know what it references.  Also, if you are selling a package, such as "5 swords", we recommend naming it something like "Package of 5 swords" so that the transaction history will read "Sent to &lt;app&gt; for 1 Package of 5 swords" rather than "Sent to &lt;app&gt; for 1 5 swords".</li>
-          <li>These parameters are separate from the Asset Transact Parameters below and cannot be used in combination with those parameters.</li>
-        </ul>
+          <ul>
+            <li>"version" : 1.0</li>
+            <li>"application-key" : "&lt;uuid&gt;" --- merchant/developer consumer-key</li>
+            <li>"username-on-application" : "&lt;name of user in application&gt;" --- name of user on merchant/developer application.  Blank if application chooses not to supply.  Recommend supplying so that consumer has record in his/her transaction history (especially useful when a user attaches multiple accounts in application to one Gloebit account).  Also provides this back to merchant/developer in merchant/developer transaction history so that you can tie revenue to specific users in your system.  If user is purchasing as a character and the application is not supplying a character-id through the product version of Transact, you may consider supplying &lt;user&gt;:&lt;character&gt; or something similar to provide both.</li>
+            <li>"id" : "&lt;uuid as string up to 36 characters&gt;" --- uuid of the transaction you created in your application.  If you are storing/tracking on your own end, this allows you to tie it to the transaction in the Gloebit system (which will have a separate uuid that we created).  This is also the mechanism for idempotency so that making multiple requests will not duplicate the transaction in our system.</li>
+            <li>"request-created" : &lt;integer timestamp in seconds&gt; --- This should be the time that you created this request in your application.</li>
+          </ul>
 
-        <h3>Asset Transact Parameters for use with generic assets</h3>
-        <p>
-          If your application is not using the Product Inventory Service, then you should use these additional Asset Transact Parameters to define your transaction.  You can manage delivery of the asset purchased yourself, or you can use the Callback Transact Parameters below as a mechanism for triggering delivery within our Advanced Inventory System.<br>
-          Required Parameters:
-        </p>
-        <ul>
-          <li>"gloebit-balance-change" : &lt;positive float&gt; --- This is the full balance change or price the user will be charged for the entire transaction.</li>
-          <li>"asset-code" : "&lt;string&gt;" --- This is the sku, or product name/description.</li>
-        </ul>
-        Optional Parameters:
-        <ul>
-          <li>"asset-quantity" : &lt;positive float&gt; --- quantity of the sku being purchased.  defaults to 1 if not provided.</li>
-        </ul>
-        Notes:
-        <ul>
-          <li>The transaction history for the user will display "sent to &lt;app name&gt; for &lt;asset-quantity&gt; &lt;asset-code&gt;".  Make your asset-code descriptive enough that a user will know what it references.  Also, if you are selling a package, such as "5 swords", we recommend naming it something like "Package of 5 swords" so that the transaction history will read "Sent to &lt;app&gt; for 1 Package of 5 swords" rather than "Sent to &lt;app&gt; for 1 5 swords".</li>
-          <li>These parameters are separate from the Product Transact Parameters above and cannot be used in combination with those parameters.</li>
-          <li>You can handle product delivery when you choose to do so.  See the Callback Transact Parameters and Delivery sections below for more details</li>
-        </ul>
+          <h3>Product Transact Parameters for use with Product Inventory Service</h3>
+          <p>
+            If you are selling a product defined on the application's API Settings page of the Gloebit website and managed by the Product Inventory Service, then your application should use these additional Product Transact Parameters.  Delivery of the product/entitlement will be handled by the transaction.  Additionally, if you are making these calls from an application which is just a web app with no server, use of these product services ensures that a user cannot adjust the price of a product as it is defined elsewhere, not in the transaction.<br>
+            Required Parameters:
+          </p>
+          <ul>
+            <li>"product" : "&lt;string up to 36 characters&gt;" --- This is the product name you provided in the product definition on the application's API Settings page of the Gloebit website.</li>
+          </ul>
+          Optional Parameters:
+          <ul>
+            <li>"product-quantity" : &lt;positive integer&gt; --- defaults to 1 if not supplied.  Quantity of the product being sold.</li>
+            <li>"character-id" : "&lt;uuid&gt;" - If your application is using our Character Service, this is for delivery of the product or entitlement to the character specified within the user account as opposed to the user.  This is the uuid for this character in this application which Gloebit has created and provided to the application.</li>
+          </ul>
+          Notes:
+          <ul>
+            <li>The transaction history for the user will display "sent to &lt;app name&gt; for &lt;product-quantity&gt; &lt;product-name&gt;".  Make your product name descriptive enough that a user will know what it references.  Also, if you are selling a package, such as "5 swords", we recommend naming it something like "Package of 5 swords" so that the transaction history will read "Sent to &lt;app&gt; for 1 Package of 5 swords" rather than "Sent to &lt;app&gt; for 1 5 swords".</li>
+            <li>These parameters are separate from the Asset Transact Parameters below and cannot be used in combination with those parameters.</li>
+          </ul>
 
-        <h3>Callback Transact Parameters</h3>
-        <p>
-          These parameters are optional and allow a developer to define a URL which will be requested at various states of the transaction.
-        </p>
-        <ul>
-          <li>No arguments are provided, so the URL should contain any information your application needs, such as the transaction id to identify the transaction.</li>
-          <li>Our system waits for a response from these requests.  Be aware that you can stall your own transactions, so we prefer quick responses from these URLs.</li>
-          <li>These urls should be idempotent as we will retry them if we do not get a response.</li>
-        </ul>
-        Callback Transaction Parameters:
-        <ul>
-          <li>"asset-enact-hold-url" : "&lt;url&gt;" --- This url will be called after the transaction processor has enacted all parts of the transaction.  Think of this as a hold being in place which should guarantee that the transaction can be completed, but still being in a state where it can also be cancelled and rolled back.  If your application supplies this parameter and the callback url responds "false", we will assume necessary components in your application (such as delivery of the purchased good) failed and we will cancel and roll back the transaction.  In some circumstances, this callback can occur more than once, can occur prior the Transact call returning "true", and may be received after the asset-cancel-hold-url callback has occurred.  In most cases, the transaction will only fail after this point if your asset-enact-hold-url returns "false".</li>
-          <li>"asset-cancel-hold-url" : "&lt;url&gt;" --- This url will be called if and as we have determined to cancel the transaction.  In most cases, all parts of the transaction have been cancelled (and if enacted already, rolled back) prior to this call.  Once this call is made/received, this transaction cannot and will not succeed.  This can be called prior to or without an "asset-enact-hold-url" being called.  This may not be called if the Transact call returns "false", so it is important to pay attention to the Transact return as well.  This url should never be called after "asset-consume-hold-url" has been called.  While the response will not affect the transaction, we will recall this url until we receive an acknowledgement of receipt.</li>
-          <li>"asset-consume-hold-url" : "&lt;url&gt;" -- This url will be called after we have consumed the holds enacted and committed the transaction.  At this point, the transaction is fully complete and can not be rolled back.  This url may be called multiple times.  While the response will not affect the transaction, we will recall this url until we receive an acknowledgement of receipt.</li>
-        </ul>
+          <h3>Asset Transact Parameters for use with generic assets</h3>
+          <p>
+            If your application is not using the Product Inventory Service, then you should use these additional Asset Transact Parameters to define your transaction.  You can manage delivery of the asset purchased yourself, or you can use the Callback Transact Parameters below as a mechanism for triggering delivery within our Advanced Inventory System.<br>
+            Required Parameters:
+          </p>
+          <ul>
+            <li>"gloebit-balance-change" : &lt;positive float&gt; --- This is the full balance change or price the user will be charged for the entire transaction.</li>
+            <li>"asset-code" : "&lt;string&gt;" --- This is the sku, or product name/description.</li>
+          </ul>
+          Optional Parameters:
+          <ul>
+            <li>"asset-quantity" : &lt;positive float&gt; --- quantity of the sku being purchased.  defaults to 1 if not provided.</li>
+          </ul>
+          Notes:
+          <ul>
+            <li>The transaction history for the user will display "sent to &lt;app name&gt; for &lt;asset-quantity&gt; &lt;asset-code&gt;".  Make your asset-code descriptive enough that a user will know what it references.  Also, if you are selling a package, such as "5 swords", we recommend naming it something like "Package of 5 swords" so that the transaction history will read "Sent to &lt;app&gt; for 1 Package of 5 swords" rather than "Sent to &lt;app&gt; for 1 5 swords".</li>
+            <li>These parameters are separate from the Product Transact Parameters above and cannot be used in combination with those parameters.</li>
+            <li>You can handle product delivery when you choose to do so.  See the Callback Transact Parameters and Delivery sections below for more details</li>
+          </ul>
 
-        <h3>Delivery of digital goods/entitlements purchased</h3>
-        <p>
-          There are many ways to handle delivery of purchases, allowing the merchant/developer to decide what is best for their application.<br>
-          If your application is using the Product Inventory Service:
-        </p>
-        <ul>
-          <li>See the Product Transact Parameters section which will automatically handle delivery of your product to the user or character as part of the transaction.  This is the simplest way to utilize our services.</li>
-        </ul>
-        If your application is not using the Product Inventory Service, or if it is, but you would like to manage additional information internally, then it is best to understand the phases of the Transact request:
-        <ul>
-          <li>Prior to Transact request --- You are welcome to deliver digital goods prior to making the Transact request if you are willing to have some leakage or handle reversal of delivery on failure.  We recommend you check a user's balance to ensure that the user has enough gloebits in his/her account for the purchase.  There is no guarantee that the purchase will succeed, but if your application allows purchases during a live-action game, you may prefer some leakage over making a user wait until the transaction completes.</li>
-          <li>Upon successful response from Transact request --- Once the system enacts all transfers involved, it returns success.  The transaction is not yet committed and can still be rolled back, but that is unlikely.  This is a great time to deliver goods, and still very simple.  Upon a Transact failure response, the action your application takes should be dependent on the message details.  Some possibilities include retrying the Transact call, attempting to fix any problems on the application end, or asking the user to purchase enough gloebits to afford the purchase.</li>
-          <li>Upon Transact Callback of asset-enact-hold-url --- This is a similar state as when the Transact request returns success.  The transfer has been made to all balances, but has not been committed and can still be rolled back.  The transaction processor waits for a response from this url before committing the transaction.  Using this callback is a great way to tie in delivery in a way where if delivery of the goods fails, then the gloebit transaction is rolled back.  A return of true from this url should mean that you have delivered the goods, and false means you have failed permanently in an attempt to deliver and we should roll back the gloebit transaction.  If we receive a response of false, after rolling back the transaction, we will call the asset-cancel-hold-url callback if one has been supplied.</li>
-          <li>Upon Transact Callback of asset-consume-hold-url --- If you are looking to be as conservative as possible with delivery of your digital goods, then you may decide to handle delivery upon receiving this callback; however, this creates the risk that a user is charged gloebits and your system fails to deliver the goods.  We recommend that the best conservative method is to begin or queue delivery with the asset-enact-hold-url and complete or commit delivery with the asset-consume-hold-url.  This callback means the transaction has been fully completed and committed.  It can not be cancelled or rolled back at this point and the gloebits have been delivered to the merchant/developer account controlling the application that requested the transaction.</li>
-          <li>Upon Transact Callback of asset-cancel-hold-url ---  If at any point, you receive this callback, the transaction has failed and is being or has been rolled back.  If you have not delivered your goods, don't.  If you have begun delivery of your goods, then cancel processing of that delivery.  Once you receive the asset-consume-hold-url callback, you can rest assured that you will not receive the asset-cancel-hold-url for this transaction.</li>
-        </ul>
-        Note:
-        <ul>
-          <li>While transactions cannot be rolled back once committed, that does not mean that delivery of gloebits cannot later be reversed.  We have to deal with fraud and disputes just like any other payment service.  We do our best to insulate our partners from fraud, however, there are situations where we will need to place a hold on or reclaim gloebits.  For instance, if gloebits sent to you were fraudulently purchased, or if a user disputes the transaction where that user paid you those gloebits, then we may have to take action.  For further details, please read the <a href="https://www.gloebit.com/display-tos-merchant/">Merchant Terms of Service</a> for Gloebit.</li>
-        </ul>
+          <h3>Callback Transact Parameters</h3>
+          <p>
+            These parameters are optional and allow a developer to define a URL which will be requested at various states of the transaction.
+          </p>
+          <ul>
+            <li>No arguments are provided, so the URL should contain any information your application needs, such as the transaction id to identify the transaction.</li>
+            <li>Our system waits for a response from these requests.  Be aware that you can stall your own transactions, so we prefer quick responses from these URLs.</li>
+            <li>These urls should be idempotent as we will retry them if we do not get a response.</li>
+          </ul>
+          Callback Transaction Parameters:
+          <ul>
+            <li>"asset-enact-hold-url" : "&lt;url&gt;" --- This url will be called after the transaction processor has enacted all parts of the transaction.  Think of this as a hold being in place which should guarantee that the transaction can be completed, but still being in a state where it can also be cancelled and rolled back.  If your application supplies this parameter and the callback url responds "false", we will assume necessary components in your application (such as delivery of the purchased good) failed and we will cancel and roll back the transaction.  In some circumstances, this callback can occur more than once, can occur prior the Transact call returning "true", and may be received after the asset-cancel-hold-url callback has occurred.  In most cases, the transaction will only fail after this point if your asset-enact-hold-url returns "false".</li>
+            <li>"asset-cancel-hold-url" : "&lt;url&gt;" --- This url will be called if and as we have determined to cancel the transaction.  In most cases, all parts of the transaction have been cancelled (and if enacted already, rolled back) prior to this call.  Once this call is made/received, this transaction cannot and will not succeed.  This can be called prior to or without an "asset-enact-hold-url" being called.  This may not be called if the Transact call returns "false", so it is important to pay attention to the Transact return as well.  This url should never be called after "asset-consume-hold-url" has been called.  While the response will not affect the transaction, we will recall this url until we receive an acknowledgement of receipt.</li>
+            <li>"asset-consume-hold-url" : "&lt;url&gt;" -- This url will be called after we have consumed the holds enacted and committed the transaction.  At this point, the transaction is fully complete and can not be rolled back.  This url may be called multiple times.  While the response will not affect the transaction, we will recall this url until we receive an acknowledgement of receipt.</li>
+          </ul>
 
-        <h2 class="anchor" id="purchase">Purchase gloebits</h2>
-        <p>
-          Endpoints:
-        </p>
-        <ul>
-          <li>Sandbox: https://sandbox.gloebit.com/purchase</li>
-          <li>Production: https://www.gloebit.com/purchase</li>
-        </ul>
-        Arguments: referrer and return-to URI as query args
-        <ul>
-          <li>r=&lt;application oauth key alias&gt;</li>
-          <li>return-to=&lt;return-to URI&gt;</li>
-        </ul>
-        Notes:
-        <ul>
-          <li>Sends the user to Gloebit, directly into the gloebit purchase flow with trackback imagery and links back to sending application.</li>
-          <li>When a user requires additional gloebits to make a purchase from your application, this is the way to get the user quickly to Gloebit and back to your app.  Upon completion, the user will be directed to return to the return-to link the application provided.</li>
-          <li>See the <a href="http://dev.gloebit.com/monetize/#customer">consumer experience flow here</a>.</li>
-        </ul>
+          <h3>Delivery of digital goods/entitlements purchased</h3>
+          <p>
+            There are many ways to handle delivery of purchases, allowing the merchant/developer to decide what is best for their application.<br>
+            If your application is using the Product Inventory Service:
+          </p>
+          <ul>
+            <li>See the Product Transact Parameters section which will automatically handle delivery of your product to the user or character as part of the transaction.  This is the simplest way to utilize our services.</li>
+          </ul>
+          If your application is not using the Product Inventory Service, or if it is, but you would like to manage additional information internally, then it is best to understand the phases of the Transact request:
+          <ul>
+            <li>Prior to Transact request --- You are welcome to deliver digital goods prior to making the Transact request if you are willing to have some leakage or handle reversal of delivery on failure.  We recommend you check a user's balance to ensure that the user has enough gloebits in his/her account for the purchase.  There is no guarantee that the purchase will succeed, but if your application allows purchases during a live-action game, you may prefer some leakage over making a user wait until the transaction completes.</li>
+            <li>Upon successful response from Transact request --- Once the system enacts all transfers involved, it returns success.  The transaction is not yet committed and can still be rolled back, but that is unlikely.  This is a great time to deliver goods, and still very simple.  Upon a Transact failure response, the action your application takes should be dependent on the message details.  Some possibilities include retrying the Transact call, attempting to fix any problems on the application end, or asking the user to purchase enough gloebits to afford the purchase.</li>
+            <li>Upon Transact Callback of asset-enact-hold-url --- This is a similar state as when the Transact request returns success.  The transfer has been made to all balances, but has not been committed and can still be rolled back.  The transaction processor waits for a response from this url before committing the transaction.  Using this callback is a great way to tie in delivery in a way where if delivery of the goods fails, then the gloebit transaction is rolled back.  A return of true from this url should mean that you have delivered the goods, and false means you have failed permanently in an attempt to deliver and we should roll back the gloebit transaction.  If we receive a response of false, after rolling back the transaction, we will call the asset-cancel-hold-url callback if one has been supplied.</li>
+            <li>Upon Transact Callback of asset-consume-hold-url --- If you are looking to be as conservative as possible with delivery of your digital goods, then you may decide to handle delivery upon receiving this callback; however, this creates the risk that a user is charged gloebits and your system fails to deliver the goods.  We recommend that the best conservative method is to begin or queue delivery with the asset-enact-hold-url and complete or commit delivery with the asset-consume-hold-url.  This callback means the transaction has been fully completed and committed.  It can not be cancelled or rolled back at this point and the gloebits have been delivered to the merchant/developer account controlling the application that requested the transaction.</li>
+            <li>Upon Transact Callback of asset-cancel-hold-url ---  If at any point, you receive this callback, the transaction has failed and is being or has been rolled back.  If you have not delivered your goods, don't.  If you have begun delivery of your goods, then cancel processing of that delivery.  Once you receive the asset-consume-hold-url callback, you can rest assured that you will not receive the asset-cancel-hold-url for this transaction.</li>
+          </ul>
+          Note:
+          <ul>
+            <li>While transactions cannot be rolled back once committed, that does not mean that delivery of gloebits cannot later be reversed.  We have to deal with fraud and disputes just like any other payment service.  We do our best to insulate our partners from fraud, however, there are situations where we will need to place a hold on or reclaim gloebits.  For instance, if gloebits sent to you were fraudulently purchased, or if a user disputes the transaction where that user paid you those gloebits, then we may have to take action.  For further details, please read the <a href="https://www.gloebit.com/display-tos-merchant/">Merchant Terms of Service</a> for Gloebit.</li>
+          </ul>
 
-      </section>
+          <h2 class="anchor" id="purchase">Purchase gloebits</h2>
+          <p>
+            Endpoints:
+          </p>
+          <ul>
+            <li>Sandbox: https://sandbox.gloebit.com/purchase</li>
+            <li>Production: https://www.gloebit.com/purchase</li>
+          </ul>
+          Arguments: referrer and return-to URI as query args
+          <ul>
+            <li>r=&lt;application oauth key alias&gt;</li>
+            <li>return-to=&lt;return-to URI&gt;</li>
+          </ul>
+          Notes:
+          <ul>
+            <li>Sends the user to Gloebit, directly into the gloebit purchase flow with trackback imagery and links back to sending application.</li>
+            <li>When a user requires additional gloebits to make a purchase from your application, this is the way to get the user quickly to Gloebit and back to your app.  Upon completion, the user will be directed to return to the return-to link the application provided.</li>
+            <li>See the <a href="http://dev.gloebit.com/monetize/#customer">consumer experience flow here</a>.</li>
+          </ul>
 
-      <section class="anchor" id="error">
-        <h1>Errors</h1>
-        <p>
-          Any access-token protected API call returns a JSON dictionary.  One of the entries will be "success" which will be True or False.  If "success" is False, there will be an entry called "reason", which will be set to one of the following:
-        </p>
-        <ul>
-          <li>"missing domain"</li>
-          <li>"unknown consumer"</li>
-          <li>"unknown user"</li>
-          <li>"unknown token"</li>
-          <li>"token has expired"</li>
-        </ul>
-        Example:
-        <ul>
-          <li>{"success":False, "reason":"unknown token"}</li>
-        </ul>
+        </section>
 
-      </section>
+        <section class="anchor" id="error">
+          <h1>Errors</h1>
+          <p>
+            Any access-token protected API call returns a JSON dictionary.  One of the entries will be "success" which will be True or False.  If "success" is False, there will be an entry called "reason", which will be set to one of the following:
+          </p>
+          <ul>
+            <li>"missing domain"</li>
+            <li>"unknown consumer"</li>
+            <li>"unknown user"</li>
+            <li>"unknown token"</li>
+            <li>"token has expired"</li>
+          </ul>
+          Example:
+          <ul>
+            <li>{"success":False, "reason":"unknown token"}</li>
+          </ul>
 
-      <section class="anchor" id="roadmap">
-        <h1>On the Roadmap</h1>
-        <p>
-          Some API features on the roadmap are
-        </p>
-        <ul>
-          <li>Application specific sub-currencies or soft currencies</li>
-          <li>Management and consumption of resources (brick, wood, mineral, etc) in application</li>
-          <li>User-to-user transactions</li>
-        </ul>
-        If these, or any other features are important to you, please <a href="https://www.gloebit.com/contact-us/"><!--target="_blank"-->contact us</a> to help us prioritize or register as a potential future feature beta tester.
+        </section>
 
-      </section>
+        <section class="anchor" id="roadmap">
+          <h1>On the Roadmap</h1>
+          <p>
+            Some API features on the roadmap are
+          </p>
+          <ul>
+            <li>Application specific sub-currencies or soft currencies</li>
+            <li>Management and consumption of resources (brick, wood, mineral, etc) in application</li>
+            <li>User-to-user transactions</li>
+          </ul>
+          If these, or any other features are important to you, please <a href="https://www.gloebit.com/contact-us/"><!--target="_blank"-->contact us</a> to help us prioritize or register as a potential future feature beta tester.
+
+        </section>
+      </div>
       <div style="clear:both"></div>
     </div>
 
