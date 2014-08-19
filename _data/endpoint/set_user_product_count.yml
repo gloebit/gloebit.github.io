@@ -1,14 +1,14 @@
 
-id: grant-user-product
-name: Grant User Product
+id: set-user-product-count
+name: Set User Product Count
 service: Inventory
 desc:
   - p: >
-      An application uses this endpoint to increase the quantity of a product in the application's inventory of the user account associated with the access token.  The endpoint checks that the product is enabled, can be granted, and, if it has a per-user limit, that the resulting quantity is at most the limit.  Product settings are available on the application's <a href="/app-config/">Gloebit Application Configuration</a> page.
+      An application uses this endpoint to set the quantity of a product in the application's inventory of the user account associated with the access token.  The endpoint checks that the product is enabled, can be granted, and, if it has a per-user limit, that the requested quantity is at most the limit.  Product settings are available on the application's <a href="/app-config/">Gloebit Application Configuration</a> page.
 method: POST
 uri_path: |
-  grant-user-product/&lt;product_name&gt;/&lt;count&gt;<br>
-  grant-user-product
+  set-user-product-count/&lt;product_name&gt;/&lt;count&gt;<br>
+  set-user-product-count
 bearer: true
 scope: inventory
 param:
@@ -20,7 +20,7 @@ param:
         - name: product_name
           desc: Name of product matching product entry on application's configuration page.
         - name: count
-          desc: Quantity of product to grant user.
+          desc: Quantity of product to set in user's application inventory.
 result:
   - p: >
       The endpoint always returns an HTTP 200 code along with a JSON object:
