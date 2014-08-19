@@ -1,0 +1,37 @@
+
+id: get-character-products
+name: Get Character Products
+service: Inventory
+desc:
+  - p: >
+      An application uses this endpoint to retrieve a list of the products in the character's inventory.  The quantity of each is also returned.  Only those products with a quantity greater than zero are included.
+method: GET
+uri_path: |
+  get-character-products/&lt;character_id&gt;<br>
+  get-character-products
+bearer: true
+scope: inventory
+param:
+  desc: >
+    The endpoint requires a Gloebit character ID.  It may be passed via the endpoint URI (first path) or passed in the HTTP request body (second path) either as a JSON dictionary or in "application/x-www-form-urlencoded" format.
+  form:
+    - class: Required
+      param: 
+        - name: character_id
+          desc: Gloebit character ID.
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Response contains a valid product list.<br>
+          "false" - Request failed.  Product list, if included, is not valid.
+      - name: products
+        desc: |
+          Dictionary of product information.<br>
+          Keys are the product names.<br>
+          Values are the product counts.
+      - name: reason
+        desc: Short description of why request failed.

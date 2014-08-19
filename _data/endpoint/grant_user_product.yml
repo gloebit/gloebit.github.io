@@ -4,7 +4,7 @@ name: Grant User Product
 service: Inventory
 desc:
   - p: >
-      An application uses this endpoint to increase the quantity of a product in the application's inventory of the user account associated with the access token.  The endpoint checks that the product is enabled, can be granted, and, if it has a per-user limit, that the resulting quantity is at most the limit.  Product settings are available on the application's <a href="/app-config/">Gloebit Application Configuration</a> page.
+      An application uses this endpoint to increase the quantity of a product in the application's inventory of the user account associated with the access token.  The endpoint checks that the product is enabled, can be granted, and, if it has a per-inventory limit, that the resulting quantity is at most the limit.  Product settings are available on the application's <a href="/app-config/">Gloebit Application Configuration</a> page.
 method: POST
 uri_path: |
   grant-user-product/&lt;product_name&gt;/&lt;count&gt;<br>

@@ -358,64 +358,13 @@ no_sections: true
 
           {% include ep_template.html ep=site.data.endpoint.set_user_product_count %}
 
-          <h3 class="anchor" id="get-character-products">Get Character Products</h3>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/get-character-products</li>
-            <li>Production: https://www.gloebit.com/get-character-products</li>
-          </ul>
-          Arguments: access token, character uuid<br>
-          Returns: JSON dictionary of {"&lt;product name&gt;":&lt;quantity&gt; pairs} belonging to the character
-          <ul>
-            <li>Returns a list of the products a character has in its inventory for this application and the quantity that character has of them.</li>
-            <li>This will not return a pair for any product for which the character has never had or had but has consumed down to a quantity of zero.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.get_character_products %}
 
-          <h3 class="anchor" id="grant-character-product">Grant Character Product</h3>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/grant-character-product</li>
-            <li>Production: https://www.gloebit.com/grant-character-product</li>
-          </ul>
-          Arguments: access token, character uuid, product name, quantity<br>
-          Returns: success or failure
-          <ul>
-            <li>Grants quantity of product to the character corresponding to uuid within the application associated with this access token.</li>
-            <li>The <b>Can be granted/set</b> flag in the product definition for this product on the API Settings page for this application needs to be turned on for this product in order to allow this.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.grant_character_product %}
 
-          <h3 class="anchor" id="consumer-character-product">Consume Character Product</h3>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/consume-character-product</li>
-            <li>Production: https://www.gloebit.com/consume-character-product</li>
-          </ul>
-          Arguments: access token, character uuid, product name, quantity<br>
-          Returns: success or failure
-          <ul>
-            <li>Reduces the quantity of this product in the character's inventory for this application by the quantity provided.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.consume_character_product %}
 
-          <h3 class="anchor" id="set-character-product-count">Set Character Product Count</h3>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/set-character-product-count</li>
-            <li>Production: https://www.gloebit.com/set-user-product-count</li>
-          </ul>
-          Arguments: access token, character uuid, product name, count<br>
-          Returns: success or failure
-          <ul>
-            <li>Sets the quantity for the product in the character's inventory for this application to the count provided.</li>
-            <li>The <b>Can be granted/set</b> flag in the product definition for this product on the API Settings page for this application needs to be turned on for this product in order to allow this.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.set_character_product_count %}
 
           <h3>Transact Product</h3>
           <p>
