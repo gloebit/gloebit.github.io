@@ -1,0 +1,45 @@
+
+id: grant-user-product
+name: Grant User Product
+service: Inventory
+desc:
+  - p: >
+      An application uses this endpoint to increase the quantity of a product in the inventory of the user account associated with the access token.  The endpoint checks that the product is enabled, can be granted, and, if it has a per-user limit, that the resulting quantity is at most the limit.  Product settings are available on the application's <a href="/app-config/">Gloebit Application Configuration</a> page.
+method: POST
+uri_path: grant-user-products
+bearer: true
+scope: inventory
+param:
+  desc: >
+    All parameters are passed in the HTTP request body, either as a JSON dictionary or in "application/x-www-form-urlencoded" format.
+  form:
+    - class: Required
+      param: 
+        - name: id
+          desc: Gloebit UUID for character.
+  query:         # Query arguments mapping
+    - class:     # Header for table ("Required" or "Optional" or ...)
+      param:     # Sequence of {name: ..., desc: ...} mappings for parameters.
+        - name:
+          desc:
+        - name:
+          desc:
+    - class:
+      param:
+        - name:
+          desc:
+        - name:
+          desc:
+  form:          # JSON arguments mapping
+    - class:     # Header for table ("Required" or "Optional" or ...)
+      param:     # Sequence of {name: ..., desc: ...} mappings for parameters.
+        - name:  # ...same structure as query...
+          desc:
+result:          # Sequence of mappings.
+  - p: >         # Every mapping must have a p key.
+    return:      # Optional {name: ..., desc: ...} mapping of return values.
+      - name:
+        desc:
+  - p: >
+notes:           # Optional sequence of to-be-bulleted list items
+  - >

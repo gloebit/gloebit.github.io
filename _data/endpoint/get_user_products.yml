@@ -1,0 +1,27 @@
+
+id: get-user-products
+name: Get User Products
+service: Inventory
+desc:
+  - p: >
+      An application uses this endpoint to retrieve a list of the products in the user account associated with the access token.  The quantity of each is also returned.  Only those products with a quantity greater than zero are included.
+method: GET
+uri_path: get-user-products
+bearer: true
+scope: inventory
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Response contains a valid product list.<br>
+          "false" - Request failed.  Product list, if included, is not valid.
+      - name: products
+        desc: |
+          Dictionary of product information.<br>
+          Keys are the product names.<br>
+          Values are the product counts.
+      - name: reason
+        desc: Short description of why request failed.
