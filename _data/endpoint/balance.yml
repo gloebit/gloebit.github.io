@@ -1,0 +1,27 @@
+
+id: balance
+name: Balance
+service: Digitial Currency & Transaction
+desc:
+  - p: >
+      An application uses this endpoint to get the gloebit balance of the user account associate with the access toekn.
+method: GET
+uri_path: balance
+bearer: true
+scope: balance
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Balance lookup successful, response contains a valid gloebit balance for the user.<br>
+          "false" - Request failed.  Gloebit balance, if included, is not valid.
+      - name: balance
+        desc: Number of gloebits in user's Gloebit account.
+      - name: reason
+        desc: Short description of why request failed.
+notes:
+  - >
+    Only possible failure for endpoint is access token's scope not containing 'balance'.

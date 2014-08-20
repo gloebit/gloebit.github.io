@@ -1,0 +1,31 @@
+
+id: purchase
+name: Purchase gloebits
+service: Digital Currency & Transaction
+desc:
+  - p: >
+      An application uses this endpoint to let the user purchase gloebits on the Gloebit site.
+method: Redirect (or&nbsp;GET)
+uri_path: purchase
+param:
+  desc: >
+    All <i>Purchase</i> parameters are supplied as query arguments appended to the URL.
+  query:
+    - class: Optional
+      param:
+        - name: r
+          desc: |
+            OAuth Key alias for the application.<br>
+            Use to lookup trackback ID, text, imagery, and default Return-To URI.
+        - name: return-to
+          desc: URI for trackback link to use instead of default Return-To URI.
+result:
+  - p: >
+      Endpoint does not return any values or perform a URI callback. If user clicks on a trackback link, the user's agent will return to the application via the Return-To URI.
+notes:
+  - >
+    Endpoint is the only means for users to purchase gloebits. Applications must redirect users with insufficient balance to the endpoint to buy gloebits. Trackback links on the Gloebit pages allow the user to return to the application within the user's agent.
+  - >
+    Gloebit shows trackback links only if the <i>r</i> parameter is a valid OAuth Key alias. The <i>return-to</i> parameter is used only if the <i>r</i> parameter is a valid OAuth Key alias.
+  - >
+    Related: <a href="/monetize/#consumer">Consumer Experience Flow</a>.

@@ -415,19 +415,7 @@ no_sections: true
             <li>Requires access token with a scope that includes "balance" and/or "transact".  See Authorization section for details.</li>
           </ul>
 
-          <h2 class="anchor" id="balance">Balance</h2>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/balance</li>
-            <li>Production: https://www.gloebit.com/balance</li>
-          </ul>
-          Arguments: access token<br>
-          Returns: float representing gloebit balance for user
-          <ul>
-            <li>Requires access token with a scope that includes "balance".  See Authorization section for details.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.balance %}
 
           <h2 class="anchor" id="transact">Transact</h2>
           <p>
@@ -551,25 +539,7 @@ no_sections: true
             <li>While transactions cannot be rolled back once committed, that does not mean that delivery of gloebits cannot later be reversed.  We have to deal with fraud and disputes just like any other payment service.  We do our best to insulate our partners from fraud, however, there are situations where we will need to place a hold on or reclaim gloebits.  For instance, if gloebits sent to you were fraudulently purchased, or if a user disputes the transaction where that user paid you those gloebits, then we may have to take action.  For further details, please read the <a href="https://www.gloebit.com/display-tos-merchant/">Merchant Terms of Service</a> for Gloebit.</li>
           </ul>
 
-          <h2 class="anchor" id="purchase">Purchase gloebits</h2>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/purchase</li>
-            <li>Production: https://www.gloebit.com/purchase</li>
-          </ul>
-          Arguments: referrer and return-to URI as query args
-          <ul>
-            <li>r=&lt;application oauth key alias&gt;</li>
-            <li>return-to=&lt;return-to URI&gt;</li>
-          </ul>
-          Notes:
-          <ul>
-            <li>Sends the user to Gloebit, directly into the gloebit purchase flow with trackback imagery and links back to sending application.</li>
-            <li>When a user requires additional gloebits to make a purchase from your application, this is the way to get the user quickly to Gloebit and back to your app.  Upon completion, the user will be directed to return to the return-to link the application provided.</li>
-            <li>See the <a href="http://dev.gloebit.com/monetize/#customer">consumer experience flow here</a>.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.purchase %}
 
         </section>
 

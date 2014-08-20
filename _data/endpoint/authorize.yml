@@ -2,13 +2,13 @@
 id: authorize
 name: Authorize
 service: Authorization
-method: Redirect (or&nbsp;GET)
-uri_path: oauth2/authorize
 desc:
   - p: >
       An application uses this endpoint to initiate the user authorization process.  The endpoint will acquire and return either an authorization code (for an <a href="#auth-code">Authorization Code Grant</a> request) or access token (for an <a href="#implicit">Implicit Grant</a> request).  It is returned via an HTTP 302 (redirect) response to a "redirect URI" provided by the application.
   - p: >
       The endpoint first verifies the provided redirect URI against the application's redirect prefixes (from the <a href="/app-config/">Gloebit Application Configuration</a> page).  Second, it prompts the user to log into Gloebit if not already logged on.  Third, it presents the user with an authorization page for the application and requested scope, and asks the user to confirm the request.  Fourth and last, it generates the requested grant and generates the redirect response.
+method: Redirect (or&nbsp;GET)
+uri_path: oauth2/authorize
 param:
   desc: >
     All <i>Authorize</i> parameters are supplied as query arguments appended to the URL.
