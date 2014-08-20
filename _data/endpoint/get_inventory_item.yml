@@ -1,0 +1,28 @@
+
+id: get-item
+name: Get Item
+service: Inventory
+desc:
+  - p: >
+      An application uses this endpoint to retrieve an item stored in the inventory of the user account associated with the access token. 
+method: GET
+uri_path: get-inventory-item/&lt;item_id&gt;
+bearer: true
+scope: inventory
+param:
+  desc: >
+    The only parameter, <b>item_id</b>, is passed as part of the endpoint URL (and not as a query argument).  It is the Gloebit UUID for the item, not the application's identifier for the inventory item.
+result:
+  - p: >
+      The endpoint always return an HTTP 200 code along with a JSON object:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Item lookup successful, response contains valid Gloebit item information.<br>
+          "false" - Request failed.  Item information, if included, is not valid.
+      - name: item
+        desc: |
+          Dictionary of item's parameters set by the application.<br>
+          It does not include the item's identifier or folder. (See <a href="#get-item-ids">Get Item IDs</a>.)
+      - name: reason
+        desc: Short description of why request failed.

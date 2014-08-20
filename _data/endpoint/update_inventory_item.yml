@@ -1,0 +1,44 @@
+
+id: update-item
+name: Update Item
+service: Inventory
+desc:
+  - p: >
+      An application uses this endpoint to update an item's folder or parameters (or both) in the inventory of the user account associated with the access token.
+method: PUT
+uri_path: update-inventory-item
+bearer: true
+scope: inventory
+param:
+  desc: >
+    All parameters are passed in the HTTP request body, either as a JSON dictionary or in "application/x-www-form-urlencoded" format.
+  form:
+    - class: Required
+      param:
+        - name: item_id
+          desc: Gloebit UUID of item to update.
+        - name: params
+          desc: |
+            Dictionary of new item parameters.<br>
+            Endpoint folds these into the item's existing paramters.<br>
+            Can be empty dictionary to effect no parameter changes.
+    - class: Optional
+      param:
+        - name: folder_id
+          desc: |
+            New folder UUID (of application's choosing) to store item in.<br>
+            If not provided, item stays in current folder.
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Item update succeeded.<br>
+          "false" - Request failed.
+      - name: reason
+        desc: Short description of why request failed.
+notes:
+  - >
+    The application's identifier for the item cannot be changed (with this endpoint or any other).

@@ -1,0 +1,31 @@
+
+id: get-item-ids
+name: Get Items IDs
+service: Inventory
+desc:
+  - p: >
+      An application uses this endpoint to retrieve a list of the items stored in the requested folder.
+method: GET
+uri_path: get-inventory-item-ids/&lt;folder_id&gt;
+bearer: true
+scope: inventory
+param:
+  desc: >
+    The only parameter, <b>folder_id</b>, is passed as part of the endpoint URL (and not as a query argument). If the folder identifier is left blank, the endpoint will return a list of all items <i>and products</i> in the user's inventory for the application.
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Item lookups successful, response contains a valid list of item information.<br>
+          "false" - Request failed.  Item ID, if included, is not valid.
+      - name: item-ids
+        desc: |
+          A list of item-information lists containing three elements:
+          &nbsp;&nbsp;0: Application's identifier for the item (type-id).<br>
+          &nbsp;&nbsp;1: Gloebit UUID for the item.<br>
+          &nbsp;&nbsp;2: ID of folder the item is stored in.
+      - name: reason
+        desc: Short description of why request failed.

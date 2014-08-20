@@ -1,0 +1,40 @@
+
+id: new-item
+name: New Item
+service: Inventory
+desc:
+  - p: >
+      An application uses this endpoint to create a new item and store it in the inventory of the user's account associated with the access token. If a folder identifier is provided, the item will be stored in it instead of the default folder.
+method: POST
+uri_path: new-inventory-item
+bearer: true
+scope: inventory
+param:
+  desc: >
+    All parameters are passed in the HTTP request body, either as a JSON dictionary or in "application/x-www-form-urlencoded" format.
+  form:
+    - class: Required
+      param:
+        - name: type-id
+          desc: Application's identifier for the item.
+    - class: Optional
+      param:
+        - name: folder-id
+          desc: |
+            Folder UUID (of application's choice) to store the item in.<br>
+            Default folder is used if not provided.
+        - name: param
+          desc: Dictionary of application's parameters for the item.
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Item successfully added, response contains a valid Gloebit item ID.<br>
+          "false" - Request failed.  Item ID, if included, is not valid.
+      - name: item-id
+        desc: Gloebit UUID for the new item.
+      - name: reason
+        desc: Short description of why request failed.

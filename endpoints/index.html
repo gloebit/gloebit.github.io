@@ -383,111 +383,15 @@ no_sections: true
             <li>All inventory folders created are specific to this application and are not accessible by other applications.  If you would like more complex accessibility of inventory, please <a href="https://www.gloebit.com/contact-us/"><!--target="_blank"-->contact us</a> with a detailed request so we can consider this for future development.</li>
           </ul>
 
-          <h3 class="anchor" id="new-item">New Inventory Item</h3>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/new-inventory-item</li>
-            <li>Production: https://www.gloebit.com/new-inventory-item</li>
-          </ul>
-          Arguments: access token, Post JSON dictionary {} for inventory item (includes folder id)
-          <ul>
-            <li>"folder-id" : "&lt;folder id&gt;" --- as string</li>
-            <li>"type-id" : "&lt;type id&gt;" --- as string --- this is stored and returned with item ids.  It can be used to then quickly filter what items to retrieve all details on.</li>
-            <li>"params" : {JSON dictionary} --- item details</li>
-          </ul>
-          Returns: success or failure as JSON dictionary {}
-          <ul>
-            <li>"success" : &lt;boolean&gt;</li>
-            <li>"reason" : "&lt;string&gt;"</li>
-            <li>"item-id" : "&lt;uuid&gt;" --- as string</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.new_inventory_item %}
 
-          <h3 class="anchor" id="get-items-ids">Get Inventory Item IDs</h3>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/get-inventory-item-ids/&lt;folder-id&gt;/</li>
-            <li>Production: https://www.gloebit.com/get-inventory/item-ids/&lt;folder-id&gt;/</li>
-          </ul>
-          Arguments: access token, folder id<br>
-          Returns: JSON Dictionary {}
-          <ul>
-            <li>"success" : &lt;boolean&gt;</li>
-            <li>"reason" : "&lt;string&gt;"</li>
-            <li>"item-ids" : [&lt;json array&gt;] --- Each element is a JSON array of strings: [item-type-id, item-id, folder-id]</li>
-          </ul>
-          Notes:
-          <ul>
-            <li>folder-id is optional.  If not supplied, the null folder id of "00000000-0000-0000-0000-000000000000" will be used and all inventory item ids for this user will be returned.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.get_inventory_item_ids %}
 
-          <h3 class="anchor" id="get-item">Get Inventory Item</h3>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/get-inventory-item/&lt;item-id&gt;/</li>
-            <li>Production: https://www.gloebit.com/get-inventory-item/&lt;item-id&gt;/</li>
-          </ul>
-          Arguments: access token, item id<br>
-          Returns: JSON Dictionary defining item {}
-          <ul>
-            <li>"success" : &lt;boolean&gt;</li>
-            <li>"reason" : "&lt;string&gt;"</li>
-            <li>"item" : {&lt;JSON Dictionary&gt;}</li>
-          </ul>
-          Notes:
-          <ul>
-            <li>item-id is required.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.get_inventory_item %}
 
-          <h3 class="anchor" id="update-item">Update Inventory Item</h3>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/update-inventory-item</li>
-            <li>Production: https://www.gloebit.com/update-inventory-item</li>
-          </ul>
-          Arguments: access token, post JSON dictionary {} for inventory item details to be updated (includes item and folder id)
-          <ul>
-            <li>"id" : "&lt;item id&gt;" --- as string</li>
-            <li>"folder-id" : "&lt;folder id&gt;" --- as string</li>
-            <li>"type-id" : "&lt;type id&gt;" --- as string</li>
-            <li>"params" : {&lt;JSON dictionary defining item&gt;}</li>
-          </ul>
-          Returns: success or failure as JSON Dictionary {}
-          <ul>
-            <li>"success" : &lt;boolean&gt;</li>
-            <li>"reason" : "&lt;string&gt;"</li>
-          </ul>
-          Notes:
-          <ul>
-            <li>This performs a full replace of the item.  If a parameter of the original item is not included in the update, that parameter will be deleted.</li>
-            <li>This matches strictly based on the item-id.  This can be used to update the folder-id or the type-id in addition to the params.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.update_inventory_item %}
 
-          <h3 class="anchor" id="delete-item">Delete Inventory Item</h3>
-          <p>
-            Endpoints:
-          </p>
-          <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/delete-inventory-item/&lt;item-id&gt;/</li>
-            <li>Production: https://www.gloebit.com/delete-inventory-item/&lt;item-id&gt;/</li>
-          </ul>
-          Arguments: access token, item id<br>
-          Returns: success or failure as JSON dictionary {}
-          <ul>
-            <li>"success" : &lt;boolean&gt;</li>
-            <li>"reason" : "&lt;string&gt;"</li>
-          </ul>
-          Notes:
-          <ul>
-            <li>item-id is required.</li>
-          </ul>
+          {% include ep_template.html ep=site.data.endpoint.delete_inventory_item %}
 
           <h3>How To effect inventory as part of a transaction</h3>
           <p>

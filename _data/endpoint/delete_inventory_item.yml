@@ -1,0 +1,25 @@
+
+id: delete-item
+name: Delete Item
+service: Inventory
+desc:
+  - p: >
+      An application uses this endpoing to delete an item entry from the inventory of the user associated with the access token.
+method: POST
+uri_path: delete-inventory-item/&lt;delete-item&gt;
+bearer: true
+scope: inventory
+param:
+  desc: >
+    The only parameter, <b>item_id</b>, is passed as part of the endpoint URL (and not as a query argument).  It is the Gloebit UUID for the item, not the application's identifier for the inventory item.
+result:          # Sequence of mappings.
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Item deletion succeeded.<br>
+          "false" - Request failed.
+      - name: reason
+        desc: Short description of why request failed.
