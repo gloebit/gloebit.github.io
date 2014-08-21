@@ -47,6 +47,7 @@ section h1 {
 
 #services div {
     display: inline-block;
+    position: relative;
     vertical-align: top;
     width: 45.000%;
     min-width: 347px;
@@ -59,6 +60,22 @@ section h1 {
 /* Restore bottom margin (1rem) of last div, add a bit for the box-shadow. */
 #services div:last-of-type {
     margin-bottom: 1.5rem;
+}
+
+#services div img {
+    display: none;
+    box-shadow: none;
+    height: 5rem;
+}
+
+#services div img.one {
+    position: absolute;
+    top: -1.5rem;
+    left: 0;
+}
+
+#services div img.two {
+    display: none;
 }
 
 #services div p {
