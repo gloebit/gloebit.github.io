@@ -1,0 +1,95 @@
+
+id: transact
+name: Transact
+service: Digital Currency & Transaction
+desc: 
+  - p: >
+      An application uses this endpoint to initiate a transaction in the Gloebit system. It returns after it has determined whether the transaction can be enacted and, if it can be enacted, has queued the transaction for committing.
+  - p: >
+      The endpoint supports transactions involving products defined on the <a href="/app-config/">application's configuration page</a> and transactions involving generic assets handled by the application.
+method: POST
+uri_path: transact
+bearer: true
+scope: transact
+param:
+  desc: >
+    All parameters are passed in the HTTP request body, either as a JSON dictionary or in "application/x-www-form-urlencoded" format.
+  form: 
+    - class: Required
+      param:
+        - name: version
+          desc: 1
+        - name: application-key
+          desc: Application's OAuth Key.
+        - name: request-created
+          desc: |
+            Timestamp, as an integer, for when application created this request.<br>
+            Endpoint does not have a timezone component.<br>
+            Applications should select a common timezone when calculting time.
+        - name: username-on-application
+          desc: |
+            Application's name for buyer, if any.<br>
+            If application does not have usernames, set value to empty string.
+    - class: Optional
+      param:
+        - name: transaction-id
+          desc: |
+            Application's UUID (or string at most 36 characters long) identifying the transaction.<br>
+            If not provided, endpont will return the UUID Gloebit created for tracking the transaction.<br>
+    - class: Required for Product Transaction
+      param:
+        - name: product
+          desc: Name of product (from application's configuration page).
+    - class: Optional for Product Transaction
+      param:
+        - name: product-quantity
+          desc: |
+            Number of products to purchase.<br>
+            Defaults to 1 if not provided.<br>
+            Must be a whole number (value will be truncated).
+        - name: character-id
+          desc: Gloebit UUID for character to receive product(s).
+    - class: Required for Generic Asset Transaction
+      param:
+        - name: asset-code
+          desc: Application's name for asset.
+        - name: gloebit-balance-change
+          desc: |
+            Total number of gloebits to transfer.<br>
+            <b>Note:</b> This is total amount to transfer, not per-asset amount.
+        - name: asset-quantity
+          desc: |
+            Quantity of assets to indicate in user logs.<br>
+            Does not affect balance transferred. Only used for documentation.
+    - class: Optional Group of Callback Parameters
+      param:
+        - name: asset-enact-hold-url
+          desc: Callback URL to GET when transaction is enacted.
+        - name: asset-consume-hold-url
+          desc: Callback URL to GET if/when transaction is consumed.
+        - name: asset-cancel-hold-url
+          desc: Callback URL to GET if/when transaction is canceled.
+result:
+  - p: >
+      The endpoint always returns an HTTP 200 code along with a JSON object:
+    return:
+      - name: success
+        desc: |
+          Possible values: "true", "false".<br>
+          "true" - Transaction is successfully queued for final processing.<br>
+          "false" - Transaction was rejected. The 'id', 'balance', and 'product-count' fields, if any, are invalide.
+      - name: id
+        desc: Transaction ID passed in by application, if any; otherwise Gloebit UUID for transaction.
+      - name: balance
+        desc: Resulting balance for user account associated with access token. Included only if access token scope includes 'balance'.
+      - name: product-count
+        desc: Resulting product count in user or character inventory. Included only if request was for a Product Transaction and access token scope includes 'inventory'.
+      - name: status
+        desc: Short description of status of transaction processing.
+      - name: reason
+        desc: Short description of why transaction request was rejected.
+notes:
+  - >
+    Success of request indicates user has sufficient funds for transaction and they are on hold.
+  - >
+    Success of request also indicates transaction is queued for final processing and committing.  The transaction might still be canceled.

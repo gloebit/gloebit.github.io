@@ -417,90 +417,43 @@ no_sections: true
 
           {% include ep_template.html ep=site.data.endpoint.balance %}
 
-          <h2 class="anchor" id="transact">Transact</h2>
+          {% include ep_template.html ep=site.data.endpoint.transact %}
+
           <p>
-            Endpoints:
+            Failure can happen for many reasons including:
           </p>
           <ul>
-            <li>Sandbox: https://sandbox.gloebit.com/transact</li>
-            <li>Production: https://www.gloebit.com/transact</li>
+            <li>The fields of the dictionary posted for the Transact call are non proper.</li>
+            <li>The customer's Gloebit account is not authorized to spend gloebits</li>
+            <li>The application is not authorized as a merchant to receive gloebits.</li>
+            <li>The application does not have Transact authorization from the customer.</li>
+            <li>{"success":False, "status":"failed", "reason":"transaction already created"} - Race condition possible if transaction is submitted multiple times at nearly the identical time.</li>
+            <li>{"success":False, "status":"queuing-failed"} - The attempt to queue the transaction for processing failed.</li>
+            <li>Enacting the balance adjustments failed (likely customer does not have enough available gloebits)</li>
+            <li>If using the Product Inventory System &amp; Product Transact Parameters, enacting of the product delivery failed.</li>
+            <li>If we could not enact balance transfers due to issues such as a user not having a sufficient balance not already enacted for other purchases, or your merchant/developer access token being invalid or not containing scope to cover transactions.</li>
           </ul>
-          Arguments: access token, post dictionary in JSON or multipart form-data<br>
-          Returns: Success or Failure
-          <ul>
-            <li>Success
-              <ul>
-                <li>Transaction has reached a state where balance transfers have been enacted, but not yet committed.  A successful return means that the customer has enough available funds and they are on hold for this transaction, however the transaction can still be cancelled.  See Delivery &amp; Callback sections below for more details.</li>
-                <li>{"success":True, "reason":"resubmitted", "status":"in-progress"} - Resubmission of a transaction.</li>
-              </ul>
-            </li>
-            <li>Failure can happen for many reasons including:
-              <ul>
-                <li>The fields of the dictionary posted for the Transact call are non proper.</li>
-                <li>The customer's Gloebit account is not authorized to spend gloebits</li>
-                <li>The application is not authorized as a merchant to receive gloebits.</li>
-                <li>The application does not have Transact authorization from the customer.</li>
-                <li>{"success":False, "status":"failed", "reason":"transaction already created"} - Race condition possible if transaction is submitted multiple times at nearly the identical time.</li>
-                <li>{"success":False, "status":"queuing-failed"} - The attempt to queue the transaction for processing failed.</li>
-                <li>Enacting the balance adjustments failed (likely customer does not have enough available gloebits)</li>
-                <li>If using the Product Inventory System &amp; Product Transact Parameters, enacting of the product delivery failed.</li>
-                <li>If we could not enact balance transfers due to issues such as a user not having a sufficient balance not already enacted for other purchases, or your merchant/developer access token being invalid or not containing scope to cover transactions.</li>
-              </ul>
-            </li>
-          </ul>
-          Notes:
+          <p>
+            Additional Notes:
+          </p>
           <ul>
             <li>We suggest you make purchase buttons inactive after making a Transact request and until you receive a response to avoid double posting.</li>
             <li>Requires access token with a scope that includes "transact".  See Authorization section for details.</li>
             <li>See sections on Delivery &amp; Callbacks for suggestions on how to handle product delivery or other application side updates as part of a transaction.</li>
-          </ul>
-          Required Parameters:
-          <ul>
-            <li>"version" : 1.0</li>
-            <li>"application-key" : "&lt;uuid&gt;" --- merchant/developer consumer-key</li>
-            <li>"username-on-application" : "&lt;name of user in application&gt;" --- name of user on merchant/developer application.  Blank if application chooses not to supply.  Recommend supplying so that consumer has record in his/her transaction history (especially useful when a user attaches multiple accounts in application to one Gloebit account).  Also provides this back to merchant/developer in merchant/developer transaction history so that you can tie revenue to specific users in your system.  If user is purchasing as a character and the application is not supplying a character-id through the product version of Transact, you may consider supplying &lt;user&gt;:&lt;character&gt; or something similar to provide both.</li>
-            <li>"id" : "&lt;uuid as string up to 36 characters&gt;" --- uuid of the transaction you created in your application.  If you are storing/tracking on your own end, this allows you to tie it to the transaction in the Gloebit system (which will have a separate uuid that we created).  This is also the mechanism for idempotency so that making multiple requests will not duplicate the transaction in our system.</li>
-            <li>"request-created" : &lt;integer timestamp in seconds&gt; --- This should be the time that you created this request in your application.</li>
+            <li>"username-on-application" : We recommend supplying so that consumer has record in his/her transaction history (especially useful when a user attaches multiple accounts in application to one Gloebit account).  Also provides this back to merchant/developer in merchant/developer transaction history so that you can tie revenue to specific users in your system.  If user is purchasing as a character and the application is not supplying a character-id through the product version of Transact, you may consider supplying &lt;user&gt;:&lt;character&gt; or something similar to provide both.</li>
+            <li>"transaction-id" : We recommend using transaction UUIDs in your application. Storing/tracking on your end allows you to tie it to the transaction in the Gloebit system (which will have a separate uuid that we created).  This is also the mechanism for idempotency so that making multiple requests will not duplicate the transaction in our system.</li>
+            <li>For product names and asset codes, if the item is not singular, for example "5 swords", we suggest giving it a singular group name instead, such as "package of 5 swords". In the user's log files, a group name works better: "Sent to &lt;app&gt; for 1 package of 5 swords" instead of "... for 1 5 swords".
           </ul>
 
-          <h3>Product Transact Parameters for use with Product Inventory Service</h3>
+          <h3>Product Transaction for use with Product Inventory Service</h3>
           <p>
-            If you are selling a product defined on the application's API Settings page of the Gloebit website and managed by the Product Inventory Service, then your application should use these additional Product Transact Parameters.  Delivery of the product/entitlement will be handled by the transaction.  Additionally, if you are making these calls from an application which is just a web app with no server, use of these product services ensures that a user cannot adjust the price of a product as it is defined elsewhere, not in the transaction.<br>
-            Required Parameters:
+            If you are selling a product defined on the application's API Settings page of the Gloebit website and managed by the Product Inventory Service, then your application can use the Product Transaction parameters.  Delivery of the product/entitlement will be handled by the transaction.  Additionally, if you are making these calls from an application which is just a web app with no server, use of these product services ensures that a user cannot adjust the price of a product as it is defined elsewhere, not in the transaction.
           </p>
-          <ul>
-            <li>"product" : "&lt;string up to 36 characters&gt;" --- This is the product name you provided in the product definition on the application's API Settings page of the Gloebit website.</li>
-          </ul>
-          Optional Parameters:
-          <ul>
-            <li>"product-quantity" : &lt;positive integer&gt; --- defaults to 1 if not supplied.  Quantity of the product being sold.</li>
-            <li>"character-id" : "&lt;uuid&gt;" - If your application is using our Character Service, this is for delivery of the product or entitlement to the character specified within the user account as opposed to the user.  This is the uuid for this character in this application which Gloebit has created and provided to the application.</li>
-          </ul>
-          Notes:
-          <ul>
-            <li>The transaction history for the user will display "sent to &lt;app name&gt; for &lt;product-quantity&gt; &lt;product-name&gt;".  Make your product name descriptive enough that a user will know what it references.  Also, if you are selling a package, such as "5 swords", we recommend naming it something like "Package of 5 swords" so that the transaction history will read "Sent to &lt;app&gt; for 1 Package of 5 swords" rather than "Sent to &lt;app&gt; for 1 5 swords".</li>
-            <li>These parameters are separate from the Asset Transact Parameters below and cannot be used in combination with those parameters.</li>
-          </ul>
 
           <h3>Asset Transact Parameters for use with generic assets</h3>
           <p>
-            If your application is not using the Product Inventory Service, then you should use these additional Asset Transact Parameters to define your transaction.  You can manage delivery of the asset purchased yourself, or you can use the Callback Transact Parameters below as a mechanism for triggering delivery within our Advanced Inventory System.<br>
-            Required Parameters:
+            If your application is not using the Product Inventory Service, then you should use Generic Asset Transactions.  You will manage delivery of the asset purchased yourself, either within your application or in our Item Inventory System.  You should integrate the Transaction Callbacks, described below, into your system if you wish to ensure committed transactions before delivery.
           </p>
-          <ul>
-            <li>"gloebit-balance-change" : &lt;positive float&gt; --- This is the full balance change or price the user will be charged for the entire transaction.</li>
-            <li>"asset-code" : "&lt;string&gt;" --- This is the sku, or product name/description.</li>
-          </ul>
-          Optional Parameters:
-          <ul>
-            <li>"asset-quantity" : &lt;positive float&gt; --- quantity of the sku being purchased.  defaults to 1 if not provided.</li>
-          </ul>
-          Notes:
-          <ul>
-            <li>The transaction history for the user will display "sent to &lt;app name&gt; for &lt;asset-quantity&gt; &lt;asset-code&gt;".  Make your asset-code descriptive enough that a user will know what it references.  Also, if you are selling a package, such as "5 swords", we recommend naming it something like "Package of 5 swords" so that the transaction history will read "Sent to &lt;app&gt; for 1 Package of 5 swords" rather than "Sent to &lt;app&gt; for 1 5 swords".</li>
-            <li>These parameters are separate from the Product Transact Parameters above and cannot be used in combination with those parameters.</li>
-            <li>You can handle product delivery when you choose to do so.  See the Callback Transact Parameters and Delivery sections below for more details</li>
-          </ul>
 
           <h3>Callback Transact Parameters</h3>
           <p>
