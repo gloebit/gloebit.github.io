@@ -47,20 +47,23 @@ section:last-of-type:after {
     border-bottom: 1px solid rgba(128,128,128,0.25);
 }
 
-article {
+article,
+div.endpoint {
     border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(128,128,128,0.5);
     margin-bottom: 20px;
 }
 
-article > * {
+article > *,
+div.endpoint > * {
     background-color: white;
     border: 1px solid rgba(128,128,128,0.5);
     padding: 8px 10px 0;
 }
 
 article h1,
-article > h2 {
+article > h2,
+div.endpoint h2 {
     border-bottom: 0;
     border-radius: 10px 10px 0 0;
     margin-bottom: 0;
@@ -76,7 +79,15 @@ article > h2 {
     padding-bottom: 8px;
 }
 
-article .body {
+div.endpoint h2 {
+    position: relative;
+    background-color: black;
+    color: white;
+    padding-bottom: 8px;
+}
+
+article .body,
+div.endpoint .body {
     border-top: 0;
     border-radius: 0 0 10px 10px;
 }
@@ -140,41 +151,6 @@ nav li {
     white-space: nowrap;
 }
 
-div.endpoint {
-    background-color: white;
-    padding: 10px;
-    border: 1px solid rgba(128,128,128,0.5);
-    box-shadow: 0px 0px 3px rgba(128,128,128,0.5);
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-div.endpoint h2 {
-    position: relative;
-    color: white;
-    background-color: black;
-    padding: 6px 0px;
-}
-
-div.endpoint h2:before,
-div.endpoint h2:after{
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    width: 10px;
-    height: 100%;
-    background-color: black;
-    content: " ";
-}
-
-div.endpoint h2:before {
-    right: 100%;
-}
-
-div.endpoint h2:after {
-    left: 100%;
-}
-
 div.endpoint h2 span + span {
     color: #888;
     font-size: 1.4rem;
@@ -199,7 +175,7 @@ div.endpoint h3 {
 
 div.endpoint h3 span + span {
     float: right;
-    color: rgba(134,194,0,1);
+    color: white;
 }
 
 div.endpoint h3 span span {
@@ -224,12 +200,16 @@ div.endpoint p {
     margin-left: 6px;
 }
 
+div.endpoint .body .body {
+    padding: 0 10px;
+}
+
 .http {
     background-color: rgba(134,194,0,0.25);
     border: 1px solid rgba(134,194,0,0.5);
     border-radius: 5px;
     padding: 10px;
-    margin: 0 auto;
+    margin: 0 20px;
 }
 
 .http * {
@@ -257,7 +237,7 @@ div.endpoint p {
 }
 
 .http .method {
-    width: 15%;
+    width: 16%;
     text-align: center;
     background-color: rgba(134,194,0,0.5);
     border: 1px solid rgba(134,194,0,1);
@@ -270,7 +250,7 @@ div.endpoint p {
 }
 
 .http .url {
-    width: 75%;
+    width: 77%;
     border: 1px solid rgba(134,194,0,1);
 }
 
@@ -302,6 +282,7 @@ div.endpoint p {
     border-radius: 5px;
     padding: 11px 8px;
     margin-top: 16px;
+    margin-left: 16px;
 }
 
 .bearer .scope span {
