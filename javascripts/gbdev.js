@@ -5,11 +5,18 @@
 $(function(){
     /* Move the nav element's list of section links to the Sections drop- */
     /* down menu in the header.  (See header.html.)                       */
+    /* If there is no drop-down menu button, attach the nav to the header */
+    /* so it can be positioned relative to the header.                    */
     if ( $('header #section-nav').length ) {
-        $('nav ul')
+        $('nav > ul')
             .detach()
             .appendTo('header #section-nav')
             .addClass('drop-down-menu');
+    }
+    else {
+        $('nav')
+            .detach()
+            .appendTo('header .wrapper');
     }
 
     /* Clone the header so it can stay fixed to top of window and the     */
