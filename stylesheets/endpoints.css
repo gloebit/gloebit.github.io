@@ -1,7 +1,11 @@
 
+body {
+    background-color: rgba(192,192,192,0.1);
+}
+
 header,
 header+.clone {
-    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 #main {
@@ -10,23 +14,86 @@ header+.clone {
 
 .wrapper {
     width: 100%;
-    max-width: 1024px;
+    max-width: 960px;
 }
 
-#nav-container {
+section {
+    width: 720px;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+}
+
+section:after {
     display: block;
-    float: right;
-    height: 100%;
-/*
+    width: 100%;
+    content: " ";
+    border-bottom: 1px solid rgba(128,128,128,1);
+    box-shadow: 0 0 8px rgba(134,194,0,0.5);
+}
+
+#intro h1 {
+    background-color: white;
+}
+
+article {
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(128,128,128,0.5);
+    margin-bottom: 20px;
+}
+
+article > * {
+    background-color: white;
+    border: 1px solid rgba(128,128,128,0.5);
+    padding: 8px 10px 0;
+}
+
+article h1,
+article > h2 {
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0;
+}
+
+article h1 {
+    background-color: rgba(134,194,0,1);
+    padding-bottom: 10px;
+}
+
+article > h2 {
+    background-color: rgba(63,150,211,0.9);
+    padding-bottom: 8px;
+}
+
+article .body {
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+}
+
+header .wrapper {
     position: relative;
-    top: auto;
-*/
 }
 
 nav {
     display: block;
-    float: right;
+    position: absolute;
+    top: 62px;
+    left: 731px;
+    width: 206px;
+    height: calc(100vh - 81px);
+    background-color: white;
     font-size: 1rem;
+    padding: 5px 10px;
+    border: 1px solid rgba(128,128,128,0.5);
+    box-shadow: 0px 0px 3px rgba(128,128,128,0.5);
+    border-radius: 10px;
+}
+
+#nav-container {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 nav h3 {
@@ -44,7 +111,7 @@ nav ul {
     margin-bottom: 0;
 }
 
-nav > ul {
+#nav-container > ul {
     padding: 0;
 }
 
@@ -56,20 +123,44 @@ nav .section > a {
     padding: 0 5px;
 }
 
-nav + div {
-    width: 720px;
-    float: left;
+nav li {
+    display: block;
+    white-space: nowrap;
 }
 
 div.endpoint {
-    margin-top: 50px;      /* Temporary! */
-    margin-bottom: 100px;  /* Temporary! */
+    background-color: white;
+    padding: 10px;
+    border: 1px solid rgba(128,128,128,0.5);
+    box-shadow: 0px 0px 3px rgba(128,128,128,0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 div.endpoint h2 {
+    position: relative;
     color: white;
     background-color: black;
-    padding: 6px 10px;
+    padding: 6px 0px;
+}
+
+div.endpoint h2:before,
+div.endpoint h2:after{
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background-color: black;
+    content: " ";
+}
+
+div.endpoint h2:before {
+    right: 100%;
+}
+
+div.endpoint h2:after {
+    left: 100%;
 }
 
 div.endpoint h2 span + span {
