@@ -1,63 +1,64 @@
 
-          <div class="endpoint anchor" id="{{ include.ep.id }}">
-            <h2>
-              <span>{{ include.ep.name }}</span>
-              <span>(endpoint)</span>
-              <span>{{ include.ep.service }} Service</span>
-            </h2>
-            {% if include.ep.desc %}
-            <div class="description">
-              {% for desc in include.ep.desc %}
-              <p>{{ desc.p }}</p>
-              {% endfor %}
-            </div>
-            {% endif %}
-            <div class="http">
-              <div class="title">
-                HTTP Info
+          <div class="anchor" id="{{ include.ep.id }}">
+            <div class="endpoint">
+              <h2>
+                <span>{{ include.ep.name }}</span>
+                <span>(endpoint)</span>
+                <span>{{ include.ep.service }} Service</span>
+              </h2>
+              {% if include.ep.desc %}
+              <div class="description">
+                {% for desc in include.ep.desc %}
+                <p>{{ desc.p }}</p>
+                {% endfor %}
               </div>
-              <div class="method">
-                {{ include.ep.method }}
-              </div><div class="url">
-                {{ include.ep.uri_path }}
-              </div>
-            </div>
-            {% if include.ep.bearer %}
-            <hr>
-            <div class="bearer">
-              <h3>
-                <span>Access Token</span>
-                <span>{{ include.ep.name }}
-                  <span>(endpoint)</span>
-                </span>
-              </h3>
-              <p>
-                Endpoint requires an access token be sent in the HTTP header:
-              </p>
-              <code class="header">
-                Authorization: Bearer &lt;access_token&gt;
-              </code>
-              {% if include.ep.scope %}
-              <div class="scope">
-                Required <b>scope</b> for access token:
-                <span>{{ include.ep.scope }}</span>
-              </div>
-              {% else %}
-              <p>
-                Endpoint has no scope requirements for access token.
-              </p>
               {% endif %}
-            </div>
-            {% endif %}
-            <hr>
-            <div class="parameters">
-              <h3>
-                <span>Parameters</span>
-                <span>{{ include.ep.name }}
-                  <span>(endpoint)</span>
-                </span>
-              </h3>
-              {% if include.ep.param %}
+              <div class="http">
+                <div class="title">
+                  HTTP Info
+                </div>
+                <div class="method">
+                  {{ include.ep.method }}
+                </div><div class="url">
+                  {{ include.ep.uri_path }}
+                </div>
+              </div>
+              {% if include.ep.bearer %}
+              <hr>
+              <div class="bearer">
+                <h3>
+                  <span>Access Token</span>
+                  <span>{{ include.ep.name }}
+                    <span>(endpoint)</span>
+                  </span>
+                </h3>
+                <p>
+                  Endpoint requires an access token be sent in the HTTP header:
+                </p>
+                <code class="header">
+                  Authorization: Bearer &lt;access_token&gt;
+                </code>
+                {% if include.ep.scope %}
+                <div class="scope">
+                  Required <b>scope</b> for access token:
+                  <span>{{ include.ep.scope }}</span>
+                </div>
+                {% else %}
+                <p>
+                  Endpoint has no scope requirements for access token.
+                </p>
+                {% endif %}
+              </div>
+              {% endif %}
+              <hr>
+              <div class="parameters">
+                <h3>
+                  <span>Parameters</span>
+                  <span>{{ include.ep.name }}
+                    <span>(endpoint)</span>
+                  </span>
+                </h3>
+                {% if include.ep.param %}
                 {% if include.ep.param.desc %}
                 <p>{{ include.ep.param.desc }}</p>
                 {% endif %}
@@ -95,46 +96,47 @@
                 </table>
                 {% endfor %}
                 {% endif %}
-              {% else %}
-              <p>Endpoint takes no additional parameters.</p>
+                {% else %}
+                <p>Endpoint takes no additional parameters.</p>
+                {% endif %}
+              </div>
+              <hr>
+              <div class="result">
+                <h3>
+                  <span>Result</span>
+                  <span>{{ include.ep.name }}
+                    <span>(endpoint)</span>
+                  </span>
+                </h3>
+                {% for info in include.ep.result %}
+                <p>{{ info.p }}</p>
+                {% if info.return %}
+                <table>
+                  {% for value in info.return %}
+                  <tr>
+                    <td>{{ value.name }}</td>
+                    <td>{{ value.desc }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
+                {% endif %}
+                {% endfor %}
+              </div>
+              {% if include.ep.notes %}
+              <hr>
+              <div class="notes">
+                <h3>
+                  <span>Notes</span>
+                  <span>{{ include.ep.name }}
+                    <span>(endpoint)</span>
+                  </span>
+                </h3>
+                <ul>
+                  {% for note in include.ep.notes %}
+                  <li>{{ note }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
               {% endif %}
             </div>
-            <hr>
-            <div class="result">
-              <h3>
-                <span>Result</span>
-                <span>{{ include.ep.name }}
-                  <span>(endpoint)</span>
-                </span>
-              </h3>
-              {% for info in include.ep.result %}
-              <p>{{ info.p }}</p>
-              {% if info.return %}
-              <table>
-                {% for value in info.return %}
-                <tr>
-                  <td>{{ value.name }}</td>
-                  <td>{{ value.desc }}</td>
-                </tr>
-                {% endfor %}
-              </table>
-              {% endif %}
-              {% endfor %}
-            </div>
-            {% if include.ep.notes %}
-            <hr>
-            <div class="notes">
-              <h3>
-                <span>Notes</span>
-                <span>{{ include.ep.name }}
-                  <span>(endpoint)</span>
-                </span>
-              </h3>
-              <ul>
-                {% for note in include.ep.notes %}
-                <li>{{ note }}</li>
-                {% endfor %}
-              </ul>
-            </div>
-            {% endif %}
           </div>
