@@ -87,7 +87,7 @@ div.endpoint h2 {
 }
 
 article .body,
-div.endpoint .body {
+div.endpoint > .body {
     border-top: 0;
     border-radius: 0 0 10px 10px;
 }
@@ -169,17 +169,20 @@ div.endpoint h4 {
 
 div.endpoint h3 {
     padding: 5px 10px;
-    background-color: #888;
-    margin-top: 25px;
+    background-color: rgba(128,128,128,0.6);
+    border-radius: 8px 8px 0 0;
+    margin: 35px 0 10px;
 }
 
 div.endpoint h3 span + span {
     float: right;
-    color: white;
+    color: rgba(255,255,255,0.8);
 }
 
 div.endpoint h3 span span {
+    display: none;
     font-size: 1.1rem;
+    color: rgba(134,194,0,1);
 }
 
 div.endpoint h4 {
