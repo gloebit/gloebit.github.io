@@ -3,24 +3,23 @@
 /* Uses JQuery exclusively.                       */
 
 $(function(){
-    /* Scroll the <nav> column only until it reaches its bottom.  When   */
-    /* the bottom is reached, fix the column.  The content will still    */
-    /* scroll though.                                                    */
-    $(window).scroll(function () {
+    /* Don't let the nav menu cover the footer.  When scrolling toward the */
+    /* bottom of the page, adjust the nav height to shorten it.            */
+    var navHeight = function () {
         var winTop = $(this).scrollTop(),
             winBottom = winTop + $(this).height(),
-            navContainer = $('#nav-container'),
-            nav = $('nav'),
-            navBottom = nav.height();
+            navBaseHeight = $(this).height() - 81;  /* match CSS */
+            footerTop = $('footer').offset().top - 5;  /* extra padding */
 
-        // When the user has reached the bottom of the 'nav' column, set its
-        // position to fixed to prevent it from scrolling further.
-        if (winBottom >= navBottom) {
-            navContainer.addClass('fixed');
+        if ( footerTop < winBottom ) {
+            $('nav').css({'height':'calc(100vh - 81px - ' + (winBottom-footerTop) + 'px)'});
+            // $('nav').height( navBaseHeight - ( winBottom - footerTop ) );
         }
-        // When the user scrolls back up, revert its position to relative.
         else {
-            navContainer.removeClass('fixed');
+            $('nav').css({'height':'calc(100vh - 81px)'});
+            // $('nav').height( navBaseHeight );
         }
-    });
+    };
+    $(window).scroll(navHeight);
+    $(window).resize(navHeight);
 });
