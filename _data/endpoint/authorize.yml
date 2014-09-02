@@ -58,7 +58,7 @@ param:
             Overrides URI provided in Default Return-To URI field on <a href="/app-config/">application's Gloebit configuration page</a>.
 result:
   - p: >
-      Upon success, the authorize endpoint sends a 302 (redirect) response for the redirect URI and appends query arguments containing information for your application.
+      Upon success, the authorize endpoint sends a 302 (redirect) response for the redirect URI and appends the results to the URI (either as query arguments for the "code" response type or in the fragment for "token" response type.)
   - p: >
       If your authorize request used the "code" response type, the query arguments will containing the following:
     return:
@@ -67,7 +67,7 @@ result:
       - name: state
         desc: &STATE_DESC If your authorize request included a "state" argument, the same value will be returned here.  If your request did not include a "state" argument, there will not be a "state" argument in the redirect response.
   - p: >
-      If your authorize request used the "token" response type, the query arguments will contain the following:
+      If your authorize request used the "token" response type, the fragment portion of the URI will contain the following:
     return:
       - name: token
         desc: Access token for requested user and scope.
