@@ -19,7 +19,10 @@ no_sections: true
           <li class="section"><a href="#auth">Authorization Service</a>
             <ul>
               <li class="article">
-                <a href="#oauth2">OAuth 2.0</a>
+                <a href="#access-token">Access Tokens</a>
+              </li>
+              <li class="article">
+                <a href="#oauth2">OAuth 2.0 Framework</a>
               </li>
               <li class="article">
                 <a href="#auth-code">Authorization Code Grant</a>
@@ -207,30 +210,105 @@ no_sections: true
           <h1>Authorization Service</h1>
           <div class="body">
             <p>
-              This service is required before any other Gloebit services can be used.  Through this service, a user grants authorization to an application to use some or all of the other Gloebit services with this user's account.
+              Your application must use the Gloebit Authorization service before using any of the other Gloebit services.  All other services' endpoints require an access token, and you use the Authorization service to acquire access tokens.  Gloebit supports OAuth 2.0 (OAuth2) methods for delivering access tokens to your application.  During the OAuth2 flow, we will prompt your user to log into the Gloebit system and grant your application access to the user's resources (identity, characters, inventory, etc.) requested by your application.
+            </p>
+          </div>
+        </article>
+
+        <a class="anchor" id="access-token"></a>
+        <article>
+          <h2>Access Tokens</h2>
+          <div class="body">
+            <p>
+              An access token is a credential your application provides when accessing a Gloebit user's resources.  Your application acquires an access token via the Authorization service and then includes it in requests to Gloebit's backend services.  During the authorization process, Gloebit puts the following constraints on the access token:
             </p>
             <ul>
-              <li>Through authorization, the application receives an access token from Gloebit.  This access token is used as the Authorization HTTP header during all API requests as proof of authorization.</li>
-              <li>Gloebit stores this authorization for the user in his/her Approved Apps page on the Gloebit website.  The user can later revoke this authorization by deleting it from his/her Approved Apps page.  If a user revokes authorization, the existing access token owned by the application will become invalid.  Any attempted API calls will fail due to an invalid token.  The application must re-authorize in order to obtain a new and valid access token and again be able to make Gloebit API calls on behalf of this user.</li>
-              <li>If the application is managing its own user accounts, this access token can and should be stored securely and associated with this user's account so that authorization does not need to be called when this user logs in in the future.</li>
-              <li>If the application is using Gloebit's Identity Service, authorization will need to be run every time the user logs in in order to identify which user is trying to connect.  In this case, we recommend using conditional/auto version of Authorization which will only ask the user to authorize if they have not already (first time user).  Otherwise, it will simply return the request or access token.</li>
-              <li>Scope indicates the set of Gloebit services [user character inventory balance transact] that the application is requesting permission to access.  If the application later requires a larger or different scope, it will need to request a new access token for the new scope desired.</li>
+              <li>The access token is tied to the application requesting it, exclusively.</li>
+              <li>It is valid only for the resources of the authorizing Gloebit user.</li>
+              <li>It is valid until the user revokes the application's access.</li>
+              <li>It grants access only to the resources in the token's <i>scope</i>.
             </ul>
+            <h3>User</h3>
+            <p>
+              The "user" associated with an access token is a Gloebit account.  These users correspond to your application's users only if your application uses Gloebit IDs (from the Identity service) to identify or associate with its users.  Otherwise, you should be aware that a user in your application could log into more than one Gloebit account or multiple users in your application could share a single Gloebit account (or many to many).
+            </p>
+            <h3>Scope</h3>
+            <p>
+              An access token's scope is a set of Gloebit-defined scopes that cover the user's resources available to applications.  Your application will indicate the requested scope (set of Gloebit scopes) when initiating the Authorization service.  Gloebit will inform the user of the requested scope during approval and then, after the user approves, return an access token with that scope.  Here are the Gloebit resources and the Gloebit scopes for them:
+            </p>
+            <table>
+              <tr>
+                <th>Resource</th>
+                <th>Scope</th>
+              </tr>
+              <tr>
+                <td>User's Gloebit identity.</td>
+                <td>identity</td>
+              </tr>
+              <tr>
+                <td>Characters the user has created for your application.</td>
+                <td>character</td>
+              </tr>
+              <tr>
+                <td>Inventories your application has created for the user and the user's characters.</td>
+                <td>inventory</td>
+              </tr>
+              <tr>
+                <td>User's gloebit balance.</td>
+                <td>balance</td>
+              </tr>
+              <tr>
+                <td>Ability to exchange the user's gloebits for your application's products or other items for purchase.</td>
+                <td>transact</td>
+              </tr>
+            </table>
+            <p>
+              For example, if your application wants to access a user's identity and balance and let the user purchase products in your application, you would request an access token with identity, balance, and transact in its scope.  (Specifically, the requested scope is a space-separated string specifying them: "identity balance transact".)
+            </p>
+            <h3>Revocation</h3>
+            <p>
+              Currently, Gloebit does not explicitly expire access tokens.  They can effectively expire due to storage constraints or other structural causes.  Additionally, users can revoke an application's access via their Gloebit dashboard and approved-applications pages.
+            </p>
+            <p>
+              If a token expires or is revoked, Gloebit will reject any request your application makes with the token.  When a request is rejected, your application should check the included failure reason and determine if it needs to return to the authorization process to acquire a new token.
+            </p>
+            <h3>Security</h3>
+            <p>
+              Keeping access tokens secure is paramount.  They grant access to your users' Gloebit accounts and information your application stores for your users.  Your application's method for storing access tokens must prevent their being exposed to users or third parties.
+            </p>
+          </div>
+        </article>
+
+        <a class="anchor" id="oauth2"></a>
+        <article>
+          <h2>OAuth 2.0 Authorization Framework</h2>
+          <div class="body">
+            <p>
+              To get your users' approval for letting your application access their Gloebit accounts, we use the OAuth 2.0 (OAuth2) framework.  OAuth2 supports securely authorizating your users and accessing their "resources".  For a nice, succinct primer on OAuth2, visit Aaron Parecki's <a href="https://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified">OAuth 2 Simplified</a> page.  For OAuth2 details, visit the <a href="http://tools.ietf.org/html/rfc6749">OAuth 2.0 specification</a> page.
+            </p>
+            <p>
+              Gloebit's OAuth2 implementation supports both <i>confidential</i> (web-server based) and <i>public</i> (browser-based or native-on-device) applications and the <a href="http://tools.ietf.org/html/rfc6749#section-4.1">Authorization Code Grant</a> and <a href="http://tools.ietf.org/html/rfc6749#section-4.2">Implicit Grant</a> methods for acquiring access tokens.  If your application is web-server based (confidential), use the Authorization Code Grant method.  If your application is brower-based or is a native app on devices (public), use the Implicit Grant.
+            </p>
           </div>
         </article>
 
         <a class="anchor" id="auth-code"></a>
         <article>
-          <h2>OAuth 2.0 "authorization code grant" (secure 2-step) method</h2>
+          <h2>Authorization Code Grant method</h2>
           <div class="body">
             <p>
-              This is the most secure version of authorization and is recommended if you are using a back-end server with your application.  The application must first use Authorize to get a request token.  Then, from the back-end server, the application must use Get Access Token to turn the request token into an access token.  With this two step method, the user does not see the access token and no one can mimic the application without discovering the application's key and secret.
+              This authorization method is for applications with a back-end server (i.e., web-based, or <i>confidential</i> in OAuth2 terms).  It is the more secure method for acquiring access tokens and Gloebit strongly recommends using it if at all possible.
             </p>
-            <ul>
-              <li>When calling Authorize, you may use the standard/force version which always requires the user to authorize the application, even if a valid access token already exists; or you may use the conditional/auto version which does not require a user to re-authorize your application if a valid access token already exists.</li>
-              <li>For an added layer of security, you may supply us with acceptable Callback URI Prefixes in the API Settings page for the application.  If you do so, any redirect URIs we believe come from your application will be matched against these prefixes.</li>
-              <li>Here is a <a href="https://www.gloebit.com/static-1/docs/api/images/oauth2-seq.png">diagram of the OAuth 2.0 authorization code grant flow</a>.</li>
-            </ul>
+            <img src="https://gloebit-static-prod-0.s3.amazonaws.com/static-1/docs/api/images/oauth2-seq.png" alt="Gloebit Authorization Code Grant Flow Diagram">
+            <p>
+              Your application first uses the <a href="#authorize">Authorize</a> endpoint with a response_type of "code".  Gloebit authorizes your user and gets approval for your application to access the user's Gloebit resources, then returns an authorization code via a redirection to your application's redirect URI.
+            </p>
+            <p>
+              Next, Your application's server extracts the authorization code and posts it to the <a href="#access-token">Exchange for Access Token</a> endpoint for the access token.  The security in this method comes from your server providing its OAuth secret during the second step and the access token being returned to your server in the body of the POST response.
+            </p>
+            <p>
+              For added security, your application should send a "state" parameter to the Authorize endpoint and check it against the returned "state" value (to help prevent CSRF attacks).  Plus, you should provide callback URI prefixes in the <a href="/app-config/#auth-info">Authorization fields</a> of your applications configuration page, preferably HTTPS type.  Gloebit checks redirect URIs (provided to the Authorize endpoint) against the application's prefixes.
+            </p>
           </div>
         </article>
 
@@ -239,72 +317,48 @@ no_sections: true
           <h2>OAuth 2.0 "implicit grant" (less secure 1-step) method</h2>
           <div class="body">
             <p>
-              This version of OAuth is less secure as a user can see the access token granted and could later use this access token to pretend to be the application.  Also, only the application OAuth Key is used to identify the application in this authorization method, and therefore, if someone else discovered the application OAuth Key, they could use this authorization method to pretend to be this application.  Any proceeds from sales would still end up in the merchant gloebit account, for this application, but imposters still are not good.  Properly set up permitted callback URIs in the api-settings for the application should also help prevent this.  If you are using a back-end server, please use the more-secure OAuth 2.0 "authorization code grant" (secure 2-step) method instead.  The "implicit grant" method is designed for games which are only a front-end, with no back-end component, such as simple games on the web.  It is delivered with the Unity Asset for the Unity web-player to enable simple web games.  If you are using this Unity Asset and create a back-end server, we recommend you switch to the more-secure "authorization code grant" method.
+              This authorization method is for browser-based applications or applications that run natively on the device (both considered <i>public</i> in OAuth2 terms).  Of the two methods that Gloebit supports for acquiring access tokens, it is the less secure because it delivers the access token via the redirect URI and it does not use a secret for your application.  Gloebit sets some additional constraints when using this method.
             </p>
-            <ul>
-              <li>You must enable usage of the "implicit grant" version of authorization in the API Settings page for the application in order to use it.  If you are not using this version of authorization for this application, keeping this disabled prevents anyone from attempting to pretend to be this application to discover its access keys by using this version of authorize with only your application OAuth key.</li>
-              <li>We highly recommend that you create Callback URI Prefixes for additional security if you are using this authorization method.  You should supply us with acceptable URI prefixes in the api settings page for this application which will match any of your redirect URIs.  If you are using the "implicit grant" authorization method, this should keep a bad actor from pretending to be you and discovering any of your access tokens.</li>
-            </ul>
+            <p>
+              Your application uses only the <a href="#authorize">Authorize</a> endpoint with a response_type of "token".  Gloebit authorizes your user and gets approval for your application to access the user's Gloebit resources, then returns the access token via a redirection to your application's redirect URI.  Your application extracts the access token from the URI's fragment.
+            </p>
+            <p>
+              Per the OAuth2 spec, Gloebit requires that you provide callback URI prefixes in the <a href="/app-config/#auth-info">Authorization fields</a> of your application's configuration page and Gloebit checks the authorization request's redirect URI against the prefixes.  Additionally, we require your redirect URI use HTTPS instead of HTTP.
+            </p>
+            <p>
+              For added security, your application should send a "state" parameter to the Authorize endpoint and check it against the returned "state" value (to help prevent CSRF attacks).
+            </p>
           </div>
         </article>
+
+        {% include ep_template.html ep=site.data.endpoint.authorize %}
 
         <a class="anchor" id="force-auto"></a>
         <article>
-          <h2>OAuth2 Authorize - force/standard</h2>
+          <h2>Prompting User for Approval</h2>
           <div class="body">
             <p>
-              This is the default version used if approval_prompt is not supplied or is supplied with the default from above.  Whether or not a valid access token exists, the user is asked to authorize.<br>
-              Notes: --- Once user is logged in
+              Gloebit does two things during a call to the <a href="#authorize">Authorize</a> endpoint.  First, it logs the user in to Gloebit, if necessary.  Second, it prompts the user to approve your application's access to the user's resources.  By default, the approval step always occurs, meaning your user will always see a Gloebit page asking for approval when your application uses the endpoint.
             </p>
-            <ul>
-              <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, it is deleted.</li>
-              <li>User is asked to authorize application for scope requested.</li>
-              <li>If user accepts, a request token is created and the user is returned with the request token to the redirect URI.</li>
-            </ul>
-
-            <h2>OAuth2 Authorize - auto/conditional</h2>
             <p>
-              With approval_prompt defined for this version of Authorize, if a valid access token already exists, we do not force the user to re-authorize the application.  We recommend using this version of Authorize if you are using Gloebit's Identity service.  If your application is managing its own user accounts, then we recommend you securely store the access token so that you do not need to call Authorize every time a user logs in.<br>
-              Required OAuth Arguments: Same as default Authorize from above except for the following change:
+              The endpoint's <i>approval_prompt</i> parameter allows your application to have Gloebit conditionally prompt the user.  It has two possible values, "force" and "auto":
             </p>
-            <ul>
-              <li>approval_prompt=auto --- defaults to "force" if not included - setting to "force" triggers force/standard Authorization from above</li>
-            </ul>
-            Notes: --- Once user is logged in
-            <ul>
-              <li>If no authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, same as force/standard Authorize from above.</li>
-              <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, a request token is automatically returned without the user being asked to re-authorize.  This request token points to the existing access token.</li>
-            </ul>
+            <h3>Authorize - approval_prompt: "force"</h3>
+            <p>
+              Using "force" with approval_prompt causes Gloebit to always prompt the user for access approval.  It also causes Gloebit to always generate a new access token (for the combination of application, user, and scope) and discard an existing access token.
+            </p>
+            <p>
+              It is the default value for the parameter.
+            </p>
+            <h3>Authorize - approval_prompt: "auto"</h3>
+            <p>
+              Using "auto" with approval_prompt causes Gloebit to prompt the user for access approval only if we do not have an existing access token (for the combination of application, user, and scope).  If an access token matching the endpoint request's parameters exists, Gloebit will return that access token and might not prompt the user.  If no matching access token exists, Gloebit will prompt the user and generate a new access token.
+            </p>
+            <p>
+              Note: Currently Gloebit does not have a setting for users to always require approval, but we may add one.  In the future, with such a setting, a user can choose to force seeing the approval page for your application.  However, if you use "auto", Gloebit might still create a new access token only if necessary.
+            </p>
           </div>
         </article>
-
-        <h4>OAuth2 "implicit grant" Authorize - force/standard</h4>
-        <p>
-          This is the default version used if approval_prompt is not supplied or supplied with the defaults from above.  Whether or not a valid access token exists, the user is asked to authorize.<br>
-          Notes: --- Once user is logged in
-        </p>
-        <ul>
-          <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, it is deleted.</li>
-          <li>User is asked to authorize the application for the scope requested.</li>
-          <li>If user accepts, an access token is created and the user is returned with the access token to the redirect URI.</li>
-        </ul>
-
-        <h4>OAuth2 "implicit grant" Authorize - auto/conditional</h4>
-        <p>
-          With approval_prompt defined for this version of Authorize, if a valid access token already exists, we do not force the user to re-authorize the application.  We recommend using this version of Authorize if you are using Gloebit's Identity service.  If your application is managing its own user accounts, then we recommend you securely store the access token so that you do not need to call Authorize every time a user logs in.<br>
-          Arguments: Same as default Authorize from above except for the following change
-        </p>
-        <ul>
-          <li>approval_prompt=auto --- defaults to "force" if not included - setting to "force" triggers force/standard Authorization from above</li>
-        </ul>
-        Notes: --- Once user is logged in
-        <ul>
-          <li>If no authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, same as force/standard Authorize from above.</li>
-          <li>If authorization for this [application-oauth-key + gloebit-user-id + oauth-version + scope] combo exists, the existing access token is automatically returned without the user being asked to re-authorize.</li>
-        </ul>
-
-
-        {% include ep_template.html ep=site.data.endpoint.authorize %}
 
         {% include ep_template.html ep=site.data.endpoint.exchange_for_access_token %}
 
