@@ -14,6 +14,7 @@
                   {% endfor %}
                 </div>
                 {% endif %}
+                {% if include.ep.method %}
                 <div class="http">
                   <div class="title">
                     HTTP Info
@@ -24,6 +25,7 @@
                     {{ include.ep.uri_path }}
                   </div>
                 </div>
+                {% endif %}
                 {% if include.ep.bearer %}
                 <hr>
                 <div class="bearer">
@@ -53,6 +55,7 @@
                   </div>
                 </div>
                 {% endif %}
+                {% if include.ep.param %}
                 <hr>
                 <div class="parameters">
                   <h3>
@@ -105,6 +108,8 @@
                     {% endif %}
                   </div>
                 </div>
+                {% endif %}
+                {% if include.ep.result %}
                 <hr>
                 <div class="result">
                   <h3>
@@ -129,6 +134,7 @@
                     {% endfor %}
                   </div>
                 </div>
+                {% endif %}
                 {% if include.ep.notes %}
                 <hr>
                 <div class="notes">

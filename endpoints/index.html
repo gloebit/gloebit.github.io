@@ -146,6 +146,9 @@ no_sections: true
                 <a href="#set-character-product-count">Set Character Product Count</a>
               </li>
               <li class="endpoint">
+                <a href="#purchase-product">Purchase Product</a>
+              </li>
+              <li class="endpoint">
                 <a href="#new-item">New Item</a>
               </li>
               <li class="endpoint">
@@ -159,6 +162,9 @@ no_sections: true
               </li>
               <li class="endpoint">
                 <a href="#delete-item">Delete Item</a>
+              </li>
+              <li class="endpoint">
+                <a href="#purchase-item">Purchase Item</a>
               </li>
             </ul>
           </li>
@@ -498,14 +504,7 @@ no_sections: true
 
         {% include ep_template.html ep=site.data.endpoint.set_character_product_count %}
 
-        <article>
-          <h3>Transact Product</h3>
-          <div class="body">
-            <p>
-              See the Product Transact Parameters section of the Transact method in the Digital Currency &amp; Transaction Service section for details on how to deliver a product to a user or character as part of a gloebit transaction.
-            </p>
-          </div>
-        </article>
+        {% include ep_template.html ep=site.data.endpoint.purchase_product %}
 
         <a class="anchor" id="advanced-inventory"></a>
         <article>
