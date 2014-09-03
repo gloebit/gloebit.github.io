@@ -21,8 +21,8 @@ result:
       - name: characters
         desc: |
           Array of character information.  Each character's information is a dictionary:<br>
-          &nbsp;&nbsp;id: Gloebit UUID for character.
-          &nbsp;&nbsp;name: Character's name.
+          &nbsp;&nbsp;id: Gloebit UUID for character.<br>
+          &nbsp;&nbsp;name: Character's name.<br>
           &nbsp;&nbsp;&lt;...&gt;: Additional parameters, if any.
       - name: reason
         desc: Short description of why request failed.

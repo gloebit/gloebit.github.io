@@ -34,8 +34,8 @@ result:
       - name: character
         desc: |
           Dictionary of new character information (if request succeeded):<br>
-          &nbsp;&nbsp;id: Gloebit UUID for new character.
-          &nbsp;&nbsp;name: Name of new character.
+          &nbsp;&nbsp;id: Gloebit UUID for new character.<br>
+          &nbsp;&nbsp;name: Name of new character.<br>
           &nbsp;&nbsp;&lt;...&gt;: Additional parameters, if any.
       - name: reason
         desc: Short description of why request failed.

@@ -31,7 +31,7 @@ no_sections: true
                 <a href="#implicit">Implicit Grant</a>
               </li>
               <li class="article">
-                <a href="#force-auto">Authorization: force/auto</a>
+                <a href="#force-auto">Approval: force/auto</a>
             </ul>
           </li>
           <li class="section"><a href="#identity">Identity Service</a>
@@ -210,7 +210,7 @@ no_sections: true
           <h1>Authorization Service</h1>
           <div class="body">
             <p>
-              Your application must use the Gloebit Authorization service before using any of the other Gloebit services.  All other services' endpoints require an access token, and you use the Authorization service to acquire access tokens.  Gloebit supports OAuth 2.0 (OAuth2) methods for delivering access tokens to your application.  During the OAuth2 flow, we will prompt your user to log into the Gloebit system and grant your application access to the user's resources (identity, characters, inventory, etc.) requested by your application.
+              Your application must use Gloebit's Authorization service before using any of the other Gloebit services.  All other services' endpoints require an access token, and you use the Authorization service to acquire access tokens.  Gloebit supports OAuth 2.0 (OAuth2) methods for delivering access tokens to your application.  During the OAuth2 flow, we will prompt your user to log into the Gloebit system and grant your application access to the user's resources (identity, characters, inventory, etc.) requested by your application.
             </p>
           </div>
         </article>
@@ -371,12 +371,25 @@ no_sections: true
           <h1>Identity Service</h1>
           <div class="body">
             <p>
-              This service allows Gloebit to manage user accounts so that you do not need to build a login/authentication system for your application.  End-users would login via Gloebit to be authenticated.  In addition to providing Gloebit's own login (email + password), your end users will also be able to authenticate via Facebook, G+, Twitter and LinkedIn.  This system authenticates a user and provides the application a unique, consistent identifier for that user.
+              Your application can use Gloebit's Identity service to let Gloebit manage your user accounts.  Using this service saves you the trouble of building a login/authentication system.  Your users would login via Gloebit to be authenticated, where they can either provide Gloebit login credentials (email + password) or authenticate via Facebook, Google+, Twitter, or LinkedIn.
             </p>
-            <ul>
-              <li>If an application uses our Identity Service, we recommend using the auto/conditional version of Authorization in the process to get an access token.  For a new user, this will be no different.  For a user who has already authorized the application however, this will not require that user to re-authorize that application.  If the user is already logged into gloebit and has an authorization on file, it will just bounce back with the request or access token.</li>
-              <li>Requires access token with a scope that includes "user".  See Authorization section for details.</li>
-            </ul>
+            <p>
+              With this service, after using the Authorization service you would use the <a href="#user-id">Get User ID</a> endpoint to retrieve your user's Gloebit ID.  Your application can then use the ID to track the user.
+            </p>
+          </div>
+        </article>
+
+        <a class="anchor" id="user-ids"></a>
+        <article>
+          <h2>User IDs</h2>
+          <div class="body">
+            <p>
+              Gloebit user IDs are <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier">UUIDs</a>.  The service provides them as a string in their <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier#Definition">canonical form</a>:
+            </p>
+            <pre class="uuid">XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</pre>
+            <p>
+              where each "X" represents a hexadecimal number.  The lengths of the sequences are 8, 4, 4, 4, and 12.  Thus, each user ID is 36 characters total.
+            </p>
           </div>
         </article>
 
@@ -389,13 +402,25 @@ no_sections: true
           <h1>Character Service</h1>
           <div class="body">
             <p>
-              This service provides functionality to create and manage characters or personas for a user within your application.  This service allows for storing, retrieving and editing of those character specific details.
+              Your application can use Gloebit's character service to create and manage characters (or personas or entities or ...) for your users.  Each user can have multiple characters in the system.  The service allows for storing, retrieving, and editing character details.
             </p>
-            <ul>
-              <li>If you are using our product inventory service, entitlements can be auto-delivered to a single character as opposed to all characters for that gloebit user.</li>
-              <li>If you'd like to store information about a user, you could create a single character for the user and do so there.</li>
-              <li>Requires access token with a scope that includes "character".  See Authorization section for details.</li>
-            </ul>
+            <p>
+              The service supports combining with the other Gloebit services.  The Inventory service has character-specific endpoints for products.  The Digital Curreny & Transaction allows product purchases to be directed to a character's inventory.  These endpoints require a character ID.  Use the <a href="#list-characters">Get List of Characters</a> to get IDs for all of a user's characters.
+            </p>
+          </div>
+        </article>
+
+        <a class="anchor" id="character-ids"></a>
+        <article>
+          <h2>Character IDs</h2>
+          <div class="body">
+            <p>
+              Gloebit character IDs are <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier">UUIDs</a>.  The service provides them as a string in their <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier#Definition">canonical form</a>:
+            </p>
+            <pre class="uuid">XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</pre>
+            <p>
+              where each "X" represents a hexadecimal number.  The lengths of the sequences are 8, 4, 4, 4, and 12.  Thus, each character ID is 36 characters total.
+            </p>
           </div>
         </article>
 

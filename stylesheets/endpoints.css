@@ -368,3 +368,13 @@ div.endpoint tr td:first-of-type {
     margin-top: -5px;  /* For aesthetics only... */
     margin-left: 13px;
 }
+
+#user-ids + article .uuid,
+#character-ids + article .uuid {
+    display: inline-block;
+    background-color: rgba(128,128,128,0.1);
+    line-height: 1.5rem;
+    margin: 0 0 1rem 1rem;
+    padding: 0 5px;
+    border: 1px solid rgba(128,128,128,0.2);
+}
