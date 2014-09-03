@@ -439,34 +439,46 @@ no_sections: true
           <h1>Inventory Service</h1>
           <div class="body">
             <p>
-              The inventory service allows an application to create and manage an inventory and entitlements for a user.  There are two flavors of this service.  The Product Inventory Service requires definition of products from the API Settings page for the application and drastically simplifies delivering these products during purchase transactions and consuming the products.  The Advanced Inventory Service allows for more freedom and detail for inventory items.  If you are just tracking whether or not a user has an item and at what quantity, the Product Inventory Service is simple and may be all you need.  This is great for basic entitlements.  If you are trying to track many combinations, variants and details about inventory items, then you may want to use our Advanced Inventory Service.
+              Your application can use Gloebit's Inventory service to create and manage users' inventories and entitlements.  The service supports storing <i>products</i> and <i>items</i> in user and character inventories for your application.  Products are defined in the Gloebit system whereas items are defined on-the-fly by your application.  Generally, using products provides a basic inventory system and using items provides more advanced inventory possibilities.
             </p>
-            <ul>
-              <li>Requires access token with a scope that includes "inventory".  See Authorization section for details.</li>
-            </ul>
+            <p>
+              The first group of Inventory endpoints below are for <a href="#product-inventory">products</a>.  The second group of Inventory endpoints are for <a href="#item-inventory">items</a>.  Note that all inventory endpoints apply to a single application's inventories and there is no inventory sharing between applications in the Gloebit service.
           </div>
         </article>
 
         <a class="anchor" id="product-inventory"></a>
         <article>
-          <h2>Product Inventory Service</h2>
+          <h2>Products</h2>
           <div class="body">
             <p>
-              This is a basic inventory service designed for simple products.  Think of it as an entitlements service.  It is great for saying that a user does or does not have something or what quantity a user has.  You will need to define products from the API Settings page for the application on the gloebit website.  Then you can easily grant or consume those products for a user.  If the application is using our Transaction/Digital Currency service, there is even a simple way to deliver a product during a transaction.
+              Products in the Inventory service are just names.  In a user's or character's inventory, each product can have a count/quantity associated with it, and nothing more.  Thus, products provide a basic inventory service akin to storing entitlements.  (See the <a href="#item-inventory">items</a> section if you require storing more information.)
             </p>
-            <ul>
-              <li>The product inventory is a JSON dictionary of {"product name":quantity pairs}.</li>
-              <li>You must define products from the API Settings page for the application.  A product definition requires a product name, and a price in gloebits.  There are a few other parameters:
-                <ul>
-                  <li>Available flag (true by default) - This can be toggled off to make this product unavailable.</li>
-                  <li>No inventory limit flag (true by default) - This means a user can have an unlimited number of this product in the user's inventory.  If it is toggled off, the limit can be set.</li>
-                  <li>Per user limit (infinite by default) - If the no inventory limit flag is turned off, then this will determine the maximum number of this product that a user may possess in the user's inventory.</li>
-                  <li>Can be granted/set flag (false by default) - This can be turned on to allow this product to be granted or have it's quantity set for a user outside of a transaction where the price in gloebits were paid.  If you are using the lower security 1-step authorization, while difficult, it is possible for a user to have discovered your access key and then grant themselves these products if you turn this on.  However, if there are items you regularly give away, or which you don't sell but track for a user, this is an easy way to do so.</li>
-                </ul>
-              </li>
-              <li>If you change the name of a product, be aware that some of your users may still have items with the old name in their inventory.  The name is the key for that product and we do not update user inventories when you change the name of a product.</li>
-              <li>In addition to managing inventory at the user level, if the application is using our Character Service, the application can use the corresponding functions below to manage inventory for individual characters within the user account.</li>
-            </ul>
+            <p>
+              Products are defined per-application, on the <a href="/app-config/#products">application's configuration</a> page.  The third group of fields on the page show your application's existing products and let you add new products.  (Follow the link for explanations on the product fields on the configuration page.)
+            </p>
+            <h3>Product Names</h3>
+            <p>
+              Gloebit references products by their names, meaning the endpoints require the name of the product to act upon.  Thus, within an application all product names need to be unique.  Because the Inventory service partitions by application, different applications can have the same product names and the products will be distinct (and not shareable between the applications).
+            </p>
+            <p>
+              If you change a product's name, the change will <i>not</i> propagate to your users' inventories.  They will contain products by the original name with the same quantity as before the name change.  The old-name products will show up in inventory products lists but only the consume operation will work for them.
+            </p>
+            <h3>Grant and Set</h3>
+            <p>
+              The service has endpoints for granting a number of products to an inventory and setting the number of products in an inventory.  Granting is synonymous with incrementing the inventory quantity.  Setting simply forces the quantity to a value.  You can configure whether a product can be grant or set via these endpoints on the configuration page.  If disallowed, then the product can only be purchased and consumed.  (Purchasing is done via the <a href="#transact">Transact</a> endpoint in the <a href="#dctransaction">Digital Currency & Transaction</a> service.)
+            </p>
+            <h3>Per-Inventory Limits</h3>
+            <p>
+              You can set an upper limit for the number of a product in an inventory (user or character).  The service will reject any request that would cause the quantity to go above a product's limit.
+            </p>
+            <h3>Availability</h3>
+            <p>
+              You can mark products as unavailable.  The effects of making a product unavailable is limited to the transaction service.  It will reject purchases for unavailable products.  Existing inventories are not affected by a product's availability and your application can still consume and grant an unavailable product and set its quantity.
+            </p>
+            <h3>User and Character Inventories</h3>
+            <p>
+              The service supports inventories for users and their characters, meaning you can keep an inventory for one of your users and inventories for each of the user's characters at the same time.  Gloebit separates the inventories, but your application can share among them via the proper endpoints.
+            </p>
           </div>
         </article>
 
