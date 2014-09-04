@@ -57,7 +57,7 @@ no_sections: true
                 <a href="#item-inventory">Items</a>
               </li>
               <li class="article">
-                <a href="#inventory-ops">Inventory Operations</a>
+                <a href="#inventory-folders">Folders</a>
               </li>
             </ul>
           </li>
@@ -506,20 +506,32 @@ no_sections: true
 
         {% include ep_template.html ep=site.data.endpoint.purchase_product %}
 
-        <a class="anchor" id="advanced-inventory"></a>
+        <a class="anchor" id="item-inventory"></a>
         <article>
-          <h2>Advanced Inventory Service</h2>
+          <h2>Items (Advanced Inventory)</h2>
           <div class="body">
             <p>
-              The Advanced Inventory Service provides a more generic interface to the inventory system.  If you would like to store more detailed inventory information for an application than just possession/entitlements, such as state of items, wear levels, customized variants of items, or general game state information in a users inventory, this is the service to use.  It will allow for an inventory item to include any information you choose as a set of key-value pairs.  It is slightly more complex to use or to deliver products as part of a transaction than the Product Inventory Service, but it is also more powerful.
+              Items in the Inventory systems are dictionaries.  Your application defines what to put in each item's dictionary on-the-fly.  The service stores all items in <i>folders</i> of the user's inventory.  Your application can provide folder names to the endpoints or let them use the default folder.
             </p>
-            <ul>
-              <li>You do not need to define any inventory items ahead of time from the API Settings page as you do for the Product Inventory Service.</li>
-              <li>The Advanced Inventory Service stores inventory using folder ids.  To simply create an inventory for the user, we suggest using the user id as the folder id.  To simply create an inventory for a character within the user account, we suggest using the character id as the folder id.</li>
-              <li>You can create generic folders within the user's account for managing different inventories for the user.</li>
-              <li>When no folder-id is supplied, the null folder-id "00000000-0000-0000-0000-000000000000" is used.</li>
-              <li>All inventory folders created are specific to this application and are not accessible by other applications.  If you would like more complex accessibility of inventory, please <a href="https://www.gloebit.com/contact-us/"><!--target="_blank"-->contact us</a> with a detailed request so we can consider this for future development.</li>
-            </ul>
+            <p>
+              What to store in the item dictionary is entirely up to your application.  Use fields for the states of items, player characteristics, system variants, generalized game state information, or anything your application must track.  Gloebit checks for maximum string lengths and maximum number of mappings, so let us know if you hit a limit and have a request for extending them.
+            </p>
+            <p>
+              As with products, items are store per-application.  An item stored by one application cannot be retrieved or edited by another.  Also, there are no character-specific items in inventories.  Your application can use character-specific folders to separate items among a user's characters.
+            </p>
+          </div>
+        </article>
+
+        <a class="anchor" id="inventory-folders"></a>
+        <article>
+          <h2>Folders</h2>
+          <div class="body">
+            <p>
+              The Inventory service stores all inventory items in folders.  A folder name is simply a string, at most 36 characters.  The endpoints accept a folder-id parameter that your application can use to sort items as you see fit.  The endpoints will use a default folder (UUID with all 0's) if your application excludes the folder-id parameter.
+            </p>
+            <p>
+              As with products and items, folders are application-specific.  The same folder name for the same user from two different applications will create distinct folders.
+            </p>
           </div>
         </article>
 
@@ -533,23 +545,16 @@ no_sections: true
 
         {% include ep_template.html ep=site.data.endpoint.delete_inventory_item %}
 
-        <article>
-          <h3>How To effect inventory as part of a transaction</h3>
-          <div class="body">
-            <p>
-              If your application is using the Gloebit Digital Currency and Transaction Service, there are some advanced methods to tie into inventory.  See the Callbacks and Notifications subsection of the Digital Currency &amp; Transaction Service section for details on how to do so.
-            </p>
-          </div>
-        </article>
+        {% include ep_template.html ep=site.data.endpoint.purchase_item %}
 
       </section>
 
       <section class="anchor" id="dctransaction">
         <article>
-          <h1>Digital Curreny & Transaction Service</h1>
+          <h1>Digital Currency & Transaction Service</h1>
           <div class="body">
             <p>
-              This Service provides everything necessary to handle payments and in-app micro-transactions in a fraction of the time and at a fraction of the cost of competitors.  This service provides access to a user's gloebit balance to display within an application.  It also provides access to request payment in gloebits from the user to the merchant/developer without leaving the application.
+              Your application can use Gloebit's Digital Currency & Transaction service to handle in-app micro-transactions and user payments.  The service lets your application get a user's gloebit balance to display it within the application and check it is sufficient for purchases, and it lets your application request payments in gloebits from the user's Gloebit account to yours without leaving the application.
             </p>
             <ul>
               <li>We suggest you price your products in gloebits and do not show an estimated USD cost.  In our experience, monetization decreases when a USD price is shown.</li>
