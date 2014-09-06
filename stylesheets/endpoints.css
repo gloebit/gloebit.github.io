@@ -378,3 +378,7 @@ div.endpoint tr td:first-of-type {
     padding: 0 5px;
     border: 1px solid rgba(128,128,128,0.2);
 }
+
+#transact .endpoint .parameters td:first-of-type {
+    width: 32%;
+}
