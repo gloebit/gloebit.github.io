@@ -197,7 +197,7 @@ no_sections: true
 
             <h2>Gloebit's Services</h2>
             <p>
-              Gloebit offers four backend services: <a href="#identity">Identity</a>, <a href="#character">Character</a>, <a href="#inventory">Inventory</a>, and <a href="#dctransaction">Digital Currency & Transaction</a>.  You can incorporate any of them into your design, or any combination, or all of them.  Each can work independtly or with other services (for example, character-based inventories).
+              Gloebit offers four backend services: <a href="#identity">Identity</a>, <a href="#character">Character</a>, <a href="#inventory">Inventory</a>, and <a href="#dctransaction">Digital Currency & Transaction</a>.  You can incorporate any of them into your design, or any combination, or all of them.  Each can work independently or with other services (for example, character-based inventories).
             </p>
             <p>
               All backend services are dependent upon the Gloebit <a href="#auth">Authorization</a> service.  Your application must first use the authorization service to get your user's approval for account access.  Via this service, Gloebit will authorize the user, ask permission for your application's access, and provide your application an access token for the user's account.  Your application then uses the token with the backend services.
@@ -205,7 +205,7 @@ no_sections: true
 
             <h2 class="anchor" id="endpoints">Endpoints</h2>
             <p>
-              All of the Gloebit services are web services, meaning their functionality is accessed via HTTP requests to web resources.  This page uses the term "endpoint" to refer to a web resource, including its URL, its HTTP request format, and the functionality it provdes.  The Endpoints menu lists all of the web resources availble in each of the services.
+              All of the Gloebit services are web services, meaning their functionality is accessed via HTTP requests to web resources.  This page uses the term "endpoint" to refer to a web resource, including its URL, its HTTP request format, and the functionality it provides.  The Endpoints menu lists all of the web resources available in each of the services.
             </p>
           </div>
         </article>
@@ -290,17 +290,17 @@ no_sections: true
           <h2>OAuth 2.0 Authorization Framework</h2>
           <div class="body">
             <p>
-              To get your users' approval for letting your application access their Gloebit accounts, we use the OAuth 2.0 (OAuth2) framework.  OAuth2 supports securely authorizating your users and accessing their "resources".  For a nice, succinct primer on OAuth2, visit Aaron Parecki's <a href="https://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified">OAuth 2 Simplified</a> page.  For OAuth2 details, visit the <a href="http://tools.ietf.org/html/rfc6749">OAuth 2.0 specification</a> page.
+              To get your users' approval for letting your application access their Gloebit accounts, we use the OAuth 2.0 (OAuth2) framework.  OAuth2 supports securely authorizing your users and accessing their "resources".  For a nice, succinct primer on OAuth2, visit Aaron Parecki's <a href="https://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified">OAuth 2 Simplified</a> page.  For OAuth2 details, visit the <a href="http://tools.ietf.org/html/rfc6749">OAuth 2.0 specification</a> page.
             </p>
             <p>
-              Gloebit's OAuth2 implementation supports both <i>confidential</i> (web-server based) and <i>public</i> (browser-based or native-on-device) applications and the <a href="http://tools.ietf.org/html/rfc6749#section-4.1">Authorization Code Grant</a> and <a href="http://tools.ietf.org/html/rfc6749#section-4.2">Implicit Grant</a> methods for acquiring access tokens.  If your application is web-server based (confidential), use the Authorization Code Grant method.  If your application is brower-based or is a native app on devices (public), use the Implicit Grant.
+              Gloebit's OAuth2 implementation supports both <i>confidential</i> (web-server based) and <i>public</i> (browser-based or native-on-device) applications and the <a href="http://tools.ietf.org/html/rfc6749#section-4.1">Authorization Code Grant</a> and <a href="http://tools.ietf.org/html/rfc6749#section-4.2">Implicit Grant</a> methods for acquiring access tokens.  If your application is web-server based (confidential), use the Authorization Code Grant method.  If your application is browser-based or is a native app on devices (public), use the Implicit Grant.
             </p>
           </div>
         </article>
 
         <a class="anchor" id="auth-code"></a>
         <article>
-          <h2>Authorization Code Grant method</h2>
+          <h2>Authorization Code Grant Method</h2>
           <div class="body">
             <p>
               This authorization method is for applications with a back-end server (i.e., web-based, or <i>confidential</i> in OAuth2 terms).  It is the more secure method for acquiring access tokens and Gloebit strongly recommends using it if at all possible.
@@ -320,7 +320,7 @@ no_sections: true
 
         <a class="anchor" id="implicit"></a>
         <article>
-          <h2>OAuth 2.0 "implicit grant" (less secure 1-step) method</h2>
+          <h2>Implicit Grant Method</h2>
           <div class="body">
             <p>
               This authorization method is for browser-based applications or applications that run natively on the device (both considered <i>public</i> in OAuth2 terms).  Of the two methods that Gloebit supports for acquiring access tokens, it is the less secure because it delivers the access token via the redirect URI and it does not use a secret for your application.  Gloebit sets some additional constraints when using this method.
@@ -411,7 +411,7 @@ no_sections: true
               Your application can use Gloebit's character service to create and manage characters (or personas or entities or ...) for your users.  Each user can have multiple characters in the system.  The service allows for storing, retrieving, and editing character details.
             </p>
             <p>
-              The service supports combining with the other Gloebit services.  The Inventory service has character-specific endpoints for products.  The Digital Curreny & Transaction allows product purchases to be directed to a character's inventory.  These endpoints require a character ID.  Use the <a href="#list-characters">Get List of Characters</a> to get IDs for all of a user's characters.
+              The service supports combining with the other Gloebit services.  The Inventory service has character-specific endpoints for products.  The Digital Currency & Transaction allows product purchases to be directed to a character's inventory.  These endpoints require a character ID.  Use the <a href="#list-characters">Get List of Characters</a> to get IDs for all of a user's characters.
             </p>
           </div>
         </article>
@@ -554,7 +554,7 @@ no_sections: true
           <h1>Digital Currency & Transaction Service</h1>
           <div class="body">
             <p>
-              Your application can use Gloebit's Digital Currency & Transaction service to handle in-app micro-transactions with <i>gloebits</i> as your digital currency.  The service provides an endpoint to lookup your user's gloebit balance and an endpoint to request a gloebit payment from your user's account to your account.  Both endpoints allow your user to stay within your application.  The service also provides an endpoint for redirecting your user to the Gloebit page for purchasing gloebits.  The service's three endpionts allow your application to deal entirely in gloebits while Gloebit handles purchasing processes for you.
+              Your application can use Gloebit's Digital Currency & Transaction service to handle in-app micro-transactions with <i>gloebits</i> as your digital currency.  The service provides an endpoint to look up your user's gloebit balance and an endpoint to request a gloebit payment from your user's account to your account.  Both endpoints allow your user to stay within your application.  The service also provides an endpoint for redirecting your user to the Gloebit page for purchasing gloebits.  The service's three endpoints allow your application to deal entirely in gloebits while Gloebit handles purchasing processes for you.
             </p>
             <h3>Engineering Considerations</h3>
             <p>
@@ -579,7 +579,7 @@ no_sections: true
                   The <a href="#transact">Transact</a> endpoint supports your application including a transaction ID.  We strongly suggest you include this ID and, if possible, have it be a UUID.  It is very useful in case any disputes occur.
                 </p>
                 <p>
-                  The <a href="#transact">Transact</a> endpoint also supports a name for the user on your application.  This field can be useful when a single user can have more than one character on an application.  The username is included in the user's transaction history log.
+                  The <a href="#transact">Transact</a> endpoint also supports a name for the user on your application.  This field can be useful when a single user can have more than one character on an application.  The user name is included in the user's transaction history log.
               </li>
               <li>
                 <p>
@@ -630,7 +630,7 @@ no_sections: true
 
         <h3>Asset Transact Parameters for use with generic assets</h3>
         <p>
-          If your application is not using the Product Inventory Service, then you should use Generic Asset Transactions.  You will manage delivery of the asset purchased yourself, either within your application or in our Item Inventory System.  You should integrate the Transaction Callbacks, described below, into your system if you wish to ensure committed transactions before delivery.
+          If your application is not using the Product Inventory Service, then you should use Generic Asset Transactions.  You will manage delivery of the asset purchased yourself, either within your application or in our Item Inventory System.  You should integrate the Transaction callbacks, described below, into your system if you wish to ensure committed transactions before delivery.
         </p>
 
         <a class="anchor" id="transact-cbs"></a>
@@ -659,22 +659,69 @@ no_sections: true
               Each URL access will be blocking, meaning Gloebit waits for your server's response and your server should respond in a timely manner.  Additionally, while processing a transaction, Gloebit might access a URL more than once.  Your endpoints for these callbacks need to be idempotent and properly handle multiple calls for a transaction.
             </p>
             <p>
-              You can find further details about when each URL can be called in relation to the other URLs and the original Transact request tn the descriptions below.  There are three callback parameters.
+              You can find further details about when each URL can be called in relation to the other URLs and the original Transact request in their descriptions below.
             </p>
 
-            <h3>asset-enact-hold-url Callback Parameter</h3>
+            <h3>Responses</h3>
             <p>
-              This url will be called after the transaction processor has enacted all parts of the transaction.  Think of this as a hold being in place which should guarantee that the transaction can be completed, but still being in a state where it can also be cancelled and rolled back.  If your application supplies this parameter and the callback url responds "false", we will assume necessary components in your application (such as delivery of the purchased good) failed and we will cancel and roll back the transaction.  In some circumstances, this callback can occur more than once, can occur prior the Transact call returning "true", and may be received after the asset-cancel-hold-url callback has occurred.  In most cases, the transaction will only fail after this point if your asset-enact-hold-url returns "false".
+              Your server needs to return a JSON array with 1 or 2 elements to each of the callbacks.  The first element is a Boolean indicating whether your server wants to proceed with the transaction.  The second element is a string providing status information from your server.  Currently the values of the elements affect only Gloebit's "enact" processing.
             </p>
 
-            <h3>asset-cancel-hold-url Callback Parameter</h3>
+            <h3 class="param">Transact Parameter: asset-enact-hold-url</h3>
             <p>
-              This url will be called if and as we have determined to cancel the transaction.  In most cases, all parts of the transaction have been cancelled (and if enacted already, rolled back) prior to this call.  Once this call is made/received, this transaction cannot and will not succeed.  This can be called prior to or without an "asset-enact-hold-url" being called.  This may not be called if the Transact call returns "false", so it is important to pay attention to the Transact return as well.  This url should never be called after "asset-consume-hold-url" has been called.  While the response will not affect the transaction, we will recall this url until we receive an acknowledgement of receipt.
+              Gloebit accesses this URL after it has acquired all holds necessary to process the transaction and is ready to enact it.  The transaction is almost guaranteed to succeed at this point, but Gloebit can still roll it back, particularly if your application needs Gloebit to cancel the transaction.
+            </p>
+            <p>
+              Your application's server can use the response to tell Gloebit to cancel the transaction and roll it back.  Your server can also tell Gloebit its processing is pending, in which case Gloebit will access the URL again later.  Here are the response options:
+            </p>
+            <table>
+              <tr>
+                <th>JSON</th>
+                <th>Effect</th>
+              </tr>
+              <tr>
+                <td>[true]</td>
+                <td>
+                  Gloebit enacts the transaction and proceeds to the consume/cancel step.
+                </td>
+              </tr>
+              <tr>
+                <td>[false,'pending']</td>
+                <td>
+                  Gloebit retries the transaction processing.  During the retry, it will access this URL again.
+                </td>
+              </tr>
+              <tr>
+                <td>[false,&lt;any other string&gt;]</td>
+                <td>
+                  Gloebit cancels the transaction.  It will access the cancel URL for this transaction.
+                </td>
+              </tr>
+            </table>
+            <p>
+              With respect to the Transact call and the other callbacks, Gloebit may access this URL before the Transact call has returned (in which case it will return "success: true"), it will access the this URL before accessing the Consume URL, it might not access this URL before accessing the Cancel URL, it might never access this URL in the Cancel URL case, and it might access this URL again after accessing the others.  To be safe, your server should not depend on any particular interleaving.
             </p>
 
-            <h3>asset-consume-hold-url Callback Parameter</h3>
+            <h3 class="param">Transact Parameter: asset-consume-hold-url</h3>
             <p>
-              This url will be called after we have consumed the holds enacted and committed the transaction.  At this point, the transaction is fully complete and can not be rolled back.  This url may be called multiple times.  While the response will not affect the transaction, we will recall this url until we receive an acknowledgement of receipt.
+              Gloebit accesses this URL after it has consumed the enacted holds and committed the transaction.  At this point, the transaction is complete and can not be rolled back.
+            </p>
+            <p>
+              Gloebit currently ignores any response to this callback.  Your server should send a JSON response of "[true]" to prevent future incompatibilities.
+            </p>
+            <p>
+              With respect to the Transact call and the other callbacks, Gloebit may access this URL before the Transact call has returned (in which case it will return "success: true"), it will access this URL only after receiving a True response to an enact callback, and this URL and the Cancel URL are mutually exclusive per transaction.
+            </p>
+
+            <h3 class="param">Transact Parameter: asset-cancel-hold-url</h3>
+            <p>
+              Gloebit accesses this URL after it has canceled the enacted holds and effectively canceled the transaction.  In parallel with this access, Gloebit will be rolling back any enacted changes.
+            </p>
+            <p>
+              Gloebit currently ignores any response to this callback.  Your server should send a JSON response of "[true]" to prevent future incompatibilities.
+            </p>
+            <p>
+              With respect to the Transact call and the other callbacks, Gloebit may access this URL before the Transact call has returned, it likely will not be called if the Transact call returns "success: false", it may access this URL before the Enact URL and possibly without ever accessing the Enact URL, it will access this URL if your response to the Enact URL cancels the transaction, and this URL and the Consume URL are mutually exclusive per transaction.
             </p>
           </div>
         </article>
@@ -695,7 +742,7 @@ no_sections: true
               <li>Prior to Transact request --- You are welcome to deliver digital goods prior to making the Transact request if you are willing to have some leakage or handle reversal of delivery on failure.  We recommend you check a user's balance to ensure that the user has enough gloebits in his/her account for the purchase.  There is no guarantee that the purchase will succeed, but if your application allows purchases during a live-action game, you may prefer some leakage over making a user wait until the transaction completes.</li>
               <li>Upon successful response from Transact request --- Once the system enacts all transfers involved, it returns success.  The transaction is not yet committed and can still be rolled back, but that is unlikely.  This is a great time to deliver goods, and still very simple.  Upon a Transact failure response, the action your application takes should be dependent on the message details.  Some possibilities include retrying the Transact call, attempting to fix any problems on the application end, or asking the user to purchase enough gloebits to afford the purchase.</li>
               <li>Upon Transact Callback of asset-enact-hold-url --- This is a similar state as when the Transact request returns success.  The transfer has been made to all balances, but has not been committed and can still be rolled back.  The transaction processor waits for a response from this url before committing the transaction.  Using this callback is a great way to tie in delivery in a way where if delivery of the goods fails, then the gloebit transaction is rolled back.  A return of true from this url should mean that you have delivered the goods, and false means you have failed permanently in an attempt to deliver and we should roll back the gloebit transaction.  If we receive a response of false, after rolling back the transaction, we will call the asset-cancel-hold-url callback if one has been supplied.</li>
-              <li>Upon Transact Callback of asset-consume-hold-url --- If you are looking to be as conservative as possible with delivery of your digital goods, then you may decide to handle delivery upon receiving this callback; however, this creates the risk that a user is charged gloebits and your system fails to deliver the goods.  We recommend that the best conservative method is to begin or queue delivery with the asset-enact-hold-url and complete or commit delivery with the asset-consume-hold-url.  This callback means the transaction has been fully completed and committed.  It can not be cancelled or rolled back at this point and the gloebits have been delivered to the merchant/developer account controlling the application that requested the transaction.</li>
+              <li>Upon Transact Callback of asset-consume-hold-url --- If you are looking to be as conservative as possible with delivery of your digital goods, then you may decide to handle delivery upon receiving this callback; however, this creates the risk that a user is charged gloebits and your system fails to deliver the goods.  We recommend that the best conservative method is to begin or queue delivery with the asset-enact-hold-url and complete or commit delivery with the asset-consume-hold-url.  This callback means the transaction has been fully completed and committed.  It can not be canceled or rolled back at this point and the gloebits have been delivered to the merchant/developer account controlling the application that requested the transaction.</li>
               <li>Upon Transact Callback of asset-cancel-hold-url ---  If at any point, you receive this callback, the transaction has failed and is being or has been rolled back.  If you have not delivered your goods, don't.  If you have begun delivery of your goods, then cancel processing of that delivery.  Once you receive the asset-consume-hold-url callback, you can rest assured that you will not receive the asset-cancel-hold-url for this transaction.</li>
             </ul>
             Note:
