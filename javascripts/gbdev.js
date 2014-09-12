@@ -79,6 +79,10 @@ $(function(){
         $(this).siblings('header > div > div').toggleClass('collapsed');
     });
     $('header > div > div').addClass('collapsed');
+  
+    $('.service').click(function(ev) {
+        $(this).toggleClass('active');
+    });
 
     /* Set anchor padding/margin to offset under fixed header. */
     /* The header is fixed only for >960px.                    */
