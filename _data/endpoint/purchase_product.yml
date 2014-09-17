@@ -4,6 +4,6 @@ name: Purchase Product
 service: Inventory
 desc: 
   - p: >
-      See the <a href="#transact">Transact</a> endpoint in the Digital Currency & Transaction service for purchasing products.  Specifically, use the endpoint's "Product Transaction" parameters to purchase a product.
+      See the <a href="#transact">Transact</a> endpoint in the Digital Currency service for purchasing products.  Specifically, use the endpoint's "Product Transaction" parameters to purchase a product.
   - p: >
       When purchasing products, the Transact endpoint automatically adds the product into the user's or character's inventory.  It also supports purchasing quantities greater than 1.

@@ -1,7 +1,7 @@
 
 id: transact
 name: Transact
-service: Digital Currency & Transaction
+service: Digital Currency
 desc: 
   - p: >
       An application uses this endpoint to initiate a transaction in the Gloebit system. It returns after it has determined whether the transaction can be enacted and, if it can be enacted, has queued the transaction for committing.

@@ -1,7 +1,7 @@
 
 id: purchase
 name: Purchase gloebits
-service: Digital Currency & Transaction
+service: Digital Currency
 desc:
   - p: >
       An application uses this endpoint to let the user purchase gloebits on the Gloebit site.

@@ -4,4 +4,4 @@ name: Purchase Item
 service: Inventory
 desc:
   - p: >
-       The <a href="#transact">Transact</a> endpoint in the Digital Currency & Transaction service does not directly support purchasing items.  However, your application can use the <a href="#transact-callbacks">transaction flow callbacks</a> to detect when a purchase has completed and then use the endpoints to create or update the item in the user's inventory.
+       The <a href="#transact">Transact</a> endpoint in the Digital Currency service does not directly support purchasing items.  However, your application can use the <a href="#transact-cbs">transaction flow callbacks</a> to detect when a purchase has completed and then use the endpoints to create or update the item in the user's inventory.

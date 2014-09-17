@@ -62,18 +62,23 @@ no_sections: true
             </ul>
           </li>
           <li class="section">
-            <a href="#dctransaction">Digital Currency and<br>Transaction Service</a>
+            <a href="#currency">Digital Currency Service</a>
             <ul>
               <li class="article">
                 <a href="#transaction-flow">Transaction Flow</a>
               </li>
             </ul>
           </li>
+          <!--
           <li class="section"><a href="#restful">RESTful API</a>
+          -->
+          <li class="section"><a href="#misc">Miscellaneous</a>
             <ul>
+              <!--
               <li class="article">
                 <a href="#endpoint-access">Endpoint Accesses</a>
               </li>
+              -->
               <li class="article">
                 <a href="#error">Endpoint Errors</a>
               </li>
@@ -169,7 +174,7 @@ no_sections: true
             </ul>
           </li>
           <li class="section">
-            <a href="#dctransaction">Digital Currency and<br>Transaction Service</a>
+            <a href="#currency">Digital Currency Service</a>
             <ul>
               <li class="endpoint">
                 <a href="#balance">Balance</a>
@@ -197,7 +202,7 @@ no_sections: true
 
             <h2>Gloebit's Services</h2>
             <p>
-              Gloebit offers four backend services: <a href="#identity">Identity</a>, <a href="#character">Character</a>, <a href="#inventory">Inventory</a>, and <a href="#dctransaction">Digital Currency & Transaction</a>.  You can incorporate any of them into your design, or any combination, or all of them.  Each can work independently or with other services (for example, character-based inventories).
+              Gloebit offers four backend services: <a href="#identity">Identity</a>, <a href="#character">Character</a>, <a href="#inventory">Inventory</a>, and <a href="#currency">Digital Currency</a>.  You can incorporate any of them into your design, or any combination, or all of them.  Each can work independently or with other services (for example, character-based inventories).
             </p>
             <p>
               All backend services are dependent upon the Gloebit <a href="#auth">Authorization</a> service.  Your application must first use the authorization service to get your user's approval for account access.  Via this service, Gloebit will authorize the user, ask permission for your application's access, and provide your application an access token for the user's account.  Your application then uses the token with the backend services.
@@ -411,7 +416,7 @@ no_sections: true
               Your application can use Gloebit's character service to create and manage characters (or personas or entities or ...) for your users.  Each user can have multiple characters in the system.  The service allows for storing, retrieving, and editing character details.
             </p>
             <p>
-              The service supports combining with the other Gloebit services.  The Inventory service has character-specific endpoints for products.  The Digital Currency & Transaction allows product purchases to be directed to a character's inventory.  These endpoints require a character ID.  Use the <a href="#list-characters">Get List of Characters</a> to get IDs for all of a user's characters.
+              The service supports combining with the other Gloebit services.  The Inventory service has character-specific endpoints for products.  The Digital Currency service allows product purchases to be directed to a character's inventory.  Endpoints supporting characters require a character ID.  Use the <a href="#list-characters">Get List of Characters</a> to get IDs for all of a user's characters.
             </p>
           </div>
         </article>
@@ -471,7 +476,7 @@ no_sections: true
             </p>
             <h3>Grant and Set</h3>
             <p>
-              The service has endpoints for granting a number of products to an inventory and setting the number of products in an inventory.  Granting is synonymous with incrementing the inventory quantity.  Setting simply forces the quantity to a value.  You can configure whether a product can be grant or set via these endpoints on the configuration page.  If disallowed, then the product can only be purchased and consumed.  (Purchasing is done via the <a href="#transact">Transact</a> endpoint in the <a href="#dctransaction">Digital Currency & Transaction</a> service.)
+              The service has endpoints for granting a number of products to an inventory and setting the number of products in an inventory.  Granting is synonymous with incrementing the inventory quantity.  Setting simply forces the quantity to a value.  You can configure whether a product can be grant or set via these endpoints on the configuration page.  If disallowed, then the product can only be purchased and consumed.  (Purchasing is done via the <a href="#transact">Transact</a> endpoint in the <a href="#currency">Digital Currency</a> service.)
             </p>
             <h3>Per-Inventory Limits</h3>
             <p>
@@ -549,12 +554,12 @@ no_sections: true
 
       </section>
 
-      <section class="anchor" id="dctransaction">
+      <section class="anchor" id="currency">
         <article>
-          <h1>Digital Currency & Transaction Service</h1>
+          <h1>Digital Currency Service</h1>
           <div class="body">
             <p>
-              Your application can use Gloebit's Digital Currency & Transaction service to handle in-app micro-transactions with <i>gloebits</i> as your digital currency.  The service provides an endpoint to look up your user's gloebit balance and an endpoint to request a gloebit payment from your user's account to your account.  Both endpoints allow your user to stay within your application.  The service also provides an endpoint for redirecting your user to the Gloebit page for purchasing gloebits.  The service's three endpoints allow your application to deal entirely in gloebits while Gloebit handles purchasing processes for you.
+              Your application can use Gloebit's Digital Currency service to handle in-app micro-transactions with <i>gloebits</i> as your digital currency.  The service provides an endpoint to look up your user's gloebit balance and an endpoint to request a gloebit payment from your user's account to your account.  Both endpoints allow your user to stay within your application.  The service also provides an endpoint for redirecting your user to the Gloebit page for purchasing gloebits.  The service's three endpoints allow your application to deal entirely in gloebits while Gloebit handles purchasing processes for you.
             </p>
             <h3>Engineering Considerations</h3>
             <p>
@@ -611,7 +616,7 @@ no_sections: true
               </li>
               <li>
                 <p>
-                  Gloebit deposits the gloebits you earn from your application's transactions into your merchant Gloebit account.  See this service's section on the <a href="#dctransaction">Gloebit Services Overview page</a> for more information on handling earned gloebits.
+                  Gloebit deposits the gloebits you earn from your application's transactions into your merchant Gloebit account.  See this service's section on the <a href="/services/#currency">Gloebit Services Overview page</a> for more information on handling earned gloebits.
                 </p>
               </li>
               <li>

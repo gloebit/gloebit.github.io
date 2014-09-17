@@ -1,7 +1,7 @@
 
 id: balance
 name: Balance
-service: Digitial Currency & Transaction
+service: Digital Currency
 desc:
   - p: >
       An application uses this endpoint to get the gloebit balance of the user account associate with the access token.  The application can display the balance for the user and check for sufficient balance before requesting a purchase with the <a href="#transact">Transact</a> endpoint.
