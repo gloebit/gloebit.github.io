@@ -127,7 +127,10 @@ section h1 {
 
 #benefits div {
     display: inline-block;
-    padding: 5px 30px;
+    padding: 10px 15px;
+    margin: 8px 15px 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 #benefits h2 {
