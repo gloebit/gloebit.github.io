@@ -320,12 +320,6 @@ img {
 */
 }
 
-/* Firefox will not render an empty <a class="anchor"></a>, or something  */
-/* like that, unless it is a block element.  Or something like that...    */
-a.anchor {
-    display: block;
-}
-
 .for-validation-only {
     display: none;
 }
