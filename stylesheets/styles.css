@@ -102,14 +102,6 @@ header img {
     margin-right: 12px;
 }
 
-/*
-header h1 {
-    display: inline-block;
-    padding: 5px 0;
-    margin: 5px 0px;
-}
-*/
-
 header > div > div {
     display: inline-block;
     position: relative;    /* So drop-down can position absolute on it. */
@@ -326,6 +318,12 @@ img {
     padding: 50px 0 0;
     margin: -50px 0 0;
 */
+}
+
+/* Firefox will not render an empty <a class="anchor"></a>, or something  */
+/* like that, unless it is a block element.  Or something like that...    */
+a.anchor {
+    display: block;
 }
 
 .for-validation-only {
