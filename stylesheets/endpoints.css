@@ -159,7 +159,7 @@ nav h3 {
 }
 
 nav ul + h3 {
-    margin-top: 12px;
+    margin-top: 18px;
 }
 
 nav ul {
@@ -209,6 +209,13 @@ nav li {
     display: block;
     color: black;
     white-space: nowrap;
+}
+
+nav .caret {
+    position: relative;
+    bottom: 2px;
+    right: 0;
+    border-top-color: #444;
 }
 
 div.endpoint h2 span + span {
