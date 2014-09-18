@@ -19,6 +19,15 @@
       </div>
     </footer>
 
+    <script type="text/javascript">
+      /* Added to header height for offsetting targets. */
+      var PADDING_FROM_HEADER = {% if page.header_padding %}
+                                  {{ page.header_padding }};
+                                {% else %}
+                                  20;
+                                {% endif %}
+    </script>
+
     <script type="text/javascript" src="/javascripts/scale.fix.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="/javascripts/gbdev.js"></script>

@@ -86,7 +86,8 @@ $(function(){
 
     /* Set anchor padding/margin to offset under fixed header. */
     /* The header is fixed only for >960px.                    */
-    var PADDING_FROM_HEADER = 20;
+    /* PADDING_FROM_HEADER is declared and defined in the      */
+    /* footer_scripts.html file so pages can override it.      */
     var headerHeight = $('header').height()+PADDING_FROM_HEADER;
     /*
       try {
