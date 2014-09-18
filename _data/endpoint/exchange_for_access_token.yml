@@ -1,5 +1,5 @@
 
-id: access-token
+id: access-token-exchange
 name: Exchange for Access Token
 service: Authorization
 method: POST
