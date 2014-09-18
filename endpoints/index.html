@@ -4,6 +4,7 @@ page_css: /stylesheets/endpoints.css
 page_js: /javascripts/endpoints.js
 hide_title_heading: true
 no_sections: true
+header_padding: 13
 ---
 
 <!doctype html>
@@ -13,10 +14,17 @@ no_sections: true
     {% include header.html %}
 
     <nav>
+      <!-- Keep the newlines before <b class="caret"> !!!!
+           They are necessary for proper spacing. -->
       <div id="nav-container">
-        <h3>References</h3>
+        <h3>References
+          <b class="caret"></b>
+        </h3>
         <ul>
-          <li class="section"><a href="#auth">Authorization Service</a>
+          <li class="section">
+            <a href="#auth">Authorization Service
+              <b class="caret"></b>
+            </a>
             <ul>
               <li class="article">
                 <a href="#access-token">Access Tokens</a>
@@ -34,21 +42,30 @@ no_sections: true
                 <a href="#force-auto">Approval: force/auto</a>
             </ul>
           </li>
-          <li class="section"><a href="#identity">Identity Service</a>
+          <li class="section">
+            <a href="#identity">Identity Service
+              <b class="caret"></b>
+            </a>
             <ul>
               <li class="article">
                 <a href="#user-ids">User IDs</a>
               </li>
             </ul>
           </li>
-          <li class="section"><a href="#character">Character Service</a>
+          <li class="section">
+            <a href="#character">Character Service
+              <b class="caret"></b>
+            </a>
             <ul>
               <li class="article">
                 <a href="#character-ids">Character IDs</a>
               </li>
             </ul>
           </li>
-          <li class="section"><a href="#inventory">Inventory Service</a>
+          <li class="section">
+            <a href="#inventory">Inventory Service
+              <b class="caret"></b>
+            </a>
             <ul>
               <li class="article">
                 <a href="#product-inventory">Products</a>
@@ -62,7 +79,9 @@ no_sections: true
             </ul>
           </li>
           <li class="section">
-            <a href="#currency">Digital Currency Service</a>
+            <a href="#currency">Digital Currency Service
+              <b class="caret"></b>
+            </a>
             <ul>
               <li class="article">
                 <a href="#transaction-flow">Transaction Flow</a>
@@ -70,9 +89,15 @@ no_sections: true
             </ul>
           </li>
           <!--
-          <li class="section"><a href="#restful">RESTful API</a>
+          <li class="section">
+            <a href="#restful">RESTful API
+              <b class="caret"></b>
+            </a>
           -->
-          <li class="section"><a href="#misc">Miscellaneous</a>
+          <li class="section">
+            <a href="#misc">Miscellaneous
+              <b class="caret"></b>
+            </a>
             <ul>
               <!--
               <li class="article">
@@ -86,29 +111,40 @@ no_sections: true
           </li>
         </ul>
 
-        <h3>Endpoints</h3>
+        <h3>Endpoints
+          <b class="caret"></b>
+        </h3>
         <ul>
-          <li class="section"><a href="#auth">Authorization Service</a>
+          <li class="section">
+            <a href="#auth">Authorization Service
+              <b class="caret"></b>
+            </a>
             <ul>
               <li class="endpoint">
                 <a href="#authorize">Authorize</a>
               </li>
               <li class="endpoint">
-                <a href="#access-token">Exchange for Access Token</a>
+                <a href="#access-token-exchange">Exchange for Access Token</a>
               </li>
               <li class="endpoint">
                 <a href="#verify-token">Verify Access Token</a>
               </li>
             </ul>
           </li>
-          <li class="section"><a href="#identity">Identity Service</a>
+          <li class="section">
+            <a href="#identity">Identity Service
+              <b class="caret"></b>
+            </a>
             <ul>
               <li class="endpoint">
                 <a href="#user-id">Get User ID</a>
               </li>
             </ul>
           </li>
-          <li class="section"><a href="#character">Character Service</a>
+          <li class="section">
+            <a href="#character">Character Service
+              <b class="caret"></b>
+            </a>
             <ul>
               <li class="endpoint">
                 <a href="#create-character">Create Character</a>
@@ -124,7 +160,10 @@ no_sections: true
               </li>
             </ul>
           </li>
-          <li class="section"><a href="#inventory">Inventory Service</a>
+          <li class="section">
+            <a href="#inventory">Inventory Service
+              <b class="caret"></b>
+            </a>
             <ul>
               <li class="endpoint">
                 <a href="#get-user-products">Get User Products</a>
@@ -174,7 +213,9 @@ no_sections: true
             </ul>
           </li>
           <li class="section">
-            <a href="#currency">Digital Currency Service</a>
+            <a href="#currency">Digital Currency Service
+              <b class="caret"></b>
+            </a>
             <ul>
               <li class="endpoint">
                 <a href="#balance">Balance</a>
@@ -226,7 +267,7 @@ no_sections: true
           </div>
         </article>
 
-        <a class="anchor" id="access-token"></a>
+        <div class="anchor" id="access-token"></div>
         <article>
           <h2>Access Tokens</h2>
           <div class="body">
@@ -290,7 +331,7 @@ no_sections: true
           </div>
         </article>
 
-        <a class="anchor" id="oauth2"></a>
+        <div class="anchor" id="oauth2"></div>
         <article>
           <h2>OAuth 2.0 Authorization Framework</h2>
           <div class="body">
@@ -303,7 +344,7 @@ no_sections: true
           </div>
         </article>
 
-        <a class="anchor" id="auth-code"></a>
+        <div class="anchor" id="auth-code"></div>
         <article>
           <h2>Authorization Code Grant Method</h2>
           <div class="body">
@@ -323,7 +364,7 @@ no_sections: true
           </div>
         </article>
 
-        <a class="anchor" id="implicit"></a>
+        <div class="anchor" id="implicit"></div>
         <article>
           <h2>Implicit Grant Method</h2>
           <div class="body">
@@ -344,7 +385,7 @@ no_sections: true
 
         {% include ep_template.html ep=site.data.endpoint.authorize %}
 
-        <a class="anchor" id="force-auto"></a>
+        <div class="anchor" id="force-auto"></div>
         <article>
           <h2>Prompting User for Approval</h2>
           <div class="body">
@@ -390,7 +431,7 @@ no_sections: true
           </div>
         </article>
 
-        <a class="anchor" id="user-ids"></a>
+        <div class="anchor" id="user-ids"></div>
         <article>
           <h2>User IDs</h2>
           <div class="body">
@@ -421,7 +462,7 @@ no_sections: true
           </div>
         </article>
 
-        <a class="anchor" id="character-ids"></a>
+        <div class="anchor" id="character-ids"></div>
         <article>
           <h2>Character IDs</h2>
           <div class="body">
@@ -457,7 +498,7 @@ no_sections: true
           </div>
         </article>
 
-        <a class="anchor" id="product-inventory"></a>
+        <div class="anchor" id="product-inventory"></div>
         <article>
           <h2>Products</h2>
           <div class="body">
@@ -511,7 +552,7 @@ no_sections: true
 
         {% include ep_template.html ep=site.data.endpoint.purchase_product %}
 
-        <a class="anchor" id="item-inventory"></a>
+        <div class="anchor" id="item-inventory"></div>
         <article>
           <h2>Items (Advanced Inventory)</h2>
           <div class="body">
@@ -527,7 +568,7 @@ no_sections: true
           </div>
         </article>
 
-        <a class="anchor" id="inventory-folders"></a>
+        <div class="anchor" id="inventory-folders"></div>
         <article>
           <h2>Folders</h2>
           <div class="body">
@@ -638,7 +679,7 @@ no_sections: true
           If your application is not using the Product Inventory Service, then you should use Generic Asset Transactions.  You will manage delivery of the asset purchased yourself, either within your application or in our Item Inventory System.  You should integrate the Transaction callbacks, described below, into your system if you wish to ensure committed transactions before delivery.
         </p>
 
-        <a class="anchor" id="transact-cbs"></a>
+        <div class="anchor" id="transact-cbs"></div>
         <article>
           <h2>Transact Callback Parameters</h2>
           <div class="body">
@@ -731,7 +772,7 @@ no_sections: true
           </div>
         </article>
 
-        <a class="anchor" id="delivery"></a>
+        <div class="anchor" id="delivery"></div>
         <article>
           <h2>Delivery of digital goods/entitlements purchased</h2>
           <div class="body">

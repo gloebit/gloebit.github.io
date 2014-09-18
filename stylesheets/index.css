@@ -160,8 +160,8 @@ section h1 {
 #started div h3 {
     float: left;
     padding-top: 3px;
-    margin-right: 3%;
-    margin-left: 9%;
+    margin-right: 2%;
+    margin-left: 8%;
 }
 
 #started div ol {
@@ -172,7 +172,7 @@ section h1 {
     color: rgba(134,194,0,1);
     position: absolute;
     top: 34%;
-    left: 4%;
+    left: 3%;
 }
 
 #started div:after {
