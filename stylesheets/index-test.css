@@ -4,7 +4,27 @@ header + div {
 }
 
 section.wrapper {
-    margin-bottom: 35px;
+    margin-bottom: 70px;
+    background-color: white;
+    border-bottom: rgba(0,0,0,0.4) solid 2px;
+    width: 860px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+header div.wrapper {
+    width: 980px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-bottom: none;
+}
+
+header, footer {
+    background-color: black;
+}
+
+body {
+    background-color: #e4e4e4;
 }
 
 section h1 {
@@ -58,34 +78,26 @@ section h1 {
     margin: 10px 8px;
     
     /* set the height to transaition over 0.5 seconds */
-    -webkit-transition: height 0.5s ease;
-    -moz-transition:    height 0.5s ease;
-    -o-transition:      height 0.5s ease;
-    transition:         height 0.5s ease;
-    
+    -webkit-transition: max-height 0.5s ease;
+    -moz-transition:    max-height 0.5s ease;
+    -o-transition:      max-height 0.5s ease;
+    transition:         max-height 0.5s ease;
 }
 
 /* hide details for services so they only show when clicked */
 #services div.service.collapsed {
-    height: 100px;
+    max-height: 100px;
     overflow-y:hidden;
 }
 
 /* show service detail summary */
 #services div.service.collapsed.active {
-    height: 217px;
+    max-height: 220px;
 }
 
 #services div.service.collapsed:hover {
     background-color: rgba(134,194,0,0.20);
     box-shadow: 0 0 6px rgba(0,0,0,0.08) inset;
-}
-
-#services div ul {
-    margin-bottom: 0px;
-}
-#services div ul li {
-    text-align: left;
 }
 
 /* Restore bottom margin (1rem) of last div, add a bit for the box-shadow. */
@@ -112,16 +124,14 @@ section h1 {
 }
 
 #services div p:first-of-type {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 #services div p {
     margin-bottom: 0.125rem;
 }
 
-#services div p+p,
-#services div p+ul
-{
+#services div p+p {
     border-top: 1px solid rgba(134,194,0,0.5);
     margin-bottom: 0.5rem;  /* Adjust for a's relative offset below. */
 }
@@ -139,14 +149,8 @@ section h1 {
     display: inline-block;
     padding: 10px 15px;
     margin: 8px 15px 1.5rem;
-    /*padding: 10px;*/
     border-radius: 8px;
-    /* box-shadow: 0 0 10px rgba(134,194,0,0.5); */
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-#benefits div ul {
-    margin-bottom: 0px;
 }
 
 #benefits h2 {
@@ -179,8 +183,8 @@ section h1 {
 #started div h3 {
     float: left;
     padding-top: 3px;
-    margin-right: 3%;
-    margin-left: 9%;
+    margin-right: 2%;
+    margin-left: 8%;
 }
 
 #started div ol {
@@ -191,7 +195,7 @@ section h1 {
     color: rgba(134,194,0,1);
     position: absolute;
     top: 34%;
-    left: 4%;
+    left: 3%;
 }
 
 #started div:after {
@@ -311,8 +315,8 @@ section h1 {
 
 #integration div h2 {
     /*
-      text-decoration: underline;
-    */
+     text-decoration: underline;
+     */
     padding-bottom: 1px;
     border-bottom: 1px solid rgba(0,0,0,0.5);
     margin-bottom: 12px;
@@ -373,17 +377,17 @@ section h1 {
     header + div + section {
         border-top: none;
     }
-
+    
     #services div {
         width: 45.500%;
         padding: 8px;
         margin: 8px 6px;
     }
-
+    
     #monetize-consumer img {
         margin-left: 1.5%;
     }
-
+    
     #integration > div {
         width: 48%;
         padding: 10px 1% 0;
@@ -394,53 +398,53 @@ section h1 {
     #services div {
         width: 50%;
     }
-
+    
     #started div {
         width: 100%;
         text-align: center;
     }
-
+    
     #started div h3 {
         float: none;
         margin: 0 0 8px;
     }
-
+    
     #started div ol {
         float: none;
         display: inline-block;
         text-align: left;
         margin-left: 2.5%;
     }
-
+    
     #started div h2 {
         position: static;
     }
-
+    
     #consumer p {
         padding: 0 8px;
     }
-
+    
     #consumer h1+p {
         float: none;
         max-width: none;
     }
-
+    
     #consumer img {
         display: block;
         float: none;
         max-width: none;
         margin: 10px auto;
     }
-
+    
     #monetize-consumer img {
         margin-left: 0;
     }
-
+    
     #monetize-merchant p:first-of-type {
         float: none;
         max-width: none;
     }
-
+    
     #monetize-merchant img {
         display: block;
         float: none;
@@ -448,15 +452,15 @@ section h1 {
         padding: 5px;
         margin: 0 auto;
     }
-
+    
     #pricing img {
         width: 250px;
     }
-
+    
     #integration h1 {
         margin-bottom: 0;
     }
-
+    
     #integration > div {
         float: none;
         width: 70%;
@@ -464,16 +468,16 @@ section h1 {
         padding: 0;
         margin: 30px auto 0;
     }
-
+    
     #integration > div p:first-of-type br,
     #integration > div p:first-of-type+p br {
         display: none;
     }
-
+    
     #integration .container {
         font-size: 14px;
     }
-
+    
     #integration .container img {
         max-width: 100px;
     }
@@ -492,101 +496,101 @@ section h1 {
         max-width: 80%;
         line-height: 1.36rem;
     }
-
+    
     section h1 {
         text-align: left;
         padding-left: 2px;
     }
-
+    
     #services > p {
         text-align: left;
         padding: 0 4px;
     }
-
+    
     #services div {
         display: block;
         width: auto;
         max-width: 360px;
         margin: 12px auto;
         /*
-        width: 100%;
-        min-width: 0;
-        padding: 10px 0 0;
-        border: 0 solid rgba(64,64,64,0.25);
-        border-top-width: 1px;
-        border-radius: 0px;
-        box-shadow: none;
-        margin: 0 0 15px;
-        */
+         width: 100%;
+         min-width: 0;
+         padding: 10px 0 0;
+         border: 0 solid rgba(64,64,64,0.25);
+         border-top-width: 1px;
+         border-radius: 0px;
+         box-shadow: none;
+         margin: 0 0 15px;
+         */
     }
-
-/*
-    #services div h2 {
-        text-decoration: underline;
-    }
-
-    #services div p:first-of-type {
-        text-decoration: underline;
-    }
-
-    #services div p+p {
-        border: 0;
-    }
-*/
-
+    
+    /*
+     #services div h2 {
+     text-decoration: underline;
+     }
+     
+     #services div p:first-of-type {
+     text-decoration: underline;
+     }
+     
+     #services div p+p {
+     border: 0;
+     }
+     */
+    
     #started div ol {
         margin-left: 0;
     }
-
+    
     #consumer p {
         padding: 0 4px;
     }
-
+    
     #monetizing h2 {
         display: block;
         width: initial;
         padding: 0 4px;
         margin-left: 0;
     }
-
+    
     #monetizing div {
         display: block;
         width: 100%;
         margin-right: 0;
     }
-
+    
     #monetize-consumer img {
         max-width: 98%;
     }
-
+    
     #monetizing p {
         padding: 0 4px;
     }
-
+    
     #pricing img {
         width: 200px;
     }
-
+    
     #integration div+div+div,
     .container + p {
         width: initial;
         text-align: left;
         padding: 0 4px;
     }
-
+    
     .container p,
     .container li {
         text-align: center;
     }
-
+    
     #integration .container {
         width: initial;
     }
-
+    
     #integration p:last-of-type {
         text-align: center;
     }
-
+    
     #oss p {
         text-align: left;
         padding: 0 4px;
