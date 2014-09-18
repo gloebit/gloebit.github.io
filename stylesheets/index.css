@@ -58,21 +58,21 @@ section h1 {
     margin: 10px 8px;
     
     /* set the height to transaition over 0.5 seconds */
-    -webkit-transition: height 0.5s ease;
-    -moz-transition:    height 0.5s ease;
-    -o-transition:      height 0.5s ease;
-    transition:         height 0.5s ease;
+    -webkit-transition: max-height 0.5s ease;
+    -moz-transition:    max-height 0.5s ease;
+    -o-transition:      max-height 0.5s ease;
+    transition:         max-height 0.5s ease;
 }
 
 /* hide details for services so they only show when clicked */
 #services div.service.collapsed {
-    height: 100px;
+    max-height: 100px;
     overflow-y:hidden;
 }
 
 /* show service detail summary */
 #services div.service.collapsed.active {
-    height: 217px;
+    max-height: 220px;
 }
 
 #services div.service.collapsed:hover {
