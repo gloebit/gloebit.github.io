@@ -56,7 +56,13 @@ section h1 {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(134,194,0,0.5);
     margin: 10px 8px;
-    transition: height 0.5s ease;
+    
+    /* set the height to transaition over 0.5 seconds */
+    -webkit-transition: height 0.5s ease;
+    -moz-transition:    height 0.5s ease;
+    -o-transition:      height 0.5s ease;
+    transition:         height 0.5s ease;
+    
 }
 
 /* hide details for services so they only show when clicked */
@@ -73,6 +79,13 @@ section h1 {
 #services div.service.collapsed:hover {
     background-color: rgba(134,194,0,0.20);
     box-shadow: 0 0 6px rgba(0,0,0,0.08) inset;
+}
+
+#services div ul {
+    margin-bottom: 0px;
+}
+#services div ul li {
+    text-align: left;
 }
 
 /* Restore bottom margin (1rem) of last div, add a bit for the box-shadow. */
@@ -106,7 +119,9 @@ section h1 {
     margin-bottom: 0.125rem;
 }
 
-#services div p+p {
+#services div p+p,
+#services div p+ul
+{
     border-top: 1px solid rgba(134,194,0,0.5);
     margin-bottom: 0.5rem;  /* Adjust for a's relative offset below. */
 }
@@ -122,7 +137,16 @@ section h1 {
 
 #benefits div {
     display: inline-block;
-    padding: 5px 30px;
+    padding: 10px 15px;
+    margin: 8px 15px 1.5rem;
+    /*padding: 10px;*/
+    border-radius: 8px;
+    /* box-shadow: 0 0 10px rgba(134,194,0,0.5); */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#benefits div ul {
+    margin-bottom: 0px;
 }
 
 #benefits h2 {
