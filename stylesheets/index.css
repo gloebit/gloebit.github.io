@@ -18,6 +18,7 @@ section h1 {
 
 /* White-on-green oval link buttons for all sizes.  Many are only >480px. */
 #services div a,
+#services a,
 #benefits p a,
 #started div+p a,
 #consumer p a,
@@ -55,6 +56,28 @@ section h1 {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(134,194,0,0.5);
     margin: 10px 8px;
+    
+    /* set the height to transaition over 0.5 seconds */
+    -webkit-transition: height 0.5s ease;
+    -moz-transition:    height 0.5s ease;
+    -o-transition:      height 0.5s ease;
+    transition:         height 0.5s ease;
+}
+
+/* hide details for services so they only show when clicked */
+#services div.service.collapsed {
+    height: 100px;
+    overflow-y:hidden;
+}
+
+/* show service detail summary */
+#services div.service.collapsed.active {
+    height: 217px;
+}
+
+#services div.service.collapsed:hover {
+    background-color: rgba(134,194,0,0.20);
+    box-shadow: 0 0 6px rgba(0,0,0,0.08) inset;
 }
 
 /* Restore bottom margin (1rem) of last div, add a bit for the box-shadow. */
@@ -63,19 +86,25 @@ section h1 {
 }
 
 #services div img {
-    display: none;
     box-shadow: none;
-    height: 5rem;
+    height: 100px;
 }
 
 #services div img.one {
-    position: absolute;
-    top: -1.5rem;
-    left: 0;
+    position: relative;
+    float:left;
 }
 
 #services div img.two {
     display: none;
+}
+
+#services div h2 {
+    margin-top: 25px;
+}
+
+#services div p:first-of-type {
+    margin-bottom: 20px;
 }
 
 #services div p {
