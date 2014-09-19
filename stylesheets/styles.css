@@ -72,7 +72,8 @@ header, footer {
     width: 100%;
     float: none;
     position: static;
-    background-color: #fcfcfc;
+    /* background-color: #fcfcfc; */
+    background-color: black;
     box-shadow: 0 0 12px rgba(0,0,0,0.25);
 }
 
