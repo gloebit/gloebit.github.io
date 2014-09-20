@@ -1,0 +1,720 @@
+---
+title: Gloebit Endpoint Specifications
+page_css: /stylesheets/endpoints.css
+page_js: /javascripts/endpoints.js
+hide_title_heading: true
+no_sections: true
+header_padding: 13
+reference_url: reference.html
+---
+
+<!doctype html>
+<html>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+
+    <nav>
+      <!-- Keep the newlines before <b class="caret"> !!!!
+           They are necessary for proper spacing. -->
+      <div id="nav-container">
+        <!--
+        <h3>References
+          <b class="caret"></b>
+        </h3>
+        <ul>
+          <li class="section">
+            <a href="#auth">Authorization Service
+              <b class="caret"></b>
+            </a>
+            <ul>
+              <li class="article">
+                <a href="#access-token">Access Tokens</a>
+              </li>
+              <li class="article">
+                <a href="#oauth2">OAuth 2.0 Framework</a>
+              </li>
+              <li class="article">
+                <a href="#auth-code">Authorization Code Grant</a>
+              </li>
+              <li class="article">
+                <a href="#implicit">Implicit Grant</a>
+              </li>
+              <li class="article">
+                <a href="#force-auto">Approval: force/auto</a>
+            </ul>
+          </li>
+          <li class="section">
+            <a href="#identity">Identity Service
+              <b class="caret"></b>
+            </a>
+            <ul>
+              <li class="article">
+                <a href="#user-ids">User IDs</a>
+              </li>
+            </ul>
+          </li>
+          <li class="section">
+            <a href="#character">Character Service
+              <b class="caret"></b>
+            </a>
+            <ul>
+              <li class="article">
+                <a href="#character-ids">Character IDs</a>
+              </li>
+            </ul>
+          </li>
+          <li class="section">
+            <a href="#inventory">Inventory Service
+              <b class="caret"></b>
+            </a>
+            <ul>
+              <li class="article">
+                <a href="#product-inventory">Products</a>
+              </li>
+              <li class="article">
+                <a href="#item-inventory">Items</a>
+              </li>
+              <li class="article">
+                <a href="#inventory-folders">Folders</a>
+              </li>
+            </ul>
+          </li>
+          <li class="section">
+            <a href="#currency">Digital Currency Service
+              <b class="caret"></b>
+            </a>
+            <ul>
+              <li class="article">
+                <a href="#transaction-flow">Transaction Flow</a>
+              </li>
+            </ul>
+          </li>
+          <li class="section">
+            <a href="#misc">Miscellaneous
+              <b class="caret"></b>
+            </a>
+            <ul>
+              <li class="article">
+                <a href="#error">Endpoint Errors</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        -->
+
+        <h3>Gloebit Endpoints</h3>
+        <ul>
+          <li class="section">
+            <a href="#auth">Authorization Service
+              <b class="caret"></b>
+            </a>
+            <ul>
+              <li class="endpoint">
+                <a href="#authorize">Authorize</a>
+              </li>
+              <li class="endpoint">
+                <a href="#access-token-exchange">Exchange for Access Token</a>
+              </li>
+              <li class="endpoint">
+                <a href="#verify-token">Verify Access Token</a>
+              </li>
+            </ul>
+          </li>
+          <li class="section">
+            <a href="#identity">Identity Service
+              <b class="caret"></b>
+            </a>
+            <ul>
+              <li class="endpoint">
+                <a href="#user-id">Get User ID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="section">
+            <a href="#character">Character Service
+              <b class="caret"></b>
+            </a>
+            <ul>
+              <li class="endpoint">
+                <a href="#create-character">Create Character</a>
+              </li>
+              <li class="endpoint">
+                <a href="#list-characters">Get List of Characters</a>
+              </li>
+              <li class="endpoint">
+                <a href="#update-character">Update Character</a>
+              </li>
+              <li class="endpoint">
+                <a href="#delete-character">Delete Character</a>
+              </li>
+            </ul>
+          </li>
+          <li class="section">
+            <a href="#inventory">Inventory Service
+              <b class="caret"></b>
+            </a>
+            <ul>
+              <li class="endpoint">
+                <a href="#get-user-products">Get User Products</a>
+              </li>
+              <li class="endpoint">
+                <a href="#grant-user-product">Grant User Product</a>
+              </li>
+              <li class="endpoint">
+                <a href="#consume-user-product">Consume User Product</a>
+              </li>
+              <li class="endpoint">
+                <a href="#set-user-product-count">Set User Product Count</a>
+              </li>
+              <li class="endpoint">
+                <a href="#get-character-products">Get Character Products</a>
+              </li>
+              <li class="endpoint">
+                <a href="#grant-character-product">Grant Character Product</a>
+              </li>
+              <li class="endpoint">
+                <a href="#consume-character-product">Consume Character Product</a>
+              </li>
+              <li class="endpoint">
+                <a href="#set-character-product-count">Set Character Product Count</a>
+              </li>
+              <li class="endpoint">
+                <a href="#purchase-product">Purchase Product</a>
+              </li>
+              <li class="endpoint">
+                <a href="#new-item">New Item</a>
+              </li>
+              <li class="endpoint">
+                <a href="#get-item-ids">Get Item IDs</a>
+              </li>
+              <li class="endpoint">
+                <a href="#get-item">Get Item</a>
+              </li>
+              <li class="endpoint">
+                <a href="#update-item">Update Item</a>
+              </li>
+              <li class="endpoint">
+                <a href="#delete-item">Delete Item</a>
+              </li>
+              <li class="endpoint">
+                <a href="#purchase-item">Purchase Item</a>
+              </li>
+            </ul>
+          </li>
+          <li class="section">
+            <a href="#currency">Digital Currency Service
+              <b class="caret"></b>
+            </a>
+            <ul>
+              <li class="endpoint">
+                <a href="#balance">Balance</a>
+              </li>
+              <li class="endpoint">
+                <a href="#transact">Transact</a>
+              </li>
+              <li class="endpoint">
+                <a href="#purchase">Purchase gloebits</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="wrapper" id="main">
+      <section class="anchor" id="intro">
+        <article>
+          <h1>{{ page.title }}</h1>
+          <div class="body">
+            <p>
+              Welcome to the developer page providing specifications for all Gloebit service endpoints.  It is intended to be your one-stop page when integrating Gloebit services into your code.  For higher-level concepts of the services and integrating them, visit our <a href="reference.html">Gloebit Service Reference</a> page.  You will find many links to its articles throughout this page.
+            </p>
+
+            <h2 class="anchor" id="endpoints">Endpoints</h2>
+            <p>
+              All of the Gloebit services are web services, meaning their functionality is accessed via HTTP requests to web resources.  We use the term "endpoint" to refer to a web resource, including its URL, its HTTP request format, and the functionality it provides.  Thus, the specifications on this page cover all of that information for each endpoint.  The menu on the right lists all of the web resources available in each of the services.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="anchor" id="auth">
+        <article>
+          <h1>Authorization Service</h1>
+          <div class="body">
+            <p>
+              Endpoints in the <a href="reference.html#auth">Authorization service</a> allow your application to acquire <a href="reference.html#access-token">access tokens</a> and verify them.  Gloebit uses <a href="reference.html#oauth2">OAuth 2.0</a> for user authentication and supports the <a href="reference.html#auth-code">Authorization Code Grante</a> and <a href="reference.html#implicit">Implicit Grant</a> methods for acquiring access tokens.  Gloebit handles <a href="reference.html#user">user</a> authorization and approval (for your application's desired <a href="reference.html#scope">scope</a>) within the Authorize endpoint.
+            </p>
+          </div>
+        </article>
+
+        {% include ep_template.html ep=site.data.endpoint.authorize %}
+
+        {% include ep_template.html ep=site.data.endpoint.exchange_for_access_token %}
+
+        {% include ep_template.html ep=site.data.endpoint.verify_access_token %}
+
+      </section>
+
+      <section class="anchor" id="identity">
+        <article>
+          <h1>Identity Service</h1>
+          <div class="body">
+            <p>
+              Your application can use Gloebit's Identity service to let Gloebit manage your user accounts.  Using this service saves you the trouble of building a login/authentication system.  Your users would login via Gloebit to be authenticated, where they can either provide Gloebit login credentials (email + password) or authenticate via Facebook, Google+, Twitter, or LinkedIn.
+            </p>
+            <p>
+              With this service, after using the Authorization service you would use the <a href="#user-id">Get User ID</a> endpoint to retrieve your user's Gloebit ID.  Your application can then use the ID to track the user.
+            </p>
+          </div>
+        </article>
+
+        <div class="anchor" id="user-ids"></div>
+        <article>
+          <h2>User IDs</h2>
+          <div class="body">
+            <p>
+              Gloebit user IDs are <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier">UUIDs</a>.  The service provides them as a string in their <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier#Definition">canonical form</a>:
+            </p>
+            <pre class="uuid">XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</pre>
+            <p>
+              where each "X" represents a hexadecimal number.  The lengths of the sequences are 8, 4, 4, 4, and 12.  Thus, each user ID is 36 characters total.
+            </p>
+          </div>
+        </article>
+
+        {% include ep_template.html ep=site.data.endpoint.get_user_id %}
+
+      </section>
+
+      <section class="anchor" id="character">
+        <article>
+          <h1>Character Service</h1>
+          <div class="body">
+            <p>
+              Your application can use Gloebit's character service to create and manage characters (or personas or entities or ...) for your users.  Each user can have multiple characters in the system.  The service allows for storing, retrieving, and editing character details.
+            </p>
+            <p>
+              The service supports combining with the other Gloebit services.  The Inventory service has character-specific endpoints for products.  The Digital Currency service allows product purchases to be directed to a character's inventory.  Endpoints supporting characters require a character ID.  Use the <a href="#list-characters">Get List of Characters</a> to get IDs for all of a user's characters.
+            </p>
+          </div>
+        </article>
+
+        <div class="anchor" id="character-ids"></div>
+        <article>
+          <h2>Character IDs</h2>
+          <div class="body">
+            <p>
+              Gloebit character IDs are <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier">UUIDs</a>.  The service provides them as a string in their <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier#Definition">canonical form</a>:
+            </p>
+            <pre class="uuid">XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</pre>
+            <p>
+              where each "X" represents a hexadecimal number.  The lengths of the sequences are 8, 4, 4, 4, and 12.  Thus, each character ID is 36 characters total.
+            </p>
+          </div>
+        </article>
+
+        {% include ep_template.html ep=site.data.endpoint.create_character %}
+
+        {% include ep_template.html ep=site.data.endpoint.get_list_of_characters %}
+
+        {% include ep_template.html ep=site.data.endpoint.update_character %}
+
+        {% include ep_template.html ep=site.data.endpoint.delete_character %}
+
+      </section>
+
+      <section class="anchor" id="inventory">
+        <article>
+          <h1>Inventory Service</h1>
+          <div class="body">
+            <p>
+              Your application can use Gloebit's Inventory service to create and manage users' inventories and entitlements.  The service supports storing <i>products</i> and <i>items</i> in user and character inventories for your application.  Products are defined in the Gloebit system whereas items are defined on-the-fly by your application.  Generally, using products provides a basic inventory system and using items provides more advanced inventory possibilities.
+            </p>
+            <p>
+              The first group of Inventory endpoints below are for <a href="#product-inventory">products</a>.  The second group of Inventory endpoints are for <a href="#item-inventory">items</a>.  Note that all inventory endpoints apply to a single application's inventories and there is no inventory sharing between applications in the Gloebit service.
+          </div>
+        </article>
+
+        <div class="anchor" id="product-inventory"></div>
+        <article>
+          <h2>Products</h2>
+          <div class="body">
+            <p>
+              Products in the Inventory service are just names.  In a user's or character's inventory, each product can have a count/quantity associated with it, and nothing more.  Thus, products provide a basic inventory service akin to storing entitlements.  (See the <a href="#item-inventory">items</a> section if you require storing more information.)
+            </p>
+            <p>
+              Products are defined per-application, on the <a href="/app-config/#products">application's configuration</a> page.  The third group of fields on the page show your application's existing products and let you add new products.  (Follow the link for explanations on the product fields on the configuration page.)
+            </p>
+            <h3>Product Names</h3>
+            <p>
+              Gloebit references products by their names, meaning the endpoints require the name of the product to act upon.  Thus, within an application all product names need to be unique.  Because the Inventory service partitions by application, different applications can have the same product names and the products will be distinct (and not shareable between the applications).
+            </p>
+            <p>
+              If you change a product's name, the change will <i>not</i> propagate to your users' inventories.  They will contain products by the original name with the same quantity as before the name change.  The old-name products will show up in inventory products lists but only the consume operation will work for them.
+            </p>
+            <h3>Grant and Set</h3>
+            <p>
+              The service has endpoints for granting a number of products to an inventory and setting the number of products in an inventory.  Granting is synonymous with incrementing the inventory quantity.  Setting simply forces the quantity to a value.  You can configure whether a product can be grant or set via these endpoints on the configuration page.  If disallowed, then the product can only be purchased and consumed.  (Purchasing is done via the <a href="#transact">Transact</a> endpoint in the <a href="#currency">Digital Currency</a> service.)
+            </p>
+            <h3>Per-Inventory Limits</h3>
+            <p>
+              You can set an upper limit for the number of a product in an inventory (user or character).  The service will reject any request that would cause the quantity to go above a product's limit.
+            </p>
+            <h3>Availability</h3>
+            <p>
+              You can mark products as unavailable.  The effects of making a product unavailable is limited to the transaction service.  It will reject purchases for unavailable products.  Existing inventories are not affected by a product's availability and your application can still consume and grant an unavailable product and set its quantity.
+            </p>
+            <h3>User and Character Inventories</h3>
+            <p>
+              The service supports inventories for users and their characters, meaning you can keep an inventory for one of your users and inventories for each of the user's characters at the same time.  Gloebit separates the inventories, but your application can share among them via the proper endpoints.
+            </p>
+          </div>
+        </article>
+
+        {% include ep_template.html ep=site.data.endpoint.get_user_products %}
+
+        {% include ep_template.html ep=site.data.endpoint.grant_user_product %}
+
+        {% include ep_template.html ep=site.data.endpoint.consume_user_product %}
+
+        {% include ep_template.html ep=site.data.endpoint.set_user_product_count %}
+
+        {% include ep_template.html ep=site.data.endpoint.get_character_products %}
+
+        {% include ep_template.html ep=site.data.endpoint.grant_character_product %}
+
+        {% include ep_template.html ep=site.data.endpoint.consume_character_product %}
+
+        {% include ep_template.html ep=site.data.endpoint.set_character_product_count %}
+
+        {% include ep_template.html ep=site.data.endpoint.purchase_product %}
+
+        <div class="anchor" id="item-inventory"></div>
+        <article>
+          <h2>Items (Advanced Inventory)</h2>
+          <div class="body">
+            <p>
+              Items in the Inventory systems are dictionaries.  Your application defines what to put in each item's dictionary on-the-fly.  The service stores all items in <i>folders</i> of the user's inventory.  Your application can provide folder names to the endpoints or let them use the default folder.
+            </p>
+            <p>
+              What to store in the item dictionary is entirely up to your application.  Use fields for the states of items, player characteristics, system variants, generalized game state information, or anything your application must track.  Gloebit checks for maximum string lengths and maximum number of mappings, so let us know if you hit a limit and have a request for extending them.
+            </p>
+            <p>
+              As with products, items are store per-application.  An item stored by one application cannot be retrieved or edited by another.  Also, there are no character-specific items in inventories.  Your application can use character-specific folders to separate items among a user's characters.
+            </p>
+          </div>
+        </article>
+
+        <div class="anchor" id="inventory-folders"></div>
+        <article>
+          <h2>Folders</h2>
+          <div class="body">
+            <p>
+              The Inventory service stores all inventory items in folders.  A folder name is simply a string, at most 36 characters.  The endpoints accept a folder-id parameter that your application can use to sort items as you see fit.  The endpoints will use a default folder (UUID with all 0's) if your application excludes the folder-id parameter.
+            </p>
+            <p>
+              As with products and items, folders are application-specific.  The same folder name for the same user from two different applications will create distinct folders.
+            </p>
+          </div>
+        </article>
+
+        {% include ep_template.html ep=site.data.endpoint.new_inventory_item %}
+
+        {% include ep_template.html ep=site.data.endpoint.get_inventory_item_ids %}
+
+        {% include ep_template.html ep=site.data.endpoint.get_inventory_item %}
+
+        {% include ep_template.html ep=site.data.endpoint.update_inventory_item %}
+
+        {% include ep_template.html ep=site.data.endpoint.delete_inventory_item %}
+
+        {% include ep_template.html ep=site.data.endpoint.purchase_item %}
+
+      </section>
+
+      <section class="anchor" id="currency">
+        <article>
+          <h1>Digital Currency Service</h1>
+          <div class="body">
+            <p>
+              Your application can use Gloebit's Digital Currency service to handle in-app micro-transactions with <i>gloebits</i> as your digital currency.  The service provides an endpoint to look up your user's gloebit balance and an endpoint to request a gloebit payment from your user's account to your account.  Both endpoints allow your user to stay within your application.  The service also provides an endpoint for redirecting your user to the Gloebit page for purchasing gloebits.  The service's three endpoints allow your application to deal entirely in gloebits while Gloebit handles purchasing processes for you.
+            </p>
+            <h3>Engineering Considerations</h3>
+            <p>
+              When integrating this service into your application, you need to consider the following:
+            </p>
+            <ul>
+              <li>
+                <p>
+                  The <a href="#transact">Transact</a> endpoint only initiates a gloebit payment request.  While the endpoint can outright reject a request for various reasons (e.g., insufficient balance) its success indicates the request has been submitted to the final processing queue.  Once on the queue the request is likely to succeed, yet it can still be rejected.  Thus, your application cannot rely upon the success of this endpoint indicating the transaction has or will succeed, and the final result of the transaction is (typically) not determined until after the endpoint returns to your application.
+                </p>
+                <p>
+                  If your application depends upon knowing precisely if or when the transaction succeeds or fails, you want to use the <a href="#transact-cbs">Transact callback URLs</a>.  Gloebit accesses these URLs to indicate when the transaction finally succeeds or fails.  The callbacks are useful for triggering delivery of items within your application or to our inventories.  For product transactions, the callbacks also indicate when a product has been delivered to the user's inventory (or that it will not be).
+                </p>
+              </li>
+              <li>
+                <p>
+                  If you are using a submit button for transactions, we suggest you make the button inactive upon submission.  This will help avoid double posting while the new page is loading.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The <a href="#transact">Transact</a> endpoint supports your application including a transaction ID.  We strongly suggest you include this ID and, if possible, have it be a UUID.  It is very useful in case any disputes occur.
+                </p>
+                <p>
+                  The <a href="#transact">Transact</a> endpoint also supports a name for the user on your application.  This field can be useful when a single user can have more than one character on an application.  The user name is included in the user's transaction history log.
+              </li>
+              <li>
+                <p>
+                  The <a href="#transact">Transact</a> endpoint does not support user-to-user transactions.  If you are interested in enabling them, please <a href="https://www.gloebit.com/contact-us/">contact us</a>.
+                </p>
+              <li>
+                <p>
+                  We provide the <a href="#balance">Balance</a> endpoint so your application can retrieve a user's gloebit balance and display it for the user.  Your application can also use the endpoint to check a user's balance before requesting a purchase.  Some users may object to this feature's ability to expose gloebits balances.  For this reason, Gloebit created a separate scope, "balance", for this endpoint.  However, at this time, users are not able to block the endpoint without blocking the entire application access approval.  Because Gloebit may yet add a user capability that would effectively block this endpoint, we recommend that your application not depend upon this endpoint being available for all users.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The <a href="#purchase">Purchase gloebits</a> endpoint is for redirecting your user to the Gloebit site.  If you provide an <i>OAuth Key alias</i> in the URL, Gloebit will add trackback links to your application.
+                </p>
+              </li>
+            </ul>
+              
+            <h3>Business Considerations</h3>
+            <ul>
+              <li>
+                <p>
+                  The service is designed to let your applications use gloebits as their only currency.  We suggest you price your products in gloebits and do not show an estimated USD cost.  (In our experience, monetization decreases when a USD price is shown.)
+                </p>
+              </li>
+              <li>
+                <p>
+                  The service includes full transaction histories and provides dispute resolution for all parties on the Gloebit website.  Our transaction history includes the transaction ID your application provides.  We strongly suggest your applications include transaction IDs to help with bookkeeping and resolving disputes.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Gloebit deposits the gloebits you earn from your application's transactions into your merchant Gloebit account.  See this service's section on the <a href="/services/#currency">Gloebit Services Overview page</a> for more information on handling earned gloebits.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The service does not support user-to-user transactions at this time.  Please <a href="https://www.gloebit.com/contact-us/">contact us</a> if your business is interested in this feature.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        {% include ep_template.html ep=site.data.endpoint.balance %}
+
+        {% include ep_template.html ep=site.data.endpoint.transact %}
+
+
+        <h3>Asset Transact Parameters for use with generic assets</h3>
+        <p>
+          If your application is not using the Product Inventory Service, then you should use Generic Asset Transactions.  You will manage delivery of the asset purchased yourself, either within your application or in our Item Inventory System.  You should integrate the Transaction callbacks, described below, into your system if you wish to ensure committed transactions before delivery.
+        </p>
+
+        <div class="anchor" id="transact-cbs"></div>
+        <article>
+          <h2>Transact Callback Parameters</h2>
+          <div class="body">
+            <p>
+              The <a href="#transact">Transact</a> endpoint is not atomic.  It returns either when it knows the transaction cannot be serviced or when Gloebit has queued the transaction request because it has a very good chance at succeeding.  If your application is server-based and it needs precise information about the transaction's eventual success or failure or a means to later reject a transaction (e.g. because your purchasing system is also not atomic), then it can use the optional asset callback URL parameters.
+            </p>
+
+            <h3>Optional</h3>
+            <p>
+              These parameters are optional because they are generally not necessary for product transactions.  Gloebit will deliver the product to the user's inventory only when the transaction finally succeeds.  You can also omit the parameters if your application has a use case where knowing that the request will likely succeed is sufficient.
+            </p>
+
+            <h3>URLs</h3>
+            <p>
+              Each parameter is a URL that Gloebit will access at specific stages in processing the queued transaction request.  Only URLs accessible from the Gloebit system will work.  Browser and native apps cannot use these parameters.
+            </p>
+
+            <h3>Callbacks</h3>
+            <p>
+              Gloebit will access the URLs with GET requests and will not include any parameters.  The URL should include any information your server requires, such as transaction IDs.  We suggest using HTTPS URLs for the callbacks.
+            </p>
+            <p>
+              Each URL access will be blocking, meaning Gloebit waits for your server's response and your server should respond in a timely manner.  Additionally, while processing a transaction, Gloebit might access a URL more than once.  Your endpoints for these callbacks need to be idempotent and properly handle multiple calls for a transaction.
+            </p>
+            <p>
+              You can find further details about when each URL can be called in relation to the other URLs and the original Transact request in their descriptions below.
+            </p>
+
+            <h3>Responses</h3>
+            <p>
+              Your server needs to return a JSON array with 1 or 2 elements to each of the callbacks.  The first element is a Boolean indicating whether your server wants to proceed with the transaction.  The second element is a string providing status information from your server.  Currently the values of the elements affect only Gloebit's "enact" processing.
+            </p>
+
+            <h3 class="param">Transact Parameter: asset-enact-hold-url</h3>
+            <p>
+              Gloebit accesses this URL after it has acquired all holds necessary to process the transaction and is ready to enact it.  The transaction is almost guaranteed to succeed at this point, but Gloebit can still roll it back, particularly if your application needs Gloebit to cancel the transaction.
+            </p>
+            <p>
+              Your application's server can use the response to tell Gloebit to cancel the transaction and roll it back.  Your server can also tell Gloebit its processing is pending, in which case Gloebit will access the URL again later.  Here are the response options:
+            </p>
+            <table>
+              <tr>
+                <th>JSON</th>
+                <th>Effect</th>
+              </tr>
+              <tr>
+                <td>[true]</td>
+                <td>
+                  Gloebit enacts the transaction and proceeds to the consume/cancel step.
+                </td>
+              </tr>
+              <tr>
+                <td>[false,'pending']</td>
+                <td>
+                  Gloebit retries the transaction processing.  During the retry, it will access this URL again.
+                </td>
+              </tr>
+              <tr>
+                <td>[false,&lt;any other string&gt;]</td>
+                <td>
+                  Gloebit cancels the transaction.  It will access the cancel URL for this transaction.
+                </td>
+              </tr>
+            </table>
+            <p>
+              With respect to the Transact call and the other callbacks, Gloebit may access this URL before the Transact call has returned (in which case it will return "success: true"), it will access the this URL before accessing the Consume URL, it might not access this URL before accessing the Cancel URL, it might never access this URL in the Cancel URL case, and it might access this URL again after accessing the others.  To be safe, your server should not depend on any particular interleaving.
+            </p>
+
+            <h3 class="param">Transact Parameter: asset-consume-hold-url</h3>
+            <p>
+              Gloebit accesses this URL after it has consumed the enacted holds and committed the transaction.  At this point, the transaction is complete and can not be rolled back.
+            </p>
+            <p>
+              Gloebit currently ignores any response to this callback.  Your server should send a JSON response of "[true]" to prevent future incompatibilities.
+            </p>
+            <p>
+              With respect to the Transact call and the other callbacks, Gloebit may access this URL before the Transact call has returned (in which case it will return "success: true"), it will access this URL only after receiving a True response to an enact callback, and this URL and the Cancel URL are mutually exclusive per transaction.
+            </p>
+
+            <h3 class="param">Transact Parameter: asset-cancel-hold-url</h3>
+            <p>
+              Gloebit accesses this URL after it has canceled the enacted holds and effectively canceled the transaction.  In parallel with this access, Gloebit will be rolling back any enacted changes.
+            </p>
+            <p>
+              Gloebit currently ignores any response to this callback.  Your server should send a JSON response of "[true]" to prevent future incompatibilities.
+            </p>
+            <p>
+              With respect to the Transact call and the other callbacks, Gloebit may access this URL before the Transact call has returned, it likely will not be called if the Transact call returns "success: false", it may access this URL before the Enact URL and possibly without ever accessing the Enact URL, it will access this URL if your response to the Enact URL cancels the transaction, and this URL and the Consume URL are mutually exclusive per transaction.
+            </p>
+          </div>
+        </article>
+
+        <div class="anchor" id="delivery"></div>
+        <article>
+          <h2>Delivery of digital goods/entitlements purchased</h2>
+          <div class="body">
+            <p>
+              There are many ways to handle delivery of purchases, allowing the merchant/developer to decide what is best for their application.<br>
+              If your application is using the Product Inventory Service:
+            </p>
+            <ul>
+              <li>See the Product Transact Parameters section which will automatically handle delivery of your product to the user or character as part of the transaction.  This is the simplest way to utilize our services.</li>
+            </ul>
+            If your application is not using the Product Inventory Service, or if it is, but you would like to manage additional information internally, then it is best to understand the phases of the Transact request:
+            <ul>
+              <li>Prior to Transact request --- You are welcome to deliver digital goods prior to making the Transact request if you are willing to have some leakage or handle reversal of delivery on failure.  We recommend you check a user's balance to ensure that the user has enough gloebits in his/her account for the purchase.  There is no guarantee that the purchase will succeed, but if your application allows purchases during a live-action game, you may prefer some leakage over making a user wait until the transaction completes.</li>
+              <li>Upon successful response from Transact request --- Once the system enacts all transfers involved, it returns success.  The transaction is not yet committed and can still be rolled back, but that is unlikely.  This is a great time to deliver goods, and still very simple.  Upon a Transact failure response, the action your application takes should be dependent on the message details.  Some possibilities include retrying the Transact call, attempting to fix any problems on the application end, or asking the user to purchase enough gloebits to afford the purchase.</li>
+              <li>Upon Transact Callback of asset-enact-hold-url --- This is a similar state as when the Transact request returns success.  The transfer has been made to all balances, but has not been committed and can still be rolled back.  The transaction processor waits for a response from this url before committing the transaction.  Using this callback is a great way to tie in delivery in a way where if delivery of the goods fails, then the gloebit transaction is rolled back.  A return of true from this url should mean that you have delivered the goods, and false means you have failed permanently in an attempt to deliver and we should roll back the gloebit transaction.  If we receive a response of false, after rolling back the transaction, we will call the asset-cancel-hold-url callback if one has been supplied.</li>
+              <li>Upon Transact Callback of asset-consume-hold-url --- If you are looking to be as conservative as possible with delivery of your digital goods, then you may decide to handle delivery upon receiving this callback; however, this creates the risk that a user is charged gloebits and your system fails to deliver the goods.  We recommend that the best conservative method is to begin or queue delivery with the asset-enact-hold-url and complete or commit delivery with the asset-consume-hold-url.  This callback means the transaction has been fully completed and committed.  It can not be canceled or rolled back at this point and the gloebits have been delivered to the merchant/developer account controlling the application that requested the transaction.</li>
+              <li>Upon Transact Callback of asset-cancel-hold-url ---  If at any point, you receive this callback, the transaction has failed and is being or has been rolled back.  If you have not delivered your goods, don't.  If you have begun delivery of your goods, then cancel processing of that delivery.  Once you receive the asset-consume-hold-url callback, you can rest assured that you will not receive the asset-cancel-hold-url for this transaction.</li>
+            </ul>
+            Note:
+            <ul>
+              <li>While transactions cannot be rolled back once committed, that does not mean that delivery of gloebits cannot later be reversed.  We have to deal with fraud and disputes just like any other payment service.  We do our best to insulate our partners from fraud, however, there are situations where we will need to place a hold on or reclaim gloebits.  For instance, if gloebits sent to you were fraudulently purchased, or if a user disputes the transaction where that user paid you those gloebits, then we may have to take action.  For further details, please read the <a href="https://www.gloebit.com/display-tos-merchant/">Merchant Terms of Service</a> for Gloebit.</li>
+            </ul>
+          </div>
+        </article>
+
+        {% include ep_template.html ep=site.data.endpoint.purchase %}
+
+      </section>
+
+      <section class="anchor" id="resources">
+        <article>
+          <h1>Additional Resources</h1>
+          <div class="body">
+
+            <ul>
+              <li>For information regarding how to get started with your merchant account and test in our sandbox, please see the <a href="/merchant-steps/">Getting Started Guide</a>.  It's fast and free.</li>
+              <li>For information on how to configure the API Settings for your application, please see the <a href="/app-config/">Application Configuration Instructions</a>.</li>
+              <li>For code level details regarding integration, please visit our <a href="/apis/">API and Code Examples</a> page.</li>
+              <li>For instructions on moving your application from sandbox to production when you are ready to release, please visit our <a href="/go-live-walkthru/">Going Live</a> page.</li>
+              <li>Gloebit uses OAuth2 in its Authorization service.  If you are new to using OAuth2, here is a <a href="https://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified">great, simple summary</a> from Aaron Parecki.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="anchor" id="error">
+        <article>
+          <h1>Errors</h1>
+          <div class="body">
+            <p>
+              Any access-token protected API call returns a JSON dictionary.  One of the entries will be "success" which will be True or False.  If "success" is False, there will be an entry called "reason", which will be set to one of the following:
+            </p>
+            <ul>
+              <li>"missing domain"</li>
+              <li>"unknown consumer"</li>
+              <li>"unknown user"</li>
+              <li>"unknown token"</li>
+              <li>"token has expired"</li>
+            </ul>
+            Example:
+            <ul>
+              <li>{"success":False, "reason":"unknown token"}</li>
+            </ul>
+
+            <p>
+              Failure can happen for many reasons including:
+            </p>
+            <ul>
+              <li>The fields of the dictionary posted for the Transact call are non proper.</li>
+              <li>The customer's Gloebit account is not authorized to spend gloebits</li>
+              <li>The application is not authorized as a merchant to receive gloebits.</li>
+              <li>The application does not have Transact authorization from the customer.</li>
+              <li>{"success":False, "status":"failed", "reason":"transaction already created"} - Race condition possible if transaction is submitted multiple times at nearly the identical time.</li>
+              <li>{"success":False, "status":"queuing-failed"} - The attempt to queue the transaction for processing failed.</li>
+              <li>Enacting the balance adjustments failed (likely customer does not have enough available gloebits)</li>
+              <li>If using the Product Inventory System &amp; Product Transact Parameters, enacting of the product delivery failed.</li>
+              <li>If we could not enact balance transfers due to issues such as a user not having a sufficient balance not already enacted for other purchases, or your merchant/developer access token being invalid or not containing scope to cover transactions.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="anchor" id="roadmap">
+        <article>
+          <h1>On the Roadmap</h1>
+          <div class="body">
+            <p>
+              Some API features on the roadmap are
+            </p>
+            <ul>
+              <li>Application specific sub-currencies or soft currencies</li>
+              <li>Management and consumption of resources (brick, wood, mineral, etc) in application</li>
+              <li>User-to-user transactions</li>
+            </ul>
+            <p>
+              If these, or any other features are important to you, please <a href="https://www.gloebit.com/contact-us/"><!--target="_blank"-->contact us</a> to help us prioritize or register as a potential future feature beta tester.
+            </p>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    {% include footer_scripts.html %}
+    
+  </body>
+</html>

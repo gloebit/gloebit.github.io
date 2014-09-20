@@ -10,7 +10,7 @@
                 {% if include.ep.desc %}
                 <div class="description">
                   {% for desc in include.ep.desc %}
-                  <p>{{ desc.p }}</p>
+                  <p>{{ desc.p | replace: '!REFERENCE_URL!', page.reference_url }}</p>
                   {% endfor %}
                 </div>
                 {% endif %}
@@ -67,7 +67,7 @@
                   <div class="body">
                     {% if include.ep.param %}
                     {% if include.ep.param.desc %}
-                    <p>{{ include.ep.param.desc }}</p>
+                    <p>{{ include.ep.param.desc | replace: '!REFERENCE_URL!', page.reference_url }}</p>
                     {% endif %}
 
                     {% if include.ep.param.query %}
@@ -80,7 +80,7 @@
                       {% for param in group.param %}
                       <tr>
                         <td>{{ param.name }}</td>
-                        <td>{{ param.desc }}</td>
+                        <td>{{ param.desc | replace: '!REFERENCE_URL!', page.reference_url }}</td>
                       </tr>
                       {% endfor %}
                     </table>
@@ -97,7 +97,7 @@
                       {% for param in group.param %}
                       <tr>
                         <td>{{ param.name }}</td>
-                        <td>{{ param.desc }}</td>
+                        <td>{{ param.desc | replace: '!REFERENCE_URL!', page.reference_url }}</td>
                       </tr>
                       {% endfor %}
                     </table>
@@ -120,13 +120,13 @@
                   </h3>
                   <div class="body">
                     {% for info in include.ep.result %}
-                    <p>{{ info.p }}</p>
+                    <p>{{ info.p | replace: '!REFERENCE_URL!', page.reference_url }}</p>
                     {% if info.return %}
                     <table>
                       {% for value in info.return %}
                       <tr>
                         <td>{{ value.name }}</td>
-                        <td>{{ value.desc }}</td>
+                        <td>{{ value.desc | replace: '!REFERENCE_URL!', page.reference_url }}</td>
                       </tr>
                       {% endfor %}
                     </table>
@@ -147,7 +147,7 @@
                   <div class="body">
                     <ul>
                       {% for note in include.ep.notes %}
-                      <li>{{ note }}</li>
+                      <li>{{ note | replace: '!REFERENCE_URL!', page.reference_url }}</li>
                       {% endfor %}
                     </ul>
                   </div>

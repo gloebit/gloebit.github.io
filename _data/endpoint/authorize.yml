@@ -4,7 +4,7 @@ name: Authorize
 service: Authorization
 desc:
   - p: >
-      An application uses this endpoint to initiate the user authorization process.  The endpoint will acquire and return either an authorization code (for an <a href="#auth-code">Authorization Code Grant</a> request) or access token (for an <a href="#implicit">Implicit Grant</a> request).  It is returned via an HTTP 302 (redirect) response to a "redirect URI" provided by the application.
+      An application uses this endpoint to initiate the user authorization process.  The endpoint will acquire and return either an authorization code (for an <a href="!REFERENCE_URL!#auth-code">Authorization Code Grant</a> request) or access token (for an <a href="!REFERENCE_URL!#implicit">Implicit Grant</a> request).  It is returned via an HTTP 302 (redirect) response to a "redirect URI" provided by the application.
   - p: >
       The endpoint first verifies the provided redirect URI against the application's redirect prefixes (from the <a href="/app-config/">Gloebit Application Configuration</a> page).  Second, it prompts the user to log into Gloebit if not already logged on.  Third, it presents the user with an authorization page for the application and requested scope, and asks the user to confirm the request.  Fourth and last, it generates the requested grant and generates the redirect response.
 method: Redirect (or&nbsp;GET)
@@ -26,8 +26,8 @@ param:
         - name: response_type
           desc: |
             Application's requested grant type for OAuth2 authorization.<br>
-            "code" - <a href="#auth-code">Authorization Code Grant</a> type.<br>
-            "token" - <a href="#implicit">Implicit Grant</a> type.
+            "code" - <a href="!REFERENCE_URL!#auth-code">Authorization Code Grant</a> type.<br>
+            "token" - <a href="!REFERENCE_URL!#implicit">Implicit Grant</a> type.
     - class: Optional
       param:
         - name: state
@@ -43,7 +43,7 @@ param:
             Default value: "force"<br>
             "force" - Always present user with an authorization request page.<br>
             "auto" - Conditionally request user's authorization.<br>
-            See <a href="#force-auto">Authorization "force"/"auto"</a> reference.
+            See <a href="!REFERENCE_URL!#force-auto">Authorization "force"/"auto"</a> reference.
         - name: user
           desc: |
             Application's name for user.<br>
