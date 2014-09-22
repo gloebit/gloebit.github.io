@@ -340,12 +340,13 @@ img {
     display: none;
 }
 
+/*********************** MEDIA SECTION ******************************/
 /* everything avove for 960px and above */
 /* screen width from 720-959px */
 @media print, screen and (max-width: 959px) {
     
-    header.wrapper,
-    footer.wrapper
+    header div.wrapper,
+    footer div.wrapper
     {
         width: 720px;
         padding-left: 0px;
@@ -460,8 +461,8 @@ img {
         padding: 0 0 20px;
     }
     
-    header.wrapper,
-    footer.wrapper
+    header div.wrapper,
+    footer div.wrapper
     {
         width: 100%
     }
