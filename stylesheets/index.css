@@ -51,7 +51,7 @@ section h1 {
     position: relative;
     vertical-align: top;
     width: 45.000%;
-    min-width: 347px;
+    min-width: 380px; /* keeps title & one-liner on single lines beside icon with good spacing.  364px bare min. */
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(134,194,0,0.5);

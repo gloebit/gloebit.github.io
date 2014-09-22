@@ -348,16 +348,14 @@ img {
     header div.wrapper,
     footer div.wrapper
     {
-        width: 720px;
-        padding-left: 0px;
-        padding-right: 0px;
+        width: 100%%;
     }
 
     .wrapper {
-        /*width: 92%;*/
-        width: 680px;
-        padding-left: 20px;
-        padding-right: 20px;
+        width: 95%;
+        /* width: 680px; */
+        padding-left: 1.5%%;
+        padding-right: 1.5%;
     }
 
     header {
@@ -468,7 +466,9 @@ img {
     }
 
     .wrapper {
-        width: 100%;
+        width: 96%;
+        padding-left: 2%;
+        padding-right: 2%;
     }
 }
 
