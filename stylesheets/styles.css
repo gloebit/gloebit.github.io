@@ -18,6 +18,7 @@ body {
     font-weight: 400;
     padding: 0;
     margin: 0;
+    background-color: #e4e4e4; /* gray backgournd to page outside of wrapper content */
 }
 
 h1 {
@@ -63,9 +64,22 @@ nav {
     display: none;
 }
 
+header div.wrapper,
+footer div.wrapper
+{
+    width: 960px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0 auto;
+    background-color: black; /* white background default for header wrapper to not overwrite black background of header div */
+}
+
 .wrapper {
     width: 860px;
+    padding-left: 50px;
+    padding-right: 50px;
     margin: 0 auto;
+    background-color: white; /* white background default for wrapper content */
 }
 
 header, footer {
@@ -73,7 +87,7 @@ header, footer {
     float: none;
     position: static;
     /* background-color: #fcfcfc; */
-    background-color: black;
+    background-color: black; /* set default header color to black */
     box-shadow: 0 0 12px rgba(0,0,0,0.25);
 }
 
@@ -325,10 +339,15 @@ img {
     display: none;
 }
 
-@media print, screen and (max-width: 960px) {
+/* everything avove for 960px and above */
+/* screen width from 720-959px */
+@media print, screen and (max-width: 959px) {
 
     .wrapper {
-        width: 92%;
+        /*width: 92%;*/
+        width: 680px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     header {
@@ -426,7 +445,8 @@ img {
     }
 }
 
-@media print, screen and (max-width: 720px) {
+/* Screen width from 480 to 719px */
+@media print, screen and (max-width: 719px) {
     section {
         padding: 0 0 20px;
     }
@@ -446,7 +466,8 @@ img {
     z-index: 199;
 }
 
-@media print, screen and (max-width: 480px) {
+/* Screen width from 0-479px - really from 320px */
+@media print, screen and (max-width: 479px) {
     #vertical-logo, header.floating {
         display: none;
     }
