@@ -219,8 +219,9 @@ header .drop-down-menu a {
 header button {
     display: none;
     background-color: rgba(134,194,0,1);
-    padding: 6px 6px;
+    padding: 6px 5px;
     border-radius: 4px;
+    border-color: rgba(134,194,0,1);
     margin: 10px 10px 0 0;
 }
 
@@ -342,6 +343,14 @@ img {
 /* everything avove for 960px and above */
 /* screen width from 720-959px */
 @media print, screen and (max-width: 959px) {
+    
+    header.wrapper,
+    footer.wrapper
+    {
+        width: 720px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 
     .wrapper {
         /*width: 92%;*/
@@ -449,6 +458,12 @@ img {
 @media print, screen and (max-width: 719px) {
     section {
         padding: 0 0 20px;
+    }
+    
+    header.wrapper,
+    footer.wrapper
+    {
+        width: 100%
     }
 
     .wrapper {
