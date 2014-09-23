@@ -330,6 +330,10 @@ img {
     box-shadow: 0 0 6px rgba(0,0,0,0.25);
 }
 
+img.one {
+  box-shadow:none;
+}
+
 /* Offset the targets for links to page fragments to account for the fixed */
 /* header.  Don't put borders or padding-top on the anchor element or they */
 /* will interfere with the psuedo-element's padding.                       */

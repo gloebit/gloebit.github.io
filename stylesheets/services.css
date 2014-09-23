@@ -1,0 +1,32 @@
+
+img.icon {
+  box-shadow: none;
+  float: right;
+  margin-left: 10px;
+}
+
+section#character img.icon,
+section#currency img.icon
+{
+  float: left;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+/* Screen width from 0-479px - really from 320px */
+@media print, screen and (max-width: 479px) {
+  
+  section#identity img.icon {
+    content:url("../images/Gloebit-Icon-Identity-100px.png");
+  }
+  section#inventory img.icon {
+    content:url("../images/Gloebit-Icon-Inventory-100px.png");
+  }
+  section#character img.icon {
+    content:url("../images/Gloebit-Icon-Character-100px.png");
+  }
+  section#currency img.icon {
+    content:url("../images/Gloebit-Icon-Transaction-100px.png");
+  }
+  
+}
