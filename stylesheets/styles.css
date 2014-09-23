@@ -82,6 +82,14 @@ footer div.wrapper
     background-color: white; /* white background default for wrapper content */
 }
 
+section.wrapper {
+    border-bottom: rgba(0,0,0,0.4) solid 2px; /* gray bottom border on sections */
+}
+
+section.wrapper:last-of-type {
+    border-bottom-width: 0px; /* remove border from last section of page so there is no border above footer. Possible this should be last-child */
+}
+
 header, footer {
     width: 100%;
     float: none;
