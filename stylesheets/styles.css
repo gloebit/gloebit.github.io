@@ -93,7 +93,7 @@ header, footer {
 
 header,
 header+.clone {
-    margin-bottom: 20px;
+    /* margin-bottom: 5px; */
 }
 
 header,
