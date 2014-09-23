@@ -102,7 +102,7 @@ header, footer {
 /* image height.  I added 1px because the black line below the image   */
 /* sets it off nicely.                                                 */
 header {
-    height: 51px;
+    min-height: 51px;
 /*
     position: fixed;
     top: 0;
@@ -395,9 +395,11 @@ img.one {
         margin-top: 8px;
     }
 
+/*
     header > div > div:last-of-type {
         margin-bottom: 8px;
     }
+*/
 
     header .drop-down#section-nav {
         float: none;
