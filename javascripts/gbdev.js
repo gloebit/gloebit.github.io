@@ -2,6 +2,9 @@
 /* JS for the Gloebit Developer pages. */
 /* Uses JQuery exclusively.            */
 
+/* Put JS for all dev pages here.  For page-specific JS, use page_js to   */
+/* point to a page-specific JS file.  See the front page for an example.  */
+
 $(function(){
     /* Move the nav element's list of section links to the Sections drop- */
     /* down menu in the header.  (See header.html.)                       */
@@ -40,11 +43,13 @@ $(function(){
     /* Instead of cloning the header, make a div clone that has the same  */
     /* height.  It will avoid problems caused by elements in the cloned   */
     /* header, such as the image.                                         */
+/*
     $('header').after('<div class="clone" style="width:100%"></div>');
     $('header+.clone').height($('header').height());
+*/
 
     /* No longer need to check scroll position to fix the header.         */
-    /* 
+/* 
       $(window).scroll(function(){
           if ($(this).scrollTop() > 0) {
               $('header.clone').show();
@@ -52,12 +57,12 @@ $(function(){
               $('header.clone').hide();
           }
       });
-    */
+*/
     /* See the commented out JS below watching the window scroll...       */
 
     /* When we click on a drop-down div, toggle its active class, make    */
     /* its drop-down menu show/hide, and, if the click was not inside     */
-    /* its drop-down menu, block the 
+    /* its drop-down menu, block the effect of following the link.        */
     /* Must come after header cloning (if any)! */
     $('.drop-down').on('click', function(ev) {
         $(this).children('p').toggleClass('active');
@@ -66,6 +71,9 @@ $(function(){
             ev.preventDefault();
         }
     });
+    /* When clicking anywhere on the page, remove the active class from   */
+    /* from all drop-down menus so they will close.  The if condition     */
+    /* keeps us from closing the drop-down for a button we clicked on.    */
     $(document).on('click', function(ev) {
         var target = $(ev.target).closest('.drop-down')[0];
         $('.drop-down').each(function() {
@@ -75,35 +83,45 @@ $(function(){
             };
         });
     });
+
+    /* When clicking on the header button (it shows up @ narrow widths),  */
+    /* collapse/uncollapse the menu buttons/items.                        */
     $('header button').on('click', function(ev) {
         $(this).siblings('header > div > div').toggleClass('collapsed');
     });
+    /* Start out all the menu buttons/items as collapsed (not showing).   */
     $('header > div > div').addClass('collapsed');
-  
-    $('.service').click(function(ev) {
-        $(this).toggleClass('active');
-    });
 
     /* Set anchor padding/margin to offset under fixed header. */
     /* The header is fixed only for >960px.                    */
     /* PADDING_FROM_HEADER is declared and defined in the      */
     /* footer_scripts.html file so pages can override it.      */
+/*
     var headerHeight = $('header').height()+PADDING_FROM_HEADER;
+*/
     /*
       try {
     */
     /* Add the default padding and negative margin for the offsets. */
+/*
     document.styleSheets[0].insertRule('.anchor:before {height: '+PADDING_FROM_HEADER+'px}', document.styleSheets[0].cssRules.length);
+*/
     /*
       document.styleSheets[0].insertRule('.anchor:before {padding: '+PADDING_FROM_HEADER+'px 0 0}', document.styleSheets[0].cssRules.length);
     */
+/*
     document.styleSheets[0].insertRule('.anchor:before {margin: -'+PADDING_FROM_HEADER+'px 0 0}', document.styleSheets[0].cssRules.length);
+*/
     /* Add the >960px padding and negative margin for the offsets. */
+/*
     document.styleSheets[0].insertRule('@media screen and (min-width:961px) { .anchor:before {height: '+headerHeight+'px} }', document.styleSheets[0].cssRules.length);
+*/
     /*
       document.styleSheets[0].insertRule('@media screen and (min-width:961px) { .anchor:before {padding: '+headerHeight+'px 0 0} }', document.styleSheets[0].cssRules.length);
     */
+/*
     document.styleSheets[0].insertRule('@media screen and (min-width:961px) { .anchor:before {margin: -'+headerHeight+'px 0 0} }', document.styleSheets[0].cssRules.length);
+*/
     /*
       }
       catch(err) {
