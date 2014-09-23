@@ -358,11 +358,11 @@ img.one {
         width: 100%%;
     }
 
-    .wrapper {
-        width: 95%;
+    section.wrapper {
+        width: 98%;
         /* width: 680px; */
-        padding-left: 1.5%%;
-        padding-right: 1.5%;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     header {
@@ -472,10 +472,10 @@ img.one {
         width: 100%
     }
 
-    .wrapper {
-        width: 96%;
-        padding-left: 2%;
-        padding-right: 2%;
+    section.wrapper {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
 
