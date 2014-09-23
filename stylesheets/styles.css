@@ -348,9 +348,9 @@ img.one {
 }
 
 /*********************** MEDIA SECTION ******************************/
-/* everything avove for 960px and above */
-/* screen width from 720-959px */
-@media print, screen and (max-width: 959px) {
+/* everything avove for 961px and above */
+/* screen width from 721-960px */
+@media print, screen and (max-width: 960px) {
     
     header div.wrapper,
     footer div.wrapper
@@ -460,8 +460,8 @@ img.one {
     }
 }
 
-/* Screen width from 480 to 719px */
-@media print, screen and (max-width: 719px) {
+/* Screen width from 481 to 720px */
+@media print, screen and (max-width: 720px) {
     section {
         padding: 0 0 20px;
     }
@@ -489,8 +489,8 @@ img.one {
     z-index: 199;
 }
 
-/* Screen width from 0-479px - really from 320px */
-@media print, screen and (max-width: 479px) {
+/* Screen width from 0-480px - really from 320px */
+@media print, screen and (max-width: 480px) {
     #vertical-logo, header.floating {
         display: none;
     }

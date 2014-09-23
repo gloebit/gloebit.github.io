@@ -13,8 +13,8 @@ section#currency img.icon
   margin-right: 10px;
 }
 
-/* Screen width from 0-479px - really from 320px */
-@media print, screen and (max-width: 479px) {
+/* Screen width from 0-480px - really from 320px */
+@media print, screen and (max-width: 480px) {
   
   section#identity img.icon {
     content:url("../images/Gloebit-Icon-Identity-100px.png");
