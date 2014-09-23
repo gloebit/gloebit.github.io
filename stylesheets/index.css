@@ -4,7 +4,7 @@ header + div {
 }
 
 section.wrapper {
-    margin-bottom: 35px;
+    margin-bottom: 5px;
 }
 
 section h1 {
@@ -17,16 +17,16 @@ section h1 {
 }
 
 /* White-on-green oval link buttons for all sizes.  Many are only >480px. */
-#services div a,
-#services a,
-#benefits p a,
-#started div+p a,
-#consumer p a,
-#monetizing > p:last-of-type a,
-#pricing p a,
-#integration > div:first-of-type p:last-of-type a,
-#integration > div:first-of-type+div a,
-#integration > p a {
+#services+section div a,
+#services+section a,
+#benefits+section p a,
+#started+section div+p a,
+#consumer+section p a,
+#monetizing+section > p:last-of-type a,
+#pricing+section p a,
+#integration+section > div:first-of-type p:last-of-type a,
+#integration+section > div:first-of-type+div a,
+#integration+section > p a {
     color: white;
     background-color: #86c200;
     font-weight: 700;
@@ -38,15 +38,15 @@ section h1 {
 }
 
 /* Temporary space until we add hero slides. */
-#services {
-    margin-top: 35px;
-}
+/* #services+section {   */
+/*     margin-top: 35px; */
+/* }                     */
 
-#services {
+#services+section {
     text-align: center;
 }
 
-#services div {
+#services+section div {
     display: inline-block;
     position: relative;
     vertical-align: top;
@@ -65,67 +65,67 @@ section h1 {
 }
 
 /* hide details for services so they only show when clicked */
-#services div.service.collapsed {
+#services+section div.service.collapsed {
     max-height: 100px;
     overflow-y:hidden;
 }
 
 /* show service detail summary */
-#services div.service.collapsed.active {
+#services+section div.service.collapsed.active {
     max-height: 220px;
 }
 
-#services div.service.collapsed:hover {
+#services+section div.service.collapsed:hover {
     background-color: rgba(134,194,0,0.20);
     box-shadow: 0 0 6px rgba(0,0,0,0.08) inset;
 }
 
 /* Restore bottom margin (1rem) of last div, add a bit for the box-shadow. */
-#services div:last-of-type {
+#services+section div:last-of-type {
     margin-bottom: 1.5rem;
 }
 
-#services div img {
+#services+section div img {
     box-shadow: none;
     height: 100px;
 }
 
-#services div img.one {
+#services+section div img.one {
     position: relative;
     float:left;
 }
 
-#services div img.two {
+#services+section div img.two {
     display: none;
 }
 
-#services div h2 {
+#services+section div h2 {
     margin-top: 25px;
 }
 
-#services div p:first-of-type {
+#services+section div p:first-of-type {
     margin-bottom: 22px;
 }
 
-#services div p {
+#services+section div p {
     margin-bottom: 0.125rem;
 }
 
-#services div p+p {
+#services+section div p+p {
     border-top: 1px solid rgba(134,194,0,0.5);
     margin-bottom: 0.5rem;  /* Adjust for a's relative offset below. */
 }
 
-#services div a {
+#services+section div a {
     position: relative;
     top: 0.375rem;   /* If changing, adjust div p+p's margin-bottom above. */
 }
 
-#benefits {
+#benefits+section {
     text-align: center;
 }
 
-#benefits div {
+#benefits+section div {
     display: inline-block;
     padding: 10px 15px;
     margin: 8px 15px 1.5rem;
@@ -133,79 +133,79 @@ section h1 {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-#benefits h2 {
+#benefits+section h2 {
     padding-bottom: 1px;
     border-bottom: 1px solid rgba(0,0,0,0.5);
     margin-bottom: 12px;
 }
 
-#benefits ul {
+#benefits+section ul {
     list-style: none;
     padding: 0;
 }
 
-#benefits li a {
+#benefits+section li a {
     padding: 0 5px 2px;
     border-radius: 5px;
 }
 
-#benefits li a:hover {
+#benefits+section li a:hover {
     background-color: rgba(134,194,0,0.20);
     box-shadow: 0 0 6px rgba(0,0,0,0.08) inset;
 }
 
-#started div {
+#started+section div {
     position: relative;
     width: 672px;
     margin: 0 auto;
 }
 
-#started div h3 {
+#started+section div h3 {
     float: left;
     padding-top: 3px;
     margin-right: 2%;
     margin-left: 8%;
 }
 
-#started div ol {
+#started+section div ol {
     float: left;
 }
 
-#started div h2 {
+#started+section div h2 {
     color: rgba(134,194,0,1);
     position: absolute;
     top: 34%;
     left: 3%;
 }
 
-#started div:after {
+#started+section div:after {
     display: table;
     content: "";
     clear: both;
 }
 
-#started div+p {
+#started+section div+p {
     text-align: center;
 }
 
-#consumer h1+p {
+#consumer+section h1+p {
     float: left;
     max-width: 56%;
 }
 
-#consumer img {
+#consumer+section img {
     float: right;
     box-sizing: border-box;
     max-width: 40%;
     margin: 10px 2%;
 }
 
-#consumer p:last-of-type {
+#consumer+section p:last-of-type {
     display: block;
     text-align: center;
 }
 
-#monetizing h2 {
+#monetizing+section h2 {
     display: inline-block;
     vertical-align: top;
     width: 32%;
@@ -213,26 +213,26 @@ section h1 {
     margin-left: 4.5%;
 }
 
-#monetizing div {
+#monetizing+section div {
     display: inline-block;
     width: 55%;
     margin-right: 4.5%;
 }
 
-#monetize-consumer p:first-of-type {
+#monetize-consumer+section p:first-of-type {
     margin-bottom: 6px;
 }
 
-#monetize-consumer img {
+#monetize-consumer+section img {
     margin: 0 0 12px 3%;
 }
 
-#monetize-merchant p:first-of-type {
+#monetize-merchant+section p:first-of-type {
     float: left;
     max-width: 60%;
 }
 
-#monetize-merchant img {
+#monetize-merchant+section img {
     float: right;
     max-width: 35%;
     padding: 5px;
@@ -240,60 +240,60 @@ section h1 {
     margin-left: 1%;
 }
 
-#monetizing>p:last-of-type {
+#monetizing+section>p:last-of-type {
     text-align: center;
 }
 
-#monetizing>p:last-of-type a {
+#monetizing+section>p:last-of-type a {
     margin-bottom: 20px;
 }
 
-#pricing {
+#pricing+section {
     text-align: center;
 }
 
-#pricing h1+h2 {
+#pricing+section h1+h2 {
     margin-bottom: 10px;
 }
 
-#pricing img {
+#pricing+section img {
     width: 300px;
     box-shadow: none;
 }
 
-#pricing a+h2 {
+#pricing+section a+h2 {
     color: rgba(134,194,0,1);
     text-shadow: 1px 1px rgba(0,0,0,0.35);
     margin-top: 12px;
     margin-bottom: 2px;
 }
 
-#pricing p a {
+#pricing+section p a {
     margin-bottom: 20px;
 }
 
-#integration {
+#integration+section {
     text-align: center;
 }
 
-#integration h1 {
+#integration+section h1 {
     margin-bottom: 30px;
 }
 
-#integration > div {
+#integration+section > div {
     display: inline-block;
     float: left;
     width: 40%;
     padding: 10px 5% 0;
 }
 
-#integration div+div+div {
+#integration+section div+div+div {
     float: none;
     width: 80%;
     margin: 40px auto 0;
 }
 
-#integration div h2 {
+#integration+section div h2 {
     /*
       text-decoration: underline;
     */
@@ -302,15 +302,15 @@ section h1 {
     margin-bottom: 12px;
 }
 
-#integration p {
+#integration+section p {
     margin: 0;
 }
 
-#integration p+p {
+#integration+section p+p {
     margin-top: 12px;
 }
 
-#integration .container {
+#integration+section .container {
     display: table;
     float: none;
     width: 84%;
@@ -319,12 +319,12 @@ section h1 {
     margin: 30px auto;
 }
 
-#integration .container div {
+#integration+section .container div {
     display: table-row;
     border: 1px solid rgba(134,194,0,0.5);
 }
 
-#integration .container div div {
+#integration+section .container div div {
     display: table-cell;
     vertical-align: middle;
     width: 28%;
@@ -332,7 +332,7 @@ section h1 {
     border: 0;
 }
 
-#integration .container img {
+#integration+section .container img {
     display: block;
     vertical-align: middle;
     max-width: 150px;
@@ -340,13 +340,13 @@ section h1 {
     margin: 0 auto;
 }
 
-#integration ul {
+#integration+section ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-#oss {
+#oss+section {
     text-align: center;
 }
 
@@ -358,74 +358,74 @@ section h1 {
         border-top: none;
     }
 
-    #services div {
+    #services+section div {
         width: 45.500%;
         padding: 8px;
         margin: 8px 6px;
     }
 
-    #monetize-consumer img {
+    #monetize-consumer+section img {
         margin-left: 1.5%;
     }
 
-    #integration > div {
+    #integration+section > div {
         width: 48%;
         padding: 10px 1% 0;
     }
 }
 
 @media print, screen and (max-width: 720px) {
-    #services div {
+    #services+section div {
         width: 50%;
     }
 
-    #started div {
+    #started+section div {
         width: 100%;
         text-align: center;
     }
 
-    #started div h3 {
+    #started+section div h3 {
         float: none;
         margin: 0 0 8px;
     }
 
-    #started div ol {
+    #started+section div ol {
         float: none;
         display: inline-block;
         text-align: left;
         margin-left: 2.5%;
     }
 
-    #started div h2 {
+    #started+section div h2 {
         position: static;
     }
 
-    #consumer p {
+    #consumer+section p {
         padding: 0 8px;
     }
 
-    #consumer h1+p {
+    #consumer+section h1+p {
         float: none;
         max-width: none;
     }
 
-    #consumer img {
+    #consumer+section img {
         display: block;
         float: none;
         max-width: none;
         margin: 10px auto;
     }
 
-    #monetize-consumer img {
+    #monetize-consumer+section img {
         margin-left: 0;
     }
 
-    #monetize-merchant p:first-of-type {
+    #monetize-merchant+section p:first-of-type {
         float: none;
         max-width: none;
     }
 
-    #monetize-merchant img {
+    #monetize-merchant+section img {
         display: block;
         float: none;
         max-width: none;
@@ -433,15 +433,15 @@ section h1 {
         margin: 0 auto;
     }
 
-    #pricing img {
+    #pricing+section img {
         width: 250px;
     }
 
-    #integration h1 {
+    #integration+section h1 {
         margin-bottom: 0;
     }
 
-    #integration > div {
+    #integration+section > div {
         float: none;
         width: 70%;
         min-width: 315px;
@@ -449,28 +449,28 @@ section h1 {
         margin: 30px auto 0;
     }
 
-    #integration > div p:first-of-type br,
-    #integration > div p:first-of-type+p br {
+    #integration+section > div p:first-of-type br,
+    #integration+section > div p:first-of-type+p br {
         display: none;
     }
 
-    #integration .container {
+    #integration+section .container {
         font-size: 14px;
     }
 
-    #integration .container img {
+    #integration+section .container img {
         max-width: 100px;
     }
 }
 
 @media print, screen and (max-width: 480px) {
     /* Oval buttons that will wrap. */
-    #benefits p a,
-    #started div+p a,
-    #consumer p a,
-    #monetizing > p:last-of-type a,
-    #pricing p a,
-    #integration > p a
+    #benefits+section p a,
+    #started+section div+p a,
+    #consumer+section p a,
+    #monetizing+section > p:last-of-type a,
+    #pricing+section p a,
+    #integration+section > p a
     {
         display: inline-block;
         max-width: 80%;
@@ -482,12 +482,12 @@ section h1 {
         padding-left: 2px;
     }
 
-    #services > p {
+    #services+section > p {
         text-align: left;
         padding: 0 4px;
     }
 
-    #services div {
+    #services+section div {
         display: block;
         width: auto;
         max-width: 360px;
@@ -505,53 +505,53 @@ section h1 {
     }
 
 /*
-    #services div h2 {
+    #services+section div h2 {
         text-decoration: underline;
     }
 
-    #services div p:first-of-type {
+    #services+section div p:first-of-type {
         text-decoration: underline;
     }
 
-    #services div p+p {
+    #services+section div p+p {
         border: 0;
     }
 */
 
-    #started div ol {
+    #started+section div ol {
         margin-left: 0;
     }
 
-    #consumer p {
+    #consumer+section p {
         padding: 0 4px;
     }
 
-    #monetizing h2 {
+    #monetizing+section h2 {
         display: block;
         width: initial;
         padding: 0 4px;
         margin-left: 0;
     }
 
-    #monetizing div {
+    #monetizing+section div {
         display: block;
         width: 100%;
         margin-right: 0;
     }
 
-    #monetize-consumer img {
+    #monetize-consumer+section img {
         max-width: 98%;
     }
 
-    #monetizing p {
+    #monetizing+section p {
         padding: 0 4px;
     }
 
-    #pricing img {
+    #pricing+section img {
         width: 200px;
     }
 
-    #integration div+div+div,
+    #integration+section div+div+div,
     .container + p {
         width: initial;
         text-align: left;
@@ -563,22 +563,22 @@ section h1 {
         text-align: center;
     }
 
-    #integration .container {
+    #integration+section .container {
         width: initial;
     }
 
-    #integration p:last-of-type {
+    #integration+section p:last-of-type {
         text-align: center;
     }
 
-    #oss p {
+    #oss+section p {
         text-align: left;
         padding: 0 4px;
     }
 }
 
 @media print, screen and (max-width: 390px) {
-    #services div {
+    #services+section div {
         margin: 12px 6px;
         min-width: 0;
     }
