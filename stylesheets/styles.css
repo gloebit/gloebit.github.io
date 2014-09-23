@@ -1,5 +1,5 @@
 /* Comment out whichever one we don't use. */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,400,600);
+/* @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,400,600); */
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,500,600,700,300italic,700italic);
 
 html {
@@ -64,57 +64,50 @@ nav {
     display: none;
 }
 
-header div.wrapper,
-footer div.wrapper
-{
+/* Set the wrapper sizing to border-box so padding and borders will be */
+/* inside the 960px.  Makes things easier...                           */
+.wrapper {
     width: 960px;
-    padding-left: 0px;
-    padding-right: 0px;
+    box-sizing: border-box;
     margin: 0 auto;
-    background-color: black; /* white background default for header wrapper to not overwrite black background of header div */
 }
 
-.wrapper {
-    width: 860px;
+/* White background default for wrappered sections.                    */
+/* Pad the sides of sections for nice offset from grey background.     */
+/* Add a grey bottom border to the sections (all should be wrapper, so */
+/* this selector should capture all those we care about.)              */
+section.wrapper {
+    background-color: white;
     padding-left: 50px;
     padding-right: 50px;
-    margin: 0 auto;
-    background-color: white; /* white background default for wrapper content */
+    border-bottom: rgba(0,0,0,0.4) solid 2px;
 }
 
-section.wrapper {
-    border-bottom: rgba(0,0,0,0.4) solid 2px; /* gray bottom border on sections */
-}
-
+/* Remove bottom border from last section, before the footer.          */
 section.wrapper:last-of-type {
-    border-bottom-width: 0px; /* remove border from last section of page so there is no border above footer. Possible this should be last-child */
+    border-bottom-width: 0;
 }
 
 header, footer {
     width: 100%;
     float: none;
     position: static;
-    /* background-color: #fcfcfc; */
-    background-color: black; /* set default header color to black */
+    background-color: black;
     box-shadow: 0 0 12px rgba(0,0,0,0.25);
 }
 
-header,
-header+.clone {
-    /* margin-bottom: 5px; */
-}
-
-header,
-header.original {
+/* For some reason, when header was fixed the height was same as the   */
+/* image but when header is static the height ignores floating image.  */
+/* Clearfix oddity?  Anyway, set height of header according to the     */
+/* image height.  I added 1px because the black line below the image   */
+/* sets it off nicely.                                                 */
+header {
+    height: 51px;
+/*
     position: fixed;
     top: 0;
     z-index: 99;
-}
-
-header+.clone,
-header.clone {
-    position: static;
-    visibility: hidden;
+*/
 }
 
 header img {
@@ -129,6 +122,7 @@ header > div > div {
     display: inline-block;
     position: relative;    /* So drop-down can position absolute on it. */
     margin: 0 10px;
+    z-index: 99;
 }
 
 header .drop-down#section-nav {
