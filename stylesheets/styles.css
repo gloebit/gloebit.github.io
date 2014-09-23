@@ -359,10 +359,10 @@ img.one {
     }
 
     section.wrapper {
-        width: 98%;
+        width: 100%;
         /* width: 680px; */
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 
     header {
@@ -474,8 +474,8 @@ img.one {
 
     section.wrapper {
         width: 100%;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
@@ -493,5 +493,17 @@ img.one {
 @media print, screen and (max-width: 479px) {
     #vertical-logo, header.floating {
         display: none;
+    }
+    
+    header div.wrapper,
+    footer div.wrapper
+    {
+      width: 100%
+    }
+    
+    section.wrapper {
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
     }
 }
