@@ -564,9 +564,40 @@ section h1 {
     }
 }
 
-@media print, screen and (max-width: 390px) {
+@media print, screen and (max-width: 425px) {
     #services div {
-        margin: 12px 6px;
+        margin: 12px 0px;
         min-width: 0;
+    }
+
+    #services div.service.collapsed {
+        max-height: 82px;
+    }
+
+    #services div img {
+        height: 82px;
+        padding-right: 8px;
+    }
+
+    #services div h2 {
+        margin: 15px 0 8px;
+    }
+
+    #services div p:first-of-type {
+        margin-bottom: 9px;
+        line-height: 1.25rem;
+        height: 2.5rem;    /* Force double height when text does not wrap. */
+    }
+}
+
+@media print, screen and (max-width: 390px) {
+    #services div p+p {
+        font-size: 1rem;
+    }
+}
+
+@media print, screen and (max-width: 360px) {
+    #services div p+p {
+        font-size: 0.93rem;
     }
 }
