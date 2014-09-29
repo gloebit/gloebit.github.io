@@ -3,13 +3,24 @@ body {
     background-color: rgba(192,192,192,0.1);
 }
 
+/*
 header,
 header+.clone {
     margin-bottom: 10px;
 }
+*/
 
+/*
 #main {
-    padding-top: 2px;  /* Needed to collapse margins equally. */
+*/
+    /* Needed to collapse margins equally. */
+/*
+    padding-top: 2px;
+}
+*/
+
+.anchor:before {
+    padding: 11px 0 0;
 }
 
 .wrapper {
@@ -20,7 +31,7 @@ header+.clone {
 section {
     width: 720px;
     padding: 0;
-    margin-bottom: 20px;
+    margin-bottom: 9px;
 }
 
 section:after {
@@ -29,6 +40,7 @@ section:after {
     content: " ";
     border-bottom: 1px solid rgba(128,128,128,1);
     box-shadow: 0 0 8px rgba(134,194,0,0.5);
+    margin-top: 20px
 }
 
 section:last-of-type,
@@ -51,7 +63,7 @@ article,
 div.endpoint {
     border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(128,128,128,0.5);
-    margin-bottom: 20px;
+    margin-bottom: 9px;
 }
 
 article > *,
