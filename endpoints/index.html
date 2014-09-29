@@ -13,221 +13,223 @@ header_padding: 13
     {% include header.html %}
 
     <nav>
-      <!-- Keep the newlines before <b class="caret"> !!!!
-           They are necessary for proper spacing. -->
-      <div id="nav-container">
-        <h3>References
-          <b class="caret"></b>
-        </h3>
-        <ul>
-          <li class="section">
-            <a href="#auth">Authorization Service
-              <b class="caret"></b>
-            </a>
-            <ul>
-              <li class="article">
-                <a href="#access-token">Access Tokens</a>
-              </li>
-              <li class="article">
-                <a href="#oauth2">OAuth 2.0 Framework</a>
-              </li>
-              <li class="article">
-                <a href="#auth-code">Authorization Code Grant</a>
-              </li>
-              <li class="article">
-                <a href="#implicit">Implicit Grant</a>
-              </li>
-              <li class="article">
-                <a href="#force-auto">Approval: force/auto</a>
-            </ul>
-          </li>
-          <li class="section">
-            <a href="#identity">Identity Service
-              <b class="caret"></b>
-            </a>
-            <ul>
-              <li class="article">
-                <a href="#user-ids">User IDs</a>
-              </li>
-            </ul>
-          </li>
-          <li class="section">
-            <a href="#character">Character Service
-              <b class="caret"></b>
-            </a>
-            <ul>
-              <li class="article">
-                <a href="#character-ids">Character IDs</a>
-              </li>
-            </ul>
-          </li>
-          <li class="section">
-            <a href="#inventory">Inventory Service
-              <b class="caret"></b>
-            </a>
-            <ul>
-              <li class="article">
-                <a href="#product-inventory">Products</a>
-              </li>
-              <li class="article">
-                <a href="#item-inventory">Items</a>
-              </li>
-              <li class="article">
-                <a href="#inventory-folders">Folders</a>
-              </li>
-            </ul>
-          </li>
-          <li class="section">
-            <a href="#currency">Digital Currency Service
-              <b class="caret"></b>
-            </a>
-            <ul>
-              <li class="article">
-                <a href="#transaction-flow">Transaction Flow</a>
-              </li>
-            </ul>
-          </li>
-          <!--
-          <li class="section">
-            <a href="#restful">RESTful API
-              <b class="caret"></b>
-            </a>
-          -->
-          <li class="section">
-            <a href="#misc">Miscellaneous
-              <b class="caret"></b>
-            </a>
-            <ul>
-              <!--
-              <li class="article">
-                <a href="#endpoint-access">Endpoint Accesses</a>
-              </li>
-              -->
-              <li class="article">
-                <a href="#error">Endpoint Errors</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+      <div id="nav">
+        <!-- Keep the newlines before <b class="caret"> !!!!
+             They are necessary for proper spacing. -->
+        <div id="nav-container">
+          <h3>References
+            <b class="caret"></b>
+          </h3>
+          <ul>
+            <li class="section">
+              <a href="#auth">Authorization Service
+                <b class="caret"></b>
+              </a>
+              <ul>
+                <li class="article">
+                  <a href="#access-token">Access Tokens</a>
+                </li>
+                <li class="article">
+                  <a href="#oauth2">OAuth 2.0 Framework</a>
+                </li>
+                <li class="article">
+                  <a href="#auth-code">Authorization Code Grant</a>
+                </li>
+                <li class="article">
+                  <a href="#implicit">Implicit Grant</a>
+                </li>
+                <li class="article">
+                  <a href="#force-auto">Approval: force/auto</a>
+              </ul>
+            </li>
+            <li class="section">
+              <a href="#identity">Identity Service
+                <b class="caret"></b>
+              </a>
+              <ul>
+                <li class="article">
+                  <a href="#user-ids">User IDs</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section">
+              <a href="#character">Character Service
+                <b class="caret"></b>
+              </a>
+              <ul>
+                <li class="article">
+                  <a href="#character-ids">Character IDs</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section">
+              <a href="#inventory">Inventory Service
+                <b class="caret"></b>
+              </a>
+              <ul>
+                <li class="article">
+                  <a href="#product-inventory">Products</a>
+                </li>
+                <li class="article">
+                  <a href="#item-inventory">Items</a>
+                </li>
+                <li class="article">
+                  <a href="#inventory-folders">Folders</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section">
+              <a href="#currency">Digital Currency Service
+                <b class="caret"></b>
+              </a>
+              <ul>
+                <li class="article">
+                  <a href="#transaction-flow">Transaction Flow</a>
+                </li>
+              </ul>
+            </li>
+            <!--
+                <li class="section">
+                  <a href="#restful">RESTful API
+                    <b class="caret"></b>
+                  </a>
+                  -->
+            <li class="section">
+              <a href="#misc">Miscellaneous
+                <b class="caret"></b>
+              </a>
+              <ul>
+                <!--
+                    <li class="article">
+                      <a href="#endpoint-access">Endpoint Accesses</a>
+                    </li>
+                    -->
+                <li class="article">
+                  <a href="#error">Endpoint Errors</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
 
-        <h3>Endpoints
-          <b class="caret"></b>
-        </h3>
-        <ul>
-          <li class="section">
-            <a href="#auth">Authorization Service
-              <b class="caret"></b>
-            </a>
-            <ul>
-              <li class="endpoint">
-                <a href="#authorize">Authorize</a>
-              </li>
-              <li class="endpoint">
-                <a href="#access-token-exchange">Exchange for Access Token</a>
-              </li>
-              <li class="endpoint">
-                <a href="#verify-token">Verify Access Token</a>
-              </li>
-            </ul>
-          </li>
-          <li class="section">
-            <a href="#identity">Identity Service
-              <b class="caret"></b>
-            </a>
-            <ul>
-              <li class="endpoint">
-                <a href="#user-id">Get User ID</a>
-              </li>
-            </ul>
-          </li>
-          <li class="section">
-            <a href="#character">Character Service
-              <b class="caret"></b>
-            </a>
-            <ul>
-              <li class="endpoint">
-                <a href="#create-character">Create Character</a>
-              </li>
-              <li class="endpoint">
-                <a href="#list-characters">Get List of Characters</a>
-              </li>
-              <li class="endpoint">
-                <a href="#update-character">Update Character</a>
-              </li>
-              <li class="endpoint">
-                <a href="#delete-character">Delete Character</a>
-              </li>
-            </ul>
-          </li>
-          <li class="section">
-            <a href="#inventory">Inventory Service
-              <b class="caret"></b>
-            </a>
-            <ul>
-              <li class="endpoint">
-                <a href="#get-user-products">Get User Products</a>
-              </li>
-              <li class="endpoint">
-                <a href="#grant-user-product">Grant User Product</a>
-              </li>
-              <li class="endpoint">
-                <a href="#consume-user-product">Consume User Product</a>
-              </li>
-              <li class="endpoint">
-                <a href="#set-user-product-count">Set User Product Count</a>
-              </li>
-              <li class="endpoint">
-                <a href="#get-character-products">Get Character Products</a>
-              </li>
-              <li class="endpoint">
-                <a href="#grant-character-product">Grant Character Product</a>
-              </li>
-              <li class="endpoint">
-                <a href="#consume-character-product">Consume Character Product</a>
-              </li>
-              <li class="endpoint">
-                <a href="#set-character-product-count">Set Character Product Count</a>
-              </li>
-              <li class="endpoint">
-                <a href="#purchase-product">Purchase Product</a>
-              </li>
-              <li class="endpoint">
-                <a href="#new-item">New Item</a>
-              </li>
-              <li class="endpoint">
-                <a href="#get-item-ids">Get Item IDs</a>
-              </li>
-              <li class="endpoint">
-                <a href="#get-item">Get Item</a>
-              </li>
-              <li class="endpoint">
-                <a href="#update-item">Update Item</a>
-              </li>
-              <li class="endpoint">
-                <a href="#delete-item">Delete Item</a>
-              </li>
-              <li class="endpoint">
-                <a href="#purchase-item">Purchase Item</a>
-              </li>
-            </ul>
-          </li>
-          <li class="section">
-            <a href="#currency">Digital Currency Service
-              <b class="caret"></b>
-            </a>
-            <ul>
-              <li class="endpoint">
-                <a href="#balance">Balance</a>
-              </li>
-              <li class="endpoint">
-                <a href="#transact">Transact</a>
-              </li>
-              <li class="endpoint">
-                <a href="#purchase">Purchase gloebits</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+          <h3>Endpoints
+            <b class="caret"></b>
+          </h3>
+          <ul>
+            <li class="section">
+              <a href="#auth">Authorization Service
+                <b class="caret"></b>
+              </a>
+              <ul>
+                <li class="endpoint">
+                  <a href="#authorize">Authorize</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#access-token-exchange">Exchange for Access Token</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#verify-token">Verify Access Token</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section">
+              <a href="#identity">Identity Service
+                <b class="caret"></b>
+              </a>
+              <ul>
+                <li class="endpoint">
+                  <a href="#user-id">Get User ID</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section">
+              <a href="#character">Character Service
+                <b class="caret"></b>
+              </a>
+              <ul>
+                <li class="endpoint">
+                  <a href="#create-character">Create Character</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#list-characters">Get List of Characters</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#update-character">Update Character</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#delete-character">Delete Character</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section">
+              <a href="#inventory">Inventory Service
+                <b class="caret"></b>
+              </a>
+              <ul>
+                <li class="endpoint">
+                  <a href="#get-user-products">Get User Products</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#grant-user-product">Grant User Product</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#consume-user-product">Consume User Product</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#set-user-product-count">Set User Product Count</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#get-character-products">Get Character Products</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#grant-character-product">Grant Character Product</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#consume-character-product">Consume Character Product</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#set-character-product-count">Set Character Product Count</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#purchase-product">Purchase Product</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#new-item">New Item</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#get-item-ids">Get Item IDs</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#get-item">Get Item</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#update-item">Update Item</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#delete-item">Delete Item</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#purchase-item">Purchase Item</a>
+                </li>
+              </ul>
+            </li>
+            <li class="section">
+              <a href="#currency">Digital Currency Service
+                <b class="caret"></b>
+              </a>
+              <ul>
+                <li class="endpoint">
+                  <a href="#balance">Balance</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#transact">Transact</a>
+                </li>
+                <li class="endpoint">
+                  <a href="#purchase">Purchase gloebits</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
 

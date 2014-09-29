@@ -8,18 +8,30 @@ $(function(){
     var navHeight = function () {
         var winTop = $(this).scrollTop(),
             winBottom = winTop + $(this).height(),
-            navBaseHeight = $(this).height() - 81;  /* match CSS */
+            headerHeight = $('header').height(),
+            navHeightAdjust = headerHeight + 30;
             footerTop = $('footer').offset().top - 5;  /* extra padding */
 
-        if ( footerTop < winBottom ) {
-            $('nav').css({'height':'calc(100vh - 81px - ' + (winBottom-footerTop) + 'px)'});
-            // $('nav').height( navBaseHeight - ( winBottom - footerTop ) );
+        if ( winTop < headerHeight ) {
+            $('nav #nav').css({'top': 'calc(' + (headerHeight-winTop) + 'px + 11px)'});
+            navHeightAdjust = 30 + headerHeight - winTop;
         }
         else {
-            $('nav').css({'height':'calc(100vh - 81px)'});
-            // $('nav').height( navBaseHeight );
+            $('nav #nav').css({'top':'11px'});
+            navHeightAdjust = 30;
+        }
+        if ( footerTop < winBottom ) {
+            $('nav #nav').css({'height':'calc(100vh - ' + (navHeightAdjust+winBottom-footerTop) + 'px)'});
+        }
+        else {
+            $('nav #nav').css({'height':'calc(100vh - ' + navHeightAdjust + 'px)'});
         }
     };
     $(window).scroll(navHeight);
     $(window).resize(navHeight);
+
+    $('nav h3').on('click', function(ev) {
+        $(this).next('ul').toggleClass('collapsed');
+        $(this).children('.caret').toggleClass('collapsed');
+    });
 });

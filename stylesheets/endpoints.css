@@ -130,6 +130,12 @@ header .wrapper {
 
 nav {
     display: block;
+    position: fixed;
+    top: 0;
+}
+
+#nav {
+    display: block;
     position: absolute;
     top: 62px;
     left: 731px;
@@ -166,6 +172,11 @@ nav ul {
     list-style: none;
     padding-left: 0;
     margin-bottom: 0;
+}
+
+nav ul.collapsed {
+    height: 0px;
+    overflow-y: hidden;
 }
 
 nav .section {
@@ -213,9 +224,15 @@ nav li {
 
 nav .caret {
     position: relative;
-    bottom: 2px;
+    bottom: 3px;
     right: 0;
     border-top-color: #444;
+}
+
+nav .caret.collapsed {
+    bottom: 1px;
+    right: -2px;
+    border-left-color: #444;
 }
 
 div.endpoint h2 span + span {
