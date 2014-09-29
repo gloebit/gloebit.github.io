@@ -181,6 +181,12 @@ header .drop-down#section-nav p a {
     content: "";
 }
 
+.caret.collapsed {   /* CSS Arrow trick */
+    border-left: 4px solid rgba(134,194,0,1.0);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+
 header .drop-down#section-nav .caret {
     right: 0;
     left: 4px;
