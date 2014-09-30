@@ -1,31 +1,16 @@
 
 body {
+    position: relative;
     background-color: rgba(192,192,192,0.1);
-}
-
-/*
-header,
-header+.clone {
-    margin-bottom: 10px;
-}
-*/
-
-/*
-#main {
-*/
-    /* Needed to collapse margins equally. */
-/*
-    padding-top: 2px;
-}
-*/
-
-.anchor:before {
-    padding: 11px 0 0;
 }
 
 .wrapper {
     width: 100%;
     max-width: 960px;
+}
+
+.anchor:before {
+    padding: 11px 0 0;
 }
 
 section {
@@ -91,6 +76,45 @@ article > h2 {
     padding-bottom: 8px;
 }
 
+article .body:after,
+article .body.collapsed:before,
+div.endpoint > .body:after,
+div.endpoint > .body.collapsed:before {
+    display: block;
+    position: relative;
+    top: -3px;
+    left: 50%;
+    width: 0px;
+    border: 4px solid transparent;
+    content: "";
+}
+
+article .body:after,
+div.endpoint > .body:after {
+    border-bottom-color: #444;
+}
+
+article .body.collapsed:after,
+div.endpoint > .body.collapsed:after {
+    display: none;
+}
+
+article .body.collapsed:before,
+div.endpoint > .body.collapsed:before {
+    border-top-color: #444;
+}
+
+article .body:before,
+div.endpoint > .body:before {
+    display: none;
+}
+
+article .body.collapsed,
+div.endpoint > .body.collapsed {
+    height: 5px;
+    overflow-y: hidden;
+}
+
 article .body > h3 {
     padding-left: 2px;
     border-bottom: 1px black solid;
@@ -144,6 +168,7 @@ nav {
     display: block;
     position: fixed;
     top: 0;
+    z-index: 100;
 }
 
 #nav {
@@ -191,6 +216,10 @@ nav ul.collapsed {
     overflow-y: hidden;
 }
 
+nav .top {
+    display: none;
+}
+
 nav .section {
     padding-top: 4px;
 }
@@ -215,17 +244,24 @@ nav a:hover {
     font-weight: 700;
 }
 
-nav .section > a:hover {
+nav .section > a:hover,
+nav .section.active > a {
     background-color: rgba(134,194,0,0.75);
 }
 
-nav .article > a:hover {
+nav .article > a:hover,
+nav .article.active > a {
     background-color: rgba(63,150,211,0.75);
 }
 
-nav .endpoint > a:hover {
+nav .endpoint > a:hover,
+nav .endpoint.active > a {
     color: white;
     background-color: black;
+}
+
+nav ul ul+ul {
+    display: none;
 }
 
 nav li {

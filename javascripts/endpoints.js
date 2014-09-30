@@ -34,4 +34,17 @@ $(function(){
         $(this).next('ul').toggleClass('collapsed');
         $(this).children('.caret').toggleClass('collapsed');
     });
+
+    $('article h1').on('click', function(ev) {
+        $(this).next('div.body').toggleClass('collapsed');
+    });
+
+    $('article h2').on('click', function(ev) {
+        $(this).next('div.body').toggleClass('collapsed');
+    });
+
+    $('div.endpoint h2').on('click', function(ev) {
+        $(this).next('div.body').toggleClass('collapsed');
+    });
+
 });

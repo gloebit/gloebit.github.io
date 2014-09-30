@@ -9,10 +9,10 @@ header_padding: 13
 <!doctype html>
 <html>
   {% include head.html %}
-  <body>
+  <body data-spy="scroll" data-target=".scrollspy" data-offset="0">
     {% include header.html %}
 
-    <nav>
+    <nav class="scrollspy">
       <div id="nav">
         <!-- Keep the newlines before <b class="caret"> !!!!
              They are necessary for proper spacing. -->
@@ -20,7 +20,8 @@ header_padding: 13
           <h3>References
             <b class="caret"></b>
           </h3>
-          <ul>
+          <ul class="nav">
+            <li class="top"><a href="#intro"> </a></li>
             <li class="section">
               <a href="#auth">Authorization Service
                 <b class="caret"></b>
@@ -41,6 +42,11 @@ header_padding: 13
                 <li class="article">
                   <a href="#force-auto">Approval: force/auto</a>
               </ul>
+              <ul>
+                <li><a href="#authorize"> </a></li>
+                <li><a href="#access-token-exchange"> </a></li>
+                <li><a href="#verify-token"> </a></li>
+              </ul>
             </li>
             <li class="section">
               <a href="#identity">Identity Service
@@ -51,6 +57,9 @@ header_padding: 13
                   <a href="#user-ids">User IDs</a>
                 </li>
               </ul>
+              <ul>
+                <li><a href="#user-id"> </a></li>
+              </ul>
             </li>
             <li class="section">
               <a href="#character">Character Service
@@ -60,6 +69,12 @@ header_padding: 13
                 <li class="article">
                   <a href="#character-ids">Character IDs</a>
                 </li>
+              </ul>
+              <ul>
+                <li><a href="#create-character"> </a></li>
+                <li><a href="#list-characters"> </a></li>
+                <li><a href="#update-character"> </a></li>
+                <li><a href="#delete-character"> </a></li>
               </ul>
             </li>
             <li class="section">
@@ -77,6 +92,23 @@ header_padding: 13
                   <a href="#inventory-folders">Folders</a>
                 </li>
               </ul>
+              <ul>
+                <li><a href="#get-user-products"> </a></li>
+                <li><a href="#grant-user-product"> </a></li>
+                <li><a href="#consume-user-product"> </a></li>
+                <li><a href="#set-user-product-count"> </a></li>
+                <li><a href="#get-character-products"> </a></li>
+                <li><a href="#grant-character-product"> </a></li>
+                <li><a href="#consume-character-product"> </a></li>
+                <li><a href="#set-character-product-count"> </a></li>
+                <li><a href="#purchase-product"> </a></li>
+                <li><a href="#new-item"> </a></li>
+                <li><a href="#get-item-ids"> </a></li>
+                <li><a href="#get-item"> </a></li>
+                <li><a href="#update-item"> </a></li>
+                <li><a href="#delete-item"> </a></li>
+                <li><a href="#purchase-item"> </a></li>
+              </ul>
             </li>
             <li class="section">
               <a href="#currency">Digital Currency Service
@@ -84,8 +116,16 @@ header_padding: 13
               </a>
               <ul>
                 <li class="article">
-                  <a href="#transaction-flow">Transaction Flow</a>
+                  <a href="#transact-cbs">Transact Callbacks</a>
                 </li>
+                <li class="article">
+                  <a href="#delivery">Digital Goods Delivery</a>
+                </li>
+              </ul>
+              <ul>
+                <li><a href="#balance"> </a></li>
+                <li><a href="#transact"> </a></li>
+                <li><a href="#purchase"> </a></li>
               </ul>
             </li>
             <!--
@@ -114,7 +154,7 @@ header_padding: 13
           <h3>Endpoints
             <b class="caret"></b>
           </h3>
-          <ul>
+          <ul class="nav">
             <li class="section">
               <a href="#auth">Authorization Service
                 <b class="caret"></b>
@@ -130,6 +170,13 @@ header_padding: 13
                   <a href="#verify-token">Verify Access Token</a>
                 </li>
               </ul>
+              <ul>
+                <li><a href="#access-token"> </a></li>
+                <li><a href="#oauth2"> </a></li>
+                <li><a href="#auth-code"> </a></li>
+                <li><a href="#implicit"> </a></li>
+                <li><a href="#force-auto"> </a></li>
+              </ul>
             </li>
             <li class="section">
               <a href="#identity">Identity Service
@@ -139,6 +186,9 @@ header_padding: 13
                 <li class="endpoint">
                   <a href="#user-id">Get User ID</a>
                 </li>
+              </ul>
+              <ul>
+                <li><a href="#user-ids"> </a></li>
               </ul>
             </li>
             <li class="section">
@@ -158,6 +208,9 @@ header_padding: 13
                 <li class="endpoint">
                   <a href="#delete-character">Delete Character</a>
                 </li>
+              </ul>
+              <ul>
+                <li><a href="#character-ids"> </a></li>
               </ul>
             </li>
             <li class="section">
@@ -211,6 +264,11 @@ header_padding: 13
                   <a href="#purchase-item">Purchase Item</a>
                 </li>
               </ul>
+              <ul>
+                <li><a href="#product-inventory"> </a></li>
+                <li><a href="#item-inventory"> </a></li>
+                <li><a href="#inventory-folders"> </a></li>
+              </ul>
             </li>
             <li class="section">
               <a href="#currency">Digital Currency Service
@@ -226,6 +284,10 @@ header_padding: 13
                 <li class="endpoint">
                   <a href="#purchase">Purchase gloebits</a>
                 </li>
+              </ul>
+              <ul>
+                <li><a href="#transact-cbs"> </a></li>
+                <li><a href="#delivery"> </a></li>
               </ul>
             </li>
           </ul>
@@ -877,6 +939,7 @@ header_padding: 13
     </div>
 
     {% include footer_scripts.html %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     
   </body>
 </html>
