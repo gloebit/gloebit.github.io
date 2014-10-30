@@ -1,4 +1,8 @@
 ---
+redirect_from:
+  - "/interfaces.html"
+  - "/oauth-api.html"
+
 title: Gloebit Service Interface Details
 page_css: /stylesheets/endpoints.css
 page_js: /javascripts/endpoints.js
@@ -9,7 +13,7 @@ header_padding: 13
 <!doctype html>
 <html>
   {% include head.html %}
-  <body data-spy="scroll" data-target=".scrollspy" data-offset="0">
+  <body data-spy="scroll" data-target=".scrollspy" data-offset="1">
     {% include header.html %}
 
     <nav class="scrollspy">
@@ -145,7 +149,13 @@ header_padding: 13
                     </li>
                     -->
                 <li class="article">
+                  <a href="#resources">Additional Resources</a>
+                </li>
+                <li class="article">
                   <a href="#error">Endpoint Errors</a>
+                </li>
+                <li class="article">
+                  <a href="#roadmap">On the Roadmap</a>
                 </li>
               </ul>
             </li>
@@ -680,7 +690,7 @@ header_padding: 13
               </li>
               <li>
                 <p>
-                  If you are using a submit button for transactions, we suggest you make the button inactive upon submission.  This will help avoid double posting while the new page is loading.
+                  If your application is not using products (in the Gloebit inventory service) and you need to manage asset delivery for transactions, then you should use the <a href="#transact-cbs">Transact callback URLs</a>.  They allow your system to ensure transactions are fully committed before delivering assets.
                 </p>
               </li>
               <li>
@@ -694,6 +704,12 @@ header_padding: 13
                 <p>
                   The <a href="#transact">Transact</a> endpoint does not support user-to-user transactions.  If you are interested in enabling them, please <a href="https://www.gloebit.com/contact-us/">contact us</a>.
                 </p>
+              </li>
+              <li>
+                <p>
+                  If you are using a submit button for transactions, we suggest you make the button inactive upon submission.  This will help avoid double posting while the new page is loading.
+                </p>
+              </li>
               <li>
                 <p>
                   We provide the <a href="#balance">Balance</a> endpoint so your application can retrieve a user's gloebit balance and display it for the user.  Your application can also use the endpoint to check a user's balance before requesting a purchase.  Some users may object to this feature's ability to expose gloebits balances.  For this reason, Gloebit created a separate scope, "balance", for this endpoint.  However, at this time, users are not able to block the endpoint without blocking the entire application access approval.  Because Gloebit may yet add a user capability that would effectively block this endpoint, we recommend that your application not depend upon this endpoint being available for all users.
@@ -735,12 +751,6 @@ header_padding: 13
         {% include ep_template.html ep=site.data.endpoint.balance %}
 
         {% include ep_template.html ep=site.data.endpoint.transact %}
-
-
-        <h3>Asset Transact Parameters for use with generic assets</h3>
-        <p>
-          If your application is not using the Product Inventory Service, then you should use Generic Asset Transactions.  You will manage delivery of the asset purchased yourself, either within your application or in our Item Inventory System.  You should integrate the Transaction callbacks, described below, into your system if you wish to ensure committed transactions before delivery.
-        </p>
 
         <div class="anchor" id="transact-cbs"></div>
         <article>
@@ -837,7 +847,7 @@ header_padding: 13
 
         <div class="anchor" id="delivery"></div>
         <article>
-          <h2>Delivery of digital goods/entitlements purchased</h2>
+          <h2>Delivery of Digital Goods/Entitlements</h2>
           <div class="body">
             <p>
               There are many ways to handle delivery of purchases, allowing the merchant/developer to decide what is best for their application.<br>

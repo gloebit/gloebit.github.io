@@ -2,6 +2,7 @@
 img.icon {
   box-shadow: none;
   float: right;
+  margin-top: 3px;  /* Align top of image with top of text. */
   margin-left: 10px;
 }
 

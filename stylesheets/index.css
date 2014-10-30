@@ -8,7 +8,12 @@ section h1 {
     margin-bottom: 1.25rem;
 }
 
-/* White-on-green oval link buttons for all sizes.  Many are only >480px. */
+/* The buttons at end of each section mess with the margins slightly. */
+section.wrapper > p:last-child {
+    margin-bottom: 4px;
+}
+
+/* White-on-green link buttons for all sizes.  Many are only >480px. */
 #services div a,
 #services a,
 #benefits p a,
@@ -219,6 +224,10 @@ section h1 {
     margin-left: 4.5%;
 }
 
+#monetizing h2.nowrap {
+    display: none;
+}
+
 #monetizing div {
     display: inline-block;
     width: 55%;
@@ -250,9 +259,11 @@ section h1 {
     text-align: center;
 }
 
+/*
 #monetizing>p:last-of-type a {
     margin-bottom: 20px;
 }
+*/
 
 #pricing {
     text-align: center;
@@ -274,9 +285,11 @@ section h1 {
     margin-bottom: 2px;
 }
 
+/*
 #pricing p a {
     margin-bottom: 20px;
 }
+*/
 
 #integration {
     text-align: center;
@@ -308,7 +321,7 @@ section h1 {
     margin-bottom: 12px;
 }
 
-#integration p {
+#integration div p {
     margin: 0;
 }
 
@@ -418,7 +431,7 @@ section h1 {
     #consumer img {
         display: block;
         float: none;
-        max-width: none;
+        max-width: 100%;
         margin: 10px auto;
     }
 
@@ -539,6 +552,10 @@ section h1 {
         margin-left: 0;
     }
 
+    #monetizing h2.wrap {
+        display: none;
+    }
+
     #monetizing div {
         display: block;
         width: 100%;
@@ -557,15 +574,22 @@ section h1 {
         width: 200px;
     }
 
-    #integration div+div+div,
-    .container + p {
-        width: initial;
+    #integration > div {
+        width: 95%;
+        min-width: initial;
         text-align: left;
-        padding: 0 4px;
     }
 
-    .container p,
-    .container li {
+    #integration div+div+div {
+        width: 95%;
+    }
+
+    #integration div+div+div p:last-child {
+        text-align: left;
+    }
+
+    #integration .container p,
+    #integration .container li {
         text-align: center;
     }
 
@@ -573,7 +597,11 @@ section h1 {
         width: initial;
     }
 
-    #integration p:last-of-type {
+    #integration .container img {
+        max-width: 80px;
+    }
+
+    #integration p:last-child {
         text-align: center;
     }
 
