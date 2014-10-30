@@ -443,6 +443,10 @@ section.wrapper > p:last-child {
     #monetize-consumer img {
         margin-left: 0;
     }
+    
+    #consumer div.customer-experience-descriptors h2 {
+      margin-top: 14%;
+    }
 
     #monetize-merchant p:first-of-type {
         float: none;
@@ -479,7 +483,7 @@ section.wrapper > p:last-child {
     }
 
     #integration .container {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     #integration .container img {
@@ -542,6 +546,10 @@ section.wrapper > p:last-child {
 
     #started div ol {
         margin-left: 0;
+    }
+    
+    #consumer div.customer-experience-descriptors h2 {
+      margin-top: 10%;
     }
 
     #monetizing h2 {
