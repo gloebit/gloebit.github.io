@@ -32,7 +32,8 @@ section.wrapper > p:last-child {
     border: 1px solid rgba(117,176,0,1);
     border-radius: 5px;
     box-shadow: 0 0 6px rgba(117,176,0,0.6) inset;
-    line-height:35px
+    display: inline-block;
+    line-height: 1.36rem;
 }
 
 #services {
@@ -495,9 +496,7 @@ section.wrapper > p:last-child {
     #pricing p a,
     #integration > p a
     {
-        display: inline-block;
         max-width: 80%;
-        line-height: 1.36rem;
     }
 
     section h1 {
