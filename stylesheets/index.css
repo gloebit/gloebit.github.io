@@ -199,21 +199,28 @@ section.wrapper > p:last-child {
 }
 
 #consumer div.customer-experience-descriptors {
-  float:left;
-  width:30%;
-  margin-bottom:1.5rem
+  float: right;
+  width: 30%;
+  margin-bottom: 1.5rem;
 }
 
 #consumer div.customer-experience-descriptors h2 {
-  text-align:center;
+  text-align: center;
+  margin-top: 15%;
+  margin-bottom: 30%;
+}
+
+#consumer div.customer-experience-descriptors h2:last-of-type {
+  margin-bottom: 0;
 }
 
 
 #consumer div.video-wrapper.consumer-experience-video {
-  width:512px;
-  max-width:60%;
-  margin-left:35%;
-  margin-bottom:1.5rem;
+  width: 512px;
+  max-width: 60%;
+  margin-left: 5%;
+  margin-right: 35%;
+  margin-bottom: 1.5rem;
 }
 
 #monetizing h2 {
@@ -391,6 +398,7 @@ section.wrapper > p:last-child {
         width: 48%;
         padding: 10px 1% 0;
     }
+    
 }
 
 @media print, screen and (max-width: 720px) {
@@ -417,10 +425,6 @@ section.wrapper > p:last-child {
 
     #started div h2 {
         position: static;
-    }
-
-    #consumer p {
-        padding: 0 8px;
     }
 
     #consumer h1+p {
@@ -539,10 +543,6 @@ section.wrapper > p:last-child {
 
     #started div ol {
         margin-left: 0;
-    }
-
-    #consumer p {
-        padding: 0 4px;
     }
 
     #monetizing h2 {

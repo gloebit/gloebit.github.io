@@ -358,6 +358,11 @@ img.one {
 .video-wrapper {
   width: 960px;
   max-width: 100%;
+  /* small border to set video apart especially on firefox */
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  
 }
 
 /* Video container resizes the video as the screen shrinks */
