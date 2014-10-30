@@ -642,16 +642,28 @@ section.wrapper > p:last-child {
         line-height: 1.25rem;
         height: 2.5rem;    /* Force double height when text does not wrap. */
     }
+    
+    #consumer div.customer-experience-descriptors h2 {
+      margin-top: 7%;
+    }
 }
 
 @media print, screen and (max-width: 390px) {
     #services div p+p {
         font-size: 1rem;
     }
+    
+    #consumer div.customer-experience-descriptors h2 {
+      margin-top: 6%;
+    }
 }
 
 @media print, screen and (max-width: 360px) {
     #services div p+p {
         font-size: 0.93rem;
+    }
+    
+    #consumer div.customer-experience-descriptors h2 {
+      margin-top: 3%;
     }
 }
