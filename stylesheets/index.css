@@ -200,8 +200,8 @@ section.wrapper > p:last-child {
 
 #consumer div.customer-experience-descriptors h2 {
   text-align: center;
-  margin-top: 15%;
-  margin-bottom: 30%;
+  margin-top: 10%;
+  margin-bottom: 32%;
 }
 
 #consumer div.customer-experience-descriptors h2:last-of-type {
@@ -383,6 +383,11 @@ section.wrapper > p:last-child {
         padding: 8px;
         margin: 8px 6px;
     }
+    
+    #consumer div.customer-experience-descriptors h2 {
+      margin-top: 9%;
+      margin-bottom: 29%;
+    }
 
     #monetize-consumer img {
         margin-left: 1.5%;
@@ -431,7 +436,8 @@ section.wrapper > p:last-child {
     }
     
     #consumer div.customer-experience-descriptors h2 {
-      margin-top: 14%;
+      margin-top: 7%;
+      margin-bottom: 26%;
     }
 
     #monetize-merchant p:first-of-type {
@@ -535,7 +541,8 @@ section.wrapper > p:last-child {
     }
     
     #consumer div.customer-experience-descriptors h2 {
-      margin-top: 10%;
+      margin-top: 6%;
+      margin-bottom: 24%;
     }
 
     #monetizing h2 {
@@ -630,7 +637,8 @@ section.wrapper > p:last-child {
     }
     
     #consumer div.customer-experience-descriptors h2 {
-      margin-top: 7%;
+      margin-top: 5%;
+      margin-bottom: 21%;
     }
 }
 
@@ -640,7 +648,8 @@ section.wrapper > p:last-child {
     }
     
     #consumer div.customer-experience-descriptors h2 {
-      margin-top: 6%;
+      margin-top: 4%;
+      margin-bottom: 18%;
     }
 }
 
@@ -651,5 +660,6 @@ section.wrapper > p:last-child {
     
     #consumer div.customer-experience-descriptors h2 {
       margin-top: 3%;
+      margin-bottom: 15%;
     }
 }
