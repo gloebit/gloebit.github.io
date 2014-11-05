@@ -187,13 +187,6 @@ section.wrapper > p:last-child {
     max-width: 56%;
 }
 
-#consumer img {
-    float: right;
-    box-sizing: border-box;
-    max-width: 40%;
-    margin: 10px 2%;
-}
-
 #consumer p:last-of-type {
     display: block;
     text-align: center;
@@ -431,13 +424,6 @@ section.wrapper > p:last-child {
     #consumer h1+p {
         float: none;
         max-width: none;
-    }
-
-    #consumer img {
-        display: block;
-        float: none;
-        max-width: 100%;
-        margin: 10px auto;
     }
 
     #monetize-consumer img {
