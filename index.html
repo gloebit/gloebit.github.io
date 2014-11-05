@@ -164,77 +164,13 @@ page_js: /javascripts/index.js
         <h2>Fun</h2>
       </div>
       
-      <!-- video with controls visible below video after clicking play.  title & share tools also visible after play on hover -->
-      <div class="video-wrapper consumer-experience-video">
-        <div class="video-container">
-          <iframe width="560" height="315" src="//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;controls=2&amp;showinfo=1&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
-          </div>
-      </div>
-      
-      <!-- video with controls visible below video after clicking play.  title & share tools also visible after play on hover -->
+      <!-- video with controls visible overlayed on video after clicking play.  title & share tools also visible after play on hover.  Looking forward to returning to this when YT fixes controls=2 to hav good, consistent thumbnail and an onHover play button that works consistently on firefox.
       <div class="video-wrapper consumer-experience-video">
         <div class="video-container video-controls-overlayed">
           <iframe width="560" height="315" src="//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;controls=2&amp;showinfo=1&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
-      
-      <!-- video with controls visible on hover after clicking play.  Title & share tools not visible -->
-      <div class="video-wrapper consumer-experience-video">
-        <div class="video-container video-controls-overlayed">
-          <iframe width="512" height="288" src="//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;showinfo=0&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-      
-      <!-- video with controls visible on hover after clicking play.  Title & share tools are visible -->
-      <div class="video-wrapper consumer-experience-video">
-        <div class="video-container video-controls-overlayed">
-          <iframe width="512" height="288" src="//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;showinfo=1&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      
-      <div class="video-wrapper consumer-experience-video">
-        <div class="video-container video-controls-overlayed">
-          <div onclick="thevid3=document.getElementById('thevideo3'); playMe(); this.style.display='none'; testiframe=document.getElementById('myiframe')">
-            <img src="https://i.ytimg.com/vi/rOd4vGJKF7M/maxresdefault.jpg" style="cursor:pointer" />
-          </div>
-          <div id="thevideo3">
-            <iframe id="myiframe" width="560" height="315" src="//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;controls=2&amp;showinfo=1&amp;modestbranding=1&amp;enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-      
-      <div class="video-wrapper consumer-experience-video">
-        <div class="video-container video-controls-overlayed">
-          <div onclick="myIframe=document.getElementById('consumer-experience-video-iframe');
-                        myIframe.style.display='block';
-                        myIframe.src='//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;controls=2&amp;showinfo=1&amp;modestbranding=1&amp;autoplay=1';
-                        this.style.display='none'">
-            <img src="https://i.ytimg.com/vi/rOd4vGJKF7M/maxresdefault.jpg" style="cursor:pointer" />
-          </div>
-          <iframe id="consumer-experience-video-iframe" style="display: none;" width="560" height="315" src="//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;controls=2&amp;showinfo=1&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-      
-      <div class="video-wrapper consumer-experience-video">
-        <div class="video-container video-controls-overlayed">
-          <div onclick="myIframe=document.getElementById('consumer-experience-video-iframe2');
-            myIframe.style.display='block';
-            myIframe.src='//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;controls=2&amp;showinfo=1&amp;modestbranding=1&amp;autoplay=1';
-            this.style.display='none'">
-            <img src="https://i.ytimg.com/vi/rOd4vGJKF7M/maxresdefault.jpg" style="cursor:pointer" />
-            <div style="transform:scale(0.8); width:85px; height:60px; margin-left:-42px; margin-top:-30px; position:absolute; top:50%; left:50%;">
-              <svg style="cursor:pointer; color:purple;">
-                <path class="video-play-button-overlay" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" d="M84.15,26.4v6.35c0,2.833-0.15,5.967-0.45,9.4c-0.133,1.7-0.267,3.117-0.4,4.25l-0.15,0.95c-0.167,0.767-0.367,1.517-0.6,2.25c-0.667,2.367-1.533,4.083-2.6,5.15c-1.367,1.4-2.967,2.383-4.8,2.95c-0.633,0.2-1.316,0.333-2.05,0.4c-0.767,0.1-1.3,0.167-1.6,0.2c-4.9,0.367-11.283,0.617-19.15,0.75c-2.434,0.034-4.883,0.067-7.35,0.1h-2.95C38.417,59.117,34.5,59.067,30.3,59c-8.433-0.167-14.05-0.383-16.85-0.65c-0.067-0.033-0.667-0.117-1.8-0.25c-0.9-0.133-1.683-0.283-2.35-0.45c-2.066-0.533-3.783-1.5-5.15-2.9c-1.033-1.067-1.9-2.783-2.6-5.15C1.317,48.867,1.133,48.117,1,47.35L0.8,46.4c-0.133-1.133-0.267-2.55-0.4-4.25C0.133,38.717,0,35.583,0,32.75V26.4c0-2.833,0.133-5.95,0.4-9.35l0.4-4.25c0.167-0.966,0.417-2.05,0.75-3.25c0.7-2.333,1.567-4.033,2.6-5.1c1.367-1.434,2.967-2.434,4.8-3c0.633-0.167,1.333-0.3,2.1-0.4c0.4-0.066,0.917-0.133,1.55-0.2c4.9-0.333,11.283-0.567,19.15-0.7C35.65,0.05,39.083,0,42.05,0L45,0.05c2.467,0,4.933,0.034,7.4,0.1c7.833,0.133,14.2,0.367,19.1,0.7c0.3,0.033,0.833,0.1,1.6,0.2c0.733,0.1,1.417,0.233,2.05,0.4c1.833,0.566,3.434,1.566,4.8,3c1.066,1.066,1.933,2.767,2.6,5.1c0.367,1.2,0.617,2.284,0.75,3.25l0.4,4.25C84,20.45,84.15,23.567,84.15,26.4z M33.3,41.4L56,29.6L33.3,17.75V41.4z">
-                </path>
-                <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="33.3,41.4 33.3,17.75 56,29.6">
-                </polygon>
-              </div>
-            </svg>
-          </div>
-          <iframe id="consumer-experience-video-iframe2" style="display: none;" width="560" height="315" src="//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;controls=2&amp;showinfo=1&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
+      -->
       
       <div class="video-wrapper consumer-experience-video">
         <div class="video-container video-controls-overlayed">
@@ -249,9 +185,6 @@ page_js: /javascripts/index.js
           <iframe id="consumer-experience-video-iframe3" style="display: none;" width="560" height="315" src="//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;controls=2&amp;showinfo=1&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
-
-
-
 
       <p>
         <a href="/user-auth/">Take a look at an Example&nbsp;Authorization&nbsp;Flow</a>
