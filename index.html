@@ -164,15 +164,15 @@ page_js: /javascripts/index.js
         <h2>Fun</h2>
       </div>
       
-      <!-- video with controls visible overlayed on video after clicking play.  title & share tools also visible after play on hover.  Looking forward to returning to this when YT fixes controls=2 to hav good, consistent thumbnail and an onHover play button that works consistently on firefox.
+      <!-- video with controls visible overlayed on video after clicking play.  title & share tools not visible after play on hover.  interested in controls=2 showinfo=1 when consistent thumbnail and an onHover play button that works consistently on firefox.-->
       <div class="video-wrapper consumer-experience-video">
         <div class="video-container video-controls-overlayed">
-          <iframe width="560" height="315" src="//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;controls=2&amp;showinfo=1&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
-      -->
       
-      <!-- displays thumbnail in img below.  On click, swaps to video and reloads video with auto-play -->
+      
+      <!-- displays thumbnail in img below.  On click, swaps to video and reloads video with auto-play
       <div class="video-wrapper consumer-experience-video">
         <div class="video-container video-controls-overlayed">
           <div onclick="myIframe=this.parentElement.getElementsByTagName('iframe')[0];
@@ -187,6 +187,7 @@ page_js: /javascripts/index.js
           <iframe style="display: none;" width="560" height="315" src="//www.youtube.com/embed/rOd4vGJKF7M?rel=0&amp;controls=2&amp;showinfo=1&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
+       -->
 
       <p>
         <a href="/user-auth/">Take a look at an Example&nbsp;Authorization&nbsp;Flow</a>
