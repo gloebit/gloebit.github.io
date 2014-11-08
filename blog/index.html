@@ -3,9 +3,9 @@ layout: dev
 no_sections: true
 ---
 
-<section class="posts wrapper">
+<div class="posts">
   {% for post in site.posts %}
-    <article class="post">    
+    <section class="post wrapper">
       
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
@@ -14,6 +14,6 @@ no_sections: true
       </div>
       
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
+    </section>
   {% endfor %}
-</section>
+</div>
