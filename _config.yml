@@ -1,5 +1,31 @@
 
+markdown: kramdown
 highlighter: pygments
 
 gems:
   - jekyll-redirect-from
+  - jemoji
+  - jekyll-sitemap  # Create a sitemap using the official Jekyll sitemap gem
+
+# Exclude these files from your production _site
+exclude:
+    - Gemfile
+    - Gemfile.lock
+    - LICENSE
+    - README.md
+
+#
+# Settings for blog. 
+#
+
+# Website URL, used for Sitemap.xml and RSS feed.
+url: http://dev.gloebit.com
+
+# Provide path to blog area. Make permalink path match the blogpath prefix...
+blogpath: /blog
+permalink: /blog/:title/
+
+# Set the Sass partials directory, as we're using @imports
+sass:
+  sass_dir: _scss
+  style: :expanded # You might prefer to minify using :compressed
