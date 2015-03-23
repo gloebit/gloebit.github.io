@@ -2,7 +2,7 @@
 layout: post
 title: "Terminology: Virtual, Digital, Crypto, Bitcoin, Currency ???"
 author: colosi
-published: false
+published: true
 ---
 
 Test Terminology blog.
