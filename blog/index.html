@@ -8,7 +8,9 @@ no_sections: true
     <section class="post wrapper">
       
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-      <h2>{{post.author.display_name}}</h2>
+      
+      {% assign author = site.authors[post.author] %}
+      <h2>{{author.display_name}}</h2>
 
       <div class="entry">
         {{ post.content | truncatewords:40}}
