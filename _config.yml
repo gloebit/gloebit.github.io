@@ -29,3 +29,18 @@ permalink: /blog/:title/
 sass:
   sass_dir: _scss
   style: :expanded # You might prefer to minify using :compressed
+  
+# Define the site authors
+authors:
+  colosi:
+    name: Christopher M. Colosi
+    display_name: Christopher M. Colosi
+    gravatar: ddcf9199d7d2185210d35155debb1ba6
+    web: http://dev.gloebit.com
+    twitter: @cmcolosi
+    linkedin: christophercolosi
+    github: colosi
+    company_twitter: @gloebit
+    company_github: gloebit
+    company_linkedin: gloebit
+    company_facebook: gloebit
