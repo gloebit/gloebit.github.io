@@ -12,8 +12,9 @@ no_sections: true
       {% assign author = site.authors[post.author] %}
       <h2>author section</h2>
       <h2>{{ author.display_name }}</h2>
-      <h2>{{ site.authors[post.author].display_name }}</h2>
+      <h2>{{ site.authors[colosi].display_name }}</h2>
       <h2>{{ (site.authors[post.author]).display_name }}</h2>
+      <h2>{{ post.author }}</h2>
 
       <div class="entry">
         {{ post.content | truncatewords:40}}
