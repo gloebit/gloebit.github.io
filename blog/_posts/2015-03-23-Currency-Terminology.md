@@ -35,20 +35,35 @@ A [virtual currency](http://en.wikipedia.org/wiki/Virtual_currency) is for use i
 Some would restrict the term virtual currency strictly to digital tokens which a user can purchase and/or sell for a government currency such as USD, focusing on the tie in to traditional payment methods.  I am much more liberal with the term, and use it for any platform specific medium of exchange, even those earned within the platform.  In my view, any reward system where you earn points instead of a dollar value, such as airline frequent flyer miles, is also a type of virtual currency.  Additionally, any in-game resource such as minerals, lumber or energy which is earned or mined and spent on in-game production is also a very simple virtual currency.
 
 ### Digital Currency###
+
 Whether or not the term [digital currency](https://en.wikipedia.org/wiki/Digital_currency) describes a superset including virtual currency as a subset, or is a complementary set distinct from virtual currency is up for debate.  Even the single Wikipedia page on the subject has both a section which [supports](https://en.wikipedia.org/wiki/Digital_currency#Definition) and one which [disputes](https://en.wikipedia.org/wiki/Digital_currency#Digital_versus_virtual_currency) overlap of the two.  
+
 I am of the school of thought which treats digital currency as a distinct set, separated from virtual currency by the breadth of intended use.  Whereas a virtual currency is restricted to use on a single platform, and tightly controlled by that platform, a digital currency is open for use by any platform, and control is outside the scope of a single platform.  A digital currency, by this definition, must supply a service, protocol, or interface for platforms to tie into.
+
 ### Centralization###
+
 The digital currency space is bifurcated into centralized and decentralized digital currency.  As opposed to the terms digital and virtual which refer to the breadth of availabiity of the currency, centralization refers to how the currency is managed.  
+
 In a centralized system, there is a single authority who at a minimum controls the money supply (amount of the currency in circulation), and generally also controls transaction processing and records, and User account creation, balances, and access.  All government fiat currencies are centralized.  The federal reserve bank is the central authority controlling the supply of US$.  By their nature, all virtual currencies are also centralized.
+
 In a decentralized system, there is no single authority with control over the system.  No entity has the power to create currency to grow the money supply.  Generally, some public process manages account creation and access and transaction processing and records, enabling peer-to-peer transactions.  Crypto-currencies are decentralized.  Precious metals may be considered a form of decentralized currency in the physical world. 
+
 ### Centralized Digital Currency###
+
 A centralized digital currency is for use across many platforms, but with a single central authority who oversees the access to and controls the currency.  This authority is responsible for granting platforms and consumers access to the currency, increasing or decreasing the amount of the currency in circulation, processing and recording transactions, and maintaining user account information.
+
 [Gloebits](http://dev.gloebit.com/monetize/#gloebits) are a centralized digital currency.  [Gloebit](https://www.gloebit.com) is the central authority which manages access to [gloebits](http://dev.gloebit.com/#monetizing) via a set of [web services](http://dev.gloebit.com).
+
 ### Decentralized Digital Currency###
+
 A decentralized digital currency is for use across many platforms, and has no single central authority who oversees the access to and controls the currency.  Some process must be defined and agreed upon across the community of users of such a currency for how the money supply will be adjusted, transactions will be processed, and accounts will be maintained.
+
 ### Crypto-currency###
+
 A [crypto-currency](http://en.wikipedia.org/wiki/Cryptocurrency) is a specific flavor of a decentralized digital currency.  Complex cryptography, along with a public record of all previous transactions, or [block-chain](https://en.wikipedia.org/wiki/Bitcoin#Block_chain), is used to verify a transaction between users rather than a central authority.  Production of new currency is predefined via an algorithm and is awarded to users (owners of computer nodes) who solve the cryptographic equations required to process the transacitons.  Since growth of the money supply is pre-defined and finite, production is akin to mining a precious metal and these users are often referred to as miners.  Since the amount of money supply in circulation is not adjusted by a central authority according to demand, the value of crypto-currenies is quite volatile, leading to speculation in the market.  The behavior of crypto-currencies and the activity that behavior enables is much more akin to the commodity market than the currency market, and so, I prefer to refer to them as _crypto-commodities_.  
+
 ### Bitcoin and altcoins###
+
 [Bitcoin](http://en.wikipedia.org/wiki/Bitcoin) is specific instance of crypto-currency and was the first to reach subtantial usage.  Since the creation of Bitcoin, many alternative crypto-currencies have popped up, bringing rise to the term "altcoin" which refers to any crypto-currency other than Bitcoin.
 
 
