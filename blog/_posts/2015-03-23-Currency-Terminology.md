@@ -12,7 +12,7 @@ This question has arisen in some form in almost every interview, advising sessio
 
 ## First, a little history from my perspective:##
 
-### At Second Life, we called it virtual currency.###
+### At Second Life, we called it virtual currency. ###
 From 2007 through 2011, I had the pleasure of working on Linden Lab's Second Life virtual world and at some point, I became the defacto federal reserve chair, running the economy and maintaining the money supply much like the Fed of the USA.  The product may have been virtual, but the economy was very real.  At over *$500 million* in user-to-user transactions per year, it sat around 185th in the [list of countries by GDP](http://en.wikipedia.org/wiki/List_of_countries_by_GDP_%28nominal%29#Lists), in the company of some small island nations.  Many residents (what we called the Second Life users) earned a full-time living off of the product in Linden Dollars, the virtual currency of the platform, which could be "cashed out", or exchanged into USD.  Still, we called it a _virtual_ currency because it was playfully used only in our world, because it only existed in this digital space of bits, and because we wanted to differentiate it from the currencies of the countries around the world.
 ### At Gloebit, we built a digital currency.###
 In 2012, when I founded Gloebit, I made a very concious decision to replace the word _virtual_ with the word _digital_.  To many, these meant the same thing, but I wanted to differentiate gloebits from linden dollars.  I was making a long-term branding play.  Gloebits are not just for games, for some playful space.  They would be a payment method, a mechanism for commerce in many spaces.  The whole concept of Gloebit is a single digital currency which spans many products and platforms, not just usable in a single virtual world or game.  I wanted to retain the concept that this was not printed, had all the benefits and cost savings of existing only in the digital ether, but I wanted to put a stake in the ground about the breadth of its intended usage.  Gloebits were not a walled garden for use in my products; they were an open service for use by all companies and products.
@@ -49,6 +49,9 @@ build ven diagram of sorts
 build a 2 vector graph (centrally managed, distributed; single space, cross platform)
 centralized vs decentralized
 centralized crypto-currency?
+second space after period
+author on blog page
+
 
 terms are complex because they are used to describe bits vs printed, broad vs single platform; how money supply is controlled, how transactions process; how accounts are maintained.
 
