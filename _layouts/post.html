@@ -10,21 +10,15 @@ layout: dev
     <p>
       <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}?s=40">
       <span class="author">{{ author.display_name }}</span>
+      {% if author.twitter %}
       <a href="http://www.twitter.com/{{ author.twitter }}" class="social-tile icon twitter" target="_blank" title="Twitter">&#xf116;</a>
-      <li>Follow on:
-            <ul class="social-links">
-              <li class="social-tile"><a href="http://www.twitter.com/{{ author.twitter }}" class="icon twitter" target="_blank" title="Twitter">&#xf116;</a></li>
-              <li class="social-tile"><a href="http://www.linkedin.com/in/{{ author.linkedin }}" class="icon linkedin" target="_blank" title="LinkedIn">&#xf110;</a></li>
-              <li class="social-tile"><a href="https://plus.google.com/+Gloebit" class="icon googleplus" target="_blank" title="Google+">&#xf10c;</a></li>
-            </ul>
-          </li>
-      <a href="www.twitter.com/{{ author.twitter }}">
-        <i class="icon twitter"></i>
-        &#xf116;
-      </a>
-      <a href="www.github.com/{{ author.github }}">
-        <i class="ico-github"></i>
-      </a>
+      {% endif %}
+      {% if author.twitter %}
+      <a href="http://www.linkedin.com/in/{{ author.linkedin }}" class="social-tile icon linkedin" target="_blank" title="LinkedIn">&#xf110;</a>
+      {% endif %}
+      {% if author.twitter %}
+      <a href="https://plus.google.com/+{{ author.google_plus }}" class="social-tile icon googleplus" target="_blank" title="Google+">&#xf10c;</a>
+      {% endif %}
     </p>
   </div>
   <div class="date">
