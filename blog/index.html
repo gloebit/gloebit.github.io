@@ -25,6 +25,10 @@ no_sections: true
         {{ post.excerpt }}
       </div>
       
+      <div class="entry">
+        {{ post.excerpt | markdownify }}
+      </div>
+      
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
     </section>
   {% endfor %}
