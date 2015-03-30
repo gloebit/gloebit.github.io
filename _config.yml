@@ -40,3 +40,6 @@ authors:
     twitter: cmcolosi
     linkedin: christophercolosi
     github: colosi
+    
+# Define tag to use as end of excerpt
+excerpt_separator: <!--end_excerpt-->
