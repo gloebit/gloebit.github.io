@@ -19,6 +19,9 @@ no_sections: true
         </p>
       </div>
       {% endif %}
+      <div class="date">
+        Written on {{ page.date | date: "%B %e, %Y" }}
+      </div>
 
       <div class="entry">
         {% if post.use_excerpt_separator %}
