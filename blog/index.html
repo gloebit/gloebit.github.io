@@ -9,6 +9,7 @@ no_sections: true
       
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
       
+      <!-- if author exists, display author info -->
       {% assign author = site.authors[post.author] %}
       {% if author %}
       <div class="author">
@@ -20,10 +21,12 @@ no_sections: true
       {% endif %}
 
       <div class="entry">
-        {% if post.excerpt_word_count %}
-          {{ post.content | truncatewords:post.excerpt_word_count }}
+        {% if post.use_excerpt_separator %}
+          {{ post.excerpt }}  <!-- excerpt - emoji do not work -->
+        {% elseif post.excerpt_word_count %}
+          {{ post.content | truncatewords:post.excerpt_word_count }}  <!-- truncate, not excerpt - emoji - word count from post -->
         {% else %}
-          {{ post.content | truncatewords:site.default_excerpt_word_count }}
+          {{ post.content | truncatewords:site.default_excerpt_word_count }} <!-- truncate, not excerpt - emoji - word count from config.yml -->
         {% endif %}
       </div>
       
