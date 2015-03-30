@@ -10,10 +10,23 @@ no_sections: true
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
       
       {% assign author = site.authors[post.author] %}
-      <h2>{{ author.display_name }}</h2>
+      <div class="author">
+        <p>
+          <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}?s=40">
+          <span class="author">{{ author.display_name }}</span>
+        </p>
+      </div>
 
       <div class="entry">
         {{ post.content | truncatewords:40}}
+      </div>
+      
+      <div class="entry">
+        {{ post.content | strip_html | truncatewords:40}}
+      </div>
+      
+      <div class="entry">
+        {{ post.excerpt }}
       </div>
       
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
