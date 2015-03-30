@@ -17,7 +17,8 @@
     
     <!-- Blog post authorship details. -->
     <!-- Output author details if some exist. -->
-    {% if page.author.google_plus %}
+    {% assign author = site.authors[page.author] %}
+    {% if author.google_plus %}
         <!-- Link to the authors Google page. -->
         <link rel="author" href="{{ author.google_plus }}?rel=author" />
     {% endif %}
