@@ -8,7 +8,7 @@ tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin]
 
 **"Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?"**
 
-This question has arisen in some form in almost every interview, advising session, talk, or just plain conversation in which I've partaken regarding [Gloebit](https://www.gloebit.com/) and the field of [FinTech](http://en.wikipedia.org/wiki/Financial_technology) (financial technology).  My answer has always been **"No!"**, but industry consensus has been lacking on some specifics of the terminology.  My goal here is to educate where consensus exists and promote some concepts toward consesus.
+This question has arisen in some form in almost every interview, advising session, talk, or just plain conversation in which I've partaken regarding [Gloebit](https://www.gloebit.com/) and the field of [FinTech](http://en.wikipedia.org/wiki/Financial_technology) (financial technology).  My answer has always been **"No!"**, but industry consensus has been lacking on some specifics of the terminology.  My goal here is to educate where consensus exists and promote some concepts toward consensus.
 
 <!--end_excerpt-->
 
@@ -64,7 +64,7 @@ A decentralized digital currency is for use across many platforms, and has no si
 
 A [crypto-currency](http://en.wikipedia.org/wiki/Cryptocurrency) is a specific flavor of a decentralized digital currency.  Complex cryptography, along with a public record of all previous transactions, or [block-chain](https://en.wikipedia.org/wiki/Bitcoin#Block_chain), is used to verify a transaction between users rather than a central authority.  Production of new currency is predefined via an algorithm and is awarded to users (owners of computer nodes) who solve the cryptographic equations required to process the transacitons.
 
-Because growth of a standard crypto-currency money supply is finite and many users are doing work to try to attain the next "nugget" of currency produced, production of currency has been likened to the mining a precious metals and these users are often referred to as miners.  Since the amount of money supply in circulation is handled in this predefined fashion, rather than adjusted by a central authority according to demand, the value of a unit of a crypto-curreny can be quite volatile, leading to speculation in the market.  The behavior of crypto-currencies and the activity that behavior enables is much more akin to the commodity market than the currency market, and so, I prefer to refer to them as _crypto-commodities_.  
+Because growth of a standard crypto-currency money supply is finite and many users are doing work to try to attain the next "nugget" of currency produced, production of currency has been likened to the mining of precious metals and these users are often referred to as miners.  Since the amount of money supply in circulation is handled in this predefined fashion, rather than adjusted by a central authority according to demand, the value of a unit of a crypto-curreny can be quite volatile, leading to speculation in the market.  The behavior of crypto-currencies and the activity that behavior enables is much more akin to the commodity market than the currency market, and so, I prefer to refer to them as _crypto-commodities_.  
 
 ### Bitcoin and altcoins ###
 
