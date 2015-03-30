@@ -12,6 +12,9 @@ layout: dev
       <span class="author">{{ author.display_name }}</span>
     </p>
   </div>
+  <div class="date">
+    Written on {{ page.date | date: "%B %e, %Y" }}
+  </div>
 </section>
 <section class="post wrapper">
   <div class="entry">
