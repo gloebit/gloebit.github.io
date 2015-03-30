@@ -23,7 +23,7 @@ no_sections: false
       <div class="entry">
         {% if post.use_excerpt_separator %}
           {{ post.excerpt }}  <!-- excerpt - emoji do not work -->
-        {% elseif post.excerpt_word_count %}
+        {% elsif post.excerpt_word_count %}
           {{ post.content | truncatewords:post.excerpt_word_count }}  <!-- truncate, not excerpt - emoji - word count from post -->
         {% else %}
           {{ post.content | truncatewords:site.default_excerpt_word_count }} <!-- truncate, not excerpt - emoji - word count from config.yml -->
