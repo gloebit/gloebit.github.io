@@ -18,15 +18,11 @@ no_sections: true
       </div>
 
       <div class="entry">
-        {{ post.content | truncatewords:40}}
-      </div>
-      
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
-      
-      <div class="entry">
-        {{ post.excerpt | markdownify | emojify }}
+        {% if {{ post.excerpt_word_count }} %}
+          {{ post.content | truncatewords:{{ post.excerpt_word_count }} }}
+        {% else %}
+          {{ post.content | truncatewords:{{ site.default_excerpt_word_count }} }}
+        {% endif %}
       </div>
       
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
