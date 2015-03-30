@@ -3,8 +3,8 @@ layout: post
 title: "Terminology: Virtual, Digital, Crypto, Bitcoin, Currency ???"
 author: colosi
 published: true
-tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin]
 excerpt_separator: <!--endexcerpt-->
+tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin]
 ---
 
 ## "Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?" ##
