@@ -4,11 +4,13 @@ title: "Terminology: Virtual, Digital, Crypto, Bitcoin, Currency ???"
 author: colosi
 published: true
 tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin]
+excerpt_separator: <!--endexcerpt-->
 ---
 
 ## "Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?" ##
 
-This question has arisen in some form in almost every interview, advising session, talk, or just plain conversation in which I've partaken regarding [Gloebit](https://www.gloebit.com/) and the field of [FinTech](http://en.wikipedia.org/wiki/Financial_technology) (financial technology).  My answer has always been *"No!"*, but <b>industry</b> consensus has been lacking on some specifics of the terminology.  My goal here is to educate where consensus exists and promote some concepts toward consesus.
+This question has arisen in some form in almost every interview, advising session, talk, or just plain conversation in which I've partaken regarding [Gloebit](https://www.gloebit.com/) and the field of [FinTech](http://en.wikipedia.org/wiki/Financial_technology) (financial technology).  My answer has always been <b>*"No!"*</b>, but industry consensus has been lacking on some specifics of the terminology.  My goal here is to educate where consensus exists and promote some concepts toward consesus.
+<!--endexcerpt-->
 
 ## First, a little history from my perspective: ##
 
