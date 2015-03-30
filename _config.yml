@@ -41,5 +41,6 @@ authors:
     linkedin: christophercolosi
     github: colosi
     
-# Define tag to use as end of excerpt
-excerpt_separator: <!--end_excerpt-->
+# Define default word count to use for excerpt if not included in front matter of post
+default_excerpt_word_count: 50
+# Would prefer to use excerpt_separator, but doesn't work with emoji in post.excerpt
