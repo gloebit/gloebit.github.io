@@ -10,12 +10,14 @@ no_sections: true
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
       
       {% assign author = site.authors[post.author] %}
+      {% if author %}
       <div class="author">
         <p>
           <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}?s=40" />
           <span class="author">{{ author.display_name }}</span>
         </p>
       </div>
+      {% endif %}
 
       <div class="entry">
         {% if post.excerpt_word_count %}
