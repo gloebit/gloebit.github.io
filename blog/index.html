@@ -19,9 +19,9 @@ no_sections: true
 
       <div class="entry">
         {% if post.excerpt_word_count %}
-          {{ post.content | truncatewords:{{ post.excerpt_word_count }} }}
+          {{ post.content | truncatewords:post.excerpt_word_count }}
         {% else %}
-          {{ post.content | truncatewords:{{ site.default_excerpt_word_count }} }}
+          {{ post.content | truncatewords:site.default_excerpt_word_count }}
         {% endif %}
       </div>
       
