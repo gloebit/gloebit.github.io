@@ -43,8 +43,7 @@ layout: dev
 <section class="post wrapper">
 
 <!-- Twitter Tweet Button -->
-    <p>page tags 2 ={{ page.tags[3] }}</p>
-    <p>page tags ={{ page.tags.split(',') }}</p>
+    <p>page tags ={{ ','.join(page.tags) }}</p>
     <p>author twitter ={{ author.twitter }}</p>
   <a 
     href="https://twitter.com/intent/tweet?button_hashtag={{ page.tags[3] }}" 
