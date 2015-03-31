@@ -1,10 +1,11 @@
 ---
 layout: dev
 ---
-
+<!-- Post Header Info -->
 <section class="wrapper">
   <h1>{{ page.title }}</h1>
   
+  <!-- Author Details -->
   {% assign author = site.authors[page.author] %}
   <div class="author">
     <p>
@@ -29,15 +30,30 @@ layout: dev
       {% endif %}
     </p>
   </div>
+  
+  <!-- Date published -->
   <div class="date">
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
 </section>
+
+<!-- Post Content -->
 <section class="post wrapper">
+  <!-- Twitter Tweet Button -->
+  <a 
+    href="https://twitter.com/intent/tweet?button_hashtag=TwitterStories" 
+    class="twitter-hashtag-button" 
+    data-related="gloebit,{{ author.twitter }}" 
+    data-url="http://dev.gloebit.com/blog/title">
+    Tweet #TwitterStories
+  </a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  
   <div class="entry">
     {{ content }}
   </div>
 
+  <!-- Date published at bottom -->
   <div class="date">
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
