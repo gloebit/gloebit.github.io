@@ -37,15 +37,18 @@ layout: dev
   </div>
   
     <!-- Twitter Tweet Button -->
-    <p>page tags 0 ={{ page.tags[0] }}</p>
-    <p>:title ={{ :title }}</p>
+    <p>page tags 0 ={{ page.tags[1] }}</p>
+    <p>page tags ={{ page.tags }}</p>
+    <p>title ={{ title }}</p>
     <p>author twitter ={{ author.twitter }}</p>
+    <p>site url ={{ site.url }}</p>
+    <p>page url ={{ page.url }}</p>
   <a 
-    href="https://twitter.com/intent/tweet?button_hashtag={{ page.tags[0] }}" 
+    href="https://twitter.com/intent/tweet?button_hashtag={{ page.tags[1] }}" 
     class="twitter-hashtag-button" 
     data-related="gloebit, {{ author.twitter }}" 
-    data-url="http://dev.gloebit.com/blog/{{ :title }}">
-    Tweet #{{ page.tags[0] }}
+    data-url="http://dev.gloebit.com/blog/{{ page.url }}">
+    Tweet #{{ page.tags[1] }}
   </a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
