@@ -15,12 +15,39 @@
 
     <link rel="stylesheet" href="https://gloebit-static-prod-0.s3.amazonaws.com/static-1/css/icons.css">
     
+    <!-- SEO & Sharing data -->
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+    <meta property=”og:url” content=”{{ site.url }}{{ page.url }}” />
+    <meta name=”twitter:url” content=”{{ site.url }}{{ page.url }}” />
+    
+    <meta property="og:site_name" content="Gloebit" />
+    <meta name="twitter:site" content="@gloebit" />
+    
+    {% if page.title %}
+      <meta property="og:title" content="{{ page.title }}" />
+      <meta name="twitter:title" content="{{ page.title }}" />
+    {% endif %}
+    {% if page.description %}
+      <meta property="og:description" content="{{ page.description }}" />
+      <meta name="twitter:description" content="{{ page.description }}" />
+    {% endif %}
+    {% if page.image %}
+      <meta property="og:image" content="{{ page.image }}" />
+      <meta name="twitter:image:src" content="{{ page.image }}" />
+    {% endif %}
+    
+    <!-- add og:type -->
+    <!-- add twitter:card -->
+    
     <!-- Blog post authorship details. -->
     <!-- Output author details if some exist. -->
     {% assign author = site.authors[page.author] %}
     {% if author.google_plus %}
         <!-- Link to the authors Google page. -->
         <link rel="author" href="https://plus.google.com/+{{ author.google_plus }}?rel=author" />
+    {% endif %}
+    {% if author.twitter %}
+      <meta name="twitter:creator" content="@{{ author.twitter }}" />
     {% endif %}
 
     <!--[if lt IE 9]>
