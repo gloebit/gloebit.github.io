@@ -47,10 +47,11 @@ layout: dev
     <p>page tags ={{ page.tags.split(',') }}</p>
     <p>author twitter ={{ author.twitter }}</p>
   <a 
-    href="https://twitter.com/intent/tweet?button_hashtag=a,b,c,d" 
+    href="https://twitter.com/intent/tweet?button_hashtag={{ page.tags[3] }}" 
     class="twitter-hashtag-button" 
     data-related="gloebit,{{ author.twitter }}"
-    hashtags="a,b,c,d"
+    data-hashtags="a,b,c,d"
+    data-text="{{ page.title }}"
     data-url="{{site.url }}{{ page.url }}">
     Tweet #{{ page.tags[3] }}
   </a>
