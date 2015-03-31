@@ -36,26 +36,25 @@ layout: dev
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
   
-    <!-- Twitter Tweet Button -->
-    <p>page tags 2 ={{ page.tags[2] }}</p>
-    <p>page tags ={{ page.tags }}</p>
-    <p>title ={{ title }}</p>
-    <p>author twitter ={{ author.twitter }}</p>
-    <p>site url ={{ site.url }}</p>
-    <p>page url ={{ page.url }}</p>
-  <a 
-    href="https://twitter.com/intent/tweet?button_hashtag={{ page.tags[2] }}" 
-    class="twitter-hashtag-button" 
-    data-related="gloebit,{{ author.twitter }}" 
-    data-url="{{site.url }}{{ page.url }}">
-    Tweet #{{ page.tags[2] }}
-  </a>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
+    
 </section>
 
 <!-- Post Content -->
 <section class="post wrapper">
+
+<!-- Twitter Tweet Button -->
+    <p>page tags 2 ={{ page.tags[3] }}</p>
+    <p>page tags ={{ page.tags }}</p>
+    <p>author twitter ={{ author.twitter }}</p>
+  <a 
+    href="https://twitter.com/intent/tweet?button_hashtag={{ page.tags[3] }}" 
+    class="twitter-hashtag-button" 
+    data-related="gloebit,{{ author.twitter }}" 
+    data-url="{{site.url }}{{ page.url }}">
+    Tweet #{{ page.tags[3] }}
+  </a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
   
   <div class="entry">
     {{ content }}
