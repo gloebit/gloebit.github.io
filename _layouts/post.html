@@ -16,17 +16,18 @@ layout: dev
         <a class="twitter-follow-button"
           href="https://twitter.com/{{ author.twitter }}"
           data-show-count="false"
-          data-lang="en">
+          data-lang="en"
+          rel="author">
           Follow @{{ author.twitter }}
         </a>
         <script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
         <!-- a href="http://www.twitter.com/{{ author.twitter }}" class="social-tile icon twitter" target="_blank" title="Twitter">&#xf116;</a> -->
       {% endif %}
       {% if author.twitter %}
-      <a href="http://www.linkedin.com/in/{{ author.linkedin }}" class="social-tile icon linkedin" target="_blank" title="LinkedIn">&#xf110;</a>
+      <a href="http://www.linkedin.com/in/{{ author.linkedin }}" rel="author" class="social-tile icon linkedin" target="_blank" title="LinkedIn">&#xf110;</a>
       {% endif %}
       {% if author.twitter %}
-      <a href="https://plus.google.com/+{{ author.google_plus }}" class="social-tile icon googleplus" target="_blank" title="Google+">&#xf10c;</a>
+      <a href="https://plus.google.com/+{{ author.google_plus }}" rel="author" class="social-tile icon googleplus" target="_blank" title="Google+">&#xf10c;</a>
       {% endif %}
     </p>
   </div>
