@@ -23,10 +23,21 @@ layout: dev
         <script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
         <!-- a href="http://www.twitter.com/{{ author.twitter }}" class="social-tile icon twitter" target="_blank" title="Twitter">&#xf116;</a> -->
       {% endif %}
-      {% if author.twitter %}
+      {% if author.facebook %}
+        <!-- Display Facebook Follow Button -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=544263825590034&version=v2.3";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-follow" 
+          data-href="https://www.facebook.com/{{ author.facebook }}" 
+          data-colorscheme="light" 
+          data-layout="standard" 
+          data-show-faces="true">
+        </div>
+      {% endif %}
+      {% if author.linkedin %}
       <a href="http://www.linkedin.com/in/{{ author.linkedin }}" rel="author" class="social-tile icon linkedin" target="_blank" title="LinkedIn">&#xf110;</a>
       {% endif %}
-      {% if author.twitter %}
+      {% if author.google_plus %}
       <a href="https://plus.google.com/+{{ author.google_plus }}" rel="author" class="social-tile icon googleplus" target="_blank" title="Google+">&#xf10c;</a>
       {% endif %}
     </p>
