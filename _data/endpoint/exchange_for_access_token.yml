@@ -21,7 +21,7 @@ param:
           desc: Authorization Code received via the Authorize request.
         - name: grant_type
           desc: |
-            Possible values: "code".<br>
+            Possible values: "authorization_code".<br>
             Any other value will result in an error.
         - name: scope
           desc: Should match the scope provided by the application in the Authorize request.
