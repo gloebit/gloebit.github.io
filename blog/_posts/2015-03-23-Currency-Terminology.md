@@ -6,6 +6,9 @@ published: true
 tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin]
 use_excerpt_separator: true
 no_sections: true
+description: "Achieving consensus on digital currency terminology."
+hashtags: [DigitalCurrency, VirtualCurrency, CryptoCurrency, Bitcoin, Altcoin]
+image: "blah"
 ---
 
 **"Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?"**
