@@ -40,7 +40,13 @@ layout: dev
       <a href="http://www.linkedin.com/in/{{ author.linkedin }}" rel="author" class="social-tile icon linkedin" target="_blank" title="LinkedIn">&#xf110;</a>
       {% endif %}
       {% if author.google_plus %}
-      <a href="https://plus.google.com/+{{ author.google_plus }}" rel="author" class="social-tile icon googleplus" target="_blank" title="Google+">&#xf10c;</a>
+        <!-- Place this tag where you want the widget to render. -->
+        <div class="g-follow" 
+          data-annotation="bubble" 
+          data-height="20" 
+          data-href="//plus.google.com/+{{ author.google_plus }}" 
+          data-rel="author"></div>
+        <!-- a href="https://plus.google.com/+{{ author.google_plus }}" rel="author" class="social-tile icon googleplus" target="_blank" title="Google+">&#xf10c;</a> -->
       {% endif %}
     </p>
   </div>
@@ -95,3 +101,8 @@ layout: dev
 
   {% include disqus.html disqus_identifier=page.disqus_identifier %}
 </section>
+
+<!-- Script necessary for Google Plus follow and +1 buttons -->
+<!-- Place this tag in your head or just before your close body tag. -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
