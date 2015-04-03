@@ -6,61 +6,89 @@ layout: dev
 <div id="fb-root"></div>
 <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=544263825590034&version=v2.3";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
 
+<!-- LinkedIn Script necessary for profile and share button -->
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+
 <!-- Post Header Info -->
 <section class="wrapper">
   <h1>{{ page.title }}</h1>
   
   <!-- Author Details -->
   {% assign author = site.authors[page.author] %}
-  <div class="author">
-    <p>
-      <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}?s=80">
-      <span class="author">{{ author.display_name }}</span>
-      
-      {% if author.twitter %}
-        <!-- Display Twitter Follow Button -->
-        <a class="twitter-follow-button"
-          href="https://twitter.com/{{ author.twitter }}"
-          data-show-count="true"
-          data-lang="en"
-          rel="author">
-          Follow @{{ author.twitter }}
-        </a>
-        <script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
-        </script>
-      {% endif %}
-      
-      {% if author.facebook %}
-        <!-- Display Facebook follow button -->
-        <div class="fb-follow" 
-          data-href="https://www.facebook.com/{{ author.facebook }}" 
-          data-colorscheme="light" 
-          data-layout="button_count" 
-          data-show-faces="false">
-        </div>
-      {% endif %}
-      
-      {% if author.google_plus %}
-        <!-- Display Google Plus follow button. -->
-        <div class="g-follow" 
-          data-annotation="bubble" 
-          data-height="20" 
-          data-href="//plus.google.com/+{{ author.google_plus }}" 
-          data-rel="author">
-        </div>
-      {% endif %}
-      
+  
+  {% if author %}
+    <div class="author">
       {% if author.linkedin %}
-        <!-- Display LinkedIn follow button. -->
+        <!-- Display LinkedIn Profile with image. -->
         <script type="IN/MemberProfile" 
           data-id="https://www.linkedin.com/in/{{ author.linkedin }}" 
-          data-format="click" 
-          data-related="false" 
-          data-text="{{ author.display_name }}">
+          data-format="inline" 
+          data-related="false">
         </script>
+      {% else %}  <!-- No LinkedIn Profile.  Try gravatar and display name -->
+        {% if author.gravatar and author.display_name %}
+          <p>
+            <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}?s=80">
+            <span class="author">{{ author.display_name }}</span>
+          </p>
+        {% elsif author.gravatar %}
+          <p>
+            <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}?s=80">
+          </p>
+        {% elsif author.display_name %}
+          <p>
+            <span class="author">{{ author.display_name }}</span>
+          </p>
+        {% endif %}
       {% endif %}
-    </p>
-  </div>
+      
+      <div id="author_follow">
+        {% if author.twitter %}
+          <!-- Display Twitter Follow Button -->
+          <a class="twitter-follow-button"
+            href="https://twitter.com/{{ author.twitter }}"
+            data-show-count="true"
+            data-lang="en"
+            rel="author">
+            Follow @{{ author.twitter }}
+          </a>
+          <script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+          </script>
+        {% endif %}
+        
+        {% if author.facebook %}
+          <!-- Display Facebook follow button -->
+          <div class="fb-follow" 
+            data-href="https://www.facebook.com/{{ author.facebook }}" 
+            data-colorscheme="light" 
+            data-layout="button_count" 
+            data-show-faces="false">
+          </div>
+        {% endif %}
+        
+        {% if author.google_plus %}
+          <!-- Display Google Plus follow button. -->
+          <div class="g-follow" 
+            data-annotation="bubble" 
+            data-height="20" 
+            data-href="//plus.google.com/+{{ author.google_plus }}" 
+            data-rel="author">
+          </div>
+        {% endif %}
+        
+        {% if author.linkedin %}
+          <!-- Display LinkedIn follow button. -->
+          <script type="IN/MemberProfile" 
+            data-id="https://www.linkedin.com/in/{{ author.linkedin }}" 
+            data-format="click" 
+            data-related="false" 
+            data-text="{{ author.display_name }}">
+          </script>
+        {% endif %}
+      </div>  
+    </div>
+  {% endif %}   
+  <!-- end author section -->
   
   <!-- Date published -->
   <div class="date">
