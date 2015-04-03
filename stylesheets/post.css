@@ -1,0 +1,21 @@
+
+div.author {
+  display: block;
+}
+
+div.author-profile {
+  display: inline-block;
+}
+
+div.author-follow-container {
+  display: inline-block;
+}
+
+div.author-follow {
+  display: block;
+}
+
+div.author-follow.fb-button {
+  display: block;
+}
+
