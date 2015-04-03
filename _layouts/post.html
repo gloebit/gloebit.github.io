@@ -14,9 +14,18 @@ page_css: /stylesheets/post.css
 <section class="wrapper">
   <h1>{{ page.title }}</h1>
   
-  <!-- Author Details -->
+  <!-- Get Page Author -->
   {% assign author = site.authors[page.author] %}
   
+  <!-- Date published -->
+  <div class="date">
+    Posted on {{ page.date | date: "%B %e, %Y" }}
+    {% if author %}
+     by
+    {% endif %}
+  </div>
+  
+  <!-- Author detail section -->
   {% if author %}
     <div class="author">
       <div class="author-profile">
@@ -106,11 +115,6 @@ page_css: /stylesheets/post.css
     <!-- end author follow div -->
   {% endif %}   
   <!-- end author section -->
-  
-  <!-- Date published -->
-  <div class="date">
-    Posted on {{ page.date | date: "%B %e, %Y" }}
-  </div>
   
     
 </section>
