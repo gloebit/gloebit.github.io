@@ -64,7 +64,7 @@ layout: dev
   
   <!-- Date published -->
   <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
+    Posted on {{ page.date | date: "%B %e, %Y" }}
   </div>
   
     
@@ -116,7 +116,11 @@ layout: dev
 
   <!-- Date published at bottom -->
   <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
+    Posted 
+    {% if author.display_name %}
+    by {{ author.display_name }}
+    {% endif %}
+    on {{ page.date | date: "%B %e, %Y" }}
   </div>
 
   {% include disqus.html disqus_identifier=page.disqus_identifier %}
