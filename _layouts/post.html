@@ -109,11 +109,11 @@ page_css: /stylesheets/post.css
 <section class="post wrapper">
 
   <!-- set sharing counter positions -->
-  {% assign counter-pos = 'vertical' %} <!-- none, vertical, horizontal -->
-  {% if counter-pos=='vertical' %}
-    {% assign twitter-counter-pos = 'vertical' %}
-    {% assign fb-button-layout = 'box_count' %}
-  {% elsif counter-pos=="horizontal" %}
+  {% assign counter-pos = "vertical" %} <!-- none, vertical, horizontal -->
+  {% if counter-pos == "vertical" %}
+    {% assign twitter-counter-pos = "vertical" %}
+    {% assign fb-button-layout = "box_count" %}
+  {% elsif counter-pos == "horizontal" %}
     {% assign twitter-counter-pos = "horizontal" %}
     {% assign fb-button-layout = "button_count" %}
   {% else %} <!-- counter-pos is none -->
