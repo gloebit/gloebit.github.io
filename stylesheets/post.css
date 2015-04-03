@@ -13,6 +13,7 @@ div.author-follow-container {
 
 div.author-follow {
   display: block;
+  height: 26px;
 }
 
 div.author-follow.fb-button {
