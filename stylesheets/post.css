@@ -19,3 +19,12 @@ div.author-follow.fb-button {
   display: block;
 }
 
+/* necessary to fix fb button heights */
+.fb-follow span {
+  top: -6px;
+}
+
+.fb-like span {
+  top: -6px;
+}
+
