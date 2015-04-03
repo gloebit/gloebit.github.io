@@ -73,7 +73,7 @@ page_css: /stylesheets/post.css
         
         {% if author.facebook %}
           <!-- Display Facebook follow button -->
-          <div class="author-follow fb-button">
+          <div class="author-follow">
             <div class="fb-follow" 
               data-href="https://www.facebook.com/{{ author.facebook }}" 
               data-colorscheme="light" 
@@ -142,13 +142,19 @@ page_css: /stylesheets/post.css
     Tweet
   </a>
   
-  <!-- Facebook Like & Share buttons -->
+  <!-- Facebook Like button -->
   <div class="fb-like" 
     data-href="{{site.url }}{{ page.url }}" 
     data-layout="{{ fb-button-layout }}" 
     data-action="like" 
-    data-show-faces="true"
+    data-show-faces="false"
     data-share="false">
+  </div>
+  
+  <!-- Facebook Share button -->
+  <div class="fb-share-button" 
+    data-href="{{site.url }}{{ page.url }}" 
+    data-layout="{{ fb-button-layout }}">
   </div>
   
   <!-- Google +1 button -->
