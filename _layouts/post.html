@@ -113,12 +113,21 @@ page_css: /stylesheets/post.css
   {% if counter-pos == "vertical" %}
     {% assign twitter-counter-pos = "vertical" %}
     {% assign fb-button-layout = "box_count" %}
+    {% assign google-button-annotation = "bubble" %}
+    {% assign google-button-size = "tall" %}
+    {% assign linkedin-counter-pos = "top" %}
   {% elsif counter-pos == "horizontal" %}
     {% assign twitter-counter-pos = "horizontal" %}
     {% assign fb-button-layout = "button_count" %}
+    {% assign google-button-annotation = "bubble" %}
+    {% assign google-button-size = "medium" %}
+    {% assign linkedin-counter-pos = "right" %}
   {% else %} <!-- counter-pos is none -->
     {% assign twitter-counter-pos = "none" %}
     {% assign fb-button-layout = "button" %}
+    {% assign google-button-annotation = "none" %}
+    {% assign google-button-size = "medium" %}
+    {% assign linkedin-counter-pos = "none" %}
   {% endif %}
 
   <!-- Twitter Tweet Button -->
@@ -146,7 +155,8 @@ page_css: /stylesheets/post.css
   
   <!-- Google +1 button -->
   <div class="g-plusone"
-    data-size="medium"
+    data-size="{{ google-button-size }}"
+    data-annotation=" {{ google-button-annotation }}"
     data-href="{{site.url }}{{ page.url }}">
   </div>
   
@@ -154,7 +164,7 @@ page_css: /stylesheets/post.css
   <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
   <script type="IN/Share" 
     data-url="{{site.url }}{{ page.url }}" 
-    data-counter="right">
+    data-counter="{{ linkedin-counter-pos }}">
   </script>
   
 
