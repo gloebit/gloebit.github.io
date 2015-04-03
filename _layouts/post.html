@@ -18,6 +18,7 @@ layout: dev
   
   {% if author %}
     <div class="author">
+      <!-- Author name & Image div -->
       {% if author.linkedin %}
         <!-- Display LinkedIn Profile with image. -->
         <script type="IN/MemberProfile" 
@@ -41,7 +42,9 @@ layout: dev
           </p>
         {% endif %}
       {% endif %}
+      <!-- end author name & image div -->
       
+      <!-- author follow div -->
       <div id="author_follow">
         {% if author.twitter %}
           <!-- Display Twitter Follow Button -->
@@ -76,6 +79,8 @@ layout: dev
           </div>
         {% endif %}
         
+        <!-- commend out LI because we are using whole profile inline -->
+        {% comment %}
         {% if author.linkedin %}
           <!-- Display LinkedIn follow button. -->
           <script type="IN/MemberProfile" 
@@ -85,8 +90,11 @@ layout: dev
             data-text="{{ author.display_name }}">
           </script>
         {% endif %}
+        {% endcomment %}
+        
       </div>  
     </div>
+    <!-- end author follow div -->
   {% endif %}   
   <!-- end author section -->
   
