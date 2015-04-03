@@ -108,6 +108,16 @@ page_css: /stylesheets/post.css
 <!-- Post Content -->
 <section class="post wrapper">
 
+  <!-- set sharing counter positions -->
+  {% assign counter-pos = "vertical" %} <!-- none, vertical, horizontal -->
+  {% if counter-pos=="vertical" %}
+    {% twitter-counter-pos = "vertical" %}
+  {% elsif counter-pos=="horizontal" %}
+    {% twitter-counter-pos = "horizontal" %}
+  {% else %} <!-- counter-pos is none -->
+    {% twitter-counter-pos = "none" %}
+  {% endif %}
+
   <!-- Twitter Tweet Button -->
   <a 
     href="https://twitter.com/share" 
@@ -116,7 +126,7 @@ page_css: /stylesheets/post.css
     data-text="{{ page.title }}" 
     data-via="{{ author.twitter }}" 
     data-related="gloebit"
-    data-count="vertical"
+    data-count="{{ twitter-counter-pos }}"
     data-hashtags="{{ page.hashtags | join: ',' }}">
     Tweet
   </a>
