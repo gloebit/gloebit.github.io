@@ -18,7 +18,7 @@ layout: dev
   
   {% if author %}
     <div class="author" style:"display:block">
-      <div class="author-profile" style:"display:inline-block;float:left">
+      <div class="author-profile" style:"display:inline-block">
       <!-- Author name & Image div -->
       {% if author.linkedin %}
         <!-- Display LinkedIn Profile with image. -->
@@ -47,8 +47,9 @@ layout: dev
       <!-- end author name & image div -->
       
       <!-- author follow div -->
-      <div id="author_follow" style="display:inline-block;float:left">
+      <div id="author_follow" style="display:inline-block">
         {% if author.twitter %}
+        <div style="block">
           <!-- Display Twitter Follow Button -->
           <a class="twitter-follow-button"
             href="https://twitter.com/{{ author.twitter }}"
@@ -59,9 +60,11 @@ layout: dev
           </a>
           <script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
           </script>
+        </div>
         {% endif %}
         
         {% if author.facebook %}
+        <div style="block">
           <!-- Display Facebook follow button -->
           <div class="fb-follow" 
             data-href="https://www.facebook.com/{{ author.facebook }}" 
@@ -69,9 +72,11 @@ layout: dev
             data-layout="button_count" 
             data-show-faces="false">
           </div>
+        </div>
         {% endif %}
         
         {% if author.google_plus %}
+        <div style="block">
           <!-- Display Google Plus follow button. -->
           <div class="g-follow" 
             data-annotation="bubble" 
@@ -79,6 +84,7 @@ layout: dev
             data-href="//plus.google.com/+{{ author.google_plus }}" 
             data-rel="author">
           </div>
+        </div>
         {% endif %}
         
         <!-- commend out LI because we are using whole profile inline -->
