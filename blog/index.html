@@ -19,7 +19,7 @@ no_sections: true
           </div>
         {% endif %}
         <div class="date-author"
-          <p>Posted on {{ post.date | date: "%B %e, %Y" }}
+          <p>{{ post.date | date: "%B %e, %Y" }}
             {% if author.display_name %}
               <br>by {{ author.display_name }}
             {% endif %}
