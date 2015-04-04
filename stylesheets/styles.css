@@ -389,6 +389,13 @@ img.one {
   height: 100%;
 }
 
+/* For blog page */
+div.author-gravatar,
+div.date-author
+{
+  display: inline-block;
+}
+
 .for-validation-only {
     display: none;
 }
