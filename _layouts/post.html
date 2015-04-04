@@ -130,11 +130,16 @@ page_css: /stylesheets/post.css
   {% endif %}
 
   <!-- Twitter Tweet Button -->
+  {% if page.twitter_text %}
+    {% assign twit_text = page.twitter_text %}
+  {% else %}
+    {% assign twit_text = page.title %}
+  {% endif %}
   <a 
     href="https://twitter.com/share" 
     class="twitter-share-button" 
     data-url="{{site.url }}{{ page.url }}" 
-    data-text="{{ page.title }}" 
+    data-text="{{ twit_text }}" 
     data-via="{{ author.twitter }}" 
     data-related="gloebit"
     data-count="{{ twitter-counter-pos }}"
