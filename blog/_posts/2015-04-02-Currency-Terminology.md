@@ -9,7 +9,7 @@ no_sections: true
 description: "Achieving consensus on digital currency terminology."
 hashtags: [Altcoin, FinTech]
 twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCurrency #Bitcoin ???"
-image: "blah"
+image: "{{ site.url }}blog/images/Currency-Terminology-Diagram.png"
 ---
 
 **"Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?"**
