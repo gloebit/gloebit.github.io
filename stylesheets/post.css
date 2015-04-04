@@ -29,12 +29,19 @@ div.author-follow {
   top: -6px
 }
 
-div.author-profile iframe {
-  -moz-transform: scale(0.25, 0.25);
-  -webkit-transform: scale(0.25, 0.25);
-  -o-transform: scale(0.25, 0.25);
-  -ms-transform: scale(0.25, 0.25);
-  transform: scale(0.25, 0.25);
+/*********************** MEDIA SECTION ******************************/
+/* everything avove for 961px and above */
+
+/* Screen width from 0-399px - really from 320px */
+@media print, screen and (max-width: 399px) {
+
+/* attempting to shrink LinkedIn profile on iphone */
+div.author-profile {
+  -moz-transform: scale(0.75, 0.75);
+  -webkit-transform: scale(0.75, 0.75);
+  -o-transform: scale(0.75, 0.75);
+  -ms-transform: scale(0.75, 0.75);
+  transform: scale(0.75, 0.75);
   -moz-transform-origin: top left;
   -webkit-transform-origin: top left;
   -o-transform-origin: top left;
