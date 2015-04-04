@@ -9,20 +9,22 @@ no_sections: true
       
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
       
-      <div class="date">
-        <p>Posted on {{ post.date | date: "%B %e, %Y" }}
-          <!-- if author exists, display author info -->
-          {% assign author = site.authors[post.author] %}
-          {% if author %}
-            by 
+      <!-- Retrieve author info for post -->
+      {% assign author = site.authors[post.author] %}
+      
+      <div>
+        {% if author.gravatar %}
+          <div class="author-gravatar">
+            <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}?s=40" />
+          </div>
+        {% endif %}
+        <div class="date-author"
+          <p>Posted on {{ post.date | date: "%B %e, %Y" }}
             {% if author.display_name %}
-              {{ author.display_name }} 
+              <br>by {{ author.display_name }}. 
             {% endif %}
-            {% if author.gravatar %}
-              <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}?s=40" />
-            {% endif %}
-          {% endif %}
-        </p>
+          </p>
+        </div>
       </div>
       
       
