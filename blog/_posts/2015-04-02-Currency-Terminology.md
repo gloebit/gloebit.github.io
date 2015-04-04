@@ -18,7 +18,7 @@ This question has arisen in some form in almost every interview, advising sessio
 
 <!--end_excerpt-->
 
-![Digital Currency Terminology Diagram]({{ site.baseurl }}blog/images/Currency-Terminology-Diagram.png "Currency Terminology Diagram")
+![Digital Currency Terminology Diagram]({{ site.url }}{{ site.blogpath }}/images/Currency-Terminology-Diagram.png "Currency Terminology Diagram")
 
 ## First, a little history from my perspective: ##
 
