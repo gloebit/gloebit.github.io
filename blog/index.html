@@ -15,8 +15,12 @@ no_sections: true
           {% assign author = site.authors[post.author] %}
           {% if author %}
             by 
-            <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}?s=40" />
-            <span class="author">{{ author.display_name }}</span>
+            {% if author.display_name %}
+              {{ author.display_name }} 
+            {% endif %}
+            {% if author.gravatar %}
+              <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}?s=40" />
+            {% endif %}
           {% endif %}
         </p>
       </div>
