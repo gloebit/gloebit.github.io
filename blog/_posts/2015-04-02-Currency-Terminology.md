@@ -1,13 +1,14 @@
 ---
 layout: post
-title: "Currency Terminology: Virtual, Digital, Crypto, Bitcoin - What do they all mean?"
+title: "Currency Terminology: Virtual, Digital, Crypto, Bitcoin ???"
 author: colosi
 published: true
 tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin]
 use_excerpt_separator: true
 no_sections: true
 description: "Achieving consensus on digital currency terminology."
-hashtags: [DigitalCurrency, VirtualCurrency, CryptoCurrency, Bitcoin, Altcoin]
+hashtags: [Altcoin, FinTech]
+twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCurrency #Bitcoin ???"
 image: "blah"
 ---
 
