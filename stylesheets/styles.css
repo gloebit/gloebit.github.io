@@ -390,7 +390,12 @@ img.one {
 }
 
 /* For blog page */
-div.author-gravatar,
+div.author-gravatar {
+  display: inline-block;
+  margin-right: 5px
+  margin-left: 15px
+}
+
 div.date-author
 {
   display: inline-block;
