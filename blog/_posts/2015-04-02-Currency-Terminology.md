@@ -9,7 +9,7 @@ no_sections: true
 description: "Achieving consensus on digital currency terminology."
 hashtags: [Altcoin, FinTech]
 twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCurrency #Bitcoin ???"
-image: "{{ site.url }}blog/images/Currency-Terminology-Diagram.png"
+image: "http://dev.gloebit/com/blog/images/Currency-Terminology-Diagram.png"
 ---
 
 **"Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?"**
@@ -17,6 +17,8 @@ image: "{{ site.url }}blog/images/Currency-Terminology-Diagram.png"
 This question has arisen in some form in almost every interview, advising session, talk, or just plain conversation in which I've partaken regarding [Gloebit](https://www.gloebit.com/) and the field of [FinTech](http://en.wikipedia.org/wiki/Financial_technology) (financial technology).  My answer has always been **"No!"**, but industry consensus has been lacking on some specifics of the terminology.  My goal here is to educate where consensus exists and promote some concepts toward consensus.
 
 <!--end_excerpt-->
+
+![Digital Currency Terminology Diagram]({{ site.baseurl }}blog/images/Currency-Terminology-Diagram.png "Currency Terminology Diagram")
 
 ## First, a little history from my perspective: ##
 
