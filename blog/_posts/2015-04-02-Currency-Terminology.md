@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Currency Terminology: Virtual, Digital, Crypto, Bitcoin ???"
+title: "Currency Terminology: Virtual, Digital, Crypto, Bitcoin - What do they all mean?"
 author: colosi
 published: true
 tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin]
