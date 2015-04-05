@@ -3,7 +3,7 @@ layout: post
 title: "Currency Terminology: Virtual, Digital, Crypto, Bitcoin ???"
 author: colosi
 published: true
-tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin]
+tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin, FinTech]
 use_excerpt_separator: true
 no_sections: true
 description: "Achieving consensus on digital currency terminology."
