@@ -27,6 +27,7 @@
     
     <meta property="og:locale" content="en_US" />
     
+    <!-- set open graph type and related params -->
     {% if page.page_type == "blog_post" %}
       <meta property="og:type" content="article" />
       {% if page.author %}
@@ -42,6 +43,13 @@
       {% endif %}
     {% else %}
       <meta property="og:type" content="website" />
+    {% endif %}
+    
+    <!- set twitter card type and related params
+    {% if page.image %}
+      <meta name="twitter:card" content="summary_large_image">
+    {% else %}
+      <meta name="twitter:card" content="summary" />
     {% endif %}
     
     {% if page.title %}
