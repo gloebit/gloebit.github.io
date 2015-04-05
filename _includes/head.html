@@ -27,7 +27,22 @@
     
     <meta property="og:locale" content="en_US" />
     
-    <meta property="og:type" content="website" />
+    {% if page.page_type == "blog_post" %}
+      <meta property="og:type" content="article" />
+      {% if page.author %}
+        <meta property="og:article:author" content="{{ page.author }}" />
+      {% endif %}
+      {% if page.date %}
+        <meta property="og:article:published_time" content="{{ page.date }}" />
+      {% endif %}
+      {% if page.tags %}
+        {% for page_tag in page.tags %}
+          <meta property="og:article:tag" content="{{ page_tag }}" />
+        {% endfor %}
+      {% endif %}
+    {% else %}
+      <meta property="og:type" content="website" />
+    {% endif %}
     
     {% if page.title %}
       <meta property="og:title" content="{{ page.title }}" />
