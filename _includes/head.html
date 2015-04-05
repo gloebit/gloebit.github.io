@@ -33,8 +33,9 @@
     <!-- set open graph type and related params -->
     {% if page.page_type == "blog_post" %}
       <meta property="og:type" content="article" />
+      <meta property="article:publisher" content="https://www.facebook.com/gloebit"
       {% if author.facebook %}
-        <meta property="article:author" content="{{ author.facebook }}" />
+        <meta property="article:author" content="https://www.facebook.com/{{ author.facebook }}" />
       {% endif %}
       {% if page.date %}
         <meta property="article:published_time" content="{{ page.date }}" />
