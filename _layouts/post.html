@@ -197,11 +197,18 @@ page_type: blog_post
     {% endif %}
     on {{ page.date | date: "%B %e, %Y" }}
   </div>
-
-  <!-- Disqus Comments -->
-  {% include disqus.html %}
-  
 </section>
+<!-- end of post section -->
+
+<!-- Comments Section -->
+{% if site.disqus.enabled and page.disqus.enabled %}
+  <section class="wrapper">
+
+    <!-- Disqus Comments -->
+    {% include disqus.html %}
+  
+  </section>
+{% endif %}
 
 <!-- Script necessary for Google Plus follow and +1 buttons -->
 <!-- Place this tag in your head or just before your close body tag. -->
