@@ -12,7 +12,9 @@ twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCu
 image: "http://dev.gloebit.com/blog/images/Currency-Terminology-Diagram.png"
 image_width: 1200
 image_height: 630
-comments: true
+disqus:
+  enabled: true
+  uniqueID: "CurrencyTerminologyBlogPost"
 ---
 
 **"Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?"**
