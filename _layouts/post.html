@@ -197,11 +197,9 @@ page_type: blog_post
     {% endif %}
     on {{ page.date | date: "%B %e, %Y" }}
   </div>
-  <p>test1</p>
-  {% include disqus.html disqus_identifier=page.disqus_identifier %}
-  <p>test2</p>
+
+  
   {% if page.comments %}
-    <p>test3</p>
     <div id="disqus_thread"></div>
     <script type="text/javascript">
       /* * * CONFIGURATION VARIABLES * * */
@@ -216,7 +214,6 @@ page_type: blog_post
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   {% endif %}
-  <p>test4</p>
 </section>
 
 <!-- Script necessary for Google Plus follow and +1 buttons -->
