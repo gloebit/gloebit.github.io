@@ -50,3 +50,7 @@ excerpt_separator: <!--end_excerpt-->
 # Would prefer to use excerpt_separator, but doesn't work with emoji in post.excerpt
 default_excerpt_word_count: 50
 
+# Disqus commenting params
+disqus:
+  enabled: true       # Site wide enable/disable disqus comments
+  shortname: gloebit  # shortname configuration variable for discuss script
