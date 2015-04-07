@@ -1,0 +1,81 @@
+{% comment %}
+<!-- Make sure scripts for all buttons are included by page including this .html file: see _layouts/post.html for example -->
+{% endcomment %}
+
+{% comment %}
+<!-- if special positioning enabled, assign it. -->
+{% endcomment %}
+{% if my-counter-pos %}
+  {% assign counter-pos = my-counter-pos %}
+{% else %}
+  {% assign counter-pos = "vertical" %} <!-- none, vertical, horizontal -->
+  <!-- default counter position = vertical -->
+{% endif %}
+
+<!-- set sharing variables for chosen counter position -->
+{% if counter-pos == "vertical" %}
+  {% assign twitter-counter-pos = "vertical" %}
+  {% assign fb-button-layout = "box_count" %}
+  {% assign google-button-annotation = "bubble" %}
+  {% assign google-button-size = "tall" %}
+  {% assign linkedin-counter-pos = "top" %}
+{% elsif counter-pos == "horizontal" %}
+  {% assign twitter-counter-pos = "horizontal" %}
+  {% assign fb-button-layout = "button_count" %}
+  {% assign google-button-annotation = "bubble" %}
+  {% assign google-button-size = "medium" %}
+  {% assign linkedin-counter-pos = "right" %}
+  {% else %} <!-- counter-pos is none -->
+  {% assign twitter-counter-pos = "none" %}
+  {% assign fb-button-layout = "button" %}
+  {% assign google-button-annotation = "none" %}
+  {% assign google-button-size = "medium" %}
+  {% assign linkedin-counter-pos = "none" %}
+{% endif %}
+
+<!-- Twitter Tweet Button -->
+{% if page.twitter_text %}
+  {% assign twit_text = page.twitter_text %}
+{% else %}
+  {% assign twit_text = page.title %}
+{% endif %}
+<a
+  href="https://twitter.com/share"
+  class="twitter-share-button"
+  data-url="{{site.url }}{{ page.url }}"
+  data-text="{{ twit_text }}"
+  data-via="{{ author.twitter }}"
+  data-related="gloebit"
+  data-count="{{ twitter-counter-pos }}"
+  data-hashtags="{{ page.hashtags | join: ',' }}">
+  Tweet
+</a>
+
+<!-- Facebook Like button -->
+<div class="fb-like"
+  data-href="{{site.url }}{{ page.url }}"
+  data-layout="{{ fb-button-layout }}"
+  data-action="like"
+  data-show-faces="false"
+  data-share="false">
+</div>
+
+<!-- Facebook Share button -->
+<div class="fb-share-button"
+  data-href="{{site.url }}{{ page.url }}"
+  data-layout="{{ fb-button-layout }}">
+</div>
+
+<!-- Google +1 button -->
+<div class="g-plusone"
+  data-size="{{ google-button-size }}"
+  data-annotation="{{ google-button-annotation }}"
+  data-href="{{site.url }}{{ page.url }}">
+</div>
+
+<!-- LinkedIn Share button -->
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script type="IN/Share"
+  data-url="{{site.url }}{{ page.url }}"
+  data-counter="{{ linkedin-counter-pos }}">
+</script>

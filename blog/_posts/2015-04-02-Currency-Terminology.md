@@ -87,14 +87,11 @@ Because growth of a standard crypto-currency money supply is finite and many use
 
 The area of electronic currencies is complex and evolving daily.  I've attempted to include enough detail and depth that an average interested person can gain some understanding and use proper terminology.  There may be exceptions and outliers in the space which the above does not cover, but until those are necessary for general discussion on the topic, they are beyond the depth of this post.
 
-get twitter links
-turn on commenting disqus
+get pinterest stuff
+get reditt sharing
 build ven diagram of sorts
 build a 2 vector graph (centrally managed, distributed; single space, cross platform)
-centralized vs decentralized
-centralized crypto-currency?
 second space after period
-author on blog page
 sections box - remove, or can I set sections?
 
 
