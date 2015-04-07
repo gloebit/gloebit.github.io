@@ -15,8 +15,11 @@ image_height: 630
 disqus:
   enabled: true
   uniqueID: "CurrencyTerminologyBlogPost"
-test_text: {{ page.title }}
+test_text: {{ !MY_TITLE! }}
+test_text2: {{{ page.title }}}
 ---
+{% assign page.test_text = page.title %}
+{% assign page.test_text3 = page.title %}
 
 **"Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?"**
 
