@@ -201,12 +201,14 @@ page_type: blog_post
 <!-- end of post section -->
 
 <!-- Comments Section -->
-<section class="wrapper">
+{% if site.disqus.enabled and page.disqus.enabled %}
+  <section class="wrapper">
 
-  <!-- Disqus Comments -->
-  {% include disqus.html %}
+    <!-- Disqus Comments -->
+    {% include disqus.html %}
   
-</section>
+  </section>
+{% endif %}
 
 <!-- Script necessary for Google Plus follow and +1 buttons -->
 <!-- Place this tag in your head or just before your close body tag. -->
