@@ -13,19 +13,19 @@
 {% endif %}
 
 <!-- set sharing variables for chosen counter position -->
-{% if counter-pos == "vertical" %}
+{% if counter-pos == "vertical" %}  <!-- counter-pos is vertical -->
   {% assign twitter-counter-pos = "vertical" %}
   {% assign fb-button-layout = "box_count" %}
   {% assign google-button-annotation = "bubble" %}
   {% assign google-button-size = "tall" %}
   {% assign linkedin-counter-pos = "top" %}
-{% elsif counter-pos == "horizontal" %}
+{% elsif counter-pos == "horizontal" %} <!-- counter-pos is horizontal -->
   {% assign twitter-counter-pos = "horizontal" %}
   {% assign fb-button-layout = "button_count" %}
   {% assign google-button-annotation = "bubble" %}
   {% assign google-button-size = "medium" %}
   {% assign linkedin-counter-pos = "right" %}
-  {% else %} <!-- counter-pos is none -->
+{% else %} <!-- counter-pos is none -->
   {% assign twitter-counter-pos = "none" %}
   {% assign fb-button-layout = "button" %}
   {% assign google-button-annotation = "none" %}
