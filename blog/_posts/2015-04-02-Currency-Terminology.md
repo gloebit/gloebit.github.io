@@ -94,6 +94,10 @@ build a 2 vector graph (centrally managed, distributed; single space, cross plat
 second space after period
 sections box - remove, or can I set sections?
 blog link in nav
+google+ schema
+html xlmns tags & itemscope itemtype tags
+move SEO/sharing meta links to include
+move follow buttons to include
 
 
 terms are complex because they are used to describe bits vs printed, broad vs single platform; how money supply is controlled, how transactions process; how accounts are maintained.
