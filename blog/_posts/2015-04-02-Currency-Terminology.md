@@ -15,6 +15,7 @@ image_height: 630
 disqus:
   enabled: true
   uniqueID: "CurrencyTerminologyBlogPost"
+test_text: {{ page.title }}
 ---
 
 **"Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?"**
@@ -94,6 +95,7 @@ build a 2 vector graph (centrally managed, distributed; single space, cross plat
 second space after period
 sections box - remove, or can I set sections?
 blog link in nav
+{{ page.test_text }}
 
 
 terms are complex because they are used to describe bits vs printed, broad vs single platform; how money supply is controlled, how transactions process; how accounts are maintained.
