@@ -9,12 +9,13 @@ no_sections: true
 description: "Achieving consensus on digital currency terminology."
 hashtags: [Altcoin, FinTech]
 twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCurrency #Bitcoin ???"
-image: "http://dev.gloebit.com/blog/images/Currency-Terminology-Diagram.png"
+no_sectionsimage: "http://dev.gloebit.com/blog/images/Currency-Terminology-Diagram.png"
 image_width: 1200
 image_height: 630
 disqus:
   enabled: true
   uniqueID: "CurrencyTerminologyBlogPost"
+test_text: "wooHoo"
 ---
 
 **"Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?"**
@@ -85,7 +86,7 @@ Because growth of a standard crypto-currency money supply is finite and many use
 
 ## Clarity ##
 
-The area of electronic currencies is complex and evolving daily.  I've attempted to include enough detail and depth that an average interested person can gain some understanding and use proper terminology.  There may be exceptions and outliers in the space which the above does not cover, but until those are necessary for general discussion on the topic, they are beyond the depth of this post.
+The area of alternative currencies is complex and evolving daily.  I've attempted to include enough detail and depth that an average interested person can gain some understanding and use proper terminology.  There may be exceptions and outliers in the space which the above does not cover, but until those are necessary for general discussion on the topic, they are beyond the depth of this post.
 
 get pinterest stuff
 get reditt sharing
@@ -93,6 +94,8 @@ build ven diagram of sorts
 build a 2 vector graph (centrally managed, distributed; single space, cross platform)
 second space after period
 sections box - remove, or can I set sections?
+blog link in nav
+{{ page.test_text }}
 
 
 terms are complex because they are used to describe bits vs printed, broad vs single platform; how money supply is controlled, how transactions process; how accounts are maintained.
