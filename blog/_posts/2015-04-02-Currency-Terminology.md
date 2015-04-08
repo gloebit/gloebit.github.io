@@ -9,7 +9,7 @@ no_sections: true
 description: "Achieving consensus on digital currency terminology."
 hashtags: [Altcoin, FinTech]
 twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCurrency #Bitcoin ???"
-image: "http://dev.gloebit.com/blog/images/Currency-Terminology-Diagram.png"
+image: "http://dev.gloebit.com/blog/images/Currency-Terminology-Diagram-with-logo.png"
 image_width: 1200
 image_height: 630
 disqus:
@@ -23,7 +23,7 @@ This question has arisen in some form in almost every interview, advising sessio
 
 <!--end_excerpt-->
 
-![Digital Currency Terminology Diagram]({{ site.url }}{{ site.blogpath }}/images/Currency-Terminology-Diagram.png "Currency Terminology Diagram")
+![Digital Currency Terminology Diagram]({{ site.url }}{{ site.blogpath }}/images/Currency-Terminology-Diagram-with-logos.png "Currency Terminology Diagram")
 
 ## First, a little history from my perspective: ##
 
@@ -95,9 +95,10 @@ second space after period
 sections box - remove, or can I set sections?
 blog link in nav
 google+ schema
-html xlmns tags & itemscope itemtype tags
+html xlmns tags & itemscope itemtype tags lang="en-US"  "
 move SEO/sharing meta links to include
 move follow buttons to include
+add yaml header tags to all pages (description, image, others)
 
 
 terms are complex because they are used to describe bits vs printed, broad vs single platform; how money supply is controlled, how transactions process; how accounts are maintained.
