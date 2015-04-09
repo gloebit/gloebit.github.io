@@ -85,9 +85,9 @@ Because growth of a standard crypto-currency money supply is finite and many use
 
 ![Digital Currency Terminology Diagram - alternate]({{ site.url }}{{ site.blogpath }}/images/Currency-Terminology-Diagram4.png "Alternate Currency Terminology Diagram")
 
-## Clarity ##
+## Cementing the Foundation ##
 
-The area of alternative currencies is complex and evolving daily.  I've attempted to include enough detail and depth that an average interested person can gain some understanding and use proper terminology.  There may be exceptions and outliers in the space which the above does not cover, but until those are necessary for general discussion on the topic, they are beyond the depth of this post.
+The organizatin above is meant to provide a foundation, not a final structure.  The area of alternative currencies is complex and evolving daily.  I've attempted to include enough detail and depth that an average interested person can gain some understanding and use clear, accurate terminology.  There will always be exceptions and products which don't fit neatly within the simple boxes I've outlined.  For instance, government fiat currencies like the US Dollar have a centrally managed money supply, but decentralized transaction processing where one person can pay another in cash directly.  Alternatively, credit cards fit much more neatly into the centralized bucket.  Ideally, this will serve as the reasonably simple base, from which deeper dives into the minutia will start.
 
 get pinterest stuff
 get reditt sharing
