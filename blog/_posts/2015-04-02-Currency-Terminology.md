@@ -89,19 +89,3 @@ Because growth of a standard crypto-currency money supply is finite and many use
 
 The organizatin above is meant to provide a foundation, not a final structure.  The area of alternative currencies is complex and evolving daily.  I've attempted to include enough detail and depth that an average interested person can gain some understanding and use clear, accurate terminology.  There will always be exceptions and products which don't fit neatly within the simple boxes I've outlined.  For instance, government fiat currencies like the US Dollar have a centrally managed money supply, but decentralized transaction processing where one person can pay another in cash directly.  Alternatively, credit cards fit much more neatly into the centralized bucket.  Ideally, this will serve as the reasonably simple base, from which deeper dives into the minutia will start.
 
-get pinterest stuff
-get reditt sharing
-build ven diagram of sorts
-build a 2 vector graph (centrally managed, distributed; single space, cross platform)
-second space after period
-sections box - remove, or can I set sections?
-blog link in nav
-google+ schema
-html xlmns tags & itemscope itemtype tags lang="en-US"  "
-move SEO/sharing meta links to include
-move follow buttons to include
-add yaml header tags to all pages (description, image, others)
-
-
-terms are complex because they are used to describe bits vs printed, broad vs single platform; how money supply is controlled, how transactions process; how accounts are maintained.
-
