@@ -25,10 +25,6 @@ This question has arisen in some form in almost every interview, advising sessio
 
 ![Digital Currency Terminology Diagram]({{ site.url }}{{ site.blogpath }}/images/Currency-Terminology-Diagram-with-logos.png "Currency Terminology Diagram")
 
-![Digital Currency Terminology Diagram]({{ site.url }}{{ site.blogpath }}/images/Currency-Terminology-Diagram3.png "Currency Terminology Diagram")
-
-![Digital Currency Terminology Diagram]({{ site.url }}{{ site.blogpath }}/images/Currency-Terminology-Diagram4.png "Currency Terminology Diagram")
-
 ## First, a little history from my perspective: ##
 
 ### At Second Life, we called it virtual currency. ###
@@ -41,7 +37,7 @@ In 2012, when I founded Gloebit, I made a very concious decision to replace the 
 
 ### "Digital currency, you mean that Bitcoin thing, right?" ###
 
-In 2013, Bitcoin took the world, or at least the media by storm.  It captured enough attention that it entered the general lexicon, but not enough attention for the average person or the media to seem to learn what it actually was or how it worked.  It was often referred by all of the terms virtual, digital and crypto, and occassionally, everything else was referred to as a type of Bitcoin the same way that [tissues] might wrongly be referred to as a type of [Kleenex](https://www.kleenex.com/).
+In 2013, Bitcoin took the world, or at least the media, by storm.  It captured enough attention that it entered the general lexicon, but not enough attention for the average person or the media to seem to learn what it actually was or how it worked.  It was often referred by all of the terms virtual, digital and crypto, and occassionally, everything else was referred to as a type of Bitcoin the same way that [tissues](https://en.wikipedia.org/wiki/Facial_tissue) might wrongly be referred to as a type of [Kleenex](https://www.kleenex.com/).
 
 Two years later, things haven't changed much.  It actually takes me _longer_ to explain what my product is due to the general awareness of Bitcoin and the lack of general clarity in terminology.  Last week, I found myself correcting a reference to Bitcoin as a virtual currency in a draft of a _payments white paper_ for the [Application Developers Alliance](http://www.appdevelopersalliance.org/).  I decided it was time to have a broader impact.
 
@@ -86,6 +82,8 @@ Because growth of a standard crypto-currency money supply is finite and many use
 ### Bitcoin and altcoins ###
 
 [Bitcoin](http://en.wikipedia.org/wiki/Bitcoin) is specific instance of crypto-currency and was the first to reach subtantial usage.  Since the creation of Bitcoin, many alternative crypto-currencies have popped up, bringing rise to the term "altcoin" which refers to any crypto-currency other than Bitcoin.
+
+![Digital Currency Terminology Diagram - alternate]({{ site.url }}{{ site.blogpath }}/images/Currency-Terminology-Diagram4.png "Alternate Currency Terminology Diagram")
 
 ## Clarity ##
 
