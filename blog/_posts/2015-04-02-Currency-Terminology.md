@@ -25,6 +25,8 @@ This question has arisen in some form in almost every interview, advising sessio
 
 ![Digital Currency Terminology Diagram]({{ site.url }}{{ site.blogpath }}/images/Currency-Terminology-Diagram-with-logos.png "Currency Terminology Diagram")
 
+![Digital Currency Terminology Diagram]({{ site.url }}{{ site.blogpath }}/images/Currency-Terminology-Diagram3.png "Currency Terminology Diagram")
+
 ## First, a little history from my perspective: ##
 
 ### At Second Life, we called it virtual currency. ###
