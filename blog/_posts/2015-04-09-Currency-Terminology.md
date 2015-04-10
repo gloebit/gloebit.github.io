@@ -19,11 +19,11 @@ use_excerpt_separator: true
 hashtags: [Altcoin, FinTech]
 twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCurrency #Bitcoin ???"
 ---
-{% if primary_image.loc = "external" %}"
+{% if page.primary_image.loc = "external" %}"
   {% assign myPrimaryImageURL = primary_image.url %}
-{% elsif primary_image.loc = "internal_site" %}
+{% elsif page.primary_image.loc = "internal_site" %}
   {% capture myPrimaryImageURL %}{{ site.url }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
-{% elsif primary_image.loc = "internal_blog" %}
+{% elsif page.primary_image.loc = "internal_blog" %}
   {% capture myPrimaryImageURL %}{{ site.url }}{{ site.blogpath }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
 {% endif %}
 
