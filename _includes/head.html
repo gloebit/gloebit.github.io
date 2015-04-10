@@ -17,6 +17,10 @@
     
     <link rel="publisher" href="https://plus.google.com/+Gloebit" />
     
+    {% if page.keywords %}
+      <meta name="keywords" content="{{ page.keywords }}" />
+    {% endif %}
+    
     <!-- FB insights tags -->
     <meta property="fb:admins" content="colosi" />
     

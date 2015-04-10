@@ -9,15 +9,15 @@ primary_image:
   width: 1200
   height: 630
 no_sections: true
-disqus:
-  enabled: true
-  uniqueID: "CurrencyTerminologyBlogPost"
 author: colosi
 published: true
 tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin, FinTech]
 use_excerpt_separator: true
 hashtags: [Altcoin, FinTech]
 twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCurrency #Bitcoin ???"
+disqus:
+  enabled: true
+  uniqueID: "CurrencyTerminologyBlogPost"
 ---
 {% if page.primary_image.loc == "external" %}"
   {% assign myPrimaryImageURL = primary_image.url %}
