@@ -1,21 +1,32 @@
 ---
 layout: post
 title: "Currency Terminology: Virtual, Digital, Crypto, Bitcoin ???"
+description: "Learn to use the terms virtaul, digital, crypto, bitcoin and more accurately when discussing Digital Currency and FinTech with this primer driving consensus on foundational base vocabulary."
+keywords: "Gloebit, Digital, Virtual, Crypto, Currency, Digital Currency, Virtual Currency, Crypto-currency, Cryptocurrency, Commodity, Crypto-commodity, Cryptocommodity, Bitcoin, Altcoins, FinTech, Centralization, Centralized, Decentralized, Centralized Digital Currency, Decentralized Digital Currency, Second Life, Linden Lab, Linden Dollar, Fed, Money Supply, Consensus, Accuracy, Foundation, Base, Token, Digital Token"
+primary_image:
+  loc: internal_blog
+  url: "Currency-Terminology-Diagram-with-logos.png"
+  width: 1200
+  height: 630
+no_sections: true
+disqus:
+  enabled: true
+  uniqueID: "CurrencyTerminologyBlogPost"
 author: colosi
 published: true
 tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin, FinTech]
 use_excerpt_separator: true
-no_sections: true
-description: "Achieving consensus on digital currency terminology."
 hashtags: [Altcoin, FinTech]
 twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCurrency #Bitcoin ???"
-image: "http://dev.gloebit.com/blog/images/Currency-Terminology-Diagram-with-logos.png"
-image_width: 1200
-image_height: 630
-disqus:
-  enabled: true
-  uniqueID: "CurrencyTerminologyBlogPost"
 ---
+{% if primary_image.loc = "external" %}"
+  {% assign myPrimaryImageURL = primary_image.url %}
+{% elsif primary_image.loc = "internal_site" %}
+  {% capture myPrimaryImageURL %}{{ site.url }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
+{% elsif primary_image.loc = "internal_blog" %}
+  {% capture myPrimaryImageURL %}{{ site.url }}{{ site.blogpath }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
+{% endif %}
+
 
 **"Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?"**
 
@@ -23,7 +34,7 @@ This question has arisen in some form in almost every interview, advising sessio
 
 <!--end_excerpt-->
 
-![Digital Currency Terminology Diagram]({{ site.url }}{{ site.blogpath }}/images/Currency-Terminology-Diagram-with-logos.png "Currency Terminology Diagram")
+![Digital Currency Terminology Diagram]({{ myPrimaryImageURL }} "Currency Terminology Diagram")
 
 ## First, a little history from my perspective: ##
 
