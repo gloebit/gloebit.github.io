@@ -55,11 +55,13 @@
     <!-- set twitter card type and related params -->
     {% if page.primary_image %}
       <!-- create primary image url -->
-      {% if primary_image.loc == "external" %}"
+      {% if page.primary_image.loc == "external" %}"
+        <!-- create primary absolute image url -->
         {% assign myPrimaryImageURL = primary_image.url %}
-      {% elsif primary_image.loc == "internal_site" %}
+      {% elsif page.primary_image.loc == "internal_site" %}
+        <!-- create primary site image url -->
         {% capture myPrimaryImageURL %}{{ site.url }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
-      {% elsif primary_image.loc == "internal_blog" %}
+      {% elsif page.primary_image.loc == "internal_blog" %}
         <!-- create primary blog image url -->
         {% capture myPrimaryImageURL %}{{ site.url }}{{ site.blogpath }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
       {% endif %}
