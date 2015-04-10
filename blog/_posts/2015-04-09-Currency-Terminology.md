@@ -27,6 +27,8 @@ twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCu
   {% capture myPrimaryImageURL %}{{ site.url }}{{ site.blogpath }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
 {% endif %}
 
+test
+
 
 **"Virtual currency, digital currency, Crypto-currency, Bitcoin... these are all the same thing, right?"**
 
