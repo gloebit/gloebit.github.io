@@ -60,6 +60,7 @@
       {% elsif primary_image.loc == "internal_site" %}
         {% capture myPrimaryImageURL %}{{ site.url }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
       {% elsif primary_image.loc == "internal_blog" %}
+        <!-- create primary blog image url -->
         {% capture myPrimaryImageURL %}{{ site.url }}{{ site.blogpath }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
       {% endif %}
       <meta name="twitter:card" content="summary_large_image">
