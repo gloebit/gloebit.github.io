@@ -79,11 +79,11 @@
     {% if page.primary_image %}
       <meta property="og:image" content="{{ myPrimaryImageURL }}" />
       <meta name="twitter:image:src" content="{{ myPrimaryImageURL }}" />
-      {% if page.image_width %}
+      {% if page.primary_image.width %}
         <meta property="og:image:width" content="{{ page.primary_image.width }}" />
         <meta name="twitter:image:width" content="{{ page.primary_image.width }}" />
       {% endif %}
-      {% if page.image_height %}
+      {% if page.primary_image.height %}
         <meta property="og:image:height" content="{{ page.primary_image.height }}" />
         <meta name="twitter:image:height" content="{{ page.primary_image.height }}" />
       {% endif %}
