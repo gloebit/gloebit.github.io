@@ -77,7 +77,7 @@ result:
         desc: |
           Possible values: "true", "false".<br>
           "true" - Transaction is successfully queued for final processing.<br>
-          "false" - Transaction was rejected. The 'id', 'balance', and 'product-count' fields, if any, are invalide.
+          "false" - Transaction was rejected. The 'id', 'balance', and 'product-count' fields, if any, are invalid.
       - name: id
         desc: Transaction ID passed in by application, if any; otherwise Gloebit UUID for transaction.
       - name: balance
