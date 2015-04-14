@@ -21,8 +21,12 @@ div.gloebit-follow-container {
 }
 
 div.gloebit-follow {
-    display: block;
+    display: inline-block;
     height: 26px;
+}
+
+div.blogTitle {
+    margin-right: 10px;
 }
 
 /* necessary to fix fb button heights */
