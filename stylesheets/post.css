@@ -37,6 +37,11 @@ section.wrapper.blogHeader h1 {
     margin-bottom: 0px;
 }
 
+/* fix rounded corners on LinkedIn iframe */
+div.author-profile iframe {
+    border-radius: 8px;
+}
+
 /*********************** MEDIA SECTION ******************************/
 /* everything avove for 961px and above */
 
