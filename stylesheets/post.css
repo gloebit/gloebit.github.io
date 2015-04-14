@@ -29,6 +29,14 @@ div.author-follow {
   top: -6px
 }
 
+section.wrapper.blogHeader {
+    border-bottom-width: 2px;
+    background: linear-gradient(#DAF8DA, rgba(218, 248, 218, 0.1));
+}
+section.wrapper.blogHeader h1 {
+    margin-bottom: 0px;
+}
+
 /*********************** MEDIA SECTION ******************************/
 /* everything avove for 961px and above */
 
