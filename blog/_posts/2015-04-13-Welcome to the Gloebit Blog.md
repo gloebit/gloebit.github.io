@@ -1,0 +1,39 @@
+---
+layout: post
+title: "Welcome to the Gloebit Blog"
+description: "Get some FinTech, digital currency, and Gloebit news.  When we share, it'll be here."
+keywords: "Gloebit, Digital, Virtual, Crypto, Currency, Digital Currency, Virtual Currency, Crypto-currency, Cryptocurrency, Bitcoin, Altcoins, FinTech, News, blog, press release, press, publicity, news release"
+primary_image:
+  loc: internal_blog
+  url: "FinTech_Blog.png"
+  width: 1200
+  height: 630
+no_sections: true
+author: colosi
+published: true
+tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin, FinTech]
+use_excerpt_separator: true
+hashtags: [DigitalCurrency, News, VirtualCurrency]
+twitter_text: "Get #FinTech insights form the @Gloebit #blog"
+disqus:
+  enabled: true
+  uniqueID: "WelcomeBlogPost"
+---
+{% if page.primary_image.loc == "external" %}"
+  {% assign myPrimaryImageURL = primary_image.url %}
+{% elsif page.primary_image.loc == "internal_site" %}
+  {% capture myPrimaryImageURL %}{{ site.url }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
+{% elsif page.primary_image.loc == "internal_blog" %}
+  {% capture myPrimaryImageURL %}{{ site.url }}{{ site.blogpath }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
+{% endif %}
+
+**"Welcome"**
+
+Today, [Gloebit](https://www.gloebit.com/) is excited to announce the launch of its very own blog.  We will be sharing news, thoughts and insights on the Financial Technology([FinTech](http://en.wikipedia.org/wiki/Financial_technology)) space.
+
+![Gloebit FinTech Blog]({{ myPrimaryImageURL }} "Gloebit FinTech Blog")
+
+<!--end_excerpt-->  
+
+We've been working with digital currencies for years, since well before the entrance of [Bitcoin](http://en.wikipedia.org/wiki/Bitcoin), and we have many opinions we've locked away for too long.  We hope you'll find our posts worthwhile, and when you have questions or expertise on a subject, will contribute to the dialog via the comments section.  Also, please consider following our authors, and following Gloebit to support us and to receive alerts when we've posted new content.
+
