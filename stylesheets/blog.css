@@ -3,6 +3,7 @@
 section.wrapper.blogHeader {
     border-bottom-width: 2px;
     background: linear-gradient(#DAF8DA, rgba(218, 248, 218, 0.1));
+    padding-bottom: 20px;
 }
 section.wrapper.blogHeader h1 {
     margin-bottom: 0px;
