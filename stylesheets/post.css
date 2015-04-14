@@ -25,10 +25,6 @@ div.gloebit-follow {
     height: 26px;
 }
 
-div.blogTitle {
-    margin-right: 10px;
-}
-
 /* necessary to fix fb button heights */
 .fb-follow span {
   top: -4px;
@@ -50,6 +46,7 @@ section.wrapper.blogHeader {
 
 section.wrapper.blogHeader h1 {
     margin-bottom: 0px;
+    margin-right: 5px
     display: inline-block;
 }
 section.wrapper.blogHeader h2 {
