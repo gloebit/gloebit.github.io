@@ -16,6 +16,15 @@ div.author-follow {
   height: 26px;
 }
 
+div.gloebit-follow-container {
+    display: inline-block;
+}
+
+div.gloebit-follow {
+    display: block;
+    height: 26px;
+}
+
 /* necessary to fix fb button heights */
 .fb-follow span {
   top: -4px;
