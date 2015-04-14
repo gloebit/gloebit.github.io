@@ -44,7 +44,10 @@ section.wrapper.blogHeader {
     padding-bottom: 20px;
 }
 
-section.wrapper.blogHeader h1,
+section.wrapper.blogHeader h1 {
+    margin-bottom: 0px;
+    display: inline-block;
+}
 section.wrapper.blogHeader h2 {
     margin-bottom: 0px;
 }
