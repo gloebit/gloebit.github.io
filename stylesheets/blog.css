@@ -7,5 +7,20 @@ section.wrapper.blogHeader {
 }
 section.wrapper.blogHeader h1 {
     margin-bottom: 0px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+div.gloebit-follow-container {
+    display: inline-block;
+}
+
+div.gloebit-follow {
+    display: inline-block;
+    height: 26px;
+}
+
+div.gloebit-follow .fb-follow span {
+    top: -6px;
 }
 
