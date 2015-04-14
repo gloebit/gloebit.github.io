@@ -27,9 +27,9 @@ disqus:
   {% capture myPrimaryImageURL %}{{ site.url }}{{ site.blogpath }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
 {% endif %}
 
-**"Welcome"**
+**Welcome.**
 
-Today, [Gloebit](https://www.gloebit.com/) is excited to announce the launch of its very own blog.  We will be sharing news, thoughts and insights on the Financial Technology([FinTech](http://en.wikipedia.org/wiki/Financial_technology)) space.
+Today, [Gloebit](https://www.gloebit.com/) is excited to announce the launch of its very own [blog]({{ site.url }}{{ site.blogpath }}/).  We will be sharing news, thoughts and insights on the Financial Technology([FinTech](http://en.wikipedia.org/wiki/Financial_technology)) space.
 
 ![Gloebit FinTech Blog]({{ myPrimaryImageURL }} "Gloebit FinTech Blog")
 
