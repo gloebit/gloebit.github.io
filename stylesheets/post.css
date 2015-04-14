@@ -46,11 +46,15 @@ section.wrapper.blogHeader {
 
 section.wrapper.blogHeader h1 {
     margin-bottom: 0px;
-    margin-right: 5px;
+    margin-right: 20px;
     display: inline-block;
 }
 section.wrapper.blogHeader h2 {
     margin-bottom: 0px;
+}
+
+section.wrapper.blogHeader .fb-follow span {
+    top: -6px;
 }
 
 /* fix rounded corners on LinkedIn iframe */
