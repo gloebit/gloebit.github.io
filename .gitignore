@@ -1,3 +1,6 @@
 *~
 *.html#
 *.lock
+
+# ignore all files in _site as these are rebuilt after every change and rebuilt on the remote repository after checkin.
+_site/
