@@ -49,7 +49,7 @@ In 2012, when I founded Gloebit, I made a very concious decision to replace the 
 
 In 2013, Bitcoin took the world, or at least the media, by storm.  It captured enough attention that it entered the general lexicon, but not enough attention for the average person or the media to seem to learn what it actually was or how it worked.  It was often referred by all of the terms virtual, digital and crypto, and occassionally, everything else was referred to as a type of Bitcoin the same way that [tissues](https://en.wikipedia.org/wiki/Facial_tissue) might wrongly be referred to as a type of [Kleenex](https://www.kleenex.com/).
 
-Two years later, things haven't changed much.  It actually takes me _longer_ to explain what my product is due to the general awareness of Bitcoin and the lack of general clarity in terminology.  Last week, I found myself correcting a reference to Bitcoin as a virtual currency in a draft of a _payments white paper_ for the [Application Developers Alliance](http://www.appdevelopersalliance.org/).  I decided it was time to have a broader impact.
+Two years later, things haven't changed much.  It actually takes me _longer_ to explain what my product is due to the general awareness of Bitcoin and the lack of general clarity in terminology.  Last week, I found myself correcting a reference to Bitcoin as a virtual currency in a _payments industry white paper_.  I decided it was time to have a broader impact.
 
 ## Let's create some consensus: ##
 
