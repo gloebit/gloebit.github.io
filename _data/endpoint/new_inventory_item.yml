@@ -23,7 +23,7 @@ param:
           desc: |
             Folder UUID (of application's choice) to store the item in.<br>
             Default folder is used if not provided.
-        - name: param
+        - name: params
           desc: Dictionary of application's parameters for the item.
 result:
   - p: >
