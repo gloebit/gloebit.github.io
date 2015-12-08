@@ -2,59 +2,16 @@
 layout: dev
 page_css: /stylesheets/post.css
 page_type: blog_post
----
-<!-- Facebook Script necessary for Follow, share, like buttons -->
-<!-- place in head or right after opening body tag -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=544263825590034&version=v2.3";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
 
-<!-- LinkedIn Script necessary for profile and share button -->
-<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+contains_social_buttons: true
+---
 
 <!-- Blog Header Info -->
 <section class="wrapper blogHeader">
   <div class="blogTitle">
     <h1><a href="{{ site.url }}{{ site.blogpath }}/">{{ site.blog_title }}</a></h1>
 
-      <!-- Gloebit follow div -->
-      <div class="gloebit-follow-container">
-    
-        <!-- Display Twitter Follow Button -->
-        <div class="gloebit-follow">
-          <a class="twitter-follow-button"
-            href="https://twitter.com/gloebit"
-            data-show-count="false"
-            data-lang="en"
-            rel="publisher">
-            Follow @gloebit
-          </a>
-        </div>
-    
-      <!-- Display Facebook follow button -->
-      <div class="gloebit-follow">
-        <div class="fb-follow"
-            data-href="https://www.facebook.com/gloebit"
-            data-colorscheme="light"
-            data-layout="button"
-            data-show-faces="false">
-        </div>
-      </div>
-    
-      <!-- Display Google Plus follow button. -->
-      <div class="gloebit-follow">
-        <div class="g-follow"
-            data-annotation="none"
-            data-height="20"
-            data-href="//plus.google.com/+Gloebit"
-            data-rel="publisher">
-        </div>
-      </div>
-    
-      <!-- Display LinkedIn follow button. -->
-      <div class="gloebit-follow">
-        <script type="IN/FollowCompany" data-id="2618609"></script>
-      </div>
-    </div>
+    {% include social_follow_buttons.html %}
 
     <!-- horizontal line after blog heading -->
     <hr />
@@ -198,27 +155,3 @@ page_type: blog_post
   
   </section>
 {% endif %}
-
-<!-- Script necessary for Google Plus follow and +1 buttons -->
-<!-- Place this tag in your head or just before your close body tag. -->
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-
-<!-- Script necessary for twitter tweet and follow buttons -->
-<!-- Include the following script in your page template, ideally at the end, before the </body> tag -->
-<script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
- 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
- 
-  return t;
-}(document, "script", "twitter-wjs"));</script>
-

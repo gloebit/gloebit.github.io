@@ -1,0 +1,68 @@
+---
+title: OpenSim Gloebit Money Module Beta - Subscription Flow
+page_css: /stylesheets/opensim.css
+
+description: "View an example of the subscription flow when OpenSim integrates the Gloebit Money Module for auto-debit script functionality.  Test out the newest OpenSim currency solution."
+keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, subscription flow, subscriptions, auto-debit, auto-debit scripts, debit perms, debit permissions, auto-debit flow, scripted object transaction flow, subscribing"
+---
+
+<!doctype html>
+<html>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+    
+    <nav>
+      <ul>
+        <li><a href="#sub-creation">Subscription Creation</a></li>
+        <li><a href="#sub-auth">Subscription Authorization</a></li>
+        <li><a href="#sub-txn">Subscription Transaction</a></li>
+        <li><a href="#sub-review">Review Authorizations</a></li>
+      </ul>
+    </nav>
+    
+    <section class="wrapper anchor" id="intro">
+      <h1>{{ page.title }}</h1>
+      <p>Flow for OpenSim user authorizing an object with an auto-debit script in OpenSim.</p>
+      <p>We strived to make this flow simple, yet secure.  For auto-debit scripts, a user not only needs to authorize the application associated with the region in which the object with the auto-debit script resides, but also needs to create and authorize a subscription for that specific object UUID from Gloebit.</p>
+    </section>
+    
+    <section class="wrapper anchor" id="sub-creation">
+      <h1>Subscription Creation</h1>
+      <p>The first time an auto-debit transaction is attempted by an object, this will trigger the creation of a subscription for that object's UUID on Gloebit.  The auto-debit transaction will fail with the following message:</p>
+      <img src="/images/opensim-flow-images/opensim-txn-failed-sub-created-msg.png" alt="Transaciton failed, subscription created message" />
+      <img src="/images/opensim-flow-images/opensim-txn-failed-sub-created-chat.png" alt="Transaciton failed, subscription created message in chat" />
+    </section>
+    
+    <section class="wrapper anchor" id="sub-auth">
+      <h1>Subscription Authorization</h1>
+      <p>After a subscription has been created, the next time the auto-debit transaction is attempted, it will fail with the following message:</p>
+      <img src="/images/opensim-flow-images/opensim-txn-failed-sub-auth-required-msg.png" alt="Transaction failed, subscription authorization required message" />
+      <img src="/images/opensim-flow-images/opensim-txn-failed-sub-auth-required-chat.png" alt="Transaction failed, subscription authorization required message in chat" />
+      <p>The user is then presented with this dialog:</p>
+      <img src="/images/opensim-flow-images/opensim-sub-auth-dialog.png" alt="Subscription authorization dialog" />
+      <p>If the user chooses <b>authorize</b>, then a subscription authorization request is created on the user's Gloebit account, and a link to the authorization form is provided:</p>
+      <img src="/images/opensim-flow-images/opensim-sub-auth-link.png" alt="Subscription authorization url" />
+      <p>This link loads the form on Gloebit where the user can securley approve or decline authorization:</p>
+      <img src="/images/opensim-flow-images/auth-sub-form.png" alt="Subscription authorization form on Gloebit" />
+    </section>
+    
+    <section class="wrapper anchor" id="sub-txn">
+      <h1>Successful Subscription Transaction</h1>
+      <p>Once the subscription has been authorized, whenever this auto-debit script runs, it will succeed with the following message as long as all other transaction requirements are met:</p>
+      <img src="/images/opensim-flow-images/opensim-sub-txn-succeeded-msg.png" alt="Subscription transaction succeeded message" />
+      <img src="/images/opensim-flow-images/opensim-sub-txn-succeeded-chat.png" alt="Subscription transaction succeeded message in chat" />
+    </section>
+    
+    <section class="wrapper anchor" id="sub-review">
+        <h1>Reviewing Subscription Authorizations</h1>
+        <p>Users can review any of their authorizations (pending, approved and declined) from the <a href="https://sandbox.gloebit.com/subscription-authorizations/">subscriptions page</a> in their account:</p>
+        <img src="/images/opensim-flow-images/subs-page.png" alt="Subscription Authorizations page on Gloebit" />
+        <p>If an approved or declined subscription authorization is selected, a form is presented where the user can reset this authorization to pending so they can change their response:</p>
+        <img src="/images/opensim-flow-images/sub-reset-form.png" alt="Subscription Authorization reset to pending on Gloebit" />
+    </section>
+    
+    {% include footer_scripts.html %}
+
+  </body>
+</html>

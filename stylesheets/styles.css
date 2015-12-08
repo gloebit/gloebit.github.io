@@ -120,6 +120,7 @@ header img {
     box-shadow: initial;
     background-color: #86c200;
     margin-right: 12px;
+    padding: 0;
 }
 
 header > div > div {
@@ -327,6 +328,11 @@ footer .social-tile a:hover {
     -webkit-transition: all 0.15s ease;
     -moz-transition: all 0.15s ease;
     transition: all 0.15s ease;
+}
+
+img.emoji {
+    padding: 0;
+    box-shadow: none;
 }
 
 img {

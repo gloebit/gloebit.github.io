@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'github-pages'
+gem 'jekyll-feed'
 
 # You might need to comment out the following four lines to start
 # a local jekyll server (for debug before deploymnet).  There is

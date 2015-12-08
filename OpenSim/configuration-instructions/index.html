@@ -1,0 +1,70 @@
+---
+title: OpenSim Gloebit Money Module Beta - Configuration Instructions
+page_css: /stylesheets/opensim.css
+no_sections: true
+
+description: "Learn how to configure the Gloebit Money Module beta for OpenSim.  Test out the newest OpenSim currency solution."
+keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, OpenSim integration, beta, OpenSim currency, configure, install, instructions, guide, cinfiguration instructions, config, configure module, addon module, configure addon module"
+---
+
+<!doctype html>
+<html>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+    
+    <section class="wrapper anchor" id="intro">
+      <h1>{{ page.title }}</h1>
+
+      <h2>Access</h2>
+      <p>During beta testing, if you'd like access to the module, you must <a href="/opensim/beta-signup/">request it here</a>.  Get in the queue early for your best chance for beta access.</p>
+      <p>Gloebit will roll out access to requesters gradually, as it will help us narrow the focus of our testing and produce a better product faster.  Trust us, we want to get this in your hands as soon as possible :wink:.</p>
+      
+      <h2>Key and Secret</h2>
+      <aside>You'll only need to copy your "OAuth Key" and "OAuth Secret" for GMM configuration, but you can Read what the rest of the app settings are used for <a href="/app-config/">here</a>.</aside>
+      <p>If you have not already done so...</p>
+      <ol>
+        <li><a href="https://sandbox.gloebit.com/signup/">Create a sandbox account</a>.</li>
+        <li><a href="https://sandbox.gloebit.com/merchant-signup/">Upgrade that account to a merchant account</a> to gain access to our merchant and developer tools.</li>
+        <li>Create an application from your <a href="https://sandbox.gloebit.com/merchant-tools/">merchant tools</a> by clicking "Add an Application".</li>
+      </ol>
+      <p>Retrieve the "OAuth Key" and "OAuth Secret" from the "Gloebit Authorization Information" section of your application settings page.</p>
+      
+      <h2>Configuration</h2>
+      <ol>
+        <li><b>Install:</b> We will provide you with Gloebit.dll and Gloebit.ini.
+          <ul>
+            <li>Place <i>Gloebit.dll</i> in your opensim/bin/ directory.</li>
+            <li>Place <i>Gloebit.ini</i> in your ConfigDirectory.  By default, this is also opensim/bin/.  If you are unsure, you can locate the ConfigDirectory value in the [Startup] section of opensim.ini.</li>
+          </ul>
+        </li>
+        <li><b>Enable:</b> Make required edits to Gloebit.ini and opensim.ini.
+          <ul>
+            <li>Set <i>GLBKey</i> and <i>GLBSecret</i> to the "OAuth Key" and "OAuth Secret" from the application you created above.</li>
+            <li>To enable Gloebit across the entire process (for all regions running under this single OpenSim process):</li>
+            <ul>
+              <li>In Gloebit.ini, set <i>Enabled = true</i></li>
+              <li>In opensim.ini, set <i>economymodule = Gloebit</i></li>
+            </ul>
+            <li>To enable Gloebit only for specific regions running under this single OpenSim process:</li>
+            <ul>
+              <li>In Gloebit.ini, set <i>Enabled = false</i></li>
+              <li>In Gloebit.ini, set <i>GLBEnabledOnlyInRegion</i> to a whitespace separated list of the region UUIDs for which you would like the GMM enabled.</li>
+            </ul>
+          </ul>
+        </li>
+        <li><b>Optional Configuration Options:</b> Make additional edits to Gloebit.ini for improved, user-friendly behavior (None of these are required).
+          <ul>
+            <li>If you entered an "OAuth Key Alias" for your application, you can set <i>GLBKeyAlias</i> to this value.</li>
+            <li>Set <i>GLBOwnerName</i> and <i>GLBOwnerEmail</i> to the name and contact details of a manager of this OpenSim process.  These are displayed with certain error messages if there is a configuration issue and user is asked to report this problem to this manager.</li>
+          </ul>
+        </li>
+      </ol>
+
+    
+    </section>
+    
+    {% include footer_scripts.html %}
+
+  </body>
+</html>

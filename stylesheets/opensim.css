@@ -1,0 +1,67 @@
+
+header h1 {
+    color: #85c000;
+}
+
+section h1 {
+    font-size: 1.75rem;
+}
+
+#signup a {
+    font-size: 1.0rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #85c000;
+    text-shadow: 1px 1px rgba(0,0,0,0.25);
+    padding: 3px 10px 4px;
+    border: 1px solid #75b000;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#signup a:hover {
+    /*
+      color: #85c000;
+      background-color: #fff;
+      */
+    box-shadow: 0 0 12px rgba(0,0,0,0.16) inset;
+}
+
+#signup h2#announcements {
+    margin-top: 20px;
+}
+
+aside {
+    float: right;
+    width: 220px;
+    padding: 10px 15px 12px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(133,192,0,0.75);
+    margin: 20px;
+}
+
+img {
+    padding: 5px;
+}
+
+section#balance-in-viewer > p {
+    margin-bottom: 0;
+}
+
+section#balance-in-viewer > h2 {
+    margin-left: 82%;
+    margin-bottom: 0;
+    color: #86c200;
+    font-size: 3rem;
+}
+
+
+/*********************** MEDIA SECTION ******************************/
+/* everything avove for 961px and above */
+/* screen width from 721-960px */
+@media print, screen and (max-width: 960px) {
+
+    div.wrapper {
+        width: 100%;
+    }

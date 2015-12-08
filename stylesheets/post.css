@@ -16,15 +16,6 @@ div.author-follow {
   height: 26px;
 }
 
-div.gloebit-follow-container {
-    display: inline-block;
-}
-
-div.gloebit-follow {
-    display: inline-block;
-    height: 26px;
-}
-
 /* necessary to fix fb button heights */
 .fb-follow span {
   top: -4px;
@@ -51,10 +42,6 @@ section.wrapper.blogHeader h1 {
 }
 section.wrapper.blogHeader h2 {
     margin-bottom: 0px;
-}
-
-div.gloebit-follow .fb-follow span {
-    top: -6px;
 }
 
 /* fix rounded corners on LinkedIn iframe */

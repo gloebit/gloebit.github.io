@@ -1,0 +1,54 @@
+---
+title: OpenSim Gloebit Money Module Beta - Transaction Flow
+page_css: /stylesheets/opensim.css
+
+description: "View an example of the transaction flow when OpenSim integrates the Gloebit Money Module.  Test out the newest OpenSim currency solution."
+keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, txn flow, transaction flow, txn, transaction, buy, buy flow, purchase, purchase flow, buy object, buy object flow, transacting, buying, purchasing"
+---
+
+<!doctype html>
+<html>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+    
+    <nav>
+      <ul>
+        <li><a href="#viewer-buy">Buy window in viewer</a></li>
+        <li><a href="#buy-progress">Buy progress messages</a></li>
+        <li><a href="#buy-record">Buy record</a></li>
+      </ul>
+    </nav>
+    
+    <section class="wrapper anchor" id="intro">
+      <h1>{{ page.title }}</h1>
+      <p>Flow for OpenSim user purchasing a copy of an object in OpenSim.</p>
+      <p>Flows are similar for purchasing contents or original, paying a user or object, and purchasing land.</p>
+    </section>
+    
+    <section class="wrapper anchor" id="viewer-buy">
+      <h1>Buy window in viewer</h1>
+      <p>We have integrated with the standard commerce flows in OpenSim:</p>
+      <img src="/images/opensim-flow-images/opensim-buy-in-viewer.png" alt="Buy window in OpenSim viewer" />
+    </section>
+    
+    <section class="wrapper anchor" id="buy-progress">
+      <h1>Buy progress messages from Gloebit Money Module</h1>
+      <p>The Gloebit Money Module reports the progress through the stages of the transaction.  The messages include a shortened transaction id within square braces on every message.  If a transaction fails, a failure message is delivered with the entire transaciton id.</p>
+      <img src="/images/opensim-flow-images/opensim-buy-progress-messages.png" alt="Buy progress messages delivered by the Gloebit Money Module to the OpenSim client" />
+      <p>The messages are also recorded in the chat history in case a user wants to go back to review them.</p>
+      <img src="/images/opensim-flow-images/opensim-buy-chat-log-messages.png" alt="Buy progress messages delivered by the Gloebit Money Module to the OpenSim client and stored in chat history" />
+    </section>
+    
+    <section class="wrapper anchor" id="buy-record">
+      <h1>Buy record in transaction history on Gloebit</h1>
+      <p>All transactions are recorded in your <a href="https://sandbox.gloebit.com/transaction-history/">transaction history</a> record.</p>
+      <img src="/images/opensim-flow-images/opensim-buy-transaction-history.png" alt="transaction history record on web" />
+      <p>If you expand a record by clicking on the description, you can see additional details.</p>
+      <img src="/images/opensim-flow-images/opensim-buy-transaction-history-expanded.png" alt="expanded transaction history record on web" />
+    </section>
+    
+    {% include footer_scripts.html %}
+
+  </body>
+</html>

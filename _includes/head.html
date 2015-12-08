@@ -9,7 +9,12 @@
     <link rel="shortcut icon" href="https://www.gloebit.com/favicon.ico?v=3" />
 
     <link rel="stylesheet" href="/stylesheets/styles.css" />
+    {% if page.contains_social_buttons %}
+    <!-- Social Button Styles -->
+    <link rel="stylesheet" href="/stylesheets/social_button_styles.css" />
+    {% endif %}
     {% if page.page_css %}
+    <!-- Page Style -->
     <link rel="stylesheet" href="{{ page.page_css }}" />
     {% endif %}
 
@@ -109,9 +114,17 @@
     {% if author.twitter %}
       <meta name="twitter:creator" content="@{{ author.twitter }}" />
     {% endif %}
+    
+    <!-- jekyll-feed meta tag for automated discovery of our atom (rss-like) feed -->
+    {% feed_meta %}
 
     <!-- Sumome script -->
     <script src="//load.sumome.com/" data-sumo-site-id="433218ce7ac4ca58a127f030830575d4a92a7757c2d6c941ae18fae14393fb81" async="async"></script>
+    
+    {% if page.contains_social_buttons %}
+    <!-- Social Button Scripts -->
+    {% include social_button_scripts.html my_script_location="head" %}
+    {% endif %}
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>

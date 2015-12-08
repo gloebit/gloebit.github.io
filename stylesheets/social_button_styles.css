@@ -1,0 +1,24 @@
+
+div.gloebit-follow-container {
+    display: inline-block;
+}
+
+div.gloebit-follow {
+    display: inline-block;
+    height: 26px;
+}
+
+/* necessary to fix fb button heights */
+div.gloebit-follow .fb-follow span {
+    top: -6px;
+}
+
+/*********************** MEDIA SECTION ******************************/
+/* everything avove for 961px and above */
+
+/* Screen width from 0-399px - really from 320px */
+@media print, screen and (max-width: 399px) {
+
+
+
+

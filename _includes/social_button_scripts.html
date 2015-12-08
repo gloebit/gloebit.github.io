@@ -1,0 +1,47 @@
+{% comment %}
+<!-- This includes all scripts necessary for use of any social buttons.  This is required to be included by head and footer if social_follow_buttons.html is included by page, or if any other social share buttons are included.  Set contains_social_buttons: true in page yaml to force inclusion. -->
+<!-- Add scripts for new buttons to section dependent upon where services says script needs to be located. -->
+{% endcomment %}
+
+{% if include.my_script_location == "head" %}
+<!-- Social button scripts required to be in document head -->
+
+<!-- Facebook Script necessary for Follow, share, like buttons -->
+<!-- place in head or right after opening body tag -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=544263825590034&version=v2.3";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- LinkedIn Script necessary for profile and share button -->
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+{% endif %}
+
+{% if include.my_script_location == "footer" %}
+<!-- Social button scripts required to be in document body just before </body> tag -->
+
+<!-- Script necessary for Google Plus follow and +1 buttons -->
+<!-- Place this tag in your head or just before your close body tag. -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<!-- Script necessary for twitter tweet and follow buttons -->
+<!-- Include the following script in your page template, ideally at the end, before the </body> tag -->
+<script>window.twttr = (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0],
+                        t = window.twttr || {};
+                        if (d.getElementById(id)) return t;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "https://platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                        
+                        t._e = [];
+                        t.ready = function(f) {
+                        t._e.push(f);
+                        };
+                        
+                        return t;
+                        }(document, "script", "twitter-wjs"));</script>
+
+<!-- Script necessary for GitHub follow button -->
+<!-- Place this tag right after the last button or just before your close body tag. -->
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+{% endif %}

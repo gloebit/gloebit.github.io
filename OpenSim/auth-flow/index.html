@@ -1,0 +1,58 @@
+---
+title: OpenSim Gloebit Money Module Beta - Authorization Flow
+page_css: /stylesheets/opensim.css
+
+description: "View an example of the authorization flow when OpenSim integrates the Gloebit Money Module.  Test out the newest OpenSim currency solution."
+keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, auth flow, authorization flow, auth, authorization, user auth, user auth flow, user authorization, user authorization flow, authorizating"
+---
+
+<!doctype html>
+<html>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+    
+    <nav>
+      <ul>
+        <li><a href="#viewer-message">Auth message in viewer</a></li>
+        <li><a href="#auth-form">Auth form on Gloebit</a></li>
+        <li><a href="#auth-response">Auth response message</a></li>
+        <li><a href="#balance-in-viewer">Balance in viewer</a></li>
+      </ul>
+    </nav>
+    
+    <section class="wrapper anchor" id="intro">
+      <h1>{{ page.title }}</h1>
+      <p>Flow for OpenSim user authorizing an application.</p>
+      <p>Dependent upon how the Gloebit Money Module is configured and the corresponding application is created on Gloebit, this application could represent an entire grid, a set of regions, or a single region on a grid.</p>
+    </section>
+    
+    <section class="wrapper anchor" id="viewer-message">
+      <h1>Authorization Request from OpenSim viewer</h1>
+      <p>When an avatar logs into, enters, or attempts any monetary transaction in a region with the Gloebit Money Module enabled and for which that avatar has not yet authorized, the following message is delivered via the OpenSim viewer:</p>
+      <img src="/images/opensim-flow-images/opensim-app-auth-message.png" alt="Gloebit auth request in OpenSim viewer" />
+    </section>
+    
+    <section class="wrapper anchor" id="auth-form">
+      <h1>Authorization form on Gloebit</h1>
+      <p>The user is delivered a form on the Gloebit website from which they can approve or decline authorization of this application corresponding to a grid or set of regions.  If the user is not logged in, they would land at the Gloebit login page where they can log in or create an account, after which they would be directed to this form.</p>
+      <img src="/images/opensim-flow-images/opensim-app-auth-page.png" alt="application auth request on Gloebit" />
+    </section>
+    
+    <section class="wrapper anchor" id="auth-response">
+      <h1>Authorization response</h1>
+      <p>After authorizing, the user is redirected to a url supplied by the application.  The default from the module displays this simple message.</p>
+      <img src="/images/opensim-flow-images/opensim-app-auth-post-message.png" alt="application auth response on web" />
+    </section>
+    
+    <section class="wrapper anchor" id="balance-in-viewer">
+      <h1>Gloebit balance in OpenSim viewer</h1>
+      <p>When on a region with the Gloebit Money Module enabled and which has been authorized from the avatar, the balance for the linked Gloebit account will display like this:</p>
+      <h2>↓</h2>
+      <img src="/images/opensim-flow-images/opensim-app-auth-post-balance.png" alt="post auth Gloebit balance in OpenSim viewer" />
+    </section>
+    
+    {% include footer_scripts.html %}
+
+  </body>
+</html>
