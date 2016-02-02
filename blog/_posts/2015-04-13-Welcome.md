@@ -9,7 +9,10 @@ primary_image:
   width: 1200
   height: 630
 no_sections: true
-author: colosi
+author_handle: colosi
+author:
+  name: Christopher M. Colosi
+  uri: https://www.linkedin.com/in/christophercolosi
 published: true
 tags: [Digital Currency, Virtual Currency, Crypto-currency, Bitcoin, FinTech]
 use_excerpt_separator: true
