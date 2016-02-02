@@ -18,6 +18,9 @@ twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCu
 disqus:
   enabled: true
   uniqueID: "CurrencyTerminologyBlogPost"
+page_css: /stylesheets/post.css
+page_type: blog_post
+contains_social_buttons: true
 ---
 {% if page.primary_image.loc == "external" %}"
   {% assign myPrimaryImageURL = primary_image.url %}
