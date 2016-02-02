@@ -13,6 +13,13 @@ div.gloebit-follow .fb-follow span {
     top: -6px;
 }
 
+/* necessary for feedburner rss feed subscription image */
+div.gloebit-follow img {
+    padding: 2px 0px;
+    box-shadow: none;
+    top: -1px;
+}
+
 /*********************** MEDIA SECTION ******************************/
 /* everything avove for 961px and above */
 
