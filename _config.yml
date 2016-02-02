@@ -24,6 +24,11 @@ exclude:
 # Website URL, used for Sitemap.xml and RSS feed.
 url: http://dev.gloebit.com
 
+# site title and description.  Added later to Jekyll.  Needed for feed.xml
+title: Gloebit Developer Site
+name: Gloebit Developer Site
+description: Information on utilizing and integrating Gloebit's services as a developer or merchant plus our FinTech blog
+
 # Provide path to blog area. Make permalink path match the blogpath prefix...
 blogpath: /blog
 permalink: /blog/:title/
