@@ -1,6 +1,15 @@
 source 'https://rubygems.org'
-gem 'github-pages'
+
+require 'json'
+require 'open-uri'
+versions = JSON.parse(open('https://pages.github.com/versions.json').read)
+
+gem 'github-pages', versions['github-pages']
+gem 'jekyll'
 gem 'jekyll-feed'
+gem 'jekyll-redirect-from'
+gem 'jekyll-sitemap'
+gem 'jemoji'
 
 # You might need to comment out the following four lines to start
 # a local jekyll server (for debug before deploymnet).  There is

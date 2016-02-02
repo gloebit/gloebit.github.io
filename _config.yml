@@ -6,7 +6,9 @@ gems:
   - jekyll-redirect-from
   - jemoji
   - jekyll-sitemap  # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll
   - jekyll-feed
+  - github-pages
 
 # Exclude these files from your production _site
 exclude:
