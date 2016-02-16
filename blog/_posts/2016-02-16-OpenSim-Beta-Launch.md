@@ -16,8 +16,8 @@ author:
 published: true
 tags: [OpenSim, Digital Currency, FinTech, launch, beta, GMM]
 use_excerpt_separator: true
-hashtags: [FinTech, OpenSim, VR]
-twitter_text: "Currency Terminology: #VirtualCurrency #DigitalCurrency #CryptoCurrency #Bitcoin ???"
+hashtags: [FinTech, VR, hypergrid, GMM, payments, monetization]
+twitter_text: "Gloebit launches #DigitalCurrency plugin for #OpenSim #VirtualWorld"
 disqus:
   enabled: true
   uniqueID: "OpenSimGloebitMoneyModuleBetaLaunch"
