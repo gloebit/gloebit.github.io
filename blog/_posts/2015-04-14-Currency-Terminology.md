@@ -69,7 +69,7 @@ Here we have a debate.  Some use [digital currency](https://en.wikipedia.org/wik
 
 I am of the school of thought which treats digital currency as a distinct set, separated from virtual currency by the breadth of intended use.  Whereas a virtual currency is restricted to use on a single platform, and tightly controlled by that platform, a digital currency is open for use by any platform, and control is outside the scope of a single platform.  A digital currency, by this definition, must supply a service, protocol, or interface for platforms to tie into.
 
-###Centralization###
+### Centralization ###
 
 Centralization refers to how the currency is managed.  The digital currency space is bifurcated into centralized and decentralized digital currency.   
 
