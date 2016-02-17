@@ -88,10 +88,11 @@ This is not an exhaustive list, but rather, a short list of items we think a lar
 - Add in support for upload fees, group creation fees, etc.
 - Make the buy currency button in the viewer work on regions where the GMM is not enabled grid wide.
 - Update the gloebit balance automatically in the viewer after a user purchases gloebits (currently requires clicking on your balance).
+- Make fee details visible to paying Gloebit account in their transaction history as this is required in some countries such as Germany.
 
 ### Known Bugs ###
 
 - pgSQL --- FIXED 2015-02-11
-
+- auto-debit scripted objects failing if description is blank --- Fix being reviewed presently
 
 
