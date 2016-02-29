@@ -61,7 +61,7 @@ We'll continue to post updates such as improvements we've made, feedback we've r
 
 ### Versions of OpenSim ###
 
-We've built our GMM against all of the following OpenSim versions which being tested:
+We've built our GMM against all of the following OpenSim versions which are being tested:
 
 - 0.9.0 Dev
 - 0.8.2
@@ -85,14 +85,17 @@ If you'd like to try out our OpenSim GMM, see our [list of beta test regions](ht
 This is not an exhaustive list, but rather, a short list of items we think a large portion of the community will want to know have been requested.
 
 - Make currency symbol in the viewer consistently update to the G$ symbol upon entering Gloebit enabled regions.
+  - With Cinder's Roxley's help, we have added some parameters to the OpenSimExtras sent to a viewer upon entering a region.  Hopefully soon, some viewers will make use of this and update the currency symbol. 
 - Add in support for upload fees, group creation fees, etc.
+  - Working on this and should have an initial implementation out the first week of March.
 - Make the buy currency button in the viewer work on regions where the GMM is not enabled grid wide.
 - Update the gloebit balance automatically in the viewer after a user purchases gloebits (currently requires clicking on your balance).
 - Make fee details visible to paying Gloebit account in their transaction history as this is required in some countries such as Germany.
 
-### Known Bugs ###
+### Reported Bugs ###
 
-- pgSQL --- FIXED 2015-02-11
-- auto-debit scripted objects failing if description is blank --- Fix being reviewed presently
+- FIXED 2015-02-11 - pgSQL issues
+- FIXED 2015-02-18 - auto-debit scripted objects failing if description is blank
+- Gloebit module messaging agents in nearby regions
 
 
