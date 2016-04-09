@@ -73,29 +73,50 @@ If you'd like to try out our OpenSim GMM, see our [list of beta test regions](ht
 ### Updates to the GMM ###
 
 - pgSQL support
+  - Added on 2016-02-11
   - The initial launch only supported MySQL.  Thanks to a lot of help from Zetamex, we have fixed the integration with pgSQL.
   - Note for anyone else writing code for pgSQL, the npgsql library which OpenSim uses to execute queries from C# will silently fail/freeze on constraint errors.  This is very bad for a sql library and makes debugging a bit of a challenge.
 - Backport for OpenSim 0.8.0.3
   - We had to make some very minor modifications to run with OpenSim 0.8.0.3 which dates back to November of 2014, but we now have a branch of our module with those modifications.
   - This turned out to be a bit of a challenge due to some incompatibilities with older versions of OpenSim and recent versions of Mono.  Huge thanks to the opensim-dev IRC channel, especially Plugh and AliciaRaven, for helping us to discover this.  
   - If you're building an older version of OpenSim, make sure you are using Mono 3.12.1 or earlier.  4.x versions of Mono will not work.  We believe this was [fixed by Diva Canto in August of 2015](http://opensimulator.org/viewgit/?a=commit&p=opensim&h=4cbbbefbf63f6cab4241563ebf56c6b0bea30ed3).
+- Per-region Currency Symbol and buy-url updating
+  - We have added the OpenSimExtras parameters "currency" and "currency-base-url" which are delivered when a client makes a features request upon entering a new region.
+  - Cider Roxley has added code to make use of these to the Alchemy Dire viewer, though we have not yet tested this
+    - https://bitbucket.org/alchemyviewer/alchemy-dire/commits/f41da42e55d92eb49b4cc3a535c5056ea5f9c25b
+- Grid Fees
+  - Added on 2016-04-08
+  - Implemented support for group creation, classified ad, and asset upload fees
+  - Fees are paid to the account which created and owns the application.  No additional configuration of a "Banker Account" is required.
+- Fixed message spamming of agents in nearby regions
+  - Added on 2016-04-08
+  - We learned a lot more about the IClientAPI and discovered the OnCompleteMovementToRegion event, which we now use to send a balance update and gloebit purchase message to the user upon entering a Gloebit enabled region.
+  - Currently, the user will receive a single IM with the purchase url upon entering (logging in, teleporting, or crossing a region boundry) and Gloebit enabled region.  If this is too much messaging for users, we'll examine ways to reduce it, though we've erred on extra information for now.
+  - A user should no longer receive a purchase url message from Gloebit when on a non-Gloebit region near a Gloebit enabled region.
+  - A user should only receive a single message when entering a Gloebit enabled region.
+- Fee details in transaction history record for purchaser
+  - Added on 2016-04-08
+  - The buyer/payer will now see the gross amount, fees, and net amount in the details for a transaction from their transaction history on Gloebit.
 
 ### Feature Requests ###
 
 This is not an exhaustive list, but rather, a short list of items we think a large portion of the community will want to know have been requested.
 
 - Make currency symbol in the viewer consistently update to the G$ symbol upon entering Gloebit enabled regions.
+  - Added
   - With Cinder's Roxley's help, we have added some parameters to the OpenSimExtras sent to a viewer upon entering a region.  Hopefully soon, some viewers will make use of this and update the currency symbol. 
 - Add in support for upload fees, group creation fees, etc.
-  - Working on this and should have an initial implementation out the first week of March.
+  - Added on 2016-04-08
 - Make the buy currency button in the viewer work on regions where the GMM is not enabled grid wide.
 - Update the gloebit balance automatically in the viewer after a user purchases gloebits (currently requires clicking on your balance).
+  - The GMM delivers the url to Gloebit for us to deliver this alert to.  We are not yet calling it from our server, but we will eventually add this feature.
 - Make fee details visible to paying Gloebit account in their transaction history as this is required in some countries such as Germany.
+  - Added on 2016-04-08
 
 ### Reported Bugs ###
 
-- FIXED 2015-02-11 - pgSQL issues
-- FIXED 2015-02-18 - auto-debit scripted objects failing if description is blank
-- Gloebit module messaging agents in nearby regions
+- FIXED 2016-02-11 - pgSQL issues
+- FIXED 2016-02-18 - auto-debit scripted objects failing if description is blank
+- FIXED 2016-04-08 - Gloebit module messaging agents in nearby regions
 
 
