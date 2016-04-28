@@ -81,9 +81,13 @@ If you'd like to try out our OpenSim GMM, see our [list of beta test regions](ht
   - This turned out to be a bit of a challenge due to some incompatibilities with older versions of OpenSim and recent versions of Mono.  Huge thanks to the opensim-dev IRC channel, especially Plugh and AliciaRaven, for helping us to discover this.  
   - If you're building an older version of OpenSim, make sure you are using Mono 3.12.1 or earlier.  4.x versions of Mono will not work.  We believe this was [fixed by Diva Canto in August of 2015](http://opensimulator.org/viewgit/?a=commit&p=opensim&h=4cbbbefbf63f6cab4241563ebf56c6b0bea30ed3).
 - Per-region Currency Symbol and buy-url updating
+  - Updated on 2016-04-26
   - We have added the OpenSimExtras parameters "currency" and "currency-base-url" which are delivered when a client makes a features request upon entering a new region.
   - Cider Roxley has added code to make use of these to the Alchemy Dire viewer, though we have not yet tested this
     - https://bitbucket.org/alchemyviewer/alchemy-dire/commits/f41da42e55d92eb49b4cc3a535c5056ea5f9c25b
+  - Kalasiddhi Grid informed us of a conflict this feature created with mesh objects rendering (which we fixed on 2016-04-26).  
+    - While researching the issue, we discovered that OpenSim's SimulatorFeatureModule was not implemented properly.  Melanie_T [patched](http://opensimulator.org/viewgit/?a=commit&p=opensim&h=995655c445ebc32c8c20d8101259d7f5ccb95477) the module and we updated our integration.
+    - Big thanks to opensim-dev on IRC, Melanie_T, and Kalasiddhi Grid.
 - Grid Fees
   - Added on 2016-04-08
   - Implemented support for group creation, classified ad, and asset upload fees
@@ -97,6 +101,9 @@ If you'd like to try out our OpenSim GMM, see our [list of beta test regions](ht
 - Fee details in transaction history record for purchaser
   - Added on 2016-04-08
   - The buyer/payer will now see the gross amount, fees, and net amount in the details for a transaction from their transaction history on Gloebit.
+- 0G$ object purchase support
+  - Added on 2016-04-27
+  - We missed this one, but thanks to MobiusGrid and Zetamex reporting it, we've fixed it.
 
 ### Feature Requests ###
 
@@ -118,5 +125,7 @@ This is not an exhaustive list, but rather, a short list of items we think a lar
 - FIXED 2016-02-11 - pgSQL issues
 - FIXED 2016-02-18 - auto-debit scripted objects failing if description is blank
 - FIXED 2016-04-08 - Gloebit module messaging agents in nearby regions
+- FIXED 2016-04-26 - Mesh objects not displaying on GMM enabled region
+- FIXED 2016-04-27 - Purchase of object for 0G$ fails
 
 
