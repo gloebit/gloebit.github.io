@@ -57,6 +57,12 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
           <ul>
             <li>If you entered an "OAuth Key Alias" for your application, you can set <i>GLBKeyAlias</i> to this value.</li>
             <li>Set <i>GLBOwnerName</i> and <i>GLBOwnerEmail</i> to the name and contact details of a manager of this OpenSim process.  These are displayed with certain error messages if there is a configuration issue and user is asked to report this problem to this manager.</li>
+            <li>Use <i>GLBSpecificConnectionString</i> and <i>GLBSpecificStorageProvider</i> to define a different database for the Gloebit Tables.</li>
+            <ul>
+              <li>If not set, the GMM will use the default ConnectionString set by the DatabaseService section of your configuration</li>
+              <li>If you are running multiple sim processes/servers with the GMM enabled, then we recommend you create a single Gloebit database on a server which all sim processes can access, such as on your robust server.  If each sim has it's own database, then your users will have to authorize Gloebit from each sim rather than once and will receive session messaging upon entering each sim rather than once per session.</li>
+              <li>Be aware that you may need to configure your database to allow connections from remote servers and your firewall to allow connections on port 3306 for your sim servers or prevent connecitons from any IP which is not one of your sim servers.  You can find <a href="https://easyengine.io/tutorials/mysql/remote-access/">instructions</a> for this online, but this is advanced, so you should not attempt this unless you know how to secure your firewall.</li>
+            </ul>
           </ul>
         </li>
       </ol>
