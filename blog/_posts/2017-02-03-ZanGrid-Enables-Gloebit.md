@@ -5,9 +5,9 @@ description: "Announcement of first commerce focused OpenSim grid to enable Gloe
 keywords: "Gloebit, Digital, Virtual, Currency, Digital Currency, Virtual Currency, FinTech, OpenSim, OpenSimulator, GMM, Gloebit Money Module, Gloebit Money Module addon, ZanGrid, HyperShopping, virtual world, virtual reality, commerce backbone, commerce, monetization, payments, Zetamex"
 primary_image:
   loc: internal_blog
-  url: "HyperShopping-Gloebit-signs.png"
-  width: 1440
-  height: 833
+  url: "HyperShopping-Gloebit-signs.jpg"
+  width: 800
+  height: 463
 no_sections: true
 author_handle: colosi
 author:
@@ -33,7 +33,7 @@ contains_social_buttons: true
   {% capture myPrimaryImageURL %}{{ site.url }}{{ site.blogpath }}{{ site.imagepath }}/{{ page.primary_image.url }}{% endcapture %}
 {% endif %}
 
-These are the first Gloebit enabled VR regions strictly focusing on commerce.  It's a beautiful outdoor mall biuld.  Check it out.
+These are the first Gloebit enabled VR regions strictly focusing on commerce.  It's a beautiful outdoor mall build.  Check it out.
 
 ![Signs in Zangrid explaining how to use Gloebit]({{ myPrimaryImageURL }} "ZanGrid Gloebit Signs")
 
