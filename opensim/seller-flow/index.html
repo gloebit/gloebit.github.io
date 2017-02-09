@@ -1,0 +1,67 @@
+---
+title: OpenSim Gloebit Money Module Beta - Seller Flow
+page_css: /stylesheets/opensim.css
+
+description: "View an example of the flow for requesting permission to sell gloebits and placing and completing a sale of gloebits for USD."
+keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, seller flow, sales, sell gloebits, cash out, merchant, proceeds, profits, earnings, convertible"
+---
+
+<!doctype html>
+<html>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+    
+    <nav>
+      <ul>
+        <li><a href="#request-seller-perms">Request Seller Perms</a></li>
+        <li><a href="#selling-gloebits">Selling Gloebits</a></li>
+        <li><a href="#cash-outs">Cash Outs</a></li>
+      </ul>
+    </nav>
+    
+    <section class="wrapper anchor" id="intro">
+      <h1>{{ page.title }}</h1>
+      <p>Flow for a Gloebit user to request account permissions to sell gloebits and to place and complete a sale for USD.</p>
+      <p>We've launched this functionality, but it will be an ongoing process to manage security and regulatory requirements.  Please bear with us if you run into delays, sales limits, or any other problems.</p>
+    </section>
+    
+    <section class="wrapper anchor" id="request-seller-perms">
+      <h1>Requesting permission to sell gloebits</h1>
+      <p>A user can request permissions to sell gloebits from their <a href="https://www.gloebit.com/account-settings/">account settings page</a>.  In the upper right, under Advanced Business Account Capabilities, click on the Request Upgrade link next to Selling gloebits.</p>
+      <img src="/images/seller-flow-images/seller-flow-request-upgrade.jpg" alt="Request upgrade for selling gloebits highlighted in account settings" />
+      <p>You will need a confirmed email address on file to access this link.  If you don't have one, you'll receive an error message and can resolve the problem from the Personal Info section of this page.  If you never confirmed your email address, you can resend the confirmation email via the link below it.  If you created your accoung using a social-sign-on, you'll need to add an email to your account.  You can do that from the same section by adding an email and clicking save.  Go to that email account, find the confirmation email from Gloebit, and click on the link we sent you.  Then you can proceed.</p>
+      <img src="/images/seller-flow-images/seller-flow-verified-email-required.jpg" alt="A verified email is required.  Add and confirm an email address from the Personl Info section." />
+      <p>Fill out and save the seller signup form.  In addition to the form, for the first tier of seller permissions, we require that you have payment info on file.  If you haven't already done so, you'll have to do either of the following.  Bonus points for doing both :)</p>
+      <ul>
+        <li>Purchase gloebits using a verified PayPal account whose primary email address matches a confirmed email address on your account and name and address info match the information provided in this form..</li>
+        <li>Purchase gloebits using a credit card whose name and billing address match the information provided in this form.</li>
+      </ul>
+      <img src="/images/seller-flow-images/seller-flow-signup-form.jpg" alt="Seller signup form" />
+      <p>Once you have submitted a seller signup request, we'll try to review it within a few days.</p>
+    </section>
+    
+    <section class="wrapper anchor" id="selling-gloebits">
+      <h1>Selling gloebits</h1>
+      <p>Once your seller signup request has been approved, you can place gloebits for sale from our sell page, which you can reach from the sell gloebits button which will now appear on your dashboard</p>
+      <img src="/images/seller-flow-images/seller-flow-sell-gloebits-button.jpg" alt="Sell gloebits button on dashboard" />
+      <p>Fill in the amount of gloebits you would like to sell, and click the Place Sell Order button.</p>
+      <p>All sales are currently placed at a rate of 250 gloebits to 1 USD.  Eventually, we hope to allow sales in other currencies and at other rates.</p>
+      <img src="/images/seller-flow-images/seller-flow-place-sale.jpg" alt="Placing a Gloebit Sale for 1000 gloebits" />
+      <p>You'll see a message confirming that your sale was placed successfully, and your sale will appear in your Sell Orders table.  If you receive an error message that you are over your sell limit, you can try selling fewer gloebits or waiting if it is a period limit, or you can contact us about raising your limit.  We will work with top sellers to raise limits, but we need to keep initial limits low to deter fraud.  If you get any other error messages, definitely contact us and let us know.</p>
+      <img src="/images/seller-flow-images/seller-flow-sale-placed.jpg" alt="Placed a Gloebit Sale for 1000 gloebits" />
+      <p>Your sell order will be queued up in line and will execute as consumers purchase gloebits.  When this occurs, you'll see the gloebits sold update in your sell table, and your USD balance will increase correspondingly.</p>
+      <img src="/images/seller-flow-images/seller-flow-sell-order-partially-executed.jpg" alt="Gloebit Sale for 1000 gloebits partially executed 800 gloebits for $3.20 thus far" />
+      <p>Once a sell order fully executes, it is moved to your Completed Sell Orders table.</p>
+      <img src="/images/seller-flow-images/seller-flow-sell-order-completed.jpg" alt="Gloebit Sell order for 1000 gloebits completed" /> 
+    </section>
+    
+    <section class="wrapper anchor" id="cash-outs">
+      <h1>Cash Outs</h1>
+      <p>Cash outs are coming very soon.  We're refining and testing the code.  Once launched, you'll be able to request a cash out via PayPal.</p>
+    </section>
+    
+    {% include footer_scripts.html %}
+
+  </body>
+</html>
