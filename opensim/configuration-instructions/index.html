@@ -19,16 +19,22 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
       <h2>Access</h2>
       <p>During beta testing, if you'd like access to the module, you must <a href="/opensim/beta-signup/">request it here</a>.  Get in the queue early for your best chance for beta access.</p>
       <p>Gloebit will roll out access to requesters gradually, as it will help us narrow the focus of our testing and produce a better product faster.  Trust us, we want to get this in your hands as soon as possible :wink:.</p>
-      
-      <h2>Key and Secret</h2>
-      <aside>You'll only need to copy your "OAuth Key" and "OAuth Secret" for GMM configuration, but you can Read what the rest of the app settings are used for <a href="/app-config/">here</a>.</aside>
-      <p>If you have not already done so...</p>
+
+      <h2>Set up your Gloebit app</h2>
+      <p>We have two environments, Sandbox and Production.  In Sandbox, payments and gloebits are fake, which allows you to test without spending any real money.  In Production, payments and gloebits are real.  We highly recommend that you start with an app in our Sandbox environment, and then switch to Production, but we also understand that some customers may want or need to skip Sandbox and launch right into Production.  In either case, follow the steps below to prepare for your integration.
       <ol>
-        <li><a href="https://sandbox.gloebit.com/signup/">Create a sandbox account</a>.</li>
-        <li><a href="https://sandbox.gloebit.com/merchant-signup/">Upgrade that account to a merchant account</a> to gain access to our merchant and developer tools.</li>
-        <li>Create an application from your <a href="https://sandbox.gloebit.com/merchant-tools/">merchant tools</a> by clicking "Add an Application".</li>
+        <li>Create an account on <a href="https://sandbox.gloebit.com/signup/">Sandbox</a>, or on <a href="https://www.gloebit.com/signup/">Production</a>.</li>
+        <li>Request account permissions to create apps on <a href="https://sandbox.gloebit.com/merchant-signup/">Sandbox</a> or on <a href="https://www.gloebit.com/merchant-signup/">Production</a>.
+          <ul>
+            <li>On Sandbox, this permission is immediately granted so you don't lose any time.</li>
+            <li>On Production, you'll need to wait for us to review your request before you can move to the next step..</li>
+          </ul>
+        </li>
+        <li>Create an application from your <a href="https://sandbox.gloebit.com/merchant-tools/">Sandbox merchant tools</a> or <a href="https://www.gloebit.com/merchant-tools/">Production merchant tools</a> by clicking "Add an Application".</li>
+        <aside>You can learn about the  rest of the app settings <a href="/app-config/">here</a> if you are curious.</aside>
+        <li>In the Application Information section of your app, fill in the Name and Description, and upload a Logo (169px wide x 108px high recommended) so that your users will know who they are dealing with.</li>
+        <li>Retrieve the "OAuth Key" and "OAuth Secret" from the "Gloebit Authorization Information" section of your application settings.</li>
       </ol>
-      <p>Retrieve the "OAuth Key" and "OAuth Secret" from the "Gloebit Authorization Information" section of your application settings page.</p>
       
       <h2>Configuration</h2>
       <ol>
@@ -44,7 +50,7 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
             <li>To enable Gloebit across the entire process (for all regions running under this single OpenSim process):</li>
             <ul>
               <li>In Gloebit.ini, set <i>Enabled = true</i></li>
-              <li>In opensim.ini, set <i>economymodule = Gloebit</i></li>
+              <li>In opensim.ini, set <i>economymodule = Gloebit</i> (you may need to add this line to the end of your [Startup] section.</li>
             </ul>
             <li>To enable Gloebit only for specific regions running under this single OpenSim process:</li>
             <ul>
@@ -53,16 +59,18 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
             </ul>
           </ul>
         </li>
+        <li><b>Improved Robust Experience:</b> Configure all sims to use the same database
+          <ul>
+            <li>If you are running multiple sim processes/servers with the GMM enabled, then we recommend you create a single Gloebit database on a server which all sim processes can access, such as on your robust server.  If each sim has it's own database, then your users will have to authorize Gloebit from each sim rather than once and will receive session messaging upon entering each sim rather than once per session.</li>
+            <li>Use <i>GLBSpecificConnectionString</i> and <i>GLBSpecificStorageProvider</i> to define a different database for the Gloebit Tables.  If not set, the GMM will use the default ConnectionString set by the DatabaseService section of your configuration.</li>
+            <li>You may need to configure your database to allow connections from remote servers and your firewall to allow connections on port 3306 for your sim servers.  You can find <a href="https://easyengine.io/tutorials/mysql/remote-access/">instructions</a> for this online, but this is advanced, so you should not attempt this unless you know how to secure your firewall.</li>
+          </ul>
+        </li>
         <li><b>Optional Configuration Options:</b> Make additional edits to Gloebit.ini for improved, user-friendly behavior (None of these are required).
           <ul>
             <li>If you entered an "OAuth Key Alias" for your application, you can set <i>GLBKeyAlias</i> to this value.</li>
             <li>Set <i>GLBOwnerName</i> and <i>GLBOwnerEmail</i> to the name and contact details of a manager of this OpenSim process.  These are displayed with certain error messages if there is a configuration issue and user is asked to report this problem to this manager.</li>
-            <li>Use <i>GLBSpecificConnectionString</i> and <i>GLBSpecificStorageProvider</i> to define a different database for the Gloebit Tables.</li>
-            <ul>
-              <li>If not set, the GMM will use the default ConnectionString set by the DatabaseService section of your configuration</li>
-              <li>If you are running multiple sim processes/servers with the GMM enabled, then we recommend you create a single Gloebit database on a server which all sim processes can access, such as on your robust server.  If each sim has it's own database, then your users will have to authorize Gloebit from each sim rather than once and will receive session messaging upon entering each sim rather than once per session.</li>
-              <li>Be aware that you may need to configure your database to allow connections from remote servers and your firewall to allow connections on port 3306 for your sim servers or prevent connecitons from any IP which is not one of your sim servers.  You can find <a href="https://easyengine.io/tutorials/mysql/remote-access/">instructions</a> for this online, but this is advanced, so you should not attempt this unless you know how to secure your firewall.</li>
-            </ul>
+            <li>Use <i>GLBSpecificConnectionString</i> and <i>GLBSpecificStorageProvider</i> to define a different database for the Gloebit Tables.  If not set, the GMM will use the default ConnectionString set by the DatabaseService section of your configuration.</li>
           </ul>
         </li>
       </ol>
