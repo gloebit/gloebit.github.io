@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Gloebit Stats - Februaray 2017"
+title: "Gloebit Stats - February 2017"
 description: "Data on users, accounts and transactions from February 2017 from the Gloebit Money Module for OpenSim."
 keywords: "Gloebit, Digital, Virtual, Currency, Digital Currency, Virtual Currency, FinTech, OpenSim, OpenSimulator, Data, Stats, app users, avatars, spend, transactions, new users, new accounts, growth"
 primary_image:
