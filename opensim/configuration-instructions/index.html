@@ -1,7 +1,6 @@
 ---
 title: OpenSim Gloebit Money Module Beta - Configuration Instructions
 page_css: /stylesheets/opensim.css
-no_sections: true
 
 description: "Learn how to configure the Gloebit Money Module beta for OpenSim.  Test out the newest OpenSim currency solution."
 keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, OpenSim integration, beta, OpenSim currency, configure, install, instructions, guide, cinfiguration instructions, config, configure module, addon module, configure addon module"
@@ -13,29 +12,61 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
   <body>
     {% include header.html %}
     
+    <nav>
+      <ul>
+        <li><a href="#app-permission">Request App Creation Permission</a></li>
+        <li><a href="#app-creation">Create An App</a></li>
+        <li><a href="#gmm-configuration">Configure The GMM</a></li>
+      </ul>
+    </nav>
+    
     <section class="wrapper anchor" id="intro">
       <h1>{{ page.title }}</h1>
-
-      <h2>Access</h2>
-      <p>During beta testing, if you'd like access to the module, you must <a href="/opensim/beta-signup/">request it here</a>.  Get in the queue early for your best chance for beta access.</p>
-      <p>Gloebit will roll out access to requesters gradually, as it will help us narrow the focus of our testing and produce a better product faster.  Trust us, we want to get this in your hands as soon as possible :wink:.</p>
-
-      <h2>Set up your Gloebit app</h2>
-      <p>We have two environments, Sandbox and Production.  In Sandbox, payments and gloebits are fake, which allows you to test without spending any real money.  In Production, payments and gloebits are real.  We highly recommend that you start with an app in our Sandbox environment, and then switch to Production, but we also understand that some customers may want or need to skip Sandbox and launch right into Production.  In either case, follow the steps below to prepare for your integration.
-      <ol>
-        <li>Create an account on <a href="https://sandbox.gloebit.com/signup/">Sandbox</a>, or on <a href="https://www.gloebit.com/signup/">Production</a>.</li>
-        <li>Request account permissions to create apps on <a href="https://sandbox.gloebit.com/merchant-signup/">Sandbox</a> or on <a href="https://www.gloebit.com/merchant-signup/">Production</a>.
-          <ul>
-            <li>On Sandbox, this permission is immediately granted so you don't lose any time.</li>
-            <li>On Production, you'll need to wait for us to review your request before you can move to the next step..</li>
-          </ul>
-        </li>
-        <li>Create an application from your <a href="https://sandbox.gloebit.com/merchant-tools/">Sandbox merchant tools</a> or <a href="https://www.gloebit.com/merchant-tools/">Production merchant tools</a> by clicking "Add an Application".</li>
-        <aside>You can learn about the  rest of the app settings <a href="/app-config/">here</a> if you are curious.</aside>
-        <li>In the Application Information section of your app, fill in the Name and Description, and upload a Logo (169px wide x 108px high recommended) so that your users will know who they are dealing with.</li>
-        <li>Retrieve the "OAuth Key" and "OAuth Secret" from the "Gloebit Authorization Information" section of your application settings.</li>
-      </ol>
       
+      <p>Enabling Gloebit on your OpenSim grid is quick and simple.  There are 3 easy steps.</p>
+      <aside>If you use a hosting provider, they should be able to handle step 3 for you.</aside>
+      <ol>
+        <li>Request account permission to create apps</li>
+        <li>Create a Gloebit app</li>
+        <li>Install and configure the Gloebit Money Module</li>
+      </ol>
+      <p>The details for each of these is below.  Just follow the step by step instructions.</p>
+      <p>We have two environments, a Sandbox testing environment and Production.  All of the instructions below are for our Production environment, but if you want to test with fake payments and gloebits, you can replace <i>www</i> with <i>sandbox</i> in all the links below.</p>
+    </section>
+
+    <section class="wrapper anchor" id="app-permission">
+      <h2>Request account permission to create apps</h2>
+      <p>If you haven't already, <a href="https://www.gloebit.com/signup/">create a Gloebit account</a>.  Remember that our Sanbox and Production environments use completely separate accounts, so if you've been testing on Sandbox, you'll still need to create a Production account and go through all the steps below from that account to create a Production app.</p>
+      <p>From your Gloebit account, fill in and submit our <a href="https://www.gloebit.com/merchant-signup/">form for requesting app creation permission</a>.  We just need some basic contact info.</p>
+      <ul>
+        <li>Company name and address are optional.  If your grid or space is owned by a company, you should enter the company information.</li>
+        <li>Product name should probably be the grid name for a private grid, or what you call your space on the grid if you are on a public grid.</li>
+        <li>Product url should be the url of the website for your grid or space if you have one.</li>
+        <li>The Contact name, email and phone number should be the real life info of someone in charge of this grid or space (probably you who is signing up).</li>
+        <li>EIN/SSN is optional and can be left blank.</li>
+        <li>Click submit once you have entered your information</li>
+      </ul>
+      <p>You'll need to wait for us to review your request before you can move to creating your app.  We'll email you once we have.</p>
+    </section>
+
+    <section class="wrapper anchor" id="app-creation">
+      <h2>Create a Gloebit app</h2>
+      <p>Once your account has been granted permission to create apps, you'll gain access to your <a href="https://www.gloebit.com/merchant-tools/">merchant tools page</a> where you can create and edit your apps.  Go there and either click <i>Configure</i> next to an existing app (we may have created one for you labeled "Unknown") or the <i>Add an Application</i> button, which will take you to an app settings page.  Follow the instructions below to set up your app.</p>
+      <ul>
+        <aside>You can learn about all of the app settings <a href="/app-config/">here</a> if you are curious.</aside>
+        <li>Enter a <b>Name</b> (probably the grid name or name of the space on which Gloebit will be enabled) and <b>Short Description</b> for your app.  These are what users will see when they are asked to authorize your app to access their Gleobit account (as well as the logo below).</li>
+        <li><b>Publisher</b> can be left blank.  It is displayed on our <a href="https://www.gloebit.com/apps/">app discovery page</a> and is a way that a company with many apps could show they are all owned by the same company.  You can put your grid/company name here.  You could also put the name of your hosting provider here if you like.</li>
+        <li>Upload a <b>Logo</b>. This is important because users see it when authorizing.  We recommend rough dimensions of 169px wide x 108px high.  We will shrink the image down to fit inside those dimensions.</li>
+        <li><b>Return-to Text</b> can be left blank.</li>
+        <li><b>Default Return-To URI</b> should be set to the web page for your grid or space or some url which explains what their space is or how to connect.  It can be left blank if you don't have a website.  This url will be provided alongside your app on certain sections of our site.</li>
+        <li>If you check the <b>Make application findable</b> box, once we review it, your app will show up on our <a href="https://www.gloebit.com/apps/">app discovery page</a>.</li>
+        <li>In the Gloebit Authorization section below, copy the <b>OAuth Key</b> and <b>OAuth Secret</b>.  You'll need these (or will need to provide them to your hosting provider) to configure the Gloebit Money Module to connect to this app.  You can also retrieve these later by clicking on <i>Configure</i> next to this app on your merchant tools page.</li>
+        <li>Scroll to the bottom of the page and click the <i>Save</i> button.  You can ignore the other settings on this page, as well as the warning at the top about callback prefixes as they are not designed for the OpenSim GMM.</li>
+      </ul>
+      <p>Now you have an app and you're ready to install and configure the GMM.</p>
+    </section>
+    
+    <section class="wrapper anchor" id="gmm-configuration">
       <h2>Configuration</h2>
       <ol>
         <li><b>Install:</b> We will provide you with Gloebit.dll and Gloebit.ini.
@@ -121,8 +152,6 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
           </ul> 
         </li>
       </ol>
-
-    
     </section>
     
     {% include footer_scripts.html %}
