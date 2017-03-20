@@ -77,7 +77,8 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
         </li>
         <li><b>Enable:</b> Make required edits to Gloebit.ini and opensim.ini.
           <ul>
-            <li>Set <i>GLBKey</i> and <i>GLBSecret</i> to the "OAuth Key" and "OAuth Secret" from the application you created above.</li>
+            <li>In Gloebit.ini, set <i>GLBEnvironment = production</i> (or set it to <i>sandbox</i> for a testing app created in our sandbox environment).
+            <li>In Gleobit.ini, set <i>GLBKey</i> and <i>GLBSecret</i> to the "OAuth Key" and "OAuth Secret" from the application you created above.</li>
             <li>To enable Gloebit across the entire process (for all regions running under this single OpenSim process):</li>
             <ul>
               <li>In Gloebit.ini, set <i>Enabled = true</i></li>
