@@ -7,8 +7,8 @@ section h1 {
     font-size: 1.75rem;
 }
 
-#signup a {
-    font-size: 1.0rem;
+#enable a {
+    font-size: 2.0rem;
     font-weight: 600;
     color: #fff;
     background-color: #85c000;
@@ -20,7 +20,7 @@ section h1 {
     margin: 0 auto;
 }
 
-#signup a:hover {
+#enable a:hover {
     /*
       color: #85c000;
       background-color: #fff;
@@ -28,7 +28,7 @@ section h1 {
     box-shadow: 0 0 12px rgba(0,0,0,0.16) inset;
 }
 
-#signup h2#announcements {
+#enable h2#announcements {
     margin-top: 20px;
 }
 
