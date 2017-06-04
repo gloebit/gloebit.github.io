@@ -9,6 +9,7 @@ gem 'jekyll'
 gem 'jekyll-feed'
 gem 'jekyll-redirect-from'
 gem 'jekyll-sitemap'
+gem 'jekyll-octicons'
 gem 'jemoji'
 
 # You might need to comment out the following four lines to start

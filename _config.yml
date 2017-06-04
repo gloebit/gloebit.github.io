@@ -8,6 +8,7 @@ gems:
   - jekyll-sitemap  # Create a sitemap using the official Jekyll sitemap gem
   - jekyll
   - jekyll-feed
+  - jekyll-octicons
   - github-pages
 
 # Exclude these files from your production _site

@@ -1,0 +1,68 @@
+---
+title: OpenSim Gloebit Money Module Beta Downloads
+page_css: /stylesheets/opensim.css
+
+description: "Download the Gloebit dll and ini files for various versions of OpenSim."
+keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, OpenSim integration, integration, OpenSim currency, dll, ini, files, builds, change log"
+
+contains_tables: true
+contains_social_buttons: false
+---
+
+<!doctype html>
+<html>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+
+    <nav>
+      <ul>
+        <li><a href="#ini">Gloebit.ini</a></li>
+        <li><a href="#dll">Gloebit.dll</a></li>
+        <li><a href="#change-log">Change Log</a></li>
+      </ul>
+    </nav>
+
+    <section class="wrapper anchor" id="intro">
+      <h1>{{ page.title }}</h1>
+      <p>
+        <b>Download the example ini file and the dll for your version of OpenSim so that you can <a href="/opensim/configuration-instructions/">install and enable</a> the Gloebit Money Module.</b>
+      </p>
+    </section>
+
+    <section class="wrapper anchor" id="ini">
+      <h1>Gloebit example ini file</h1>
+      <p>You'll need to modify this ini file when configuring the Gloebit Money Module.</p>
+      <p><a href="/opensim/downloads/Gloebit.ini" download>{% octicon cloud-download %} Gloebit.ini</a></p>
+    </section>
+    
+    <section class="wrapper anchor" id="dll">
+      <h1>Gloebit dll files</h1>
+      <p>Download the dll file which matches or is closest to the version of OpenSim you are running.</p>
+      
+      {% capture my_include %}{% include Gloebit-dll-table.md %}{% endcapture %}
+      {{ my_include | markdownify }}
+      
+    </section>
+
+    <section class="wrapper anchor" id="change-log">
+      <h1>Change Log</h1>
+      <p>Updates to GMM since open beta launch in January 2017</p>
+      
+      <h2>Build 69 on 2017-06-02</h2
+      <ul>
+        <li>Fixed multithreading issue which occassionally caused land purchases to fail on some grids</li>
+        <li>Removed the IM with the gloebit purchase link which previously was sent on every new session</li>
+      </ul>
+      <br />
+      <h2>Build 68 on 2017-03-15</h2
+      <ul>
+        <li>Fixed bug causing crashes on a couple grids where we were dereferencing a client which was somehow unexpectedly null.  Now check for null and return and log an the error.</li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    {% include footer_scripts.html %}
+
+  </body>
+</html>

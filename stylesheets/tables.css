@@ -1,0 +1,37 @@
+/****************
+ * Table styles 
+ ****************/
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 0.5rem;
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+}
+
+th {
+    background-color: rgba(134,194,0,0.95);
+    color: white;
+}
+
+/*********************** MEDIA SECTION ******************************/
+/* everything avove for 961px and above */
+
+/* Screen width from 0-399px - really from 320px */
+@media print, screen and (max-width: 399px) {
+
+
+
+

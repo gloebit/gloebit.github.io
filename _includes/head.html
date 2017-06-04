@@ -9,6 +9,10 @@
     <link rel="shortcut icon" href="https://www.gloebit.com/favicon.ico?v=3" />
 
     <link rel="stylesheet" href="/stylesheets/styles.css" />
+    {% if page.contains_tables %}
+    <!-- Table Styles -->
+    <link rel="stylesheet" href="/stylesheets/tables.css" />
+    {% endif %}
     {% if page.contains_social_buttons %}
     <!-- Social Button Styles -->
     <link rel="stylesheet" href="/stylesheets/social_button_styles.css" />
