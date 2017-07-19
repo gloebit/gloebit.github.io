@@ -1,0 +1,119 @@
+---
+title: OpenSim Gloebit Money Module Beta - Configuration Instructions for Diva Distro
+page_css: /stylesheets/opensim.css
+
+description: "Learn how to configure the Gloebit Money Module beta for the Diva Distribution of OpenSim.  Try out the newest OpenSim currency solution."
+keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, OpenSim integration, OpenSim currency, configure, install, instructions, guide, configuration instructions, config, configure module, addon module, configure addon module, diva, diva distribution, diva distro"
+---
+
+<!doctype html>
+<html>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+    
+    <nav>
+      <ul>
+        <li><a href="#gmm-configuration">Configure The GMM</a></li>
+      </ul>
+    </nav>
+    
+    <section class="wrapper anchor" id="intro">
+      <h1>{{ page.title }}</h1>
+      
+      <p>Enabling Gloebit on your Diva distribution of OpenSim is quick and simple.  Add commerce in minutes.</p>
+      <aside>Now Gloebit works with Diva!!!.</aside>
+      <p>These instructions are for enabling Gloebit on <a href="http://metaverseink.com/Downloads.html">diva-r08210</a> built on the 0.8.2.1 release of OpenSim.  They assume that you have already downloaded and configured Diva following their instructions.</p>
+      <p>If you have not already done so, you'll need to follow the steps to create a Gloebit app before you can enable and configure the Gloebit Money Module.  Click the links below and follow the instructions on our standard configuration instructions page and then return here for the diva specific configuration instructions.</p>
+      <ol>
+        <li><a href="/opensim/configuration-instructions/#app-permission">Request account permission to create apps</a></li>
+        <li><a href="/opensim/configuration-instructions/#app-creation">Create a Gloebit app</a></li>
+      </ol>
+      <p>Once you've created an app, move on to the Diva configuration instructions below..</p>
+    </section>
+    
+    <section class="wrapper anchor" id="gmm-configuration">
+      <h2>Configuration for Diva</h2>
+      <p>If you are not running the Diva distribution of OpenSim, please follow our <a href="/opensim/configuration-instructions/#gmm-configuration">standard configuration instructions</a> instead of the instructions below.</p>
+      <ol>
+        <li><b>Install:</b>
+          <ul>
+            <li><a href="/opensim/downloads/">Download</a> Gloebit.ini and the Gloebit dll for the 0.8.2.1 release of OpenSim</li>
+            <li>Also <a href="/opensim/configuration-instructions/diva/OpenSim.Data.SQLite.dll" download>download the SQLite OpenSim dll</a></li>
+            <li>Place all three files in your bin/ directory.</li>
+          </ul>
+        </li>
+        <li>edit <b>MyWorld.ini</b> located in the bin/config-include/ directory
+          <ul>
+            <li>In the <b>[Startup]</b> section
+              <ul>
+                <li>add the line <i>ConfigDirectory = "."</i></li>
+                <li>add the line <i>economymodule = Gloebit</i></li>
+              </ul>
+            </li>
+            <li>In the <b>[LoginService]</b> section
+              <ul>
+                <li>add the line <i>Currency = "G$"</i></li>
+              </ul>
+            </li>
+            <li>In the <b>[GridInfoService]</b> section
+              <ul>
+                <li>add the line <i>economy = http://&lt;IP or Domain of Grid&gt;:&lt;Port of Region with Gloebit enabled&gt;</i>
+                  <ul>
+                    <li>replace the values with your grid's domain/IP and region's port number.</li>
+                    <li>It will look something like this: <i>economy = http://127.0.0.1:9000/</i> and will probably be the same as some of the other values in the section</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>In the <b>[DatabaseService]</b> section
+              <ul>
+                <li>Copy the value that <i>ConnectionString</i> is set to.  You'll need this when editing Gloebit.ini below.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li> edit <b>Gloebit.ini</b> located in the bin/ directory
+          <ul>
+            <li>set <i>Enabled = true</i></li>
+            <li>set <i>GLBEnvironment = production</i></li>
+            <li>set <i>GLBKey</i> and <i>GLBSecret</i> to the "OAuth Key" and "OAuth Secret" from the Gloebit application you created earlier.</li>
+            <li>set <i>GLBSpecificStorageProvider = OpenSim.Data.MySQL.dll</i></li>
+            <li>set <i>GLBSpecificConnectionString</i> to the value of ConnectionString you copied above from MyWorld.ini.
+              <ul>
+                <li>If the ConnectionString does not have a section which says <i>Old Guids=true;</i> then make sure to add it.</li>
+                <li>It will look something like this: <i>GLBSpecificConnectionString = "Data Source=localhost;Database=opensim;User ID=opensim;Password=mysecurepw;Old Guids=true;"</i></li>
+              </ul>
+            </li>
+            <li>You can also make these additional edits for some improved user-friendly behavior, but they are not required for the module to function.</li>
+              <ul>
+                <li>If you entered an "OAuth Key Alias" for your application, you can set <i>GLBKeyAlias</i> to this value.</li>
+                <li>Set <i>GLBOwnerName</i> and <i>GLBOwnerEmail</i> to the name and contact details of a manager of this OpenSim process.  These are displayed with certain error messages if there is a configuration issue and user is asked to report this problem to this manager.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Restart your sim so that these changes take effect</li>
+        <li>Update your Grid Info in your viewer so land sales and buy-currency functionality will work.</li>
+          <ul>
+            <li>Specifically, this is forcing your viewer to retrieve the new economy helper-uri you set in your MyWorld.ini file.</li>
+            <li>We have found this a little finnicky on FireStorm, but can't speak for all viewers.  Here is what has worked on FireStorm
+              <ol>
+                <li>Launch FireStorm</li>
+                <li>Select a different grid than the one for which you want to refresh the grid info</li>
+                <li>In the "Viewer" menu, select Preferences -> OpenSim</li>
+                <li>Select the Grid which you'd like to update and then click "Refresh"</li>
+                <li>Click "OK"</li>
+                <li>Now reselect the grid you have refreshed and it should have the new economy helper-uri</li>
+              </ol>
+            </li>
+          </ul>
+        </li>
+        <li>Log in and try out your new commerce functionality.</li>
+      </ol>
+    </section>
+    
+    {% include footer_scripts.html %}
+
+  </body>
+</html>
