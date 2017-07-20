@@ -78,7 +78,7 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
             <li>set <i>Enabled = true</i></li>
             <li>set <i>GLBEnvironment = production</i></li>
             <li>set <i>GLBKey</i> and <i>GLBSecret</i> to the "OAuth Key" and "OAuth Secret" from the Gloebit application you created earlier.</li>
-            <li>set <i>GLBSpecificStorageProvider = OpenSim.Data.MySQL.dll</i></li>
+            <li>Uncomment (by deleting the leading ';') the line <i>GLBSpecificStorageProvider = OpenSim.Data.MySQL.dll</i> and the line below it which starts with <i>GLBSpecificConnectionString =</i></li>
             <li>set <i>GLBSpecificConnectionString</i> to the value of ConnectionString you copied above from MyWorld.ini.
               <ul>
                 <li>If the ConnectionString does not have a section which says <i>Old Guids=true;</i> then make sure to add it.</li>
