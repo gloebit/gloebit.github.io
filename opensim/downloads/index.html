@@ -49,7 +49,14 @@ contains_social_buttons: false
       <h1>Change Log</h1>
       <p>Updates to GMM since open beta launch in January 2017</p>
       
-      <h2>Build 69 on 2017-06-02</h2
+      <h2>Build 73 on 2017-08-18</h2>
+      <ul>
+        <li>Implemented new MoneyModule interface function added to the OpenSim Core.  The addition of this interface was causing crashes on 0.9.1-dev as of late July and on 0.9.0-release as the 0.9.1 dev changes were pulled into the 0.9.0-release.  These should all work now.</li>
+        <li>Implemented LandPass sales for all versions of OpenSim (including 0.8.x).</li>
+        <li>Implemented new LandPass sales flow added by OpenSim core and in place in 0.9.1-dev and 0.9.0 release</li>
+      </ul>
+      <br />
+      <h2>Build 69 on 2017-06-02</h2>
       <ul>
         <li>Fixed multithreading issue which occassionally caused land purchases to fail on some grids</li>
         <li>Removed the IM with the gloebit purchase link which previously was sent on every new session</li>
