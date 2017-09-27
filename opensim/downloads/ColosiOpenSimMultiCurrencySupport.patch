@@ -1,0 +1,572 @@
+# HG changeset patch
+# User Christopher Colosi <colosi@users.noreply.github.com>
+# Date 1505948425 25200
+#      Wed Sep 20 16:00:25 2017 -0700
+# Node ID a19c11d94462534e19d0327942569c6e2f416b36
+# Parent  50e95c4d76fd0e4e6aa980a29e730ba12fadb762
+Support for multiple currency solutions on a grid and across the hypergrid.
+
+diff -r 50e95c4d76fd -r a19c11d94462 indra/llcommon/tea.cpp
+--- a/indra/llcommon/tea.cpp	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/llcommon/tea.cpp	Wed Sep 20 16:00:25 2017 -0700
+@@ -34,7 +34,9 @@
+ #include <boost/algorithm/string.hpp>
+ 
+ 
+-std::string Tea::sCurrency="L$";
++std::string Tea::sGridCurrency="L$";
++std::string Tea::sRegionCurrency="";
++std::string Tea::sActiveCurrency="L$";
+ 
+ Tea::Tea()
+ {
+@@ -45,12 +47,33 @@
+ {
+ }
+ 
++void Tea::setCurrency(const std::string& currency)
++{
++	sGridCurrency = currency;
++	updateActiveCurrencySymbol();
++}
++
++void Tea::setRegionCurrency(const std::string& currency)
++{
++	sRegionCurrency = currency;
++	updateActiveCurrencySymbol();
++}
++
++void Tea::updateActiveCurrencySymbol()
++{
++	if(!sRegionCurrency.empty()) {
++                sActiveCurrency = sRegionCurrency;
++        } else {
++        	sActiveCurrency =  sGridCurrency;
++	}
++}
++
+ std::string Tea::wrapCurrency(const std::string& to_substitute)
+ {
+-	return boost::algorithm::replace_all_copy(to_substitute, "L$",  sCurrency);
++	return boost::algorithm::replace_all_copy(to_substitute, "L$",  sActiveCurrency);
+ }
+ 
+ void Tea::wrapCurrency(std::string& to_substitute)
+ {
+-	boost::algorithm::replace_all(to_substitute, "L$",  sCurrency);
++	boost::algorithm::replace_all(to_substitute, "L$",  sActiveCurrency);
+ }
+diff -r 50e95c4d76fd -r a19c11d94462 indra/llcommon/tea.h
+--- a/indra/llcommon/tea.h	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/llcommon/tea.h	Wed Sep 20 16:00:25 2017 -0700
+@@ -41,12 +41,28 @@
+ 	Tea();
+ 	~Tea();
+ 
+-	static void setCurrency(const std::string& currency) { sCurrency = currency; }
+-	static std::string getCurrency() { return sCurrency; }
++	static void setCurrency(const std::string& currency);
++	static void setRegionCurrency(const std::string& currency);
++	static std::string getCurrency() { return sActiveCurrency; }
+ 	static std::string wrapCurrency(const std::string& to_substitute);
+ 	static void wrapCurrency(std::string& to_substitute);
+ private:
+-	static std::string sCurrency;
++	static std::string sGridCurrency;	// Grid wide default currency symbol eg: L$, G$, D$
++	static std::string sRegionCurrency;	// Region currency symbol override; empty string means use grid symbol
++	static std::string sActiveCurrency;	// Active currency symbol (Grid if region is empty string)
++
++	static void updateActiveCurrencySymbol();	// Updated on...
++							// 	Startup to L$ (default set at top of cpp)
++							// 	Login to Grid Currency (see llstartup)
++							//	HG teleport to new Grid Currency (hopefully also llstartup)
++							//	Entering region with currency module override to Region Currency (see lfsimfeaturehandler)
++							// Ideally, this would trigger an update to mark any LLUIStrings with L$
++							// symbols but without params to dirty to force re-execution and do any
++							// necessary reloads of UI widgets, but llcommon really should include
++							// systems from newview, so we've placed this function in lfsimfeaturehandler
++							// and call it manually.  Aternatively, we could consider registering
++							// that func with Tea to let Tea call it, but for the timebeing, I did
++							// not want to complicate Tea which is rather simple.
+ };
+ 
+ #endif //TEA_H
+diff -r 50e95c4d76fd -r a19c11d94462 indra/llui/llbutton.h
+--- a/indra/llui/llbutton.h	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/llui/llbutton.h	Wed Sep 20 16:00:25 2017 -0700
+@@ -286,6 +286,11 @@
+ 	
+ 	void 		setAutoResize(bool auto_resize) { mAutoResize = auto_resize; }
+ 
++	// <COLOSI opensim multi-currency support>
++	// Set all LLUIStrings to dirty after currency symbol change to force them to be updated.
++	void updateCurrencySymbols() { mUnselectedLabel.updateCurrencySymbols(); mSelectedLabel.updateCurrencySymbols(); mDisabledSelectedLabel.updateCurrencySymbols(); }
++	// </COLOSI opensim multi-currency support>
++
+ protected:
+ 	LLPointer<LLUIImage> getImageUnselected() const	{ return mImageUnselected; }
+ 	LLPointer<LLUIImage> getImageSelected() const	{ return mImageSelected; }
+diff -r 50e95c4d76fd -r a19c11d94462 indra/llui/llfloater.h
+--- a/indra/llui/llfloater.h	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/llui/llfloater.h	Wed Sep 20 16:00:25 2017 -0700
+@@ -373,6 +373,11 @@
+ 	void			enableResizeCtrls(bool enable, bool width = true, bool height = true);
+ 
+ 	bool			isPositioning(LLFloaterEnums::EOpenPositioning p) const { return (p == mPositioning); }
++	
++	// <COLOSI opensim multi-currency support>
++	// update currency symbols in titles (if there) and force update of display
++	void			updateCurrencySymbols() { mTitle.updateCurrencySymbols(); mShortTitle.updateCurrencySymbols(); applyTitle(); }
++	// </COLOSI opensim multi-currency support>
+ protected:
+ 	void			applyControlsAndPosition(LLFloater* other);
+ 
+diff -r 50e95c4d76fd -r a19c11d94462 indra/llui/lltextbox.h
+--- a/indra/llui/lltextbox.h	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/llui/lltextbox.h	Wed Sep 20 16:00:25 2017 -0700
+@@ -68,6 +68,11 @@
+ 	/*virtual*/ LLSD	getValue() const;
+ 	/*virtual*/ BOOL	setTextArg( const std::string& key, const LLStringExplicit& text );
+ 
++	// <COLOSI opensim multi-currency support>
++        // Set all LLUIStrings to dirty after currency symbol change to force them to be updated.
++        void updateCurrencySymbols() { mText.updateCurrencySymbols(); LLTextBase::setText(mText.getString()); mLabel.updateCurrencySymbols(); }
++        // </COLOSI opensim multi-currency support>
++
+ protected:
+ 	void            onUrlLabelUpdated(const std::string &url, const std::string &label);
+ 
+diff -r 50e95c4d76fd -r a19c11d94462 indra/llui/lluistring.h
+--- a/indra/llui/lluistring.h	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/llui/lluistring.h	Wed Sep 20 16:00:25 2017 -0700
+@@ -90,6 +90,13 @@
+ 	void insert(S32 charidx, const LLWString& wchars);
+ 	void replace(S32 charidx, llwchar wc);
+ 
++	// <COLOSI opensim multi-currency support>
++	// Need a public method for setting an lluistring to dirty when we change
++	// currency symbols.  This will force the text to be re-wrapped on the next
++	// get call with Tea::wrapCurrency()
++	void updateCurrencySymbols() { dirty(); }
++	// </COLOSI opensim multi-currency support>
++
+ private:
+ 	// something changed, requiring reformatting of strings
+ 	void dirty();
+diff -r 50e95c4d76fd -r a19c11d94462 indra/newview/fsgridhandler.cpp
+--- a/indra/newview/fsgridhandler.cpp	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/newview/fsgridhandler.cpp	Wed Sep 20 16:00:25 2017 -0700
+@@ -48,6 +48,7 @@
+ #include "llstartup.h"
+ 
+ #include "fscorehttputil.h"
++#include "lfsimfeaturehandler.h"	// <COLOSI opensim multi-currency support />
+ 
+ void downloadError( LLSD const &aData, LLGridManager* mOwner, GridEntry* mData, LLGridManager::AddState mState )
+ {
+@@ -1137,6 +1138,12 @@
+ 	{
+ 		return cmd_line_helper_uri;
+ 	}
++	// <COLOSI opensim multi-currency support>
++	std::string helperUriOverride = LFSimFeatureHandler::getInstance()->helperUriOverride();
++	if(!helperUriOverride.empty()) {
++		return helperUriOverride;
++	}
++	// </COLOSI opensim multi-currency support>>
+ 	return mGridList[mGrid][GRID_HELPER_URI_VALUE];
+ }
+ 
+diff -r 50e95c4d76fd -r a19c11d94462 indra/newview/lfsimfeaturehandler.cpp
+--- a/indra/newview/lfsimfeaturehandler.cpp	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/newview/lfsimfeaturehandler.cpp	Wed Sep 20 16:00:25 2017 -0700
+@@ -25,6 +25,12 @@
+ #include "llviewernetwork.h"
+ #include "llviewerregion.h"
+ 
++// <COLOSI opensim multi-currency support>
++#include "tea.h"
++#include "llstatusbar.h"
++#include "llfloaterbuycurrency.h"
++// </COLOSI opensim multi-currency support>
++
+ LFSimFeatureHandler::LFSimFeatureHandler()
+ 	: mSupportsExport(false),
+ 	mSayRange(20),
+@@ -56,17 +62,26 @@
+ {
+ 	if (LLViewerRegion* region = gAgent.getRegion())
+ 	{
+-		if (region->capabilitiesReceived())
++		if (region->simulatorFeaturesReceived())
+ 		{
+ 			setSupportedFeatures();
+ 		}
+ 		else
+ 		{
+-			region->setCapabilitiesReceivedCallback(boost::bind(&LFSimFeatureHandler::setSupportedFeatures, this));
++			region->setSimulatorFeaturesReceivedCallback(boost::bind(&LFSimFeatureHandler::onSimulatorFeaturesReceived,this,_1));
+ 		}
+ 	}
+ }
+ 
++void LFSimFeatureHandler::onSimulatorFeaturesReceived(const LLUUID &region_id)
++{
++        LLViewerRegion *region = gAgent.getRegion();
++        if (region && (region->getRegionID()==region_id))
++        {
++                setSupportedFeatures();
++        }
++}
++
+ void LFSimFeatureHandler::setSupportedFeatures()
+ {
+ 	if (LLViewerRegion* region = gAgent.getRegion())
+@@ -150,6 +165,20 @@
+ 			{
+ 				mAvatarPickerURL = LLStringUtil::null;
+ 			}
++
++			// <COLOSI opensim multi-currency support>
++			if (extras.has("currency-base-uri")) {
++				mHelperUriOverride = extras["currency-base-uri"].asString();
++			} else {
++    				mHelperUriOverride = LLStringUtil::null;
++			}
++
++			if (extras.has("currency")) {
++				mCurrencySymbolOverride = extras["currency"].asString();
++			} else {
++				mCurrencySymbolOverride = LLStringUtil::null;
++			}
++			// </COLOSI opensim multi-currency support>
+ 		}
+ 		else // OpenSim specifics are unsupported reset all to default
+ 		{
+@@ -198,13 +227,42 @@
+ 			{
+ 				mAvatarPickerURL = LLStringUtil::null;
+ 			}
++
++			// <COLOSI opensim multi-currency support>
++			mHelperUriOverride = LLStringUtil::null;
++			mCurrencySymbolOverride = LLStringUtil::null;
++			// </COLOSI opensim multi-currency support>>
+ 		}
+ 
+ 		mHasAvatarPicker = !avatarPickerURL().empty();
+ 		mHasDestinationGuide = !destinationGuideURL().empty();
++		
++		// <COLOSI opensim multi-currency support>
++		std::string prevCurrencySymbol = Tea::getCurrency();
++		Tea::setRegionCurrency(mCurrencySymbolOverride);
++		std::string newCurrencySymbol = Tea::getCurrency();
++		// If currency symbol has changed, then update things
++		if (newCurrencySymbol != prevCurrencySymbol) {
++			LFSimFeatureHandler::updateCurrencySymbols();
++		}
++		// </COLOSI opensim multi-currency support>		
+ 	}
+ }
+ 
++// <COLOSI opensim multi-currency support>
++//static
++void LFSimFeatureHandler::updateCurrencySymbols()
++{
++	// Update the static ui for the buy_currency_floater xml version; html version may require additional work.
++	LLFloaterBuyCurrency::updateCurrencySymbols();
++	// Update the necessary compontents of the status bar panel
++	if (gStatusBar != NULL) {
++		gStatusBar->updateCurrencySymbols();
++	}
++	// TODO: What else needs to be updated?
++}
++// </COLOSI opensim multi-currency support>
++
+ boost::signals2::connection LFSimFeatureHandler::setSupportsExportCallback(const boost::signals2::signal<void()>::slot_type& slot)
+ {
+ 	return mSupportsExport.connect(slot);
+diff -r 50e95c4d76fd -r a19c11d94462 indra/newview/lfsimfeaturehandler.h
+--- a/indra/newview/lfsimfeaturehandler.h	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/newview/lfsimfeaturehandler.h	Wed Sep 20 16:00:25 2017 -0700
+@@ -61,7 +61,19 @@
+ 
+ public:
+ 	void handleRegionChange();
++	void onSimulatorFeaturesReceived(const LLUUID &region_id);
+ 	void setSupportedFeatures();
++	// <COLOSI opensim multi-currency support>
++	// public helper to manage all the manual updates in one place callable from other systems like llstartup.
++	// Should be called whenever the sActiveCurrency in Tea is changed, but can't simply be called from Tea
++	// because that is an llcommon include and really shouldn't call out to newview system.
++	// updating the currency in Tea updates any dynamic LLUIStrings automatically when a param is replaced on the next get call,
++	// but static LLUIStrings for floaters/panels/etc pre-loaded are only evaluated once, so these need to be manually updated
++	// after we update the currency symbol in Tea.  This function handles that.  As we discover more UI components which we've
++	// missed, they can be added to this function.  For now, it primaily handles the status panel (top bar) and the buy currency floater.
++	// If there is a better location for this function, we could move it.
++	static void updateCurrencySymbols();
++	// </COLOSI opensim multi-currency support>
+ 
+ 	// Connection setters
+ 	boost::signals2::connection setSupportsExportCallback(const boost::signals2::signal<void()>::slot_type& slot);
+@@ -91,6 +103,11 @@
+ 	bool hasAvatarPicker() const { return mHasAvatarPicker; }
+ 	bool hasDestinationGuide() const { return mHasDestinationGuide; }
+ 
++	// <COLOSI opensim multi-currency support>
++        std::string helperUriOverride() const { return mHelperUriOverride; }
++        std::string currencySymbolOverride() const { return mCurrencySymbolOverride; }
++	// </COLOSI opensim multi-currency support>
++
+ private:
+ 	// SignaledTypes
+ 	SignaledType<bool> mSupportsExport;
+@@ -109,6 +126,11 @@
+ 
+ 	bool mHasAvatarPicker;
+ 	bool mHasDestinationGuide;
++
++	// <COLOSI opensim multi-currency support>
++	std::string mHelperUriOverride;
++	std::string mCurrencySymbolOverride;
++	// </COLOSI opensim multi-currency support>>
+ };
+ 
+ #endif //LFSIMFEATUREHANDLER_H
+diff -r 50e95c4d76fd -r a19c11d94462 indra/newview/llbuycurrencyhtml.cpp
+--- a/indra/newview/llbuycurrencyhtml.cpp	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/newview/llbuycurrencyhtml.cpp	Wed Sep 20 16:00:25 2017 -0700
+@@ -35,6 +35,8 @@
+ #include "llviewercontrol.h"
+ #include "llstatusbar.h"
+ 
++#include "tea.h"	<COLOSI opensim multi-currency support />>
++
+ // support for secondlife:///app/buycurrencyhtml/{ACTION}/{NEXT_ACTION}/{RETURN_CODE} SLapps
+ class LLBuyCurrencyHTMLHandler : 
+ 	public LLCommandHandler
+@@ -132,7 +134,14 @@
+ 	if ( buy_currency_floater )
+ 	{
+ 		// pass on flag indicating if we want to buy specific amount and if so, how much
+-		buy_currency_floater->setParams( specific_sum_requested, message, sum );
++		// <COLOSI opensim multi-currency support>
++		// Unclear if html version is used or if message will ever include "L$"..  
++		// Message is stored as a std::string, not an LLUIString, in indra/newview/llfloaterbuycurrencyhtml.cpp
++		// As long as this is set every time it is displayed, we can just wrap it as below, but if not,
++		// then we should convert this to an LLUIString, unwrap it here so it stores with "L$" and
++		// update it on retrieval.
++		//<COLOSI opensim multi-currency support>
++		buy_currency_floater->setParams( specific_sum_requested, Tea::wrapCurrency(message), sum );
+ 
+ 		// force navigate to new URL
+ 		buy_currency_floater->navigateToFinalURL();
+diff -r 50e95c4d76fd -r a19c11d94462 indra/newview/llcurrencyuimanager.cpp
+--- a/indra/newview/llcurrencyuimanager.cpp	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/newview/llcurrencyuimanager.cpp	Wed Sep 20 16:00:25 2017 -0700
+@@ -279,11 +279,15 @@
+ void LLCurrencyUIManager::Impl::startTransaction(TransactionType type,
+ 		const char* method, LLXMLRPCValue params)
+ {
+-	static std::string transactionURI;
+-	if (transactionURI.empty())
+-	{
+-		transactionURI = LLGridManager::getInstance()->getHelperURI() + "currency.php";
+-	}
++	// <COLOSI opensim multi-currency support>
++	// Previously, transactionURI was a static local var only set once.  This needs
++	// to update on HG teleport or crossing regions to a new currency module.
++	// Set every time as this action should be infrequent and efficient.
++	// However, we can alternatively make this a static member variable and
++	// update it when the currency system changes
++	std::string transactionURI;
++	transactionURI = LLGridManager::getInstance()->getHelperURI() + "currency.php";
++	// </COLOSI opensim multi-currency support>
+ 
+ 	delete mTransaction;
+ 
+diff -r 50e95c4d76fd -r a19c11d94462 indra/newview/llfloaterbuycurrency.cpp
+--- a/indra/newview/llfloaterbuycurrency.cpp	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/newview/llfloaterbuycurrency.cpp	Wed Sep 20 16:00:25 2017 -0700
+@@ -265,6 +265,11 @@
+ 
+ void LLFloaterBuyCurrencyUI::onClickBuy()
+ {
++	// <COLOSI opensim multi-currency support>
++	// Do not wrap the "buy_currency" string because it is the mOrig later stored
++	// in an LLUIString with params and will be wrapped when params are inserted.
++	// wrapping here would break multi-currency support as it would remove the L$
++	//</COLOSI opensim multi-currency support>>
+ 	mManager.buy(getString("buy_currency"));
+ 	updateUI();
+ 	// Update L$ balance
+@@ -298,8 +303,34 @@
+ void LLFloaterBuyCurrency::buyCurrency(const std::string& name, S32 price)
+ {
+ 	LLFloaterBuyCurrencyUI* ui = LLFloaterReg::showTypedInstance<LLFloaterBuyCurrencyUI>("buy_currency");
++	// <COLOSI opensim multi-currency support>
++	// Not wrapping name here because according to llfloaterbuycurrency.h
++	// name should not include currency symbols as the price will be appended to the string.
++	// If an "L$" is ever included in a name, then we should call Tea::wrapCurrency on it here.
++	// </COLOSI opensim multi-currency support>>
+ 	ui->target(name, price);
+ 	ui->updateUI();
+ }
+ 
++// <COLOSI opensim multi-currency support>
++// static
++void LLFloaterBuyCurrency::updateCurrencySymbols()
++{
++	LLFloater* fbc = LLFloaterReg::findInstance("buy_currency");
++	if (fbc != NULL) {
++		// Call update on the floater to update the title
++		fbc->updateCurrencySymbols();
+ 
++		// update all text boxes with currency symbols.
++		LLTextBox* tb;
++		static const std::list<std::string> sctb = { "info_need_more", "info_buying", "currency_label", "purchase_warning_repurchase", "purchase_warning_notenough" };
++		// Do not include balance_amount and total_amount because they are updated on every display when amounts are replaced.
++		for (std::list<std::string>::const_iterator iter = sctb.begin(); iter != sctb.end(); ++iter) {
++			tb = fbc->getChild<LLTextBox>(*iter);
++			if (tb != NULL) {
++				tb->updateCurrencySymbols();
++			}
++		}
++	}
++}
++// </COLOSI opensim multi-currency support>
+diff -r 50e95c4d76fd -r a19c11d94462 indra/newview/llfloaterbuycurrency.h
+--- a/indra/newview/llfloaterbuycurrency.h	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/newview/llfloaterbuycurrency.h	Wed Sep 20 16:00:25 2017 -0700
+@@ -44,6 +44,12 @@
+ 		*/
+ 	
+ 	static LLFloater* buildFloater(const LLSD& key);
++
++	// <COLOSI opensim multi-currency support>
++	// Necessary because floater was designed to build only on first display.
++	// Forces refresh of all currency symbols in floater when called.
++        static void updateCurrencySymbols();
++        // </COLOSI opensim multi-currency support>
+ };
+ 
+ 
+diff -r 50e95c4d76fd -r a19c11d94462 indra/newview/llfloaterbuyland.cpp
+--- a/indra/newview/llfloaterbuyland.cpp	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/newview/llfloaterbuyland.cpp	Wed Sep 20 16:00:25 2017 -0700
+@@ -858,11 +858,15 @@
+ 	mTransactionType = type;
+ 
+ 	// Select a URI and method appropriate for the transaction type.
+-	static std::string transaction_uri;
+-	if (transaction_uri.empty())
+-	{
+-		transaction_uri = LLGridManager::getInstance()->getHelperURI() + "landtool.php";
+-	}
++	// <COLOSI  opensim multi-currency support>
++        // Previously, transaction_uri was a static local var only set once.  This needs
++        // to update on HG teleport or crossing regions to a new currency module.
++        // Set every time as this action should be infrequent and efficient.
++        // However, we can alternatively make this a static member variable and
++        // update it when the currency system changes
++	std::string transaction_uri;
++	transaction_uri = LLGridManager::getInstance()->getHelperURI() + "landtool.php";
++	// </COLOSI opensim multi-currency support>
+ 	
+ 	const char* method;
+ 	switch (mTransactionType)
+diff -r 50e95c4d76fd -r a19c11d94462 indra/newview/llstartup.cpp
+--- a/indra/newview/llstartup.cpp	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/newview/llstartup.cpp	Wed Sep 20 16:00:25 2017 -0700
+@@ -245,6 +245,7 @@
+ #include "streamtitledisplay.h"
+ #include "tea.h"
+ 
++
+ //
+ // exported globals
+ //
+@@ -4515,6 +4516,10 @@
+ 	}
+ 	// </FS:AW>
+ 
++	// <COLOSI opensim multi-currency support>
++	std::string prevCurrencySymbol = Tea::getCurrency();
++	// </COLOSI opensim multi-currency support>
++
+ // <FS:AW opensim currency support>
+ 	std::string currency = "L$";
+ #ifdef OPENSIM // <FS:AW optional opensim support>
+@@ -4531,6 +4536,16 @@
+ 	Tea::setCurrency(currency);
+ // </FS:AW opensim currency support>
+ 
++	// <COLOSI  opensim multi-currency support>
++	// Blank out the region currency which is set in in lfsimfeatureshandler
++	Tea::setRegionCurrency(LLStringUtil::null);
++	std::string newCurrencySymbol = Tea::getCurrency();
++	// If currency symbol has changed, update currency symbols where manually necessary.
++	if (newCurrencySymbol != prevCurrencySymbol) {
++		LFSimFeatureHandler::updateCurrencySymbols();
++	}
++	// </COLOSI opensim multi-currency support>
++
+ // <FS:AW  opensim destinations and avatar picker>
+ 	if(response.has("avatar_picker_url"))
+ 	{
+diff -r 50e95c4d76fd -r a19c11d94462 indra/newview/llstatusbar.cpp
+--- a/indra/newview/llstatusbar.cpp	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/newview/llstatusbar.cpp	Wed Sep 20 16:00:25 2017 -0700
+@@ -718,6 +718,16 @@
+ 	std::string label_str = getString("buycurrencylabel", string_args);
+ 	mBoxBalance->setValue(label_str);
+ 
++	// <COLOSI opensim currency support>
++	// Unclear if call to getTextBoundingRect updates text but assuming it calls length()
++	// when getting the bounding box which will update the text and get the length of the
++	// wrapped (Tea::wrapCurrency) text (see lluistring).  If not, and currency symbols 
++	// that are not two characters have the wrong size bounding rect, then the correct
++	// place to fix this is in the getTextBoundingRect() function, not here.
++	// buy_rect below should be properly set to dirty() when we modify the currency and
++	// should also be updated and wrapped before width is determined.
++	// </COLOSI opensim currency support>
++
+ 	// Resize the L$ balance background to be wide enough for your balance plus the buy button
+ 	{
+ 		const S32 HPAD = 24;
+@@ -1054,6 +1064,20 @@
+ 	mBoxBalance->setVisible(show);
+ }
+ 
++// <COLOSI opensim multi-currency support>
++void LLStatusBar::updateCurrencySymbols()
++{
++	// Update "Buy L$" button because it is only evaluated once when panel is loaded
++	LLButton* buyButton = getChild<LLButton>("buyL");
++	if (buyButton != NULL) {
++		buyButton->updateCurrencySymbols();
++	}
++	// Should not need to update the balance display because it is updated frequently.
++	// If it does require an update, do so via a balance update request so we don't
++	// switch the symbol without updating the balance.
++}
++// </COLOSI opensim multi-currency support>
++
+ void LLStatusBar::onBandwidthGraphButtonClicked()
+ {
+ 	if (gSavedSettings.getBOOL("FSUseStatsInsteadOfLagMeter"))
+diff -r 50e95c4d76fd -r a19c11d94462 indra/newview/llstatusbar.h
+--- a/indra/newview/llstatusbar.h	Thu Sep 14 00:48:59 2017 +0200
++++ b/indra/newview/llstatusbar.h	Wed Sep 20 16:00:25 2017 -0700
+@@ -152,6 +152,11 @@
+ 	
+ 	void showBalance(bool show);	// <FS:CR> Hide currency balance in snapshots
+ 
++	// <COLOSI opensim multi-currency support>
++	// force update of the "BUY L$" button when currency symbol is changed.
++	void updateCurrencySymbols();
++	// </COLOSI opensim multi-currency support>
++
+ private:
+ 	
+ 	void onClickBuyCurrency();
