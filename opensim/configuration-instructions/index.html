@@ -109,52 +109,18 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
             <li>Use <i>GLBSpecificConnectionString</i> and <i>GLBSpecificStorageProvider</i> to define a different database for the Gloebit Tables.  If not set, the GMM will use the default ConnectionString set by the DatabaseService section of your configuration.</li>
           </ul>
         </li>
-        <li><b>Optional OpenSim Configuration Options:</b>
+        <li><b>Make the currency symbol, land sales, and buy-currency button work</b>
           <ul>
-            <li>Set the currency symbol to <b>G$</b>
+            <li>Tell your users to update to the latest Alchemy or Firestorm viewer.  We've <a href="https://medium.com/@colosi/multi-currency-support-coming-to-opensim-viewers-cd20e75f7990">patched</a> the viewers to make this all work with no effort from you.  Make sure your users have updated to at least the versions below.
               <ul>
-                <li>Be aware that this is a grid wide setting, so you may not want to do this if other currency systems are on use in your grid.</li>
-                <li>Set <i>Currency = "G$"</i> in the [LoginService] section of StandaloneCommon.ini, Robust.ini, or Robust.HG.ini.</li>
+                <li><a href="https://alchemyviewer.org/alchemy-release-50741341.html">Alechemy v5.0.7.41341</a> released on November 14th, 2017</li>
+                <li><a href="http://www.firestormviewer.org/firestorm-update-5-0-11-53634/">Firestorm v5.0.11.53634</a> released on January 26th, 2018</li>
+                <li>Singularity has not yet released a version with the patch.
               </ul>
             </li>
-            <li>Make land sales work
-              <ul>
-                <li>For standalone grids, Gloebit can handle this direclty from our module if the economy helper-uri is configured.  See "Configure the economy helper-uri" below.</li>
-                <li>For robust grids, a script is required on the robust server and the economy helper-uri must also be configured.
-                  <ul>
-                    <li>see "Configure the economy helper-uri" below for how to configure this uri.</li>
-                    <li>Your robust server needs a landtool.php script to handle pre-flight checks from the viewer before it will deliver the land purchase event to our module.  We recommend this <a href="https://github.com/justincc/opensimulator-helper">repository from justincc</a> for both the landtool.php script and instructions on how to install it.</li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li>Make the "Buy Currency" button work
-              <ul>
-                <li>If configured, on clicking "Buy Currency", or upon attempting to purchase an object with insufficient funds, this will present an unauthorized user with an authorization message, and will present an authorized user with a cost estimate, and upon clicking purchase, a message with a link to purchase gloebits.  We can not yet sell gloebits direclty from the viewer.</li>
-                <li>For standalone grids, Gloebit can handle this directly from our module if the economy helper-uri is configured.  See "Configure the economy helper-uri" below.</li>
-                <li>For robust grids, a currency.php script is required in addition to properly configuring the economy helper-uri.  We have not yet found a drop-in currency.php file, nor have we had a chance to write one.  If someone can provide this resource, please let us know.</li>
-              </ul>
-            </li>
-            <li>Configure the economy helper-uri
-              <ul>
-                <li>This is required for land sales and for the Buy Currency button to work.  See the above sections for additonal details on how to make these function.</li>
-                <li>When changing the economy helper-uri, testing can be challenging. I have discovered the following with Firestorm.  If the grid I am testing is the one currently selected to log into, then it will not refresh the economy helper-uri, so I first need to select a different grid from the main screen.  Then, I need to open preferences->advanced, select my grid, click refresh, and then click apply.  Then I can set the grid to log into back to the my grid, log in, and test it.</li>
-                <li>The economy setting is in the [GridInfoService] secion of your StandaloneCommon.ini, Robust.ini or Robust.HG.ini depending upon your OpenSim configuration.</li>
-                <li>For standalone grids, this must be configured to point at a region with Gloebit enabled, effectively <i>http://&lt;IP or Domain of Grid&gt;:&lt;Port of Region with Gloebit enabled&gt;</i>.
-                  <ul>
-                    <li>You can find the port for each region in your Regions.ini file.  Your first region is usually on port 9000 by default</li>
-                    <li>If your [CONST] section is configured in OpenSim.ini, then you can simply uncomment this to <i>economy = ${Const|BaseURL}:9000/</i> and update the port if  necessary.  Otherwise, you can hard code this like <i>economy = https://www.mygrid.com:9000/</i>.</li>
-                  </ul>
-                </li>
-                <li>For robust grids, this must be configured to point at the folder where you have placed landtool.php and if you have it, currency.php.
-                  <ul>
-                    <li>This folder and these scripts must be accessible to anyone who has logged into your grid</li>
-                    <li>If your [CONST] section is configured in OpenSim.ini, then you can simply uncomment this to <i>economy = ${Const|BaseURL}/economy</i> and replace "economy" with the path to this folder.  Otherwise, you can hard code this like <i>economy = https://www.mygrid.com/economy</i>.</li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul> 
+            <li>If you would like to set the currency symbol to <b>G$</b> across your entire grid, even on regions without the Gloebit Money Module enabled, then set <i>Currency = "G$"</i> in the [LoginService] section of StandaloneCommon.ini, Robust.ini, or Robust.HG.ini.</li>
+            <li>For Standalone grids, you can also get these to work somewhat easily for older viewers by pointing the economy helper-uri in the [GridInfoService] secion of your StandaloneCommon.ini at a region with Gloebit enabled (<i>http://&lt;IP or Domain of Grid&gt;:&lt;Port of Region with Gloebit enabled&gt;</i>).  If your [CONST] section is configured in OpenSim.ini, then you can simply uncomment this to <i>economy = ${Const|BaseURL}:9000/</i> and update the port if  necessary.  Otherwise, you can hard code this like <i>economy = https://www.mygrid.com:9000/</i>.</li>
+          </ul>
         </li>
       </ol>
     </section>
