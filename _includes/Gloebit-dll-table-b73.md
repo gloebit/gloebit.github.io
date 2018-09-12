@@ -1,8 +1,8 @@
 
 **OpenSimulator Version**
 
-{% capture dlfolder %}GMM-b75-2018-09-11/{% endcapture %}
-{% capture fileprefix %}Gloebit-b75--{% endcapture %}
+{% capture dlfolder %}GMM-b73-2017-08-18/{% endcapture %}
+{% capture fileprefix %}Gloebit-b73--{% endcapture %}
 {% capture dlpf %}/opensim/downloads/{{dlfolder}}{{fileprefix}}{% endcapture %}
 
 {% comment %}
@@ -10,9 +10,9 @@
     for a little download icon instead of the word download.  Unfortunately, not yet.
 {% endcomment %}
 
-| Version | Flavor     | Date       | Hash   | Gloebit build 75 |
+| Version | Flavor     | Date       | Hash   | Gloebit build 73 |
 |:--------|:-----------|------------|--------| ---------------- |
-| 0.8.1.0 | release    | 2015-03-16 | c2500d | <a href="{{dlpf}}0.8.1.0-release--2015-03-16--c2500d.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
+| 0.8.1.0 | release    | 2015-03-16 | c2500d | <a href="{{dlpf}}0.8.1.0-release--2015-03-16--c2500d.dll" download>download Gloebit DLL</a> |
 | 0.8.1.2 | post-fixes | 2015-10-22 | e09c86 | <a href="{{dlpf}}0.8.1.2-post-fixes--2015-10-22--e09c86.dll" download>download Gloebit DLL</a> |
 | 0.8.2.0 | dev        | 2015-08-03 | c4f863 | <a href="{{dlpf}}0.8.2.0-dev--2015-08-03--c4f863.dll" download>download Gloebit DLL</a> |
 | 0.8.2.1 | release    | 2015-12-09 | 497f57 | <a href="{{dlpf}}0.8.2.1-release--2015-12-09--497f57.dll" download>download Gloebit DLL</a> |
@@ -27,8 +27,7 @@
 | 0.9.0.0 | rc1        | 2016-09-30 | bf068f | <a href="{{dlpf}}0.9.0.0-rc1--2016-09-30--bf068f.dll" download>download Gloebit DLL</a> |
 | 0.9.0.0 | rc2        | 2017-01-09 | cd11d2 | <a href="{{dlpf}}0.9.0.0-rc2--2017-01-09--cd11d2.dll" download>download Gloebit DLL</a> |
 | 0.9.0.0 | release    | 2017-08-15 | 2c8c25 | <a href="{{dlpf}}0.9.0.0-release--2017-08-15--2c8c25.dll" download>download Gloebit DLL</a> |
-| 0.9.0.1 | release    | 2018-06-30 | 6b2da5 | <a href="{{dlpf}}0.9.0.1-release--2018-06-30--6b2da5.dll" download>download Gloebit DLL</a> |
 | 0.9.1.0 | dev        | 2016-10-25 | 7c4f2b | <a href="{{dlpf}}0.9.1.0-dev--2016-10-25--7c4f2b.dll" download>download Gloebit DLL</a> |
-| 0.9.1.0 | dev master | 2018-09-08 | f466c5 | <a href="{{dlpf}}0.9.1.0-dev--2018-09-08--MASTER.dll" download>download Gloebit DLL</a> |
+| 0.9.1.0 | dev master | 2017-08-18 | 1fdd56 | <a href="{{dlpf}}0.9.1.0-dev--2017-08-18--MASTER.dll" download>download Gloebit DLL</a> |
 
-<p>Or <a href="/opensim/downloads/{{dlfolder}}Gloebit_dlls_build-75_2018-09-11.zip">download a zip file of all dlls</a></p>
+<p>Or <a href="/opensim/downloads/{{dlfolder}}Gloebit_dlls_build-73_2017-08-18.zip">download a zip file of all dlls</a></p>

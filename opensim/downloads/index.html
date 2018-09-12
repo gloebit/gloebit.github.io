@@ -48,7 +48,16 @@ contains_social_buttons: false
     <section class="wrapper anchor" id="change-log">
       <h1>Change Log</h1>
       <p>Updates to GMM since open beta launch in January 2017</p>
-      
+
+      <h2>Build 75 on 2018-09-11</h2>
+      <ul>
+        <li>Fixed a messaging bug</li>
+        <li>Updated standard for economymodule setting to be in [Economy] section rather than [Startup] section of configs.  GMM now looks in both locations and disables if another module is specified unless the GMM is enabled for specific regions in the Gloebit.ini file.</li>
+        <li>Updated [Economy]SellEnabled to default to true as the configs state it does.  Previously we defaulted to false.</li>
+        <li>Changed many info level log messages to debug level.</li>
+        <li>Rearchitected GMM and added documentation in preparation for open sourcing repository under the LGPLv3 license.</li>
+      </ul>
+      <br />
       <h2>Build 73 on 2017-08-18</h2>
       <ul>
         <li>Implemented new MoneyModule interface function added to the OpenSim Core.  The addition of this interface was causing crashes on 0.9.1-dev as of late July and on 0.9.0-release as the 0.9.1 dev changes were pulled into the 0.9.0-release.  These should all work now.</li>
