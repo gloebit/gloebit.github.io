@@ -1,8 +1,8 @@
 
 **OpenSimulator Version**
 
-{% capture dlfolder %}GMM-b84-2018-12-14/{% endcapture %}
-{% capture fileprefix %}Gloebit-b84--{% endcapture %}
+{% capture dlfolder %}GMM-b75-2018-09-11/{% endcapture %}
+{% capture fileprefix %}Gloebit-b75--{% endcapture %}
 {% capture dlpf %}/opensim/downloads/{{dlfolder}}{{fileprefix}}{% endcapture %}
 
 | Version | Flavor     | Date       | Hash   | Gloebit build 75 |
@@ -24,6 +24,6 @@
 | 0.9.0.0 | release    | 2017-08-15 | 2c8c25 | <a href="{{dlpf}}0.9.0.0-release--2017-08-15--2c8c25.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
 | 0.9.0.1 | release    | 2018-06-30 | 6b2da5 | <a href="{{dlpf}}0.9.0.1-release--2018-06-30--6b2da5.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
 | 0.9.1.0 | dev        | 2016-10-25 | 7c4f2b | <a href="{{dlpf}}0.9.1.0-dev--2016-10-25--7c4f2b.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
-| 0.9.1.0 | dev master | 2018-12-14 | a2c200 | <a href="{{dlpf}}0.9.1.0-dev--2018-12-14--MASTER.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
+| 0.9.1.0 | dev master | 2018-09-08 | f466c5 | <a href="{{dlpf}}0.9.1.0-dev--2018-09-08--MASTER.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
 
-<p>Or <a href="/opensim/downloads/{{dlfolder}}Gloebit_dlls_build-84_2018-12-14.zip">download a zip file of all dlls</a></p>
+<p>Or <a href="/opensim/downloads/{{dlfolder}}Gloebit_dlls_build-75_2018-09-11.zip">download a zip file of all dlls</a></p>
