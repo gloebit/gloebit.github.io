@@ -49,6 +49,16 @@ contains_social_buttons: false
       <h1>Change Log</h1>
       <p>Updates to GMM since open beta launch in January 2017</p>
 
+      <h2>Build 84 on 2018-12-14</h2>
+      <ul>
+        <li>Open sourced on <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/">GitHub</a></li>
+        <li>Added code of conduct and contribution guidelines for open source community</li>
+        <li>Updated Prebuild to use .net v4.6 to align with OpenSim 0.9.1</li>
+        <li>Fixed <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/issues/74">#74</a> - Call to get balance during OnCompleteMovementToRegion was slowing region entry enough to occassionally cause teleport failures, so we added this call to a worker queue thread</li>
+        <li>Fixed <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/issues/75">#75</a> - Users on old viewers on Grids with multiple currencies and logged into an avatar not yet authorized with Gloebit would carry their non-gloebit balance onto a Gloebit region and get confused - We now make sure their balance is set to 0 G$.</li>
+        <li>Fixed <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/issues/72">#72</a> - App owners can now turn off the new session messaging which would deliver an IM for how to authorize or purchase gloebits each new session.  See the new Gleobit.ini and set the following to false to disable - GLBShowNewSessionPurchaseIM and GLBShowNewSessionAuthIM</li>
+      </ul>
+      <br />
       <h2>Build 75 on 2018-09-11</h2>
       <ul>
         <li>Fixed a messaging bug</li>
