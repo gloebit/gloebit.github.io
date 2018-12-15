@@ -5,7 +5,7 @@
 {% capture fileprefix %}Gloebit-b84--{% endcapture %}
 {% capture dlpf %}/opensim/downloads/{{dlfolder}}{{fileprefix}}{% endcapture %}
 
-| Version | Flavor     | Date       | Hash   | Gloebit build 75 |
+| Version | Flavor     | Date       | Hash   | Gloebit build 84 |
 |:--------|:-----------|------------|--------| ---------------- |
 | 0.8.1.0 | release    | 2015-03-16 | c2500d | <a href="{{dlpf}}0.8.1.0-release--2015-03-16--c2500d.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
 | 0.8.1.2 | post-fixes | 2015-10-22 | e09c86 | <a href="{{dlpf}}0.8.1.2-post-fixes--2015-10-22--e09c86.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
