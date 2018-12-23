@@ -74,7 +74,11 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
       <ol>
         <li><b>Install:</b>
           <ul>
-            <li><a href="/opensim/downloads/">Download</a> Gloebit.ini and the Gloebit dll for your version of OpenSim</li>
+            <li><a href="/opensim/downloads/">Download</a> Gloebit.ini and the Gloebit dll for your version of OpenSim
+              <ul>
+                <li>Alternatively, you can clone the <a href="https://github.com/gloebit/opensim-moneymodule-gloebit">GMM repository</a> and build your DLL yourself.</li>
+              </ul>
+            </li>
             <li>Place <i>Gloebit.dll</i> in your opensim/bin/ directory.</li>
             <li>Place <i>Gloebit.ini</i> in your ConfigDirectory.  By default, this is also opensim/bin/.  If you are unsure, you can locate the ConfigDirectory value in the [Startup] section of opensim.ini.</li>
           </ul>
@@ -86,7 +90,7 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
             <li>To enable Gloebit across the entire process (for all regions running under this single OpenSim process):</li>
             <ul>
               <li>In Gloebit.ini, set <i>Enabled = true</i></li>
-              <li>In opensim.ini, set <i>economymodule = Gloebit</i> (you may need to add this line to the end of your [Startup] section.</li>
+              <li>In opensim.ini, set <i>economymodule = Gloebit</i> in the [Economy] section.</li>
             </ul>
             <li>To enable Gloebit only for specific regions running under this single OpenSim process:</li>
             <ul>
@@ -104,6 +108,12 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
         </li>
         <li><b>Optional Gloebit Configuration Options:</b> Make additional edits to Gloebit.ini for improved, user-friendly behavior (None of these are required).
           <ul>
+            <li>You can configure what IMs are sent to avatars each session start.  To turn off new session messages, set the following:
+              <ul>
+                <li><i>GLBShowNewSessionAuthIM = false</i></li>
+                <li><i>GLBShowNewSessionPurchaseIM = false</i></li>
+              </ul>
+            </li>
             <li>If you entered an "OAuth Key Alias" for your application, you can set <i>GLBKeyAlias</i> to this value.</li>
             <li>Set <i>GLBOwnerName</i> and <i>GLBOwnerEmail</i> to the name and contact details of a manager of this OpenSim process.  These are displayed with certain error messages if there is a configuration issue and user is asked to report this problem to this manager.</li>
             <li>Use <i>GLBSpecificConnectionString</i> and <i>GLBSpecificStorageProvider</i> to define a different database for the Gloebit Tables.  If not set, the GMM will use the default ConnectionString set by the DatabaseService section of your configuration.</li>

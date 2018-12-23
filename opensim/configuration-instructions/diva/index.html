@@ -23,7 +23,7 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
       
       <p>Enabling Gloebit on your Diva distribution of OpenSim is quick and simple.  Add commerce in minutes.</p>
       <aside>Now Gloebit works with Diva!!!.</aside>
-      <p>These instructions are for enabling Gloebit on <a href="http://metaverseink.com/Downloads.html">diva-r08210</a> built on the 0.8.2.1 release of OpenSim.  They assume that you have already downloaded and configured Diva following their instructions.</p>
+      <p>These instructions are for enabling Gloebit on <a href="http://metaverseink.com/Downloads.html">diva-r08210</a> built on the 0.8.2.1 release of OpenSim and <a href="http://metaverseink.com/Downloads.html">diva-r09000</a> built on the 0.9.0.0 release of OpenSim.  They assume that you have already downloaded and configured Diva following their instructions.</p>
       <p>If you have not already done so, you'll need to follow the steps to create a Gloebit app before you can enable and configure the Gloebit Money Module.  Click the links below and follow the instructions on our standard configuration instructions page and then return here for the diva specific configuration instructions.</p>
       <ol>
         <li><a href="/opensim/configuration-instructions/#app-permission">Request account permission to create apps</a></li>
@@ -38,9 +38,9 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
       <ol>
         <li><b>Install:</b>
           <ul>
-            <li><a href="/opensim/downloads/">Download</a> Gloebit.ini and the Gloebit dll for the 0.8.2.1 release of OpenSim</li>
+            <li><a href="/opensim/downloads/">Download</a> Gloebit.ini and the Gloebit dll for the release of OpenSim corresponding to your Diva version</li>
             <li>Also <a href="/opensim/downloads/OpenSim.Data.SQLite.dll" download>download the SQLite OpenSim dll</a></li>
-            <li>Place all three files in your bin/ directory.</li>
+	    <li>Place all three files in your bin/ directory</li>
           </ul>
         </li>
         <li>edit <b>MyWorld.ini</b> located in the bin/config-include/ directory
@@ -87,6 +87,12 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
             </li>
             <li>You can also make these additional edits for some improved user-friendly behavior, but they are not required for the module to function.</li>
               <ul>
+                <li>You can configure what IMs are sent to avatars each session start.  To turn off new session messages, set the following:
+                  <ul>
+                    <li><i>GLBShowNewSessionAuthIM = false</i></li>
+                    <li><i>GLBShowNewSessionPurchaseIM = false</i></li>
+                  </ul>
+                </li>
                 <li>If you entered an "OAuth Key Alias" for your application, you can set <i>GLBKeyAlias</i> to this value.</li>
                 <li>Set <i>GLBOwnerName</i> and <i>GLBOwnerEmail</i> to the name and contact details of a manager of this OpenSim process.  These are displayed with certain error messages if there is a configuration issue and user is asked to report this problem to this manager.</li>
               </ul>
