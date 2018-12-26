@@ -1,6 +1,7 @@
 ---
 title: OpenSim Gloebit Money Module Beta - Configuration Instructions for Diva Distro
 page_css: /stylesheets/opensim.css
+contains_highlighting: true
 
 description: "Learn how to configure the Gloebit Money Module beta for the Diva Distribution of OpenSim.  Try out the newest OpenSim currency solution."
 keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, OpenSim integration, OpenSim currency, configure, install, instructions, guide, configuration instructions, config, configure module, addon module, configure addon module, diva, diva distribution, diva distro"
@@ -45,23 +46,27 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
         </li>
         <li>edit <b>MyWorld.ini</b> located in the bin/config-include/ directory
           <ul>
-            <li>In the <b>[Startup]</b> section
-              <ul>
-                <li>add the line <i>ConfigDirectory = "."</i></li>
-                <li>add the line <i>economymodule = Gloebit</i></li>
-              </ul>
+            <li>In the <b>[Startup]</b> section, add the following lines
+{% highlight ini %}
+ConfigDirectory = "."
+economymodule = Gloebit
+{% endhighlight %}
             </li>
-            <li>In the <b>[LoginService]</b> section
-              <ul>
-                <li>add the line <i>Currency = "G$"</i></li>
-              </ul>
+            <li>In the <b>[LoginService]</b> section, add the following line
+{% highlight ini %}
+Currency = "G$"
+{% endhighlight %}
             </li>
             <li>In the <b>[GridInfoService]</b> section
               <ul>
                 <li>add the line <i>economy = http://&lt;IP or Domain of Grid&gt;:&lt;Port of Region with Gloebit enabled&gt;</i>
                   <ul>
                     <li>replace the values with your grid's domain/IP and region's port number.</li>
-                    <li>It will look something like this: <i>economy = http://127.0.0.1:9000/</i> and will probably be the same as some of the other values in the section</li>
+                    <li>It will look something like the following and will probably be the same as some of the other values in the section
+{% highlight ini %}
+economy = http://127.0.0.1:9000/
+{% endhighlight %}
+                   </li>
                   </ul>
                 </li>
               </ul>
@@ -75,26 +80,114 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
         </li>
         <li> edit <b>Gloebit.ini</b> located in the bin/ directory
           <ul>
-            <li>set <i>Enabled = true</i></li>
-            <li>set <i>GLBEnvironment = production</i></li>
-            <li>set <i>GLBKey</i> and <i>GLBSecret</i> to the "OAuth Key" and "OAuth Secret" from the Gloebit application you created earlier.</li>
-            <li>Uncomment (by deleting the leading ';') the line <i>GLBSpecificStorageProvider = OpenSim.Data.MySQL.dll</i> and the line below it which starts with <i>GLBSpecificConnectionString =</i></li>
+            <li>set <i>Enabled = true</i>
+{% highlight ini %}
+;;;;;; ENABLE GLOBALLY OR FOR INDIVIDUAL REGIONS ;;;;;
+
+;# {Enabled} {[Startup]economymodule:Gloebit} {Enable Gloebit Money Module Globally?} {false, true} false
+;; Set to true to enable GMM for all regions controlled by this OpenSim process.
+;; Requires that "economymodule = Gloebit" is set in [Economy] or [Startup] section of opensim.ini
+;; If set to false, can be enabled for individual regions - see GLBEnabledOnlyInRegions below
+Enabled = true
+
+;# {GLBEnabledOnlyInRegions} {Enabled:false} {Enable Gloebit Money Module in specific regions by region UUID (space delimited list)?} {*} ""
+;; If Enabled is false above, you can enable for individual regions controlled by this OpenSim process.
+;; Set this variable to a whitespace delimited list of region UUIDs
+;    GLBEnabledOnlyInRegions =
+ {% endhighlight %}</li>
+            <li>set <i>GLBEnvironment = production</i>
+{% highlight ini %}
+;;;;;; CONFIGURE ENVIRONMENT AND APPLICATION ;;;;;;
+;; Configure GMM to environment and Gloebit application on that environment to interact with
+;; see http://dev.gloebit.com/opensim/configuration-instructions/ for more details.
+
+;; Environments:
+;;      sandbox - connects to sandbox.gloebit.com;  fake/sandboxed payments and gloebits;
+;;              https://sandbox.gloebit.com/signup/ - create sandbox account
+;;              https://sandbox.gloebit.com/merchant-signup/ - request ability to create apps
+;;              https://sandbox.gloebit.com/merchant-tools/ - create app and retrieve Key and Secret
+;;      production - connects to www.gloebit.com; real payments and gloebits;
+;;              https://www.gloebit.com/signup/ - create production account
+;;              https://www.gloebit.com/merchant-signup/ - request ability to create apps
+;;              (requires manual approval on production before gaining access to merchant tools)
+;;              https://www.gloebit.com/merchant-tools/ - create app and retrieve Key and Secret
+GLBEnvironment = production
+{% endhighlight %}</li>
+            <li>set <i>GLBKey</i> and <i>GLBSecret</i> to the "OAuth Key" and "OAuth Secret" from the Gloebit application you created earlier.
+{% highlight ini %}
+;; Application the GMM on this process will connect to within the environment specified above
+;; Fill in GLBKey and GLBSecret with values from app created at https://sandbox.gloebit.com/merchant-tools/
+;; See http://dev.gloebit.com/opensim/configuration-instructions/ for more details.
+GLBKey = 00000000-0000-0000-0000-000000000000
+GLBSecret = 00000000-0000-0000-0000-000000000000
+{% endhighlight %}</li>
+            <li>Uncomment (by deleting the leading ';') the line <i>GLBSpecificStorageProvider = OpenSim.Data.MySQL.dll</i> and the line below it which starts with <i>GLBSpecificConnectionString =</i>
+{% highlight ini %}
+;;;;; CONFIGURE SINGLE GLOEBIT DB FOR APP OR GRID ;;;;;;
+;; Optional - If not configured here, Gloebit will use the DataService 
+;; ConnectionString
+;;
+;; Purpose - If each Sim process uses it's own database and separate
+;; set of DB tables from each other sim, then a user will have
+;; to authorize Gloebit form every sim process and will receive
+;; our welcome message upon entering every Sim process each
+;; session. However, if you configure the Gloebit system on every
+;; sim to point to a single DB either here, or if that is your default
+;; configuration for your sim, then your users will only have to authorize
+;; Gloebit once for your app and will only receive our welcome message
+;; once each session, the first time they enter a gloebit enabled region.
+;;
+;; Both of these settings must be configured together.  See StandaloneCommon.ini.example
+;; for ConnectionString examples and availiable StorageProviders
+GLBSpecificStorageProvider = OpenSim.Data.MySQL.dll
+GLBSpecificConnectionString = "Data Source=localhost;Database=opensim;User ID=opensim;Password=***;Old Guids=true;"
+;GLBSpecificStorageProvider = "OpenSim.Data.PGSQL.dll" 
+;GLBSpecificConnectionString = "Server=localhost;Database=opensim;User Id=opensim; password=***;" 
+ {% endhighlight %}</li>
             <li>set <i>GLBSpecificConnectionString</i> to the value of ConnectionString you copied above from MyWorld.ini.
               <ul>
                 <li>If the ConnectionString does not have a section which says <i>Old Guids=true;</i> then make sure to add it.</li>
-                <li>It will look something like this: <i>GLBSpecificConnectionString = "Data Source=localhost;Database=opensim;User ID=opensim;Password=mysecurepw;Old Guids=true;"</i></li>
+                <li>It will look something like this:
+{% highlight ini %}
+GLBSpecificStorageProvider = OpenSim.Data.MySQL.dll
+GLBSpecificConnectionString = "Data Source=localhost;Database=opensim;User ID=opensim;Password=mysecurepw;Old Guids=true;"
+{% endhighlight %}</li>
               </ul>
             </li>
             <li>You can also make these additional edits for some improved user-friendly behavior, but they are not required for the module to function.</li>
               <ul>
                 <li>You can configure what IMs are sent to avatars each session start.  To turn off new session messages, set the following:
-                  <ul>
-                    <li><i>GLBShowNewSessionAuthIM = false</i></li>
-                    <li><i>GLBShowNewSessionPurchaseIM = false</i></li>
-                  </ul>
+{% highlight ini %}
+;;;;; CONFIGURE NEW SESSION MESSAGING ;;;;;
+;; The following determine if a user receives messaging at the start of a new session
+;; A new session is defined as the first time a user enters a Gloebit enabled region for a Gloebit app during a viewer login
+;# {GLBShowNewSessionPurchaseIM} {Show purchase gloebits IM to user at session start?} {false, true} false
+GLBShowNewSessionPurchaseIM = false
+;# {GLBShowNewSessionAuthIM} {Show auth app IM to user at session start?} {false, true} true
+GLBShowNewSessionAuthIM = false
+{% endhighlight %}
                 </li>
-                <li>If you entered an "OAuth Key Alias" for your application, you can set <i>GLBKeyAlias</i> to this value.</li>
-                <li>Set <i>GLBOwnerName</i> and <i>GLBOwnerEmail</i> to the name and contact details of a manager of this OpenSim process.  These are displayed with certain error messages if there is a configuration issue and user is asked to report this problem to this manager.</li>
+                <li>If you entered an "OAuth Key Alias" for your application, you can set <i>GLBKeyAlias</i> to this value.
+{% highlight ini %}
+;; GLBKeyAlias is optional and can be left out.
+;; If included, this will be used to make some URLs more user-friendly and human-readalbe
+;; To use, fill this with the OAuth Key Alias registered for this application on Gloebit
+GLBKeyAlias = MyAlias
+{% endhighlight %}</li>
+                <li>Set <i>GLBOwnerName</i> and <i>GLBOwnerEmail</i> to the name and contact details of a manager of this OpenSim process.  These are displayed with certain error messages if there is a configuration issue and user is asked to report this problem to this manager.
+{% highlight ini %}
+;;;;;; CONFIGURE HELPFUL ERROR CONTACT INFO FOR USER MESSAGES ;;;;;;
+;; The following are supplied to users in error messages for certain errors for which they should
+;; contact the person who configured this GMM and app and may need to fix something
+;; Those messages will include a trailing instruction string formatted like:
+;; Please contact GLBOnwerName at GLBOwnerEmail if this problem persists.
+
+;; GLBOwnerName should be replaced with the neme of the person or avatar which manages this OpenSim process.
+GLBOwnerName = Bob Owner
+
+;; GLBOwnerEmail should be replaced with the email address (or other contact mechanism) for the person who manages this OpenSim process.
+GLBOwnerEmail = Manager@example.com
+{% endhighlight %}</li>
               </ul>
             </li>
           </ul>

@@ -9,6 +9,9 @@
     <link rel="shortcut icon" href="https://www.gloebit.com/favicon.ico?v=3" />
 
     <link rel="stylesheet" href="/stylesheets/styles.css" />
+    {% if page.contains_highlighting %}
+    <link rel="stylesheet" href="/stylesheets/github_style.css" />
+    {% endif %}
     {% if page.contains_tables %}
     <!-- Table Styles -->
     <link rel="stylesheet" href="/stylesheets/tables.css" />
