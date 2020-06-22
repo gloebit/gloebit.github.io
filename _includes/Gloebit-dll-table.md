@@ -26,6 +26,7 @@
 | 0.9.0.1 | release    | 2018-06-30 | 6b2da5 | <a href="{{dlpf}}0.9.0.1-release--2018-06-30--6b2da5.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
 | 0.9.1.0 | dev        | 2016-10-25 | 7c4f2b | <a href="{{dlpf}}0.9.1.0-dev--2016-10-25--7c4f2b.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
 | 0.9.1.0 | dev master | 2018-12-14 | a2c200 | <a href="{{dlpf}}0.9.1.0-dev--2018-12-14--MASTER.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
+| 0.9.1.1 | release    | 2020-01-07 | 45b869 | <a href="{{b85p}}0.9.1.1-release--2020-01-07--45b869.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
 | 0.9.2.0 | dev master | 2020-06-21 | d7089b | <a href="{{b85p}}0.9.2.0-dev--2020-06-21--MASTER.dll" download>{% octicon cloud-download %} Gloebit DLL</a> |
 
 <p>Or <a href="/opensim/downloads/{{dlfolder}}Gloebit_dlls_build-84_2018-12-14.zip">download a zip file of all dlls</a></p>
