@@ -19,6 +19,7 @@ contains_social_buttons: false
       <ul>
         <li><a href="#ini">Gloebit.ini</a></li>
         <li><a href="#dll">Gloebit.dll</a></li>
+        <li><a href="#old-dll">Old Versions</a></li>
         <li><a href="#change-log">Change Log</a></li>
       </ul>
     </nav>
@@ -45,9 +46,27 @@ contains_social_buttons: false
       
     </section>
 
+    <section class="wrapper anchor" id="old-dll">
+      <h1>Support for older versions of OpenSim via Previous Gloebit dll files</h1>
+      <p>If you are running an older version of OpenSim, you can build the latest version of our GMM yourself, or you can use build 84, which is the most recent build we produced across earlier versions of OpenSim.  Download the dll file which matches or is closest to the version of OpenSim you are running.</p>
+      
+      {% capture my_include %}{% include Gloebit-dll-table-b84.md %}{% endcapture %}
+      {{ my_include | markdownify }}
+      
+    </section>
+
+
     <section class="wrapper anchor" id="change-log">
       <h1>Change Log</h1>
       <p>Updates to GMM since open beta launch in January 2017</p>
+
+      <h2>Build 87 on 2020-08-09</h2>
+      <ul>
+        <li>Fixed <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/issues/88">#88</a> - Support for new HTTP XML RPC handler flow introduced in OpenSim 0.9.2.0 which had broken the buy-currency and buy-land functionality.  To disable this code and build with an older version of OpenSim, comment out the line "#define NEWHTTPFLOW" at the top of the GloebitMoneyModule.cs file.</li>
+        <li>Fixed <a href=https://github.com/gloebit/opensim-moneymodule-gloebit/issues/83">#83</a> - Resolves compiler warnings.</li>
+        <li>Allows disabling of the GMM welcome message.  See the new GLBShowWelcomeMessage option in the Gloebit.ini config file.</li>
+        <li>Wraps some database calls with a try/catch to attempt to prevent grid db connection issues from crashing a sim.  Some work likely still needs to be done here.</li>
+      </ul>
 
       <h2>Build 84 on 2018-12-14</h2>
       <ul>
