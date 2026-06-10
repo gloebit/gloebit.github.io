@@ -18,7 +18,8 @@ contains_social_buttons: false
     <nav>
       <ul>
         <li><a href="#ini">Gloebit.ini</a></li>
-        <li><a href="#dll">Gloebit.dll</a></li>
+        <li><a href="#dll">Gloebit.dll (0.9.3 / .NET 8)</a></li>
+        <li><a href="#dll-legacy">0.9.1 - 0.9.2</a></li>
         <li><a href="#old-dll">Old Versions</a></li>
         <li><a href="#change-log">Change Log</a></li>
       </ul>
@@ -38,12 +39,22 @@ contains_social_buttons: false
     </section>
     
     <section class="wrapper anchor" id="dll">
-      <h1>Gloebit dll files</h1>
-      <p>Download the dll file which matches or is closest to the version of OpenSim you are running.</p>
-      
+      <h1>Gloebit dll files for OpenSim 0.9.3 (.NET 8)</h1>
+      <p>OpenSim 0.9.3 moved to .NET 8.  These builds restore Gloebit Money Module support on 0.9.3 and later.  Download the dll which matches or is closest to the version of OpenSim you are running, for your operating system.</p>
+      <p>These builds are compiled and pass our automated build, but have not yet been fully production-tested.  We welcome feedback from grid owners running them.  See the <a href="/blog/Gloebit-Money-Module-Now-Supports-OpenSim-0-9-3/">announcement blog post</a> for details.</p>
+
+      {% capture my_include %}{% include Gloebit-dll-table-b88.md %}{% endcapture %}
+      {{ my_include | markdownify }}
+
+    </section>
+
+    <section class="wrapper anchor" id="dll-legacy">
+      <h1>Gloebit dll files for OpenSim 0.9.1 - 0.9.2 (.NET Framework / Mono)</h1>
+      <p>For OpenSim 0.9.1.x and 0.9.2.0 (pre-.NET 8), download the dll file which matches or is closest to the version of OpenSim you are running.</p>
+
       {% capture my_include %}{% include Gloebit-dll-table.md %}{% endcapture %}
       {{ my_include | markdownify }}
-      
+
     </section>
 
     <section class="wrapper anchor" id="old-dll">
@@ -60,6 +71,14 @@ contains_social_buttons: false
       <h1>Change Log</h1>
       <p>Updates to GMM since open beta launch in January 2017</p>
 
+      <h2>Build 88 on 2026-06-07</h2>
+      <ul>
+        <li>Added support for <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/releases/tag/build-88">OpenSim 0.9.3.x</a>, which moved to .NET 8.  Thanks to Vincent Sylvester (Zetamex) for the .NET 8 compatibility work.</li>
+        <li>Pre-built DLLs are now published for Linux, Windows, and macOS via <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/releases">GitHub Releases</a>.</li>
+        <li>A GitHub Actions CI pipeline now auto-builds the GMM against new OpenSim releases.</li>
+        <li>Build-from-source instructions are documented in <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/blob/master/BUILDING.md">BUILDING.md</a>.</li>
+      </ul>
+      <br />
       <h2>Build 87 on 2020-08-09</h2>
       <ul>
         <li>Fixed <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/issues/88">#88</a> - Support for new HTTP XML RPC handler flow introduced in OpenSim 0.9.2.0 which had broken the buy-currency and buy-land functionality.  To disable this code and build with an older version of OpenSim, comment out the line "#define NEWHTTPFLOW" at the top of the GloebitMoneyModule.cs file.</li>
