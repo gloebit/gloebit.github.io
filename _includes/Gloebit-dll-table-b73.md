@@ -6,7 +6,7 @@
 {% capture dlpf %}/opensim/downloads/{{dlfolder}}{{fileprefix}}{% endcapture %}
 
 {% comment %}
-    Once github-pages acceps jekyll-octicons, we can use {% octicon cloud-download %} below
+    Once github-pages acceps jekyll-octicons, we can use {% octicon download %} below
     for a little download icon instead of the word download.  Unfortunately, not yet.
 {% endcomment %}
 
