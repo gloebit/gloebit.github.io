@@ -2,7 +2,10 @@ source 'https://rubygems.org'
 
 require 'json'
 require 'open-uri'
-versions = JSON.parse(open('https://pages.github.com/versions.json').read)
+# Use URI.open, not the bare Kernel#open: Ruby 3.0+ removed open-uri's
+# delegation from Kernel#open, so open('https://...') tries to open a local
+# file and fails. URI.open works on Ruby 2.5+ and 3.x alike.
+versions = JSON.parse(URI.open('https://pages.github.com/versions.json').read)
 
 gem 'github-pages', versions['github-pages'], group: :jekyll_plugins
 gem 'jekyll'
