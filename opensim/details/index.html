@@ -48,35 +48,25 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
     
     <section class="wrapper anchor" id="account-signup">
       <h1>Account Signup</h1>
-      <p>We provide two separate environments each with completely separate accounts.</p>
+      <p>Payments and gloebits are real, and users connect their Gloebit accounts for real commerce.</p>
       <ul>
-        <li>Sandbox - Testing environment where payments and gloebits are fake.  When a partner is on our sandbox environment, users can test using sandbox accounts without spending any real money.
-          <ul>
-            <li>All accounts are created and managed from <a href="https://sandbox.gloebit.com">the Gloebit Sandbox</a>.</li>
-            <li>Users can create an account from our <a href="https://sandobx.gloebit.com/signup/">sandbox signup page</a> with an email address, or via Facebook, Twitter, LinkedIn, or Google Plus.
-          </ul>
-        </li>
-        <aside><a href="https://www.gloebit.com/signup/">Create an account</a> today!</aside>
-        <li>Production - On Production, payments and gloebits are real.  When a partner is on our production environment, users can connect their production accounts for real commerce.
-          <ul>
-            <li>All accounts are created and managed from <a href="https://www.gloebit.com">the Gloebit production environment</a>.</li>
-          </ul>
-        </li>
+        <li>All accounts are created and managed from <a href="https://www.gloebit.com">the Gloebit website</a>.</li>
+        <li>Users can create an account from our <a href="https://www.gloebit.com/signup/">signup page</a> with an email address.</li>
       </ul>
-      <p>Developers or Grid Hosts can request account permissions to create apps from each the <a href="https://sandbox.gloebit.com/account-settings/">Sandbox</a> and <a href="https://www.gloebit.com/account-settings/">Production account-settings</a> page.  A Gloebit Application is the mechanism by which our service is integrated with an OpenSim grid or region.  For more details, see our <a href="/sandbox-walkthru/">sandbox walk-through</a> and the configuration instructions linked above.</p>
+      <aside><a href="https://www.gloebit.com/signup/">Create an account</a> today!</aside>
+      <p>Developers or Grid Hosts can request account permissions to create apps from the <a href="https://www.gloebit.com/account-settings/">account-settings</a> page.  A Gloebit Application is the mechanism by which our service is integrated with an OpenSim grid or region.  For more details, see the configuration instructions linked above.</p>
       <p>Merchants can request account permissions to sell gloebits from the <a href="https://www.gloebit.com/account-settings/">Production account-settings</a> page.  For more details, see our <a href="/opensim/seller-flow/">seller flow page</a>.</p>
     </section>
     
     <section class="wrapper anchor" id="purchasing">
       <h1>Purchasing Gloebits</h1>
-      <p>In our sandbox environment, gloebits can be purchased for free from our <a href="https://sandbox.gloebit.com/purchase/">sandbox purhcase page</a>.  Follow the instructions to make a sandbox credit card purchase.</p>
-      <p>On production, gloebits can be purchased for via credit card or PayPal from our <a href="https://www.gloebit.com/purchase/">purhcase page</a>.  We plan to add more payment methods as we grow.</p>
+      <p>Gloebits can be purchased via credit card or PayPal from our <a href="https://www.gloebit.com/purchase/">purchase page</a>.  We plan to add more payment methods as we grow.</p>
     </section>
     
     <section class="wrapper anchor" id="authorizing-app">
       <h1>Authorizing a Grid</h1>
-      <p>In the Gloebit system, an application can't charge you until you authorize that application.  Once you do, you are providing permission for that application to send requests to spend gloebits on your behalf.  You can review and revoke these authorizations at any time from the <a href="https://sandbox.gloebit.com/manage-access/">sandbox</a> or <a href="https://www.gloebit.com/manage-access/">production approved apps page</a>.</p>
-      <p>When you arrive in region running our module, you should be informed wither it is running in Sandbox or Production, and You should be prompted to authorize the app connected to that region if you have not already done so.  If you do not, you can prompt authorization by clicking on your balance.  For additional details specific to OpenSim, see our <a href="/opensim/auth-flow/">OpenSim auth flow</a>.</p>
+      <p>In the Gloebit system, an application can't charge you until you authorize that application.  Once you do, you are providing permission for that application to send requests to spend gloebits on your behalf.  You can review and revoke these authorizations at any time from the <a href="https://www.gloebit.com/manage-access/">approved apps page</a>.</p>
+      <p>When you arrive in a region running our module, you should be prompted to authorize the app connected to that region if you have not already done so.  If you do not, you can prompt authorization by clicking on your balance.  For additional details specific to OpenSim, see our <a href="/opensim/auth-flow/">OpenSim auth flow</a>.</p>
     </section>
     
     <section class="wrapper anchor" id="transactions">
@@ -84,12 +74,12 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
       <p>Once you've authorized the application integrated with the region that you are on, your balance will show up in the viewer and you can purchase objects for sale with your gloebits.  See our <a href="/opensim/transaction-flow/">OpenSim transaction flow</a> for an example.</p>
       
       <h2 id="records">Transaction records</h2>
-      <p>We store transaction records for every party involved so that it's easy to review.  Check out the <a href="https://sandbox.gloebit.com/transaction-history">Sandbox</a> or <a href="https://www.gloebit.com/transaction-history">Production transaciton history page</a> and try clicking on a description to expand a record for more details.</p>
+      <p>We store transaction records for every party involved so that it's easy to review.  Check out the <a href="https://www.gloebit.com/transaction-history">transaction history page</a> and try clicking on a description to expand a record for more details.</p>
       <p>Our OpenSim module also maintains a database table of all Gloebit transactions.  A grid or region manager with access to the opensim db for the grid can query this table to examine status of transactions and other details.</p>
       
       <h2 id="auto-debit">Objects with auto-debit scripts</h2>
       <p>For safety and security of our users, we have created a subscription system to deal with auto-debit permissions for scripted objects.  The concept of a subscription, is to authorize and handle a transaction which a user is not directly triggering at that moment, just like subscribing for a Sunday newspaper and then being charged weekly on delivery.</p>
-      <p>When you grant auto-debit permissions to an object, we create a subscription for that object with that object's UUID.  We  then ask you to authorize that subscription (and corresponding object) to have permission to automatically debit your account in the future.  If you approve, when the object triggers an auto-debit, the transaction will be attempted.  If not, that object will not be allowed to auto-debit your account.  You can review and revoke authorization from our <a href="https://sandbox.gloebit.com/subscription-authorizations/">Sandbox</a> or <a href="https://www.gloebit.com/subscription-authorizations/">Production subscription authorizations page</a>.  For an example, please see our <a href="/opensim/subscription-flow/">OpenSim subscription flow</a>.</p>
+      <p>When you grant auto-debit permissions to an object, we create a subscription for that object with that object's UUID.  We  then ask you to authorize that subscription (and corresponding object) to have permission to automatically debit your account in the future.  If you approve, when the object triggers an auto-debit, the transaction will be attempted.  If not, that object will not be allowed to auto-debit your account.  You can review and revoke authorization from our <a href="https://www.gloebit.com/subscription-authorizations/">subscription authorizations page</a>.  For an example, please see our <a href="/opensim/subscription-flow/">OpenSim subscription flow</a>.</p>
       
       <h2 id="fees">Transaction fees</h2>
       <p>We take 2% out of each transaction to cover our costs, fraud risks, and continue to improve our system and features for our users.  We also provide applications the ability to charge a fee on user-to-user transactions.  During our beta, the application fee is set to 1%.  Our goal is to make those fees clear to merchants so they have the information to make intelligent decisions about their businesses.  We've also been told that inventory providers need to earn a piece of sales since they bear the overhead of delivery and storage of purchased objects, so this is on our radar for further investigation.</p>
@@ -97,7 +87,7 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
       <h2 id="sellers">Identifying seller's Gloebit account</h2>
       <p>If the OpenSim agent has ever authorized the grid on which they are receiving payment, then Gloebit will send the gloebits received to the Gloebit account they authorized and linked to that agent.  Even if the user revokes that grid's authorization, funds will still be sent to the last Gloebit account they authorized with that avatar on that grid.</p>
       <p>If the agent has never authorized from that grid, then Gloebit will attempt to identify them via the email address in the agent's OpenSim profile.  If a Gloebit account exists with the same email address and the email address has been verified by the user, we'll send the received funds to this account.  If there is no Gloebit account with that email address, we'll auto create one and email the seller to let them know they have gloebits waiting in their new account.</p>
-      <p>We have a few recommendations for anyone who may receive funds on an OpenSim Grid with our module enabled.  <a href="https://sandbox.gloebit.com/signup">Create a Gloebit account</a> using the email address you use when you create OpenSim agents.  Make sure to follow the instructions in the verification email you receive, as we can't send funds to an account we have identified via the email address if it is unverified.  This should ensure that any gloebits received on any home grid for an agent with that email address in the profile will make it to your Gloebit account.  Unfortunately, when you are visiting a foreign hypergrid, your email address is not sent to that foreign grid, so we can not use it to identify your Gloebit account.  To receive funds on any foreign hypergrid, you must authorize that grid via your Gloebit account.  If you do not want that grid to have access to debit your account, then you can immediately revoke that access.  Our link to identify your account from your foreign agent on that grid will remain in place even after you've revoked access and you'll be able to continue to recieve gloebits.</p>
+      <p>We have a few recommendations for anyone who may receive funds on an OpenSim Grid with our module enabled.  <a href="https://www.gloebit.com/signup/">Create a Gloebit account</a> using the email address you use when you create OpenSim agents.  Make sure to follow the instructions in the verification email you receive, as we can't send funds to an account we have identified via the email address if it is unverified.  This should ensure that any gloebits received on any home grid for an agent with that email address in the profile will make it to your Gloebit account.  Unfortunately, when you are visiting a foreign hypergrid, your email address is not sent to that foreign grid, so we can not use it to identify your Gloebit account.  To receive funds on any foreign hypergrid, you must authorize that grid via your Gloebit account.  If you do not want that grid to have access to debit your account, then you can immediately revoke that access.  Our link to identify your account from your foreign agent on that grid will remain in place even after you've revoked access and you'll be able to continue to recieve gloebits.</p>
       <p>We've worked hard to make this as simple as possible for OpenSim creators without requiring any modifications to the OpenSim server core or viewers, or requiring attachments or special scripts.  We hope you agree and look forward to any feedback you have.</p>
     </section>
 
@@ -110,7 +100,7 @@ keywords: "Gloebit, OpenSim, OpenSimulator, Money Module, OpenSim Module, Beta, 
       <h1>Multiple avatars per Gloebit account</h1>
       <aside>One Gloebit account.  One balance.  One transaction history.  All your avatars.</aside>
       <p>A single Gloebit account can be linked to many OpenSim accounts.  We allow multiple links to avatars on the same grid, and across different grids to a single Gloebit account.  There is no need to create multiple Gloebit accounts, or to transfer funds between avatars you control.</p>
-      <p>Every avatar you link to your Gloebit account will have access to your balance, and the avatar and grid are stored in your <a href="https://sandbox.gloebit.com/transaction-history/">transaction history records</a> so that you can differentiate transactions.  You can revoke access from a grid for a single avatar without affecting the rest from the <a href="https://sandbox.gloebit.com/manage-access/">approved apps page</a>.</p>
+      <p>Every avatar you link to your Gloebit account will have access to your balance, and the avatar and grid are stored in your <a href="https://www.gloebit.com/transaction-history/">transaction history records</a> so that you can differentiate transactions.  You can revoke access from a grid for a single avatar without affecting the rest from the <a href="https://www.gloebit.com/manage-access/">approved apps page</a>.</p>
     </section>
     
     {% include footer_scripts.html %}
