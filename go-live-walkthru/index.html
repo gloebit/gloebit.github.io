@@ -1,10 +1,14 @@
 ---
-redirect_from: "/tut-prod.html"
+redirect_from:
+  - "/tut-prod.html"
+  - "/sandbox-walkthru.html"
+  - "/tut.html"
+  - "/sandbox-walkthru/"
 
 title: Getting Started with Gloebit's Production Environment
 page_css: /stylesheets/walkthru.css
 
-description: Walk through a step by step guide for going live in production with an application you have integrated and tested on Gloebit's Sandbox staging environment."
+description: Walk through a step by step guide for going live in production with an application you have integrated on Gloebit."
 keywords: "Gloebit, Get Started, Getting Started, Walkthrough, Walkthru, Production, Howto, Instructions, Step by step, Gloebit Howto, Going live, Go live"
 ---
 
@@ -19,7 +23,7 @@ keywords: "Gloebit, Get Started, Getting Started, Walkthrough, Walkthru, Product
         <li><a href="#production">The Gloebit Production Environment</a></li>
         <li><a href="#prereqs">Gloebit Merchant Prerequisites</a></li>
         <li><a href="#account">Creating Your Merchant Account</a></li>
-        <li><a href="#migrate">Migrating Your Application to Production</a></li>
+        <li><a href="#migrate">Integrating Your Application</a></li>
       </ul>
     </nav>
 
@@ -31,7 +35,7 @@ keywords: "Gloebit, Get Started, Getting Started, Walkthrough, Walkthru, Product
       <h1>The Gloebit Production Environment</h1>
 
       <p>
-        The Gloebit production environment is for fully tested applications which are launching to the public.  If you are testing out Gloebit or doing your initial integration, please see the <a href="/merchant-steps/">integration guide</a> and the <a href="/sandbox-walkthru/">sandbox walk-through</a> which will instruct you on how to get set up in our sandbox environment for testing.
+        The Gloebit production environment is where your application goes live to the public.  If you are doing your initial integration, please see the <a href="/merchant-steps/">integration guide</a> which will instruct you on how to get set up and integrate Gloebit's services.
       </p>
       <p>
         The production environment allows your application to tie into production accounts of Gloebit users.  Once authorized, your production application will be able to utilize our services with those production user accounts.  Your production application will be able to transact in Gloebits which can then be sold and your proceeds withdrawn.
@@ -40,7 +44,7 @@ keywords: "Gloebit, Get Started, Getting Started, Walkthrough, Walkthru, Product
         The production environment resides at the domain <a href="https://www.gloebit.com/">https://www.gloebit.com/</a>.
       </p>
       <p>
-        This production walk-through and guide takes you through the steps to get your application migrated from the Gloebit sandbox to production.  Let's get started.
+        This production walk-through and guide takes you through the steps to get your application set up and live on Gloebit.  Let's get started.
       </p>
     </section>
 
@@ -65,7 +69,7 @@ keywords: "Gloebit, Get Started, Getting Started, Walkthrough, Walkthru, Product
       <ol>
         <li><b>Visit the <a href="https://www.gloebit.com/signup/">Gloebit production signup page</a>.</b>
           <p>
-            You can either create your account using an email and password you provide specifically for the Gloebit production environment, or you can authenticate via one of our third-party ID providers (Google+, LinkedIn, Twitter, Facebook) to create your production account.  Your production and sandbox accounts do not need to authenticate the same way.
+            You can either create your account using an email and password you provide specifically for Gloebit, or you can authenticate via one of our third-party ID providers (Google+, LinkedIn, Twitter, Facebook) to create your account.
           </p>
           <p>
             The account you create here allows you to buy and spend Gloebits.  The next steps upgrade your account to use the Gloebit merchant services.
@@ -76,7 +80,7 @@ keywords: "Gloebit, Get Started, Getting Started, Walkthrough, Walkthru, Product
         </li>
         <li><b>Read through the user terms of service and click on "Agree".</b>
           <p
-             >After clicking, you will see the Account Settings page for your sandbox account.  Now let's turn it into a production merchant account.
+             >After clicking, you will see the Account Settings page for your account.  Now let's turn it into a production merchant account.
           </p>
         </li>
         <li><b>Visit the <a href="https://www.gloebit.com/merchant-signup/">Gloebit production merchant signup page</a>.</b>
@@ -124,15 +128,15 @@ keywords: "Gloebit, Get Started, Getting Started, Walkthrough, Walkthru, Product
       </ol>
 
       <p>
-        And with that, you are ready to <a href="#migrate">migrate your application from sandbox to production</a>.
+        And with that, you are ready to <a href="#migrate">integrate your application</a>.
       </p>
     </section>
 
     <section class="wrapper anchor" id="migrate">
-      <h1>Migrating your application from sandbox to production</h1>
+      <h1>Integrating your application</h1>
 
       <p>
-        If you have not yet integrated your application with Gloebit, please see the <a href="/merchant-steps/">integration guide</a> and the <a href="/sandbox-walkthru/">sandbox walk-through</a> which will instruct you on how to set up sandbox merchant account and integrate.
+        If you have not yet integrated your application with Gloebit, please see the <a href="/merchant-steps/">integration guide</a> which will instruct you on how to set up your merchant account and integrate.
       </p>
 
       <h2>HTTP Interface:</h2>
