@@ -41,9 +41,9 @@ contains_social_buttons: false
     <section class="wrapper anchor" id="dll">
       <h1>Gloebit dll files for OpenSim 0.9.3 (.NET 8)</h1>
       <p>OpenSim 0.9.3 moved to .NET 8.  These builds restore Gloebit Money Module support on 0.9.3 and later.  Download the dll which matches or is closest to the version of OpenSim you are running, for your operating system.</p>
-      <p>These builds are compiled and pass our automated build, but have not yet been fully production-tested.  We welcome feedback from grid owners running them.  See the <a href="/blog/Gloebit-Money-Module-Now-Supports-OpenSim-0-9-3/">announcement blog post</a> for details.</p>
+      <p>Build 89 is a security update; all grids should upgrade.  See the <a href="/blog/Gloebit-Money-Module-Build-89-Security-Update/">announcement blog post</a> for details.  If you run OpenSim master, use the weekly <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/releases/tag/opensim-master-weekly">opensim-master-weekly</a> pre-release instead.</p>
 
-      {% capture my_include %}{% include Gloebit-dll-table-b88.md %}{% endcapture %}
+      {% capture my_include %}{% include Gloebit-dll-table-b89.md %}{% endcapture %}
       {{ my_include | markdownify }}
 
     </section>
@@ -71,6 +71,12 @@ contains_social_buttons: false
       <h1>Change Log</h1>
       <p>Updates to GMM since open beta launch in January 2017</p>
 
+      <h2>Build 89 on 2026-10-21</h2>
+      <ul>
+        <li>Security update (module 0.6.0): fixes two vulnerabilities, in how the module checks the transaction callbacks it receives from Gloebit and in the flow that links an avatar to a Gloebit account.  All grids should upgrade.  Thanks to the Admin at Kurtopia Grid for reporting these responsibly, sending a patch, and testing the fix.</li>
+        <li>DLLs built against OpenSim master are now published weekly as the <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/releases/tag/opensim-master-weekly">opensim-master-weekly</a> pre-release.</li>
+      </ul>
+      <br />
       <h2>Build 88 on 2026-06-07</h2>
       <ul>
         <li>Added support for <a href="https://github.com/gloebit/opensim-moneymodule-gloebit/releases/tag/build-88">OpenSim 0.9.3.x</a>, which moved to .NET 8.  Thanks to Vincent Sylvester (Zetamex) for the .NET 8 compatibility work.</li>
