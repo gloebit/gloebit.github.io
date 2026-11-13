@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Faster Purchases, Faster Approvals, and What We're Working on Next"
-description: "Buying gloebits now generally takes under 5 seconds, and merchant approvals and seller reviews are faster. Next up: faster in-world payments, quicker seller limit increases, and faster-closing sell orders."
+description: "Buying gloebits is now much faster, and merchant approvals and seller reviews are faster. Next up: faster in-world payments, quicker seller limit increases, and faster-closing sell orders."
 keywords: "Gloebit, Digital Currency, Virtual Currency, FinTech, OpenSim, OpenSimulator, purchase speed, payments"
 primary_image:
   loc: internal_blog
@@ -17,7 +17,7 @@ published: true
 tags: [OpenSim, Digital Currency, FinTech, Payments]
 use_excerpt_separator: true
 hashtags: [FinTech, OpenSim, Gloebit]
-twitter_text: "Buying gloebits now generally takes under 5 seconds, down from up to a minute. Faster approvals too, with more improvements coming. #OpenSim"
+twitter_text: "Buying gloebits is now much faster, and we are working to make it faster still. Faster approvals too, with more improvements coming. #OpenSim"
 disqus:
   enabled: true
   uniqueID: "GloebitFasterPurchases2026"
@@ -41,7 +41,7 @@ We've been making Gloebit faster, and we want to share what's improved and what'
 
 ## Buying gloebits is much faster ##
 
-[Buying gloebits](https://www.gloebit.com/purchase/) often took up to a minute. It now generally takes under 5 seconds.
+[Buying gloebits](https://www.gloebit.com/purchase/) could take up to a minute. It is now much faster, and we are working to make it faster still.
 
 Nothing changes in how you buy. Your gloebits simply arrive sooner.
 
