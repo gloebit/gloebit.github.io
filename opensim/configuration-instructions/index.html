@@ -178,6 +178,21 @@ GLBSpecificStorageProvider = "OpenSim.Data.PGSQL.dll"
 GLBSpecificConnectionString = "Server=localhost;Database=opensim;User Id=opensim; password=***;"
 {% endhighlight %}
         </li>
+        <li><b>Using SQLite:</b> Give Gloebit its own database file
+          <ul>
+            <li>By default Gloebit stores its tables in the <i>DatabaseService</i> database, which for SQLite is the same <i>OpenSim.db</i> file the region writes to.  SQLite allows only one writer per file at a time, so the two can collide with a "database is locked" error.  Point Gloebit at its own file instead and restart:</li>
+          </ul>
+{% highlight ini %}
+GLBSpecificStorageProvider = "OpenSim.Data.SQLite.dll"
+GLBSpecificConnectionString = "URI=file:Gloebit.db,version=3"
+{% endhighlight %}
+          <ul>
+            <li>You don't need to create the file: SQLite creates it, and Gloebit creates its tables on startup.</li>
+            <li>The path is relative to the directory OpenSim runs from (normally <i>bin/</i>).  Use an absolute path if you start OpenSim from somewhere else.</li>
+            <li>If you run more than one sim process, point them all at the same file so users only authorize Gloebit once.</li>
+            <li>Gloebit data already stored in <i>OpenSim.db</i> is not copied over, so users may need to authorize Gloebit again.</li>
+          </ul>
+        </li>
         <li><b>Optional Gloebit Configuration Options:</b> Make additional edits to Gloebit.ini for improved, user-friendly behavior (None of these are required).
           <ul>
             <li>You can configure what IMs are sent to avatars each session start.  To turn off new session messages, set the following:
