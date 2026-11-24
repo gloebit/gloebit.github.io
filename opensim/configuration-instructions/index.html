@@ -174,9 +174,24 @@ GLBEnabledOnlyInRegions = 7aeedb84-90e3-4042-92ce-f93bce4f14a3 6aeedb84-90e3-404
 ;; for ConnectionString examples and availiable StorageProviders
 ;GLBSpecificStorageProvider = OpenSim.Data.MySQL.dll
 ;GLBSpecificConnectionString = "Data Source=localhost;Database=opensim;User ID=opensim;Password=***;Old Guids=true;"
-GLBSpecificStorageProvider = "OpenSim.Data.PGSQL.dll"
-GLBSpecificConnectionString = "Server=localhost;Database=opensim;User Id=opensim; password=***;"
+;GLBSpecificStorageProvider = "OpenSim.Data.PGSQL.dll"
+;GLBSpecificConnectionString = "Server=localhost;Database=opensim;User Id=opensim; password=***;"
 {% endhighlight %}
+        </li>
+        <li><b>Using SQLite:</b> Give Gloebit its own database file
+          <ul>
+            <li>By default Gloebit stores its tables in the <i>DatabaseService</i> database, which for SQLite is the same <i>OpenSim.db</i> file the region writes to.  SQLite allows only one writer per file at a time, so the two can collide with a "database is locked" error.  A separate file reduces that contention (Gloebit's own tables still share their file).  Add these lines to the <i>[Gloebit]</i> section of Gloebit.ini, replacing any existing <i>GLBSpecific</i> lines, and restart:</li>
+          </ul>
+{% highlight ini %}
+GLBSpecificStorageProvider = "OpenSim.Data.SQLite.dll"
+GLBSpecificConnectionString = "URI=file:Gloebit.db,version=3"
+{% endhighlight %}
+          <ul>
+            <li>You don't need to create the file: SQLite creates it, and Gloebit creates its tables on startup.</li>
+            <li>The path is relative to the directory OpenSim runs from (normally <i>bin/</i>).  Use an absolute path if you start OpenSim from somewhere else.</li>
+            <li>SQLite is for a single sim process.  Processes sharing one SQLite file compete for its write lock again, and a file can't be shared across servers.  For multiple sim processes, use one MySQL or PGSQL database for Gloebit as described above.</li>
+            <li>Switch while no purchases are in progress.  Gloebit data already in <i>OpenSim.db</i> (user authorizations, pending transactions, object subscriptions) is not copied over, so users will need to authorize Gloebit again, and owners of scripted objects that pay out may need to re-authorize them.</li>
+          </ul>
         </li>
         <li><b>Optional Gloebit Configuration Options:</b> Make additional edits to Gloebit.ini for improved, user-friendly behavior (None of these are required).
           <ul>
